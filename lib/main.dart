@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_project/features/onboarding/cubit/onboarding_cubit.dart';
-import 'package:flutter_project/features/onboarding/screens/widgets/first_onboarding_screen.dart';
+import 'package:movieapp/features/onboarding/cubit/onboarding_cubit.dart';
+import 'package:movieapp/features/onboarding/screens/widgets/first_onboarding_screen.dart';
+import 'package:movieapp/features/onboarding/cubit/onboarding_cubit.dart';
 
 void main() {
   runApp(const MyApp());

@@ -1,33 +1,27 @@
 import 'package:flutter/material.dart';
-// import 'package:firebase_core/firebase_core.dart';
-import 'features/home/screens/HomeScreen.dart';
-// import 'firebase_options.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_project/features/onboarding/cubit/onboarding_cubit.dart';
+import 'package:flutter_project/features/onboarding/screens/widgets/first_onboarding_screen.dart';
 
-
-
-Future<void> main() async {
-
- // await Firebase.initializeApp(
-  //    options: DefaultFirebaseOptions.currentPlatform,);
+void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-
-      debugShowCheckedModeBanner: false,
-      home:HomeScreen(),
-
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => OnboardingCubit()),
+      ],
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Hulu',
+        home: FirstOnBoardingScreen(),
+      ),
     );
   }
 }

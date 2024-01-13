@@ -5,6 +5,8 @@ import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/onboarding/screens/lo.dart';
 import 'package:flutter_project/features/onboarding/screens/onboarding_screen.dart';
 
+import '../../../login/screens/pages/login.dart';
+
 class FirstOnBoardingScreen extends StatelessWidget {
   const FirstOnBoardingScreen({Key? key}) : super(key: key);
 
@@ -137,7 +139,7 @@ class FirstOnBoardingScreen extends StatelessWidget {
           TextButton(
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => LoginScreen()));
+                  MaterialPageRoute(builder: (context) => Login()));
             },
             child: Text(
               'Login',

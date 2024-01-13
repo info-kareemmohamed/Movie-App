@@ -8,6 +8,8 @@ import 'package:flutter_project/features/onboarding/screens/widgets/second_onboa
 import 'package:flutter_project/features/onboarding/screens/widgets/third_onboarding_screen.dart.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../../login/screens/pages/login.dart';
+
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({Key? key}) : super(key: key);
 
@@ -69,7 +71,7 @@ class OnBoardingScreen extends StatelessWidget {
                             ? Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => LoginScreen()))
+                                    builder: (context) => Login()))
                             : cubit.nextPage(onBoardingController);
                       },
                       child: Container(

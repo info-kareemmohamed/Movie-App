@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/core/utils/app_colors.dart';
+import 'package:flutter_project/core/utils/app_images.dart';
+import 'package:flutter_project/core/utils/app_text_style.dart';
+import 'package:flutter_project/core/utils/space.dart';
 import 'package:flutter_project/features/login/screens/pages/signup.dart';
 import 'package:flutter_project/features/login/screens/pages/social_icons.dart';
-
-import '../../../../core/utils/app_colors.dart';
-import '../../../../core/utils/space.dart';
-import '../../../../core/utils/text_style.dart';
-import '../widget/main_button.dart';
-import '../widget/text_field.dart';
-
+import 'package:flutter_project/features/login/screens/widget/main_button.dart';
+import 'package:flutter_project/features/login/screens/widget/text_field.dart';
+import 'package:flutter_project/features/movie_details/screens/details_screen.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -26,28 +26,33 @@ class _LoginState extends State<Login> {
     return Form(
       key: fromKey,
       child: Scaffold(
-        backgroundColor: black,
+        backgroundColor: AppColors.darkTheme,
         body: Padding(
           padding: const EdgeInsets.only(top: 50.0),
           child: SingleChildScrollView(
             child: Column(
               children: [
                 const SpaceVH(height: 50.0),
-                Image.asset("assets/images/img1.png"),
+                Image.asset(
+                  AppImages.huluLogo,
+                  width: 170,
+                  fit: BoxFit.fill,
+                ),
                 const SpaceVH(height: 50),
-                CustomTextField(
-                    controller: userName,
-                    icon: Icons.person_outline_outlined,
-                    hintTxt: 'UserName',
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return "username required";
-                      }
-                    }),
+                customTextField(
+                  controller: userName,
+                  icon: Icons.person_outline_outlined,
+                  hintTxt: 'Email or UserName',
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "username required";
+                    }
+                  },
+                ),
                 const SizedBox(height: 10),
-                CustomTextField(
+                customTextField(
                   controller: userPass,
-                  icon: secure ? Icons.visibility_off : Icons.visibility,
+                  icon: secure ? Icons.visibility : Icons.visibility_off,
                   isObs: secure,
                   visible: () {
                     setState(() {
@@ -64,12 +69,15 @@ class _LoginState extends State<Login> {
                 Align(
                   alignment: Alignment.centerRight,
                   child: Padding(
-                    padding: EdgeInsets.only(right: 20.0),
+                    padding: const EdgeInsets.only(right: 20.0),
                     child: TextButton(
                       onPressed: () {},
-                      child: const Text(
+                      child: Text(
                         'Forgot Password?',
-                        style: TextStyle(color: Colors.white),
+                        style: AppTextStyle.regular(
+                          color: AppColors.lightRed,
+                          fontSize: 12.9,
+                        ),
                       ),
                     ),
                   ),
@@ -83,33 +91,43 @@ class _LoginState extends State<Login> {
                         onTap: () {
                           if (fromKey.currentState!.validate()) {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const SignUpPage()));
+                                builder: (context) => MovieDetails()));
                           }
                         },
                         text: 'Sign in',
-                        txtColor: black,
-                        btnColor: greenButton,
+                        txtColor: AppColors.darkTheme,
+                        btnColor: AppColors.primary,
                       ),
-                      const SocalSignUp(),
-                      const SpaceVH(height: 10.0),
-                      TextButton(
-                          onPressed: () {
-                            Navigator.push(
+                      const SocialSignUp(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Don\'t have account?',
+                            style: AppTextStyle.regular(
+                              fontSize: 14.12,
+                              color: AppColors.lightRed,
+                            ),
+                          ),
+                          TextButton(
+                            child: Text(
+                              'Register',
+                              style: AppTextStyle.regular(
+                                fontSize: 14.12,
+                                color: AppColors.primary,
+                              ),
+                            ),
+                            onPressed: () {
+                              Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (builder) => SignUpPage()));
-                          },
-                          child: RichText(
-                            text: TextSpan(children: [
-                              TextSpan(
-                                  text: "Don\'t have account? ",
-                                  style: headline.copyWith(fontSize: 14.0)),
-                              TextSpan(
-                                  text: "Register",
-                                  style: headlineDot.copyWith(
-                                      fontSize: 14.0, color: blueText))
-                            ]),
-                          ))
+                                  builder: (builder) => const SignUpPage(),
+                                ),
+                              );
+                            },
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 )

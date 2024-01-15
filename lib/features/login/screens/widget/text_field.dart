@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_project/core/utils/app_colors.dart';
+import 'package:flutter_project/core/utils/app_text_style.dart';
 
-import '../../../../core/utils/app_colors.dart';
-import '../../../../core/utils/text_style.dart';
-Widget CustomTextField({
+Widget customTextField({
   required String hintTxt,
   required IconData icon,
   required TextEditingController controller,
@@ -15,27 +14,35 @@ Widget CustomTextField({
   return Padding(
     padding: const EdgeInsets.all(15.0),
     child: TextFormField(
+      controller: controller,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       textAlignVertical: TextAlignVertical.center,
       obscureText: isObs,
       keyboardType: keyBordType,
       validator: validator,
       decoration: InputDecoration(
-          fillColor: blackBG,
+          fillColor: AppColors.darkBlue,
           filled: true,
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: black),
+              borderSide: const BorderSide(color: AppColors.darkTheme),
               borderRadius: BorderRadius.circular(20.0)),
-          hintStyle: hintStyle,
+          hintStyle: AppTextStyle.regular(
+            fontSize: 14,
+            color: AppColors.lightRed,
+          ),
           focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: black),
+              borderSide: const BorderSide(color: AppColors.darkTheme),
               borderRadius: BorderRadius.circular(20.0)),
           hintText: hintTxt,
           suffixIcon: IconButton(
             icon: Icon(icon),
             onPressed: visible ?? () {},
           )),
-      style: headline2,
+      style: AppTextStyle.regular(
+        fontSize: 12.9,
+        color: AppColors.lightYellow,
+      ),
     ),
   );
 }

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/core/utils/app_images.dart';
 import 'package:flutter_project/features/login/screens/pages/social_icon.dart';
-
 
 import 'or_drive.dart';
 
-class SocalSignUp extends StatelessWidget {
-  const SocalSignUp({
+class SocialSignUp extends StatelessWidget {
+  const SocialSignUp({
     Key? key,
   }) : super(key: key);
 
@@ -18,15 +18,15 @@ class SocalSignUp extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             SocalIcon(
-              iconSrc: "assets/icon/facebook.svg",
+              iconSrc: AppImages.googleIcon,
               press: () {},
             ),
             SocalIcon(
-              iconSrc: "assets/icon/twitter.svg",
+              iconSrc: AppImages.facebookIcon,
               press: () {},
             ),
             SocalIcon(
-              iconSrc: "assets/icon/google-plus.svg",
+              iconSrc: AppImages.twitterIcon,
               press: () {},
             ),
           ],

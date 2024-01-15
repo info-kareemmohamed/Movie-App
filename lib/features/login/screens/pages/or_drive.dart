@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/core/utils/app_text_style.dart';
 
 import '../../../../core/utils/app_colors.dart';
+
 class OrDivider extends StatelessWidget {
   const OrDivider({Key? key}) : super(key: key);
   @override
@@ -13,25 +15,25 @@ class OrDivider extends StatelessWidget {
       child: Row(
         children: <Widget>[
           buildDivider(),
-           const Center(
-             child: Text(
+          Center(
+            child: Text(
               " Or sign in using ",
-              style: TextStyle(
-                color: grayText,
-                fontWeight: FontWeight.w600,
+              style: AppTextStyle.regular(
+                fontSize: 14.12,
+                color: AppColors.lightRed,
               ),
-                         ),
-           ),
+            ),
+          ),
           buildDivider(),
-
         ],
       ),
     );
   }
+
   Expanded buildDivider() {
     return const Expanded(
       child: Divider(
-        color: grayText,
+        color: AppColors.lightRed,
         height: 1.5,
       ),
     );

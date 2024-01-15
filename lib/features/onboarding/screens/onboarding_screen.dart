@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
+import 'package:flutter_project/features/login/screens/pages/login.dart';
 import 'package:flutter_project/features/onboarding/cubit/onboarding_cubit.dart';
-import 'package:flutter_project/features/onboarding/screens/lo.dart';
 import 'package:flutter_project/features/onboarding/screens/widgets/fourth_onboarding_screen.dart.dart';
 import 'package:flutter_project/features/onboarding/screens/widgets/second_onboarding_screen.dart.dart';
 import 'package:flutter_project/features/onboarding/screens/widgets/third_onboarding_screen.dart.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
-import '../../login/screens/pages/login.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({Key? key}) : super(key: key);

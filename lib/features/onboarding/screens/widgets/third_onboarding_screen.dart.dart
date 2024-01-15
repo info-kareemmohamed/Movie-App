@@ -8,7 +8,6 @@ class ThirdOnBoardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var onBoardingController = PageController();
     return Column(
       children: [
         Center(
@@ -56,7 +55,7 @@ class ThirdOnBoardingScreen extends StatelessWidget {
          to watch offline ''',
             style: AppTextStyle.medium(
               fontSize: 11.44,
-              color: AppColors.secondary,
+              color: AppColors.lightYellow,
             )),
       ],
     );

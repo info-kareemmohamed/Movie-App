@@ -39,7 +39,7 @@ class FourthOnBoardingScreen extends StatelessWidget {
               width: 282,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                color: AppColors.containerColor,
+                color: AppColors.darkBlue,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,9 +53,10 @@ class FourthOnBoardingScreen extends StatelessWidget {
                           top: 25,
                           child: CircleAvatar(
                             radius: 12.5,
-                            backgroundColor: Colors.black,
+                            backgroundColor: AppColors.lightRed,
                             child: Icon(
                               Icons.visibility_outlined,
+                              color: Colors.white,
                               size: 15,
                             ),
                           ),
@@ -88,7 +89,7 @@ class FourthOnBoardingScreen extends StatelessWidget {
                             text: 'Still Requesting\n',
                             style: AppTextStyle.light(
                               fontSize: 8.83,
-                              color: AppColors.secondary,
+                              color: AppColors.lightRed,
                             ),
                           ),
                           TextSpan(
@@ -137,7 +138,7 @@ class FourthOnBoardingScreen extends StatelessWidget {
               width: 282,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                color: AppColors.containerColor,
+                color: AppColors.darkBlue,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -182,7 +183,6 @@ class FourthOnBoardingScreen extends StatelessWidget {
                           child: Container(
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: const Color(0XFF111928),
                               border: Border.all(
                                 color: Colors.white,
                               ),
@@ -218,7 +218,7 @@ class FourthOnBoardingScreen extends StatelessWidget {
                               text: 'Watching OPPENHEIMER\n',
                               style: AppTextStyle.light(
                                 fontSize: 8.83,
-                                color: AppColors.secondary,
+                                color: AppColors.lightRed,
                               ),
                             ),
                             TextSpan(
@@ -239,7 +239,7 @@ class FourthOnBoardingScreen extends StatelessWidget {
                         width: 67,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
-                          color: const Color(0XFF00CF71),
+                          color: AppColors.primary,
                         ),
                         child: Center(
                           child: Text(
@@ -263,7 +263,7 @@ class FourthOnBoardingScreen extends StatelessWidget {
               text: TextSpan(
                 style: AppTextStyle.medium(
                   fontSize: 11.44,
-                  color: AppColors.secondary,
+                  color: AppColors.lightYellow,
                 ),
                 children: const [
                   TextSpan(

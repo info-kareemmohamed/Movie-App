@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/core/utils/app_text_style.dart';
+import 'package:flutter_project/features/movie_details/screens/details_screen.dart';
+
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/space.dart';
-import '../../../../core/utils/text_style.dart';
 import '../widget/main_button.dart';
 import '../widget/text_field.dart';
-import 'login.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -13,37 +14,49 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  TextEditingController userName = TextEditingController();
-  TextEditingController userPass = TextEditingController();
-  TextEditingController userEmail = TextEditingController();
-  TextEditingController userPh = TextEditingController();
-  final formkey = GlobalKey<FormState>();
+  final TextEditingController userNameController = TextEditingController();
+  final TextEditingController userPassController = TextEditingController();
+  final TextEditingController userPassConfirmController =
+      TextEditingController();
+  final TextEditingController userEmailController = TextEditingController();
+  final TextEditingController userPhoneController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
   bool secure = true;
   bool secure2 = true;
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: formkey,
+      key: formKey,
       child: Scaffold(
-        backgroundColor: black,
+        backgroundColor: AppColors.darkTheme,
         body: Padding(
-          padding: EdgeInsets.only(top: 50.0),
+          padding: const EdgeInsets.only(top: 50.0),
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SpaceVH(height: 40.0),
+                const SpaceVH(height: 40.0),
                 Text(
-                  'Create new account',
-                  style: headline1,
+                  'Create Account',
+                  style: AppTextStyle.semiBold(
+                    fontSize: 33.05,
+                    color: AppColors.primary,
+                  ),
                 ),
-                SpaceVH(height: 5.0),
-                Text(
-                  'Register now and start expoling all that our app has to\n offer.we are exicted to welcome you in our community',
-                  style: headline3,
+                const SpaceVH(height: 5.0),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Register now and start exploring all that our app has to offer. We’re excited to welcome you to our community!',
+                    textAlign: TextAlign.center,
+                    style: AppTextStyle.regular(
+                      color: AppColors.lightRed,
+                      fontSize: 12.13,
+                    ),
+                  ),
                 ),
-                SpaceVH(height: 50.0),
-                CustomTextField(
-                  controller: userEmail,
+                const SpaceVH(height: 50.0),
+                customTextField(
+                  controller: userEmailController,
                   keyBordType: TextInputType.emailAddress,
                   icon: Icons.person_outline_outlined,
                   hintTxt: 'Email Address',
@@ -53,29 +66,29 @@ class _SignUpPageState extends State<SignUpPage> {
                     }
                   },
                 ),
-                CustomTextField(
-                  controller: userPass,
-                  icon: secure ? Icons.visibility_off : Icons.visibility,
+                customTextField(
+                  controller: userPassController,
+                  icon: secure ? Icons.visibility : Icons.visibility_off,
                   isObs: secure,
                   visible: () {
                     setState(() {
                       secure = !secure;
                     });
                   },
-                  hintTxt: ' Password',
+                  keyBordType: TextInputType.visiblePassword,
+                  hintTxt: 'Password',
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return "Password required";
+                      return 'Password required';
+                    } else if (value.length < 6) {
+                      return 'Password Too Short';
                     }
-                    if (value.length < 4) {
-                      return 'password too short';
-                    }
-                    return null;
                   },
                 ),
-                CustomTextField(
-                  controller: userPass,
-                  icon: secure2 ? Icons.visibility_off : Icons.visibility,
+                customTextField(
+                  controller: userPassConfirmController,
+                  keyBordType: TextInputType.visiblePassword,
+                  icon: secure2 ? Icons.visibility : Icons.visibility_off,
                   isObs: secure2,
                   visible: () {
                     setState(() {
@@ -85,12 +98,16 @@ class _SignUpPageState extends State<SignUpPage> {
                   hintTxt: 'Confirm Password',
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return "Confirm password required";
+                      return 'Confirm Password required';
+                    } else if (value.length < 6) {
+                      return 'Confirm Password Too Short';
+                    } else if (value != userPassController.text) {
+                      return 'Confirm Password Not Matched';
                     }
                   },
                 ),
-                CustomTextField(
-                  controller: userPh,
+                customTextField(
+                  controller: userPhoneController,
                   icon: Icons.phone,
                   keyBordType: TextInputType.phone,
                   hintTxt: 'Your Number',
@@ -100,63 +117,88 @@ class _SignUpPageState extends State<SignUpPage> {
                     }
                   },
                 ),
-                SpaceVH(height: 25.0),
+                const SpaceVH(height: 25.0),
                 Mainbutton(
                   onTap: () {
-                    if (formkey.currentState!.validate()) {
+                    if (formKey.currentState!.validate()) {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const Login()));
+                          builder: (context) => MovieDetails()));
                     }
                   },
-                  text: 'Sign Up',
-                  txtColor: black,
-                  btnColor: greenButton,
+                  text: 'Create Account',
+                  txtColor: AppColors.darkTheme,
+                  btnColor: AppColors.primary,
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 50,
+                    vertical: 20,
+                  ),
                   child: RichText(
-                    text: TextSpan(children: [
-                      TextSpan(
-                        children: [
-                          const TextSpan(
-                              text: "By logging.you agree to our ",
-                              style: headline3),
-                          TextSpan(
-                              text: "Terms & Conditions", style: headline2),
-                          TextSpan(text: " and ", style: headline3),
-                          TextSpan(
-                              text: "Privacy Policy",
-                              style: headline2.copyWith(
-                                height: 1.5,
-                              )),
-                        ],
-                      ),
-                    ]),
                     textAlign: TextAlign.center,
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          children: [
+                            TextSpan(
+                              text: "By logging.you agree to our ",
+                              style: AppTextStyle.regular(
+                                fontSize: 10.48,
+                                color: AppColors.lightRed,
+                              ),
+                            ),
+                            TextSpan(
+                              text: "Terms & Conditions",
+                              style: AppTextStyle.regular(
+                                fontSize: 10.48,
+                                color: AppColors.lightYellow,
+                              ),
+                            ),
+                            TextSpan(
+                              text: " and ",
+                              style: AppTextStyle.regular(
+                                fontSize: 10.48,
+                                color: AppColors.lightRed,
+                              ),
+                            ),
+                            TextSpan(
+                              text: "Privacy Policy",
+                              style: AppTextStyle.regular(
+                                fontSize: 10.48,
+                                color: AppColors.lightYellow,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-                SpaceVH(height: 30.0),
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: RichText(
-                    text: TextSpan(children: [
-                      TextSpan(
-                        text: 'Already have an account? ',
-                        style: headline.copyWith(
-                          fontSize: 14.0,
+                // const SpaceVH(height: 10.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Already have an account? ',
+                      style: AppTextStyle.regular(
+                        fontSize: 14.12,
+                        color: AppColors.lightRed,
+                      ),
+                    ),
+                    TextButton(
+                      child: Text(
+                        'Sign in',
+                        style: AppTextStyle.regular(
+                          fontSize: 14.12,
+                          color: AppColors.primary,
                         ),
                       ),
-                      TextSpan(
-                        text: 'Sign in',
-                        style: headlineDot.copyWith(
-                          fontSize: 14.0,
-                        ),
-                      ),
-                    ]),
-                  ),
-                )
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                ),
               ],
             ),
           ),

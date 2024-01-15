@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_images.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
-import 'package:flutter_project/features/onboarding/screens/lo.dart';
+import 'package:flutter_project/features/login/screens/pages/login.dart';
 import 'package:flutter_project/features/onboarding/screens/onboarding_screen.dart';
-
-import '../../../login/screens/pages/login.dart';
 
 class FirstOnBoardingScreen extends StatelessWidget {
   const FirstOnBoardingScreen({Key? key}) : super(key: key);
@@ -107,7 +105,7 @@ class FirstOnBoardingScreen extends StatelessWidget {
             hitmovies, Hulu Originals, kids shows, and more...''',
             style: AppTextStyle.regular(
               fontSize: 9.68,
-              color: AppColors.secondary,
+              color: AppColors.lightYellow,
             ),
           ),
           const SizedBox(
@@ -115,8 +113,10 @@ class FirstOnBoardingScreen extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => OnBoardingScreen()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const OnBoardingScreen()));
             },
             child: Container(
               height: 44,
@@ -138,8 +138,8 @@ class FirstOnBoardingScreen extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Login()));
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Login()));
             },
             child: Text(
               'Login',

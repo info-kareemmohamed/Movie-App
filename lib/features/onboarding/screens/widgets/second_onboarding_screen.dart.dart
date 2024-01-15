@@ -81,7 +81,7 @@ class SecondOnBoardingScreen extends StatelessWidget {
                     text: 'Watch anywhere, cancel\nanytime.',
                     style: AppTextStyle.medium(
                       fontSize: 13.3,
-                      color: AppColors.secondary,
+                      color: AppColors.lightYellow,
                     ),
                   ),
                 ],

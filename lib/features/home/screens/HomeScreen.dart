@@ -4,7 +4,6 @@ import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/home/screens/widget/latest_movies.dart';
 import 'package:flutter_project/features/home/screens/widget/sliver_app_bar_home.dart';
 import 'package:flutter_project/features/home/screens/widget/trending_daily_movies.dart';
-import 'package:flutter_project/features/home/screens/widget/watching.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -18,7 +17,7 @@ class HomeScreen extends StatelessWidget {
           length: 3,
           child: NestedScrollView(
             headerSliverBuilder: (context, innerBoxIsScrolled) {
-              return [SliverAppbarHome()];
+              return [const SliverAppbarHome()];
             },
             body: CustomScrollView(
               slivers: [
@@ -27,7 +26,9 @@ class HomeScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const TrendingDailyScreen(),
-                      const WatchingMovies(),
+                      const SizedBox(
+                        height: 15,
+                      ),
                       Padding(
                         padding: const EdgeInsets.only(left: 20),
                         child: Text(
@@ -37,6 +38,9 @@ class HomeScreen extends StatelessWidget {
                             fontSize: 25,
                           ),
                         ),
+                      ),
+                      const SizedBox(
+                        height: 15,
                       ),
                       const LatestMovies(),
                     ],

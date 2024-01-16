@@ -425,7 +425,7 @@ packages:
     source: hosted
     version: "6.1.1"
   readmore:
-    dependency: "direct main"
+    dependency: "direct dev"
     description:
       name: readmore
       sha256: "99c2483202f7c7e98c50834d72be2b119aefecf4497ca1960ae9d5f418eb1481"

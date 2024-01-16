@@ -3,11 +3,11 @@ import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_images.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/core/utils/space.dart';
+import 'package:flutter_project/features/home/screens/HomeScreen.dart';
 import 'package:flutter_project/features/login/screens/pages/signup.dart';
 import 'package:flutter_project/features/login/screens/pages/social_icons.dart';
 import 'package:flutter_project/features/login/screens/widget/main_button.dart';
 import 'package:flutter_project/features/login/screens/widget/text_field.dart';
-import 'package:flutter_project/features/movie_details/screens/details_screen.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -91,7 +91,7 @@ class _LoginState extends State<Login> {
                         onTap: () {
                           if (fromKey.currentState!.validate()) {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => MovieDetails()));
+                                builder: (context) => HomeScreen()));
                           }
                         },
                         text: 'Sign in',

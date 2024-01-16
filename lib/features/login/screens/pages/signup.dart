@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
-import 'package:flutter_project/features/movie_details/screens/details_screen.dart';
+import 'package:flutter_project/features/home/screens/HomeScreen.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/space.dart';
@@ -122,7 +122,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   onTap: () {
                     if (formKey.currentState!.validate()) {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => MovieDetails()));
+                          builder: (context) => HomeScreen()));
                     }
                   },
                   text: 'Create Account',

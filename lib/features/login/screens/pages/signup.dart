@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/home/screens/HomeScreen.dart';
@@ -9,6 +10,7 @@ import '../widget/text_field.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
+
   @override
   _SignUpPageState createState() => _SignUpPageState();
 }
@@ -23,6 +25,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final formKey = GlobalKey<FormState>();
   bool secure = true;
   bool secure2 = true;
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -121,8 +124,18 @@ class _SignUpPageState extends State<SignUpPage> {
                 Mainbutton(
                   onTap: () {
                     if (formKey.currentState!.validate()) {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => HomeScreen()));
+                      try {
+                        FirebaseAuth.instance
+                            .createUserWithEmailAndPassword(
+                              email: userEmailController.text,
+                              password: userPassConfirmController.text,
+                            )
+                            .then((value) => Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (context) => HomeScreen())));
+                      } catch (e) {
+                        print('Error creating user: $e');
+                      }
                     }
                   },
                   text: 'Create Account',

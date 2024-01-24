@@ -1,2 +1,2 @@
 const apiKey = '';
-const baseUrl ='';
+const baseUrl ='https://api.themoviedb.org/3';

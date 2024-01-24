@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_project/core/services/datasource/model/MovieResponse.dart';
+import 'package:flutter_project/core/services/datasource/remote/api/ApiService.dart';
 import 'package:flutter_project/features/home/cubit/home_screen_cubit.dart';
 import 'package:flutter_project/features/movie_details/cubit/movie_details_cubit.dart';
 import 'package:flutter_project/features/onboarding/cubit/onboarding_cubit.dart';
 import 'package:flutter_project/features/onboarding/screens/widgets/first_onboarding_screen.dart';
 
+import 'core/services/datasource/remote/apiLinks/AllApi.dart';
+
 void main() async {
   // await Firebase.initializeApp(
   //   options: DefaultFirebaseOptions.currentPlatform,
   // );
+ ApiService.apiService.fetchMovie(popularmovieurl).then((value) => print(value));
   runApp(const MyApp());
 }
 

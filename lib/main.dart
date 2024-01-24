@@ -13,7 +13,6 @@ void main() async {
   // await Firebase.initializeApp(
   //   options: DefaultFirebaseOptions.currentPlatform,
   // );
- ApiService.apiService.fetchMovie(popularmovieurl).then((value) => print(value));
   runApp(const MyApp());
 }
 

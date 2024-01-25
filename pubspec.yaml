@@ -48,14 +48,15 @@ dependencies:
   intl: ^0.17.0
   animations: ^2.0.1
   dio:
-
-
+  readmore: ^2.2.0
+  curved_navigation_bar: ^1.0.3
+  flutter_switch: ^0.3.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   email_validator: ^2.1.17
-  readmore: ^2.2.0
+
 
 
   # The "flutter_lints" package below contains a set of recommended lints to
@@ -102,16 +103,9 @@ flutter:
         - asset: assets/fonts/Montserrat-Light.ttf
         - asset: assets/fonts/Montserrat-SemiBold.ttf
         - asset: assets/fonts/Montserrat-Regular.ttf
-    - family: SF Pro
+    - family: IconBroken
       fonts:
-        - asset: assets/fonts/SF-Pro-Display-Black.ttf
-        - asset: assets/fonts/SF-Pro-Display-Bold.ttf
-        - asset: assets/fonts/SF-Pro-Display-Light.ttf
-        - asset: assets/fonts/SF-Pro-Display-Medium.ttf
-        - asset: assets/fonts/SF-Pro-Display-Regular.ttf
-        - asset: assets/fonts/SF-Pro-Display-Semibold.ttf
-        - asset: assets/fonts/SF-Pro-Display-Thin.ttf
-        - asset: assets/fonts/SF-Pro-Display-Ultralight.ttf
+        - asset: assets/icon/icons.ttf
 
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic

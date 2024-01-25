@@ -11,6 +11,12 @@ class MovieDetailsCubit extends Cubit<MovieDetailsState> {
 
   void showAllMovies() {
     allMovies = true;
-    emit(MovieDetailsShowMoreMovies());
+    emit(MovieDetailsShowMoreMoviesState());
+  }
+
+  bool isFavourite = false;
+  void addFavourite() {
+    isFavourite = !isFavourite;
+    emit(MovieFavouriteState());
   }
 }

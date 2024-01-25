@@ -28,4 +28,5 @@ class AppImages {
   static const String poster14 = "$images/Poster14.png";
   static const String shadow2 = "$images/shadow2.png";
   static const String shadowMoreFilms = "$images/shadowMoreFilms.png";
+  static const String settingsIcon = "$images/settingsIcon.png";
 }

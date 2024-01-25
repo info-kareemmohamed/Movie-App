@@ -1,13 +1,16 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_project/features/app_layout/cubit/app_layout_cubit.dart';
 import 'package:flutter_project/features/home/cubit/home_screen_cubit.dart';
-import 'package:flutter_project/features/login/cubit/SocialLoginCubit.dart';
+import 'package:flutter_project/features/login/cubit/LoginCubit/LoginCubit.dart';
+import 'package:flutter_project/features/login/cubit/SignUpCubit/sign_up_cubit.dart';
 import 'package:flutter_project/features/movie_details/cubit/movie_details_cubit.dart';
 import 'package:flutter_project/features/onboarding/cubit/onboarding_cubit.dart';
 import 'package:flutter_project/features/onboarding/screens/widgets/first_onboarding_screen.dart';
+
 import 'firebase_options.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -37,7 +40,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => OnboardingCubit()),
         BlocProvider(create: (context) => HomeScreenCubit()),
         BlocProvider(create: (context) => MovieDetailsCubit()),
-        BlocProvider(create: (context) => SocialLoginCubit()),
+        BlocProvider(create: (context) => LoginCubit()),
+        BlocProvider(create: (context) => SignUpCubit()),
+        BlocProvider(create: (context) => AppLayoutCubit()),
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,

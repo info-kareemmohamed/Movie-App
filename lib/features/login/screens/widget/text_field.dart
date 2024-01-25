@@ -36,8 +36,11 @@ Widget customTextField({
               borderRadius: BorderRadius.circular(20.0)),
           hintText: hintTxt,
           suffixIcon: IconButton(
-            icon: Icon(icon),
-            onPressed: visible ?? () {},
+            icon: Icon(
+              icon,
+              color: AppColors.lightRed,
+            ),
+            onPressed: visible,
           )),
       style: AppTextStyle.regular(
         fontSize: 12.9,

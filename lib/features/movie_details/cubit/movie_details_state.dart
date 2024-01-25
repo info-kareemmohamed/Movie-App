@@ -5,4 +5,6 @@ abstract class MovieDetailsState {}
 
 class MovieDetailsInitial extends MovieDetailsState {}
 
-class MovieDetailsShowMoreMovies extends MovieDetailsState {}
+class MovieDetailsShowMoreMoviesState extends MovieDetailsState {}
+
+class MovieFavouriteState extends MovieDetailsState {}

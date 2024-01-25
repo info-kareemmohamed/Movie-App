@@ -1,36 +1,29 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_project/app/styles/icon_broken.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_images.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/core/utils/space.dart';
-import 'package:flutter_project/features/home/screens/HomeScreen.dart';
-import 'package:flutter_project/features/login/cubit/SocialLoginCubit.dart';
-import 'package:flutter_project/features/login/cubit/SocialStates.dart';
+import 'package:flutter_project/features/login/cubit/LoginCubit/LoginCubit.dart';
+import 'package:flutter_project/features/login/cubit/LoginCubit/LoginStates.dart';
 import 'package:flutter_project/features/login/screens/pages/signup.dart';
 import 'package:flutter_project/features/login/screens/pages/social_icons.dart';
 import 'package:flutter_project/features/login/screens/widget/main_button.dart';
 import 'package:flutter_project/features/login/screens/widget/text_field.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class Login extends StatelessWidget {
+  Login({super.key});
 
-  @override
-  State<Login> createState() => _LoginState();
-}
-
-class _LoginState extends State<Login> {
-  TextEditingController userName = TextEditingController();
-  TextEditingController userPass = TextEditingController();
-
+  final TextEditingController userEmailController = TextEditingController();
+  final TextEditingController userPassController = TextEditingController();
   final fromKey = GlobalKey<FormState>();
-  bool secure = true;
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SocialLoginCubit,SocialLoginStates>(
-      builder:  (context,state){
+    var cubit = context.read<LoginCubit>();
+    return BlocBuilder<LoginCubit, LoginStates>(
+      builder: (context, state) {
         return Form(
           key: fromKey,
           child: Scaffold(
@@ -48,29 +41,36 @@ class _LoginState extends State<Login> {
                     ),
                     const SpaceVH(height: 50),
                     customTextField(
-                      controller: userName,
-                      icon: Icons.person_outline_outlined,
-                      hintTxt: 'Email or UserName',
+                      controller: userEmailController,
+                      keyBordType: TextInputType.emailAddress,
+                      icon: IconBroken.Profile,
+                      hintTxt: 'Email',
                       validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return "username required";
+                        if (value.isEmpty) {
+                          return '       Please Enter Email Address';
+                        }
+                        if (!cubit.isValidEmail(value)) {
+                          return '       Please Enter a Valid Email Address';
+                        }
+                        if (!cubit.isGmailEmail(value)) {
+                          return '       Please Enter a Valid Gmail Address';
                         }
                       },
                     ),
                     const SizedBox(height: 10),
                     customTextField(
-                      controller: userPass,
-                      icon: secure ? Icons.visibility : Icons.visibility_off,
-                      isObs: secure,
+                      controller: userPassController,
+                      keyBordType: TextInputType.text,
+                      icon:
+                          cubit.visibility ? IconBroken.Show : IconBroken.Hide,
+                      isObs: cubit.visibility,
                       visible: () {
-                        setState(() {
-                          secure = !secure;
-                        });
+                        cubit.changePasswordVisibility();
                       },
                       hintTxt: 'Password',
                       validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return "Password required";
+                        if (value.isEmpty) {
+                          return '       Please Enter Password';
                         }
                       },
                     ),
@@ -98,7 +98,11 @@ class _LoginState extends State<Login> {
                           Mainbutton(
                             onTap: () {
                               if (fromKey.currentState!.validate()) {
-                              context.read<SocialLoginCubit>().login(email: userName.text,password: userPass.text,context: context);
+                                context.read<LoginCubit>().login(
+                                      email: userEmailController.text,
+                                      password: userPassController.text,
+                                      context: context,
+                                    );
                               }
                             },
                             text: 'Sign in',
@@ -128,7 +132,7 @@ class _LoginState extends State<Login> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (builder) => const SignUpPage(),
+                                      builder: (builder) => SignUpPage(),
                                     ),
                                   );
                                 },

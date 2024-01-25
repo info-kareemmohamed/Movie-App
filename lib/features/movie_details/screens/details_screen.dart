@@ -24,7 +24,7 @@ class MovieDetails extends StatelessWidget {
           child: NestedScrollView(
             headerSliverBuilder: (context, innerBoxIsScrolled) {
               return [
-                SliverAppbar(),
+                const SliverAppbar(),
               ];
             },
             body: TabBarView(

@@ -51,12 +51,15 @@ dependencies:
   readmore: ^2.2.0
   curved_navigation_bar: ^1.0.3
   flutter_switch: ^0.3.2
+  hive:
+  hive_flutter:
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   email_validator: ^2.1.17
-
+  hive_generator:
+  build_runner:
 
 
   # The "flutter_lints" package below contains a set of recommended lints to

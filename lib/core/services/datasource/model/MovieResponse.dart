@@ -1,3 +1,6 @@
+import 'package:hive/hive.dart';
+part 'MovieResponse.g.dart'; // Generated file
+
 class MovieResponse {
   int? page;
   List<Results>? results;
@@ -30,25 +33,46 @@ class MovieResponse {
   }
 }
 
+
+@HiveType(typeId: 1)
 class Results {
+  @HiveField(0)
   bool? adult;
+  @HiveField(1)
   String? backdropPath;
+  @HiveField(2)
   int? id;
+  @HiveField(3)
   String? title;
+  @HiveField(4)
   String? originalLanguage;
+  @HiveField(5)
   String? originalTitle;
+  @HiveField(6)
   String? overview;
+  @HiveField(7)
   String? posterPath;
+  @HiveField(8)
   String? mediaType;
+  @HiveField(9)
   List<int>? genreIds;
+  @HiveField(10)
   double? popularity;
+  @HiveField(11)
   String? releaseDate;
+  @HiveField(12)
   bool? video;
+  @HiveField(13)
   double? voteAverage;
+  @HiveField(14)
   int? voteCount;
+  @HiveField(15)
   String? name;
+  @HiveField(16)
   String? originalName;
+  @HiveField(17)
   String? firstAirDate;
+  @HiveField(18)
   List<String>? originCountry;
 
   Results(

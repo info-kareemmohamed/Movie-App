@@ -13,3 +13,7 @@ class MoviesSuccessState extends MoviesStat {
   final List<Results> movies;
   MoviesSuccessState(this.movies);
 }
+class MoviesTSuccessState extends MoviesStat {
+  final List<Results> movies;
+  MoviesTSuccessState(this.movies);
+}

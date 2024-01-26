@@ -13,7 +13,7 @@ class TrendingDailyScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MoviesCubit, MoviesStat>(
       builder: (context, state) {
-        if (state is MoviesSuccessState) {
+        if (state is MoviesTSuccessState) {
           return SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Padding(

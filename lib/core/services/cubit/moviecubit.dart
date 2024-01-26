@@ -33,4 +33,15 @@ class MoviesCubit extends Cubit<MoviesStat> {
     }
     return Future.value(movies);
   }
+  Future<List<Results>> getT(String endPoint) {
+    try {
+      ApiService.apiService.fetchMovie(endPoint).then((value) {
+        movies = value.results ?? [];
+        emit(MoviesTSuccessState(movies));
+      });
+    } catch (e) {
+      throw MoviesErrorState('Failed to fetch movies: $e');
+    }
+    return Future.value(movies);
+  }
 }

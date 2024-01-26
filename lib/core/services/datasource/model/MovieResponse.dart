@@ -53,24 +53,24 @@ class Results {
 
   Results(
       {this.adult,
-        this.backdropPath,
-        this.id,
-        this.title,
-        this.originalLanguage,
-        this.originalTitle,
-        this.overview,
-        this.posterPath,
-        this.mediaType,
-        this.genreIds,
-        this.popularity,
-        this.releaseDate,
-        this.video,
-        this.voteAverage,
-        this.voteCount,
-        this.name,
-        this.originalName,
-        this.firstAirDate,
-        this.originCountry});
+      this.backdropPath,
+      this.id,
+      this.title,
+      this.originalLanguage,
+      this.originalTitle,
+      this.overview,
+      this.posterPath,
+      this.mediaType,
+      this.genreIds,
+      this.popularity,
+      this.releaseDate,
+      this.video,
+      this.voteAverage,
+      this.voteCount,
+      this.name,
+      this.originalName,
+      this.firstAirDate,
+      this.originCountry});
 
   Results.fromJson(Map<String, dynamic> json) {
     adult = json['adult'];
@@ -91,7 +91,53 @@ class Results {
     name = json['name'];
     originalName = json['original_name'];
     firstAirDate = json['first_air_date'];
-    originCountry = json['origin_country'] != null ? json['origin_country'].cast<String>() : null;
+    originCountry = json['origin_country'] != null
+        ? json['origin_country'].cast<String>()
+        : null;
+  }
+
+  Results copyWith({
+    bool? adult,
+    String? backdropPath,
+    int? id,
+    String? title,
+    String? originalLanguage,
+    String? originalTitle,
+    String? overview,
+    String? posterPath,
+    String? mediaType,
+    List<int>? genreIds,
+    double? popularity,
+    String? releaseDate,
+    bool? video,
+    double? voteAverage,
+    int? voteCount,
+    String? name,
+    String? originalName,
+    String? firstAirDate,
+    List<String>? originCountry,
+  }) {
+    return Results(
+      adult: adult ?? this.adult,
+      backdropPath: backdropPath ?? this.backdropPath,
+      id: id ?? this.id,
+      title: title ?? this.title,
+      originalLanguage: originalLanguage ?? this.originalLanguage,
+      originalTitle: originalTitle ?? this.originalTitle,
+      overview: overview ?? this.overview,
+      posterPath: posterPath ?? this.posterPath,
+      mediaType: mediaType ?? this.mediaType,
+      genreIds: genreIds ?? this.genreIds,
+      popularity: popularity ?? this.popularity,
+      releaseDate: releaseDate ?? this.releaseDate,
+      video: video ?? this.video,
+      voteAverage: voteAverage ?? this.voteAverage,
+      voteCount: voteCount ?? this.voteCount,
+      name: name ?? this.name,
+      originalName: originalName ?? this.originalName,
+      firstAirDate: firstAirDate ?? this.firstAirDate,
+      originCountry: originCountry ?? this.originCountry,
+    );
   }
 
   Map<String, dynamic> toJson() {

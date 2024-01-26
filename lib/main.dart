@@ -2,13 +2,15 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/core/services/cubit/moviecubit.dart';
+import 'package:flutter_project/core/services/datasource/remote/apiLinks/AllApi.dart';
 import 'package:flutter_project/features/app_layout/cubit/app_layout_cubit.dart';
 import 'package:flutter_project/features/home/cubit/home_screen_cubit.dart';
+import 'package:flutter_project/features/home/screens/home_screen.dart';
 import 'package:flutter_project/features/login/cubit/LoginCubit/LoginCubit.dart';
 import 'package:flutter_project/features/login/cubit/SignUpCubit/sign_up_cubit.dart';
 import 'package:flutter_project/features/movie_details/cubit/movie_details_cubit.dart';
-import 'package:flutter_project/features/onboarding/cubit/onboarding_cubit.dart';
-import 'package:flutter_project/features/onboarding/screens/widgets/first_onboarding_screen.dart';
+
+// import 'package:flutter_project/features/onboarding/cubit/onboarding_cubitutter_project/features/onboarding/screens/widgets/first_onboarding_screen.dart';
 
 import 'firebase_options.dart';
 
@@ -38,10 +40,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => OnboardingCubit()),
+        // BlocProvider(create: (context) => OnboardingCubit()),
         BlocProvider(create: (context) => HomeScreenCubit()),
         BlocProvider(create: (context) => MovieDetailsCubit()),
-        BlocProvider(create: (context) => MoviesCubit()),
+        BlocProvider(
+            create: (context) => MoviesCubit()
+              ..getPopular(popularmovieurl)
+              ..getAllMovies(trendingdayurl)),
         BlocProvider(create: (context) => LoginCubit()),
         BlocProvider(create: (context) => SignUpCubit()),
         BlocProvider(create: (context) => AppLayoutCubit()),
@@ -49,7 +54,7 @@ class MyApp extends StatelessWidget {
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Hulu',
-        home: FirstOnBoardingScreen(),
+        home: HomeScreen(),
       ),
     );
   }

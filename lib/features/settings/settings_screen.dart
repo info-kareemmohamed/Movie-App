@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/app_layout/cubit/app_layout_cubit.dart';
+import 'package:flutter_project/features/login/screens/pages/login.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -113,36 +115,32 @@ class SettingsScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-
-                  Container(
-                    height: 50,
-                    width: 193,
-                    decoration: BoxDecoration(
-                      color: AppColors.green,
-                      borderRadius: BorderRadius.circular(34),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Logout',
-                        style: AppTextStyle.semiBold(
-                          color: AppColors.darkTheme,
-                          fontSize: 17,
+                  GestureDetector(
+                    onTap: () async {
+                      await FirebaseAuth.instance.signOut().then((value) =>
+                          Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(builder: (context) => Login()),
+                              (route) => false));
+                    },
+                    child: Container(
+                      height: 50,
+                      width: 193,
+                      decoration: BoxDecoration(
+                        color: AppColors.green,
+                        borderRadius: BorderRadius.circular(34),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Logout',
+                          style: AppTextStyle.semiBold(
+                            color: AppColors.darkTheme,
+                            fontSize: 17,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                  // Mainbutton(
-                  //   onTap: () {
-                  //     FirebaseAuth.instance.signOut();
-                  //     Navigator.pushAndRemoveUntil(
-                  //         context,
-                  //         MaterialPageRoute(builder: (context) => Login()),
-                  //         (route) => false);
-                  //     cubit.currentIndex = 1;
-                  //   },
-                  //   text: 'LogOut',
-                  //   btnColor: AppColors.green,
-                  // ),
                 ],
               ),
             ),

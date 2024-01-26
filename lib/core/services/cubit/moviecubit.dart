@@ -7,20 +7,23 @@ import '../datasource/remote/apiLinks/AllApi.dart';
 
 class MoviesCubit extends Cubit<MoviesStat> {
   late List<Results> movies;
-
   MoviesCubit() : super(MoviesInitialState()) {
-    movies = [];
+    movies =[];
   }
 
-  List<Results> getAllMovies() {
-    ApiService.apiService.fetchMovie(popularmovieurl).then((value) {
-      try {
-        movies = value.results ?? [];
-        emit(MoviesSuccessState(movies));
-      } catch (e) {
-        emit(MoviesErrorState('Unable to fetch movies'));
-      }
-    });
-    return this.movies;
+  Future<List<Results>> getAllMovies(String url)  {
+    try {
+       ApiService.apiService.fetchMovie(url).then((value)  {
+
+         movies = value.results??[];
+       });
+    //   emit(MoviesSuccessState(movies));
+    } catch (e) {
+      throw MoviesErrorState('Failed to fetch movies: $e');
+    }
+    return Future.value(movies);
   }
+
+
 }
+

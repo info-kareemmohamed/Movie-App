@@ -12,7 +12,8 @@ class MoviesErrorState extends MoviesStat{
 }
 
 class MoviesSuccessState extends MoviesStat {
- final List<Results>? movies;
+ final List<Results> movies;
   MoviesSuccessState(this.movies);
 
 }
+

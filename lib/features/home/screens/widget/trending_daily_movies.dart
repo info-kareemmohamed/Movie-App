@@ -73,7 +73,7 @@ class TrendingDailyScreen extends StatelessWidget {
                                   size: 20,
                                 ),
                                 Text(
-                                  ' ${state.movies[index].voteAverage ?? "Not Found"} | ',
+                                  ' ${state.movies[index].voteAverage?.toStringAsFixed(1) ?? "Not Found"} | ',
                                   style: AppTextStyle.semiBold(
                                     color: AppColors.lightYellow,
                                   ),

@@ -1,6 +1,7 @@
 import 'package:hive/hive.dart';
+part 'movie_favourite.g.dart'; // Generated file
 
-@HiveType(typeId: 1)
+@HiveType(typeId: 2)
 class MovieFavourite {
   @HiveField(0)
    String? backdropPath;

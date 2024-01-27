@@ -14,7 +14,10 @@ import 'package:flutter_project/features/login/cubit/SignUpCubit/sign_up_cubit.d
 import 'package:flutter_project/features/movie_details/cubit/movie_details_cubit.dart';
 import 'package:flutter_project/features/onboarding/cubit/onboarding_cubit.dart';
 import 'package:flutter_project/features/onboarding/screens/widgets/first_onboarding_screen.dart';
-
+import 'package:hive_flutter/hive_flutter.dart';
+import 'core/utils/Constants.dart';
+import 'features/favourite/cubit/FavouriteMovieCubit.dart';
+import 'features/favourite/model/movie_favourite.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -24,8 +27,10 @@ void main() async {
   );
   WidgetsFlutterBinding.ensureInitialized();
 
-  // await Hive.initFlutter();
-  // box = await Hive.openBox('login');
+  await Hive.initFlutter();
+  // Hive.registerAdapter(MovieFavouriteAdapter());
+
+  box = await Hive.openBox<MovieFavourite>('MovieFavourite');
   runApp(const MyApp());
 }
 
@@ -52,6 +57,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => LoginCubit()),
         BlocProvider(create: (context) => SignUpCubit()),
         BlocProvider(create: (context) => AppLayoutCubit()),
+        BlocProvider(create: (context) => FavouriteMovieCubit())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

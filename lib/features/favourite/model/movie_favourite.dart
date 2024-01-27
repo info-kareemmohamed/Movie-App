@@ -15,7 +15,7 @@ class MovieFavourite {
    String? originalLanguage;
 
   @HiveField(4)
-   List<int>? genreIds;
+   List<String>? genres;
 
   @HiveField(5)
    double? voteAverage;
@@ -31,7 +31,7 @@ class MovieFavourite {
     required this.id,
     required this.title,
     required this.originalLanguage,
-    required this.genreIds,
+    required this.genres,
     required this.voteAverage,
     required this.originCountry,
     this.release_date,
@@ -42,7 +42,7 @@ class MovieFavourite {
         id = json['id'],
         title = json['title'],
         originalLanguage = json['original_language'],
-        genreIds = List<int>.from(json['genre_ids'] ?? []),
+        genres = List<String>.from(json['genre_ids'] ?? []),
         voteAverage = json['vote_average'] != null ? json['vote_average'].toDouble() : 0.0,
         originCountry = json['origin_country'] ,
         release_date = json['release_date'];
@@ -53,7 +53,7 @@ class MovieFavourite {
       'id': id,
       'title': title,
       'original_language': originalLanguage,
-      'genre_ids': genreIds,
+      'genre_ids': genres,
       'vote_average': voteAverage,
       'origin_country': originCountry,
       'release_date': release_date,

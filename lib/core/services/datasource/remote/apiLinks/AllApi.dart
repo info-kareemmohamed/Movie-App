@@ -7,3 +7,9 @@ String topRatedMovieUrl = '$baseUrl/movie/top_rated?api_key=$apiKey';
 String popularMovieUrl = '$baseUrl/movie/popular?api_key=$apiKey';
 String nowPlayingMovieUrl = '$baseUrl/movie/now_playing?api_key=$apiKey';
 String upcomingMovieUrl = '$baseUrl/movie/upcoming?api_key=$apiKey';
+String youtubeBaseUrl='https://www.youtube.com/watch?v=';
+String imageBaseUrl='https://image.tmdb.org/t/p/w500';
+
+String getEndPoint(String endpoint,movieId){
+  return'${baseUrl}/${endpoint}?api_key=${apiKey}';
+}

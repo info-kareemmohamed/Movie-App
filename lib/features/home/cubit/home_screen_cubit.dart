@@ -3,25 +3,24 @@ import 'package:flutter/material.dart';
 
 part 'home_screen_state.dart';
 
-class HomeScreenCubit extends Cubit<HomeScreenState> {
-  HomeScreenCubit() : super(HomeScreenInitial());
+class HomeScreenCubit extends Cubit<HomeScreenStates> {
+  HomeScreenCubit() : super(HomeScreenInitialState());
 
-  String? selectedValue;
+  String selectedValue = "Daily";
 
   List<DropdownMenuItem<String>> dropMenuItems = const [
     DropdownMenuItem(
-      value: 'Trending Now',
-      child: Text('Trending Now'),
+      value: 'Daily',
+      child: Text('Trending Daily'),
     ),
     DropdownMenuItem(
-      value: 'Daily',
-      child: Text('Daily'),
+      value: 'Weekly',
+      child: Text('Trending Weekly'),
     ),
   ];
 
   void dropValue(String? value) {
-    selectedValue = value;
-
+    selectedValue = value!;
     emit(SelectedValueState());
   }
 }

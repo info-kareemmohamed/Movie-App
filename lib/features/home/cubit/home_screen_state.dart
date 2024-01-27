@@ -1,8 +1,8 @@
 part of 'home_screen_cubit.dart';
 
 @immutable
-abstract class HomeScreenState {}
+abstract class HomeScreenStates {}
 
-class HomeScreenInitial extends HomeScreenState {}
+class HomeScreenInitialState extends HomeScreenStates {}
 
-class SelectedValueState extends HomeScreenState {}
+class SelectedValueState extends HomeScreenStates {}

@@ -53,6 +53,9 @@ dependencies:
   flutter_switch: ^0.3.2
   hive:
   hive_flutter:
+  carousel_slider: ^4.2.1
+
+
 
 dev_dependencies:
   flutter_test:

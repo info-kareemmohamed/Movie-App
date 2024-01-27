@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/core/utils/app_images.dart';
 import 'package:flutter_project/features/movie_details/cubit/movie_details_cubit.dart';
+import 'package:flutter_project/features/movie_details/screens/details_screen.dart';
 import 'package:flutter_project/features/movie_details/screens/widgets/show_less_movies.dart';
 import 'package:flutter_project/features/movie_details/screens/widgets/show_more_movies.dart';
 
@@ -27,16 +28,27 @@ class MoreLikeThisMovie extends StatelessWidget {
                       (rowIndex) => Row(
                         children: List.generate(
                           2,
-                          (index) => Container(
-                            height: 190,
-                            width: 133,
-                            decoration: BoxDecoration(
-                              color: Colors.orangeAccent,
-                              borderRadius: BorderRadius.circular(4),
-                            ),
-                            margin: const EdgeInsets.symmetric(
-                              horizontal: 20.0,
-                              vertical: 15,
+                          (index) => GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => MovieDetails()));
+                            },
+                            child: Container(
+                              height: 200,
+                              width: 133,
+                              decoration: BoxDecoration(
+                                image: const DecorationImage(
+                                  image: AssetImage(AppImages.poster),
+                                  fit: BoxFit.cover,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              margin: const EdgeInsets.symmetric(
+                                horizontal: 20.0,
+                                vertical: 15,
+                              ),
                             ),
                           ),
                         ),

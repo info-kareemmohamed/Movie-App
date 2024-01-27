@@ -1,75 +1,126 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
-import 'package:flutter_project/features/movie_details/data/models/movie_episodes_details_model.dart';
-import 'package:flutter_project/features/movie_details/screens/widgets/episodes_item.dart';
-import 'package:readmore/readmore.dart';
+import 'package:flutter_project/features/movie_details/cubit/movie_details_cubit.dart';
+import 'package:flutter_project/features/movie_details/data/models/movie_trailers_model.dart';
+import 'package:flutter_project/features/movie_details/screens/widgets/more_like_this_movie.dart';
 
 class FirstTabScreen extends StatelessWidget {
-  FirstTabScreen({Key? key}) : super(key: key);
+  const FirstTabScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 23.0, top: 23),
-      child: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: ReadMoreText(
-              'The mercurial villain Loki resumes his role as the God of Mischief in a new series that takes place after the events of "Avengers: Endgame".',
-              trimLines: 2,
-              style: AppTextStyle.regular(
-                fontSize: 12,
-                color: AppColors.lightYellow,
-              ),
-              colorClickableText: AppColors.primary,
-              trimMode: TrimMode.Line,
-              trimCollapsedText: ' Read more',
-              trimExpandedText: ' Read Less',
-            ),
-          ),
-          const SliverToBoxAdapter(
-            child: SizedBox(
-              height: 10,
-            ),
-          ),
-          SliverList.separated(
-            separatorBuilder: (context, index) => const SizedBox(
-              height: 27,
-            ),
-            itemCount: episodesList.length,
-            itemBuilder: (context, index) =>
-                EpisodesItem(model: episodesList[index]),
-          ),
-        ],
-      ),
+    var cubit = context.read<MovieDetailsCubit>();
+    cubit.allMovies = false;
+    String? firstName;
+    String? lastName;
+
+    if (trailersList[0].name != null && trailersList[0].name!.isNotEmpty) {
+      String fullName = trailersList[0].name!;
+      int middleIndex = (fullName.length / 2).ceil();
+      firstName = fullName.substring(0, middleIndex).toUpperCase();
+      lastName = fullName.substring(middleIndex).toUpperCase();
+    }
+
+    return BlocBuilder<MovieDetailsCubit, MovieDetailsState>(
+      builder: (context, state) {
+        return BlocBuilder<MovieDetailsCubit, MovieDetailsState>(
+          builder: (context, state) {
+            return CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10.0),
+                        child: RichText(
+                          text: TextSpan(
+                            style: AppTextStyle.black(
+                              color: AppColors.lightYellow,
+                              fontSize: 35,
+                            ),
+                            children: [
+                              TextSpan(
+                                text: firstName,
+                              ),
+                              TextSpan(
+                                text: lastName,
+                                style:
+                                    const TextStyle(color: AppColors.primary),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 8,
+                          horizontal: 25,
+                        ),
+                        child: SizedBox(
+                          height: 55,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: trailersList[0].type!.length,
+                            itemBuilder: (context, index) => Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 5),
+                              child: Container(
+                                width: 100,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: AppColors.lightYellow,
+                                    width: 1.7,
+                                  ),
+                                  borderRadius: BorderRadius.circular(50),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    trailersList[0].type![index],
+                                    style: AppTextStyle.medium(
+                                      color: AppColors.lightRed,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Text(
+                        trailersList[0].title ?? 'Not Found',
+                        textAlign: TextAlign.center,
+                        style: AppTextStyle.regular(
+                          color: AppColors.lightYellow,
+                          fontSize: 12,
+                        ),
+                      ),
+                      Container(
+                        height: 155,
+                        width: 300,
+                        decoration: BoxDecoration(
+                          color: Colors.indigo,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        margin: const EdgeInsets.all(25),
+                      ),
+                      Text(
+                        'More Like This',
+                        style: AppTextStyle.semiBold(
+                          color: AppColors.lightYellow,
+                          fontSize: 21.24,
+                        ),
+                      ),
+                      const MoreLikeThisMovie(),
+                    ],
+                  ),
+                ),
+              ],
+            );
+          },
+        );
+      },
     );
   }
-
-  List<MovieDetailsModel> episodesList = [
-    MovieDetailsModel(
-      title: 'First Episodes',
-      subTitle:
-          'Mobius puts Loki to work, but not everyone at TVA is thrilled about the God of Mischief\'s presence.',
-      rate: 8.6,
-    ),
-    MovieDetailsModel(
-      title: 'Second Episodes',
-      subTitle:
-          'Mobius puts Loki to work, but not everyone at TVA is thrilled about the God of Mischief\'s presence.',
-      rate: 1.6,
-    ),
-    MovieDetailsModel(
-      title: 'Third Episodes',
-      subTitle:
-          'Mobius puts Loki to work, but not everyone at TVA is thrilled about the God of Mischief\'s presence.',
-      rate: 5.6,
-    ),
-    MovieDetailsModel(
-      title: 'Fourth Episodes',
-      subTitle:
-          'Mobius puts Loki to work, but not everyone at TVA is thrilled about the God of Mischief\'s presence.',
-      rate: 4.6,
-    ),
-  ];
 }

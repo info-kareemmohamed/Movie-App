@@ -1,9 +1,11 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_project/core/services/cubit/top_rated_movies_cubit.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
-import 'package:flutter_project/core/utils/app_images.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/home/cubit/home_screen_cubit.dart';
+import 'package:flutter_project/features/movie_details/screens/details_screen.dart';
 
 class SliverAppbarHome extends StatelessWidget {
   const SliverAppbarHome({super.key});
@@ -11,18 +13,61 @@ class SliverAppbarHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var cubit = context.read<HomeScreenCubit>();
-
-    return BlocBuilder<HomeScreenCubit, HomeScreenState>(
+    return BlocBuilder<HomeScreenCubit, HomeScreenStates>(
       builder: (context, state) {
         return SliverAppBar(
           backgroundColor: AppColors.darkTheme,
-          collapsedHeight: 450,
+          collapsedHeight: 500,
           flexibleSpace: FlexibleSpaceBar(
-            collapseMode: CollapseMode.pin,
-            background: Image.asset(
-              AppImages.poster14,
-              width: double.infinity,
-              fit: BoxFit.fill,
+            background: BlocBuilder<TopRatedMoviesCubit, TopRatedMoviesState>(
+              builder: (context, state) {
+                if (state is TopRatedSuccessState) {
+                  return CarouselSlider(
+                    items: state.movies.map((i) {
+                      return Builder(builder: (BuildContext context) {
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const MovieDetails()));
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: NetworkImage(
+                                    'https://image.tmdb.org/t/p/w500${i.posterPath}'),
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                          ),
+                        );
+                      });
+                    }).toList(),
+                    options: CarouselOptions(
+                      viewportFraction: 1,
+                      autoPlay: true,
+                      height: 600,
+                    ),
+                  );
+                } else if (state is TopRatedInitialState) {
+                  return const SizedBox();
+                } else {
+                  return Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Text(
+                        'Sorry Not Found',
+                        style: AppTextStyle.semiBold(
+                          color: Colors.red,
+                          fontSize: 25,
+                        ),
+                      ),
+                    ),
+                  );
+                }
+              },
             ),
           ),
           bottom: AppBar(
@@ -32,32 +77,39 @@ class SliverAppbarHome extends StatelessWidget {
             title: Padding(
               padding: const EdgeInsets.only(left: 5),
               child: SizedBox(
-                width: 250.0,
-                child: DropdownButton(
-                  items: cubit.dropMenuItems,
-                  icon: const Icon(
-                    Icons.keyboard_arrow_down_rounded,
-                    size: 40,
-                    color: AppColors.lightYellow,
-                  ),
-                  borderRadius: BorderRadius.circular(15.0),
-                  dropdownColor: AppColors.darkTheme.withOpacity(0.7),
-                  underline: const SizedBox(),
-                  hint: Text(
-                    'Trending Now',
-                    style: AppTextStyle.semiBold(
+                width: 250,
+                child: Container(
+                  padding: const EdgeInsets.only(left: 15),
+                  decoration: BoxDecoration(
+                      color: Colors.black.withOpacity(0.8),
+                      borderRadius: BorderRadius.circular(15)),
+                  child: DropdownButton(
+                    items: cubit.dropMenuItems,
+                    icon: const Icon(
+                      Icons.keyboard_arrow_down_rounded,
+                      size: 40,
                       color: AppColors.lightYellow,
                     ),
+                    borderRadius: BorderRadius.circular(15),
+                    dropdownColor: AppColors.darkTheme.withOpacity(0.7),
+                    underline: const SizedBox(),
+                    hint: Text(
+                      cubit.selectedValue,
+                      style: AppTextStyle.black(
+                        color: AppColors.lightYellow,
+                        fontSize: 18,
+                      ),
+                    ),
+                    value: cubit.selectedValue,
+                    style: AppTextStyle.black(
+                      fontSize: 18,
+                      color: AppColors.lightYellow,
+                    ),
+                    isExpanded: true,
+                    onChanged: (String? value) {
+                      cubit.dropValue(value);
+                    },
                   ),
-                  value: cubit.selectedValue,
-                  style: AppTextStyle.semiBold(
-                    fontSize: 19.66,
-                    color: AppColors.lightYellow,
-                  ),
-                  isExpanded: true,
-                  onChanged: (String? value) {
-                    cubit.dropValue(value);
-                  },
                 ),
               ),
             ),

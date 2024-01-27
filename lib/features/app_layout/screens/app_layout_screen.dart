@@ -17,7 +17,7 @@ class AppLayoutScreen extends StatelessWidget {
             animationCurve: Curves.easeInOutCubicEmphasized,
             height: 53,
             index: cubit.currentIndex,
-            color: Colors.white,
+            color: AppColors.darkTheme,
             backgroundColor: AppColors.primary,
             onTap: (int index) {
               cubit.changeBottomNavBar(index);

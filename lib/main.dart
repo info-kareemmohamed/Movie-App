@@ -2,7 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_project/core/services/cubit/moviecubit.dart';
+import 'package:flutter_project/core/services/cubit/top_rated_movies_cubit.dart';
+import 'package:flutter_project/core/services/cubit/trending_day_movies_cubit.dart';
+import 'package:flutter_project/core/services/cubit/trending_week_movie_cubit.dart';
 import 'package:flutter_project/core/services/datasource/remote/apiLinks/AllApi.dart';
 import 'package:flutter_project/features/app_layout/cubit/app_layout_cubit.dart';
 import 'package:flutter_project/features/app_layout/screens/app_layout_screen.dart';
@@ -37,12 +39,16 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => OnboardingCubit()),
         BlocProvider(create: (context) => HomeScreenCubit()),
+        BlocProvider(
+            create: (context) =>
+                TrendingDayMoviesCubit()..getTrendingDayMovies(trendingDayUrl)),
         BlocProvider(create: (context) => MovieDetailsCubit()),
         BlocProvider(
-            create: (context) => MoviesCubit()
-              ..getPopular(popularmovieurl)
-              ..getAllMovies(trendingdayurl)
-              ..getT(popularmovieurl)),
+            create: (context) => TrendingWeekMoviesCubit()
+              ..getTrendingWeekWeek(trendingWeekUrl)),
+        BlocProvider(
+            create: (context) =>
+                TopRatedMoviesCubit()..getTopRatedMovies(topRatedMovieUrl)),
         BlocProvider(create: (context) => LoginCubit()),
         BlocProvider(create: (context) => SignUpCubit()),
         BlocProvider(create: (context) => AppLayoutCubit()),

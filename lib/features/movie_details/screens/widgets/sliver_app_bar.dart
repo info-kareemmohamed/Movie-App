@@ -73,7 +73,7 @@ class SliverAppbar extends StatelessWidget {
                 ),
                 Positioned(
                   left: 130,
-                  top: 150,
+                  top: 320,
                   child: RichText(
                     text: TextSpan(
                       style: AppTextStyle.black(

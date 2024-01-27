@@ -3,14 +3,15 @@ import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/features/movie_details/screens/widgets/first_tab.dart';
 import 'package:flutter_project/features/movie_details/screens/widgets/second_tap.dart';
 import 'package:flutter_project/features/movie_details/screens/widgets/sliver_app_bar.dart';
+import 'package:flutter_project/features/movie_details/screens/widgets/third_tap.dart';
 
 class MovieDetails extends StatelessWidget {
-  MovieDetails({super.key});
+  const MovieDetails({super.key});
 
-  final List<Widget> myTabViews = [
+  final List<Widget> myTabViews = const [
     FirstTabScreen(),
     SecondTabScreen(),
-    FirstTabScreen(),
+    ThirdTabScreen(),
   ];
 
   @override

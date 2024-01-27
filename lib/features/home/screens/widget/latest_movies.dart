@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_project/core/services/cubit/top_rated_movies_cubit.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/movie_details/screens/details_screen.dart';
-
-import '../../../../core/services/cubit/moviecubit.dart';
-import '../../../../core/services/cubit/moviestate.dart';
 
 class LatestMovies extends StatelessWidget {
   const LatestMovies({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MoviesCubit, MoviesStat>(
+    return BlocBuilder<TopRatedMoviesCubit, TopRatedMoviesState>(
       builder: (context, state) {
-        if (state is MoviesSuccessState) {
+        if (state is TopRatedSuccessState) {
           return SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Padding(
@@ -30,7 +28,7 @@ class LatestMovies extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => MovieDetails()));
+                              builder: (context) => const MovieDetails()));
                     },
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,14 +56,16 @@ class LatestMovies extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'OPPENHEIMER ',
+                                (state.movies[index].title?.length ?? 1) > 20
+                                    ? '${state.movies[index].title!.substring(0, 20)} ...'
+                                    : state.movies[index].title ?? "Not Found",
                                 style: AppTextStyle.light(
                                   color: AppColors.lightYellow,
                                   fontSize: 10,
                                 ),
                               ),
                               Text(
-                                '3h',
+                                state.movies[index].releaseDate ?? "Not Found",
                                 style: AppTextStyle.light(
                                   color: AppColors.lightRed,
                                   fontSize: 10,
@@ -122,10 +122,21 @@ class LatestMovies extends StatelessWidget {
               ),
             ),
           );
-        } else if (state is MoviesInitialState) {
+        } else if (state is TopRatedInitialState) {
           return const Center(child: CircularProgressIndicator());
         } else {
-          return const Text('ddd');
+          return Center(
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Text(
+                'Sorry Not Found',
+                style: AppTextStyle.semiBold(
+                  color: Colors.red,
+                  fontSize: 25,
+                ),
+              ),
+            ),
+          );
         }
       },
     );

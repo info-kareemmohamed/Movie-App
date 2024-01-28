@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,140 +14,149 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var cubit = context.read<AppLayoutCubit>();
-    return BlocBuilder<AppLayoutCubit, AppLayoutStates>(
-      builder: (context, state) {
-        return Scaffold(
-          backgroundColor: AppColors.darkTheme,
-          appBar: AppBar(
-            backgroundColor: AppColors.darkTheme,
-            centerTitle: true,
-            title: Text(
-              'Settings',
-              style: AppTextStyle.extraBold(
-                color: Colors.white,
-                fontSize: 18.74,
-              ),
-            ),
-          ),
-          body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    height: 156.49,
-                    width: 108,
-                    decoration: BoxDecoration(
+    return StreamBuilder<DocumentSnapshot>(
+        stream: FirebaseFirestore.instance
+            .collection('Users')
+            .doc(FirebaseAuth.instance.currentUser!.uid)
+            .snapshots(),
+        builder: (context, snapshot) {
+          return BlocBuilder<AppLayoutCubit, AppLayoutStates>(
+            builder: (context, state) {
+              return Scaffold(
+                backgroundColor: AppColors.darkTheme,
+                appBar: AppBar(
+                  backgroundColor: AppColors.darkTheme,
+                  centerTitle: true,
+                  title: Text(
+                    'Settings',
+                    style: AppTextStyle.extraBold(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(5.51),
+                      fontSize: 18.74,
                     ),
                   ),
-                  Text(
-                    'Mahmoud Abdelaty',
-                    style: AppTextStyle.semiBold(
-                      color: Colors.white,
-                      fontSize: 25,
-                    ),
-                  ),
-                  Container(
-                    height: 56,
-                    width: 334,
-                    decoration: BoxDecoration(
-                      color: AppColors.lightRed,
-                      borderRadius: BorderRadius.circular(5.51),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                ),
+                body: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text(
-                          'Language',
-                          style: AppTextStyle.regular(
-                            color: AppColors.lightYellow,
-                            fontSize: 13.4,
+                        Container(
+                          height: 156.49,
+                          width: 108,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(5.51),
                           ),
                         ),
-                        FlutterSwitch(
-                            activeText: '',
-                            activeColor: Colors.black,
-                            inactiveText: '',
-                            width: 65,
-                            height: 35,
-                            padding: 6,
-                            showOnOff: true,
-                            value: cubit.isDark,
-                            onToggle: ((value) {
-                              cubit.changeMode();
-                            })),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    height: 56,
-                    width: 334,
-                    decoration: BoxDecoration(
-                      color: AppColors.lightRed,
-                      borderRadius: BorderRadius.circular(5.51),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
                         Text(
-                          'Light & Dark Mode',
-                          style: AppTextStyle.regular(
-                            color: AppColors.lightYellow,
-                            fontSize: 13.4,
-                          ),
-                        ),
-                        FlutterSwitch(
-                            activeText: '',
-                            activeIcon: const Icon(Icons.dark_mode_sharp),
-                            activeColor: Colors.black,
-                            inactiveText: '',
-                            inactiveIcon: const Icon(Icons.sunny),
-                            width: 65,
-                            height: 35,
-                            padding: 6,
-                            showOnOff: true,
-                            value: cubit.isDark,
-                            onToggle: ((value) {
-                              cubit.changeMode();
-                            })),
-                      ],
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () async {
-                      await FirebaseAuth.instance.signOut().then((value) =>
-                          Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(builder: (context) => Login()),
-                              (route) => false));
-                    },
-                    child: Container(
-                      height: 50,
-                      width: 193,
-                      decoration: BoxDecoration(
-                        color: AppColors.green,
-                        borderRadius: BorderRadius.circular(34),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Logout',
+                          snapshot.data?['name'] ?? "Not Found",
                           style: AppTextStyle.semiBold(
-                            color: AppColors.darkTheme,
-                            fontSize: 17,
+                            color: Colors.white,
+                            fontSize: 25,
                           ),
                         ),
-                      ),
+                        Container(
+                          height: 56,
+                          width: 334,
+                          decoration: BoxDecoration(
+                            color: AppColors.lightRed,
+                            borderRadius: BorderRadius.circular(5.51),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(
+                                'Language',
+                                style: AppTextStyle.regular(
+                                  color: AppColors.lightYellow,
+                                  fontSize: 13.4,
+                                ),
+                              ),
+                              FlutterSwitch(
+                                  activeText: '',
+                                  activeColor: Colors.black,
+                                  inactiveText: '',
+                                  width: 65,
+                                  height: 35,
+                                  padding: 6,
+                                  showOnOff: true,
+                                  value: cubit.isDark,
+                                  onToggle: ((value) {
+                                    cubit.changeMode();
+                                  })),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          height: 56,
+                          width: 334,
+                          decoration: BoxDecoration(
+                            color: AppColors.lightRed,
+                            borderRadius: BorderRadius.circular(5.51),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(
+                                'Light & Dark Mode',
+                                style: AppTextStyle.regular(
+                                  color: AppColors.lightYellow,
+                                  fontSize: 13.4,
+                                ),
+                              ),
+                              FlutterSwitch(
+                                  activeText: '',
+                                  activeIcon: const Icon(Icons.dark_mode_sharp),
+                                  activeColor: Colors.black,
+                                  inactiveText: '',
+                                  inactiveIcon: const Icon(Icons.sunny),
+                                  width: 65,
+                                  height: 35,
+                                  padding: 6,
+                                  showOnOff: true,
+                                  value: cubit.isDark,
+                                  onToggle: ((value) {
+                                    cubit.changeMode();
+                                  })),
+                            ],
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () async {
+                            cubit.currentIndex = 1;
+                            await FirebaseAuth.instance.signOut().then(
+                                (value) => Navigator.pushAndRemoveUntil(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Login()),
+                                    (route) => false));
+                          },
+                          child: Container(
+                            height: 50,
+                            width: 193,
+                            decoration: BoxDecoration(
+                              color: AppColors.green,
+                              borderRadius: BorderRadius.circular(34),
+                            ),
+                            child: Center(
+                              child: Text(
+                                'Logout',
+                                style: AppTextStyle.semiBold(
+                                  color: AppColors.darkTheme,
+                                  fontSize: 17,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              ),
-            ),
-          ),
-        );
-      },
-    );
+                ),
+              );
+            },
+          );
+        });
   }
 }

@@ -6,8 +6,9 @@ import 'package:flutter_project/features/movie_details/screens/widgets/sliver_ap
 import 'package:flutter_project/features/movie_details/screens/widgets/third_tap.dart';
 
 class MovieDetails extends StatelessWidget {
-  const MovieDetails({super.key});
+  MovieDetails({super.key, required this.id});
 
+  String? id;
   final List<Widget> myTabViews = const [
     FirstTabScreen(),
     SecondTabScreen(),

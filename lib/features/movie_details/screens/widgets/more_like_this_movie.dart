@@ -33,7 +33,9 @@ class MoreLikeThisMovie extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => MovieDetails()));
+                                      builder: (context) => MovieDetails(
+                                            id: "Movi",
+                                          )));
                             },
                             child: Container(
                               height: 200,

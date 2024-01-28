@@ -23,28 +23,33 @@ class SliverAppbarHome extends StatelessWidget {
               builder: (context, state) {
                 if (state is TopRatedSuccessState) {
                   return CarouselSlider(
-                    items: state.movies.map((i) {
-                      return Builder(builder: (BuildContext context) {
-                        return GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const MovieDetails()));
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: NetworkImage(
-                                    'https://image.tmdb.org/t/p/w500${i.posterPath}'),
-                                fit: BoxFit.fill,
+                    items: state.movies.map(
+                      (i) {
+                        return Builder(
+                          builder: (BuildContext context) {
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => MovieDetails(
+                                              id: 'movieID',
+                                            )));
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: NetworkImage(
+                                        'https://image.tmdb.org/t/p/w500${i.posterPath}'),
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
                               ),
-                            ),
-                          ),
+                            );
+                          },
                         );
-                      });
-                    }).toList(),
+                      },
+                    ).toList(),
                     options: CarouselOptions(
                       viewportFraction: 1,
                       autoPlay: true,

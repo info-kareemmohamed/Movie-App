@@ -20,7 +20,7 @@ class Movie {
   List<dynamic> spokenLanguages;
   String status;
   String tagline;
-  String title;
+  String? title;
   bool video;
   double voteAverage;
   int voteCount;

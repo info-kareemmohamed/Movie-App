@@ -1,3 +1,4 @@
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/app/styles/icon_broken.dart';
@@ -129,19 +130,28 @@ class SignUpPage extends StatelessWidget {
                     ),
 
                     const SpaceVH(height: 25.0),
-                    Mainbutton(
-                      onTap: () {
-                        if (formKey.currentState!.validate()) {
-                          cubit.signUp(
-                              name: userNameController.text,
-                              email: userEmailController.text,
-                              password: userPassController.text,
-                              context: context);
-                        }
-                      },
-                      text: 'Create Account',
-                      txtColor: AppColors.darkTheme,
-                      btnColor: AppColors.primary,
+
+                    ConditionalBuilder(
+                      condition: state is! SignUpLoadingState,
+                      builder: (context) => Mainbutton(
+                        onTap: () {
+                          if (formKey.currentState!.validate()) {
+                            cubit.signUp(
+                                name: userNameController.text,
+                                email: userEmailController.text,
+                                password: userPassController.text,
+                                context: context);
+                          }
+                        },
+                        text: 'Create Account',
+                        txtColor: AppColors.darkTheme,
+                        btnColor: AppColors.primary,
+                      ),
+                      fallback: (context) => const Center(
+                        child: CircularProgressIndicator(
+                          color: AppColors.primary,
+                        ),
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(

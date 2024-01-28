@@ -1,3 +1,4 @@
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/app/styles/icon_broken.dart';
@@ -95,19 +96,27 @@ class Login extends StatelessWidget {
                       alignment: Alignment.bottomCenter,
                       child: Column(
                         children: [
-                          Mainbutton(
-                            onTap: () {
-                              if (fromKey.currentState!.validate()) {
-                                context.read<LoginCubit>().login(
-                                      email: userEmailController.text,
-                                      password: userPassController.text,
-                                      context: context,
-                                    );
-                              }
-                            },
-                            text: 'Sign in',
-                            txtColor: AppColors.darkTheme,
-                            btnColor: AppColors.primary,
+                          ConditionalBuilder(
+                            condition: state is! LoginLoadingState,
+                            builder: (context) => Mainbutton(
+                              onTap: () {
+                                if (fromKey.currentState!.validate()) {
+                                  context.read<LoginCubit>().login(
+                                        email: userEmailController.text,
+                                        password: userPassController.text,
+                                        context: context,
+                                      );
+                                }
+                              },
+                              text: 'Sign in',
+                              txtColor: AppColors.darkTheme,
+                              btnColor: AppColors.primary,
+                            ),
+                            fallback: (context) => const Center(
+                              child: CircularProgressIndicator(
+                                color: AppColors.primary,
+                              ),
+                            ),
                           ),
                           const SocialSignUp(),
                           Row(

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/core/services/datasource/model/MovieDetailsResponse.dart';
 import 'package:flutter_project/core/utils/app_images.dart';
 
 class SecondTabScreen extends StatelessWidget {
-   SecondTabScreen({Key? key , required this.movieId} ) : super(key: key);
-
-final dynamic movieId;
+  SecondTabScreen({Key? key, required this.movie}) : super(key: key);
+  Movie movie;
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(

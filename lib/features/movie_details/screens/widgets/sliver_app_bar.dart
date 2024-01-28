@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/app/styles/icon_broken.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
-import 'package:flutter_project/core/utils/app_images.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/movie_details/cubit/movie_details_cubit.dart';
 
 class SliverAppbar extends StatelessWidget {
-  const SliverAppbar({super.key});
+  const SliverAppbar({super.key, required this.image, required this.title});
 
+  final String image;
+  final String title;
   @override
   Widget build(BuildContext context) {
     final List<Tab> myTabs = [
@@ -66,31 +67,10 @@ class SliverAppbar extends StatelessWidget {
             collapseMode: CollapseMode.pin,
             background: Stack(
               children: [
-                Image.asset(
-                  AppImages.poster14,
+                Image.network(
+                  'https://image.tmdb.org/t/p/w500${image}',
+                  fit: BoxFit.cover,
                   width: double.infinity,
-                  fit: BoxFit.fill,
-                ),
-                Positioned(
-                  left: 130,
-                  top: 320,
-                  child: RichText(
-                    text: TextSpan(
-                      style: AppTextStyle.black(
-                        color: AppColors.lightYellow,
-                        fontSize: 45,
-                      ),
-                      children: const [
-                        TextSpan(
-                          text: 'LO',
-                        ),
-                        TextSpan(
-                          text: 'KI',
-                          style: TextStyle(color: AppColors.primary),
-                        ),
-                      ],
-                    ),
-                  ),
                 ),
               ],
             ),

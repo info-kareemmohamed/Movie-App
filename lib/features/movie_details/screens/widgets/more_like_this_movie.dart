@@ -9,9 +9,11 @@ import 'package:flutter_project/features/movie_details/screens/widgets/show_more
 class MoreLikeThisMovie extends StatelessWidget {
   const MoreLikeThisMovie({super.key});
 
+
   @override
   Widget build(BuildContext context) {
     var cubit = context.read<MovieDetailsCubit>();
+    cubit.allMovies = false;
     return BlocBuilder<MovieDetailsCubit, MovieDetailsState>(
       builder: (context, state) {
         return Stack(

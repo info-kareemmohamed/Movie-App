@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_project/core/services/datasource/model/MovieDetailsResponse.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_images.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/movie_details/cubit/movie_details_cubit.dart';
 
 class ThirdTabScreen extends StatelessWidget {
-  const ThirdTabScreen({Key? key , required this.movieId}) : super(key: key);
+  ThirdTabScreen({Key? key, required this.movie}) : super(key: key);
 
-  final dynamic movieId;
+  Movie movie;
 
   @override
   Widget build(BuildContext context) {

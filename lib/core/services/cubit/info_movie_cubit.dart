@@ -9,6 +9,7 @@ class InfoMovieCubit extends Cubit<InfoMovieStates> {
   InfoMovieCubit() : super(InfoMovieInitialState()) {}
 
   Movie? getInfoMovie(String Url) {
+    emit(InfoMovieInitialState());
     try {
       ApiService.apiService.fetchMovieDetails(Url).then((value) {
         movie = value;

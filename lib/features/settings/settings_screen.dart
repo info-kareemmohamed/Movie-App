@@ -6,7 +6,6 @@ import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/app_layout/cubit/app_layout_cubit.dart';
 import 'package:flutter_project/features/login/screens/pages/login.dart';
-import 'package:flutter_switch/flutter_switch.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -41,85 +40,11 @@ class SettingsScreen extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Container(
-                          height: 156.49,
-                          width: 108,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5.51),
-                          ),
-                        ),
                         Text(
                           snapshot.data?['name'] ?? "Not Found",
                           style: AppTextStyle.semiBold(
-                            color: Colors.white,
+                            color: AppColors.primary,
                             fontSize: 25,
-                          ),
-                        ),
-                        Container(
-                          height: 56,
-                          width: 334,
-                          decoration: BoxDecoration(
-                            color: AppColors.lightRed,
-                            borderRadius: BorderRadius.circular(5.51),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Text(
-                                'Language',
-                                style: AppTextStyle.regular(
-                                  color: AppColors.lightYellow,
-                                  fontSize: 13.4,
-                                ),
-                              ),
-                              FlutterSwitch(
-                                  activeText: '',
-                                  activeColor: Colors.black,
-                                  inactiveText: '',
-                                  width: 65,
-                                  height: 35,
-                                  padding: 6,
-                                  showOnOff: true,
-                                  value: cubit.isDark,
-                                  onToggle: ((value) {
-                                    cubit.changeMode();
-                                  })),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          height: 56,
-                          width: 334,
-                          decoration: BoxDecoration(
-                            color: AppColors.lightRed,
-                            borderRadius: BorderRadius.circular(5.51),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Text(
-                                'Light & Dark Mode',
-                                style: AppTextStyle.regular(
-                                  color: AppColors.lightYellow,
-                                  fontSize: 13.4,
-                                ),
-                              ),
-                              FlutterSwitch(
-                                  activeText: '',
-                                  activeIcon: const Icon(Icons.dark_mode_sharp),
-                                  activeColor: Colors.black,
-                                  inactiveText: '',
-                                  inactiveIcon: const Icon(Icons.sunny),
-                                  width: 65,
-                                  height: 35,
-                                  padding: 6,
-                                  showOnOff: true,
-                                  value: cubit.isDark,
-                                  onToggle: ((value) {
-                                    cubit.changeMode();
-                                  })),
-                            ],
                           ),
                         ),
                         GestureDetector(

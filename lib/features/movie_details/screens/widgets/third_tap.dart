@@ -6,7 +6,9 @@ import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/movie_details/cubit/movie_details_cubit.dart';
 
 class ThirdTabScreen extends StatelessWidget {
-  const ThirdTabScreen({Key? key}) : super(key: key);
+  const ThirdTabScreen({Key? key , required this.movieId}) : super(key: key);
+
+  final dynamic movieId;
 
   @override
   Widget build(BuildContext context) {

@@ -9,11 +9,13 @@ class MovieCard extends StatelessWidget {
     required this.imageLink,
     required this.title,
     required this.releaseDate,
+    required this.movieId,
   });
 
   String? imageLink;
   String? title;
   String? releaseDate;
+  String? movieId;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class MovieCard extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => MovieDetails(id: 'MovieId')));
+                builder: (context) => MovieDetails(id:movieId)));
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

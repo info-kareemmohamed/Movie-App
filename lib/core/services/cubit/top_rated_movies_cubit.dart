@@ -11,9 +11,9 @@ class TopRatedMoviesCubit extends Cubit<TopRatedMoviesState> {
     movies = [];
   }
 
-  Future<List<Results>> getTopRatedMovies(String endPoint) {
+  Future<List<Results>> getTopRatedMovies(String Url) {
     try {
-      ApiService.apiService.fetchMovie(endPoint).then((value) {
+      ApiService.apiService.fetchMovie(Url).then((value) {
         movies = value.results ?? [];
         emit(TopRatedSuccessState(movies));
       });

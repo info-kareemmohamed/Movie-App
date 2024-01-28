@@ -11,5 +11,5 @@ String youtubeBaseUrl='https://www.youtube.com/watch?v=';
 String imageBaseUrl='https://image.tmdb.org/t/p/w500';
 
 String getEndPoint(String endpoint,movieId){
-  return'${baseUrl}/${endpoint}?api_key=${apiKey}';
+  return'${baseUrl}/${endpoint}/${movieId}?api_key=${apiKey}';
 }

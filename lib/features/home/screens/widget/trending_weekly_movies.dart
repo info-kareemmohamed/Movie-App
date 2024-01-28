@@ -26,6 +26,7 @@ class TrendingWeeklyScreen extends StatelessWidget {
                   (index) => MovieCard(
                     imageLink: state.movies[index].backdropPath,
                     title: state.movies[index].title,
+                    movieId: state.movies[index].id.toString(),
                     releaseDate: state.movies[index].releaseDate,
                   ),
                 ),

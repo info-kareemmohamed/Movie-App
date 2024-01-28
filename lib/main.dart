@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_project/core/services/cubit/info_movie_cubit.dart';
 import 'package:flutter_project/core/services/cubit/top_rated_movies_cubit.dart';
 import 'package:flutter_project/core/services/cubit/trending_day_movies_cubit.dart';
 import 'package:flutter_project/core/services/cubit/trending_week_movie_cubit.dart';
@@ -31,7 +32,9 @@ void main() async {
   // Hive.registerAdapter(MovieFavouriteAdapter());
 
   box = await Hive.openBox<MovieFavourite>('MovieFavourite');
+
   runApp(const MyApp());
+
 }
 
 class MyApp extends StatelessWidget {
@@ -57,7 +60,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => LoginCubit()),
         BlocProvider(create: (context) => SignUpCubit()),
         BlocProvider(create: (context) => AppLayoutCubit()),
-        BlocProvider(create: (context) => FavouriteMovieCubit())
+        BlocProvider(create: (context) => FavouriteMovieCubit()),
+        BlocProvider(create: (context) => InfoMovieCubit())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

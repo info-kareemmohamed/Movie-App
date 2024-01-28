@@ -2,6 +2,9 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
+import '../../../core/services/datasource/model/MovieResponse.dart';
+import '../../../core/services/datasource/remote/api/ApiService.dart';
+
 part 'movie_details_state.dart';
 
 class MovieDetailsCubit extends Cubit<MovieDetailsState> {
@@ -13,6 +16,10 @@ class MovieDetailsCubit extends Cubit<MovieDetailsState> {
     allMovies = true;
     emit(MovieDetailsShowMoreMoviesState());
   }
+
+
+
+
 
   bool isFavourite = false;
   void addFavourite() {

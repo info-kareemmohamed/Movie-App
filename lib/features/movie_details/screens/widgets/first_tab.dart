@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project/core/services/datasource/model/MovieDetailsResponse.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
-import 'package:flutter_project/features/movie_details/data/models/movie_trailers_model.dart';
 import 'package:flutter_project/features/movie_details/screens/widgets/more_like_this_movie.dart';
+import 'package:flutter_project/features/movie_details/screens/widgets/video_player.dart';
 
 class FirstTabScreen extends StatelessWidget {
   FirstTabScreen({Key? key, required this.movie}) : super(key: key);
@@ -65,7 +65,7 @@ class FirstTabScreen extends StatelessWidget {
                 ),
               ),
               Text(
-                trailersList[0].title ?? 'Not Found',
+                movie.overview ?? 'Not Found',
                 textAlign: TextAlign.center,
                 style: AppTextStyle.regular(
                   color: AppColors.lightYellow,
@@ -73,13 +73,14 @@ class FirstTabScreen extends StatelessWidget {
                 ),
               ),
               Container(
-                height: 155,
-                width: 300,
+                height: 190,
+                width: double.infinity,
                 decoration: BoxDecoration(
                   color: Colors.indigo,
                   borderRadius: BorderRadius.circular(5),
                 ),
                 margin: const EdgeInsets.all(25),
+                child: VideoApp(urlVideo: 'G82CgMekC5U'),
               ),
               Text(
                 'More Like This',
@@ -88,7 +89,9 @@ class FirstTabScreen extends StatelessWidget {
                   fontSize: 21.24,
                 ),
               ),
-               MoreLikeThisMovie(movieId: movie.id,),
+              MoreLikeThisMovie(
+                movieId: movie.id,
+              ),
             ],
           ),
         ),

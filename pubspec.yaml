@@ -55,7 +55,7 @@ dependencies:
   hive_flutter:
   carousel_slider: ^4.2.1
   conditional_builder_null_safety: ^0.0.6
-
+  youtube_player_flutter: ^8.0.0
 
 dev_dependencies:
   flutter_test:

@@ -20,7 +20,26 @@ class FavouriteScreen extends StatelessWidget {
     child: BlocBuilder<FavouriteMovieCubit, FavouriteMovieStates>(
       builder: (context, state) {
         if (state is FavouriteMovieSuccessState) {
-          return Scaffold(
+          return state.movies.isEmpty ? Scaffold(
+            backgroundColor: AppColors.darkTheme,
+            appBar: AppBar(
+              backgroundColor: AppColors.darkTheme,
+              centerTitle: true,
+              title: Text(
+                'Favourite',
+                style: AppTextStyle.extraBold(
+                  color: Colors.white,
+                  fontSize: 18.74,
+                ),
+              ),
+            ),
+            body: Center(
+              child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child:Lottie.asset('assets/animation/Fv.json')
+              ),
+            ),
+          ) : Scaffold(
             backgroundColor: AppColors.darkTheme,
             appBar: AppBar(
               backgroundColor: AppColors.darkTheme,
@@ -114,15 +133,20 @@ class FavouriteScreen extends StatelessWidget {
               },
             ),
           );
-        } else {
-          return
-            Center(
+        } else if(state is FavouriteMovieInitialState){
+          return Center(
             child: Padding(
               padding: const EdgeInsets.all(10),
               child:Lottie.asset('assets/animation/Fv.json')
               ),
             );
-
+        }else{
+          return  Center(
+            child: Padding(
+                padding: const EdgeInsets.all(10),
+                child:Lottie.asset('assets/animation/Fv.json')
+            ),
+          );
         }
       },
     )

@@ -22,16 +22,13 @@ class MovieFavouriteAdapter extends TypeAdapter<MovieFavourite> {
       title: fields[2] as String?,
       originalLanguage: fields[3] as String?,
       genres: (fields[4] as List?)?.cast<String>(),
-      voteAverage: fields[5] as double?,
-      originCountry: fields[6] as String?,
-      release_date: fields[7] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, MovieFavourite obj) {
     writer
-      ..writeByte(8)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.backdropPath)
       ..writeByte(1)
@@ -41,13 +38,7 @@ class MovieFavouriteAdapter extends TypeAdapter<MovieFavourite> {
       ..writeByte(3)
       ..write(obj.originalLanguage)
       ..writeByte(4)
-      ..write(obj.genres)
-      ..writeByte(5)
-      ..write(obj.voteAverage)
-      ..writeByte(6)
-      ..write(obj.originCountry)
-      ..writeByte(7)
-      ..write(obj.release_date);
+      ..write(obj.genres);
   }
 
   @override

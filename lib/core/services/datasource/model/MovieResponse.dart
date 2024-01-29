@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-part 'MovieResponse.g.dart'; // Generated file
+
 
 class MovieResponse {
   int? page;

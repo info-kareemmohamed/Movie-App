@@ -18,14 +18,6 @@ class MovieFavourite {
   @HiveField(4)
    List<String>? genres;
 
-  @HiveField(5)
-   double? voteAverage;
-
-  @HiveField(6)
-   String? originCountry;
-
-  @HiveField(7)
-  String? release_date;
 
   MovieFavourite({
     required this.backdropPath,
@@ -33,9 +25,7 @@ class MovieFavourite {
     required this.title,
     required this.originalLanguage,
     required this.genres,
-    required this.voteAverage,
-    required this.originCountry,
-    this.release_date,
+
   });
 
   MovieFavourite.fromJson(Map<String, dynamic> json)
@@ -43,10 +33,8 @@ class MovieFavourite {
         id = json['id'],
         title = json['title'],
         originalLanguage = json['original_language'],
-        genres = List<String>.from(json['genre_ids'] ?? []),
-        voteAverage = json['vote_average'] != null ? json['vote_average'].toDouble() : 0.0,
-        originCountry = json['origin_country'] ,
-        release_date = json['release_date'];
+        genres = List<String>.from(json['genre_ids'] ?? []);
+
 
   Map<String, dynamic> toJson() {
     return {
@@ -55,9 +43,7 @@ class MovieFavourite {
       'title': title,
       'original_language': originalLanguage,
       'genre_ids': genres,
-      'vote_average': voteAverage,
-      'origin_country': originCountry,
-      'release_date': release_date,
+
     };
   }
 }

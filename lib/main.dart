@@ -29,11 +29,14 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Hive.initFlutter();
-  // Hive.registerAdapter(MovieFavouriteAdapter());
+  Hive.registerAdapter(MovieFavouriteAdapter());
 
   box = await Hive.openBox<MovieFavourite>('MovieFavourite');
+// box.put('5', new MovieFavourite(backdropPath: '1', id: 3, title: 'ff', originalLanguage: 'ffdd', genres: []));
+  print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
+  print(box.get('5').title);
 
-  runApp(const MyApp());
+runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

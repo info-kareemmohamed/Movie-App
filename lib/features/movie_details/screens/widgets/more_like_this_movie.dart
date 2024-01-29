@@ -40,34 +40,46 @@ class MoreLikeThisMovie extends StatelessWidget {
                             state.movie.results.length-lastShow,
                             (rowIndex) => Row(
                           children: [
-                            Container(
-                              height: 200,
-                              width: 133,
-                              decoration: BoxDecoration(
-                                image:  DecorationImage(
-                                  image: NetworkImage('${imageBaseUrl}${state.movie.results[rowIndex].posterPath}'),
-                                  fit: BoxFit.cover,
+                            GestureDetector(
+                              onTap:() => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => MovieDetails(id:state.movie.results[rowIndex].id))),
+                              child: Container(
+                                height: 200,
+                                width: 133,
+                                decoration: BoxDecoration(
+                                  image:  DecorationImage(
+                                    image: NetworkImage('${imageBaseUrl}${state.movie.results[rowIndex].posterPath}'),
+                                    fit: BoxFit.cover,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              margin: const EdgeInsets.symmetric(
-                                horizontal: 20.0,
-                                vertical: 15,
+                                margin: const EdgeInsets.symmetric(
+                                  horizontal: 20.0,
+                                  vertical: 15,
+                                ),
                               ),
                             ),
-                            Container(
-                              height: 200,
-                              width: 133,
-                              decoration: BoxDecoration(
-                                image:  DecorationImage(
-                                  image: NetworkImage('${imageBaseUrl}${state.movie.results[rowIndex+lastShow].posterPath}'),
-                                  fit: BoxFit.cover,
+                            GestureDetector(
+                              onTap: ()=> Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => MovieDetails(id:state.movie.results[rowIndex+lastShow].id))),
+                              child: Container(
+                                height: 200,
+                                width: 133,
+                                decoration: BoxDecoration(
+                                  image:  DecorationImage(
+                                    image: NetworkImage('${imageBaseUrl}${state.movie.results[rowIndex+lastShow].posterPath}'),
+                                    fit: BoxFit.cover,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              margin: const EdgeInsets.symmetric(
-                                horizontal: 20.0,
-                                vertical: 15,
+                                margin: const EdgeInsets.symmetric(
+                                  horizontal: 20.0,
+                                  vertical: 15,
+                                ),
                               ),
                             )
                           ]

@@ -12,3 +12,8 @@ class FavouriteMovieSuccessState extends FavouriteMovieStates {
   final List<MovieFavourite> movies;
   FavouriteMovieSuccessState(this.movies);
 }
+
+class FavouriteMovieDeleteSuccessState extends FavouriteMovieStates {}
+
+
+

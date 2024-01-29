@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_project/core/services/datasource/remote/apiLinks/AllApi.dart';
 
 import '../../core/utils/app_colors.dart';
 import '../../core/utils/app_text_style.dart';
@@ -11,22 +12,12 @@ class FavouriteScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FavouriteMovieCubit, FavouriteMovieStates>(
+    return BlocProvider(
+        create: (context) =>
+    FavouriteMovieCubit()..getFavouriteMovie(),
+    child: BlocBuilder<FavouriteMovieCubit, FavouriteMovieStates>(
       builder: (context, state) {
         if (state is FavouriteMovieSuccessState) {
-          return Center(
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: Text(
-                'Sorry Not Found',
-                style: AppTextStyle.semiBold(
-                  color: Colors.red,
-                  fontSize: 25,
-                ),
-              ),
-            ),
-          );
-        } else {
           return Scaffold(
             backgroundColor: AppColors.darkTheme,
             appBar: AppBar(
@@ -41,7 +32,7 @@ class FavouriteScreen extends StatelessWidget {
               ),
             ),
             body: ListView.builder(
-              itemCount: 5,
+              itemCount:state.movies.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -50,10 +41,10 @@ class FavouriteScreen extends StatelessWidget {
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const CircleAvatar(
+                           CircleAvatar(
                             radius: 50,
                             backgroundImage: NetworkImage(
-                                'https://movies.universalpictures.com/media/06-opp-dm-mobile-banner-1080x745-now-pl-f01-071223-64bab982784c7-1.jpg'),
+                                '${imageBaseUrl}${state.movies[index].backdropPath}'),
                           ),
                           const SizedBox(
                             width: 20,
@@ -63,8 +54,8 @@ class FavouriteScreen extends StatelessWidget {
                             children: [
                               Container(
                                 width: 190,
-                                child: const Text(
-                                  "Namefssidgmismdgmdgimdfigmigm",
+                                child:  Text(
+                                  state.movies[index].title??"Name",
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 17,
@@ -96,7 +87,9 @@ class FavouriteScreen extends StatelessWidget {
                             ],
                           ),
                           IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              context.read<FavouriteMovieCubit>().deleteFavouriteMovie( state.movies[index].id.toString());
+                            },
                             icon: const Icon(
                               Icons.delete,
                               size: 30,
@@ -111,8 +104,22 @@ class FavouriteScreen extends StatelessWidget {
               },
             ),
           );
+        } else {
+          return Center(
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Text(
+                'Sorry Not Found',
+                style: AppTextStyle.semiBold(
+                  color: Colors.red,
+                  fontSize: 25,
+                ),
+              ),
+            ),
+          );
         }
       },
+    )
     );
   }
 

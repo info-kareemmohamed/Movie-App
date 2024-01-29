@@ -15,142 +15,151 @@ class FavouriteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) =>
-    FavouriteMovieCubit()..getFavouriteMovie(),
-    child: BlocBuilder<FavouriteMovieCubit, FavouriteMovieStates>(
-      builder: (context, state) {
-        if (state is FavouriteMovieSuccessState) {
-          return state.movies.isEmpty ? Scaffold(
-            backgroundColor: AppColors.darkTheme,
-            appBar: AppBar(
-              backgroundColor: AppColors.darkTheme,
-              centerTitle: true,
-              title: Text(
-                'Favourite',
-                style: AppTextStyle.extraBold(
-                  color: Colors.white,
-                  fontSize: 18.74,
-                ),
-              ),
-            ),
-            body: Center(
-              child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child:Lottie.asset('assets/animation/Fv.json')
-              ),
-            ),
-          ) : Scaffold(
-            backgroundColor: AppColors.darkTheme,
-            appBar: AppBar(
-              backgroundColor: AppColors.darkTheme,
-              centerTitle: true,
-              title: Text(
-                'Favourite',
-                style: AppTextStyle.extraBold(
-                  color: Colors.white,
-                  fontSize: 18.74,
-                ),
-              ),
-            ),
-            body: ListView.builder(
-              itemCount:state.movies.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                           CircleAvatar(
-                            radius: 50,
-                            backgroundImage: NetworkImage(
-                                '${imageBaseUrl}${state.movies[index].backdropPath}'),
+        create: (context) => FavouriteMovieCubit()..getFavouriteMovie(),
+        child: BlocBuilder<FavouriteMovieCubit, FavouriteMovieStates>(
+          builder: (context, state) {
+            if (state is FavouriteMovieSuccessState) {
+              return state.movies.isEmpty
+                  ? Scaffold(
+                      backgroundColor: AppColors.darkTheme,
+                      appBar: AppBar(
+                        backgroundColor: AppColors.darkTheme,
+                        centerTitle: true,
+                        title: Text(
+                          'Favourite',
+                          style: AppTextStyle.extraBold(
+                            color: Colors.white,
+                            fontSize: 18.74,
                           ),
-                          const SizedBox(
-                            width: 20,
+                        ),
+                      ),
+                      body: Center(
+                        child: Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Lottie.asset('assets/animation/Fv.json')),
+                      ),
+                    )
+                  : Scaffold(
+                      backgroundColor: AppColors.darkTheme,
+                      appBar: AppBar(
+                        backgroundColor: AppColors.darkTheme,
+                        centerTitle: true,
+                        title: Text(
+                          'Favourite',
+                          style: AppTextStyle.extraBold(
+                            color: Colors.white,
+                            fontSize: 18.74,
                           ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => MovieDetails(id: state.movies[index].id.toString())));
-                            } ,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                        ),
+                      ),
+                      body: ListView.builder(
+                        itemCount: state.movies.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
                               children: [
-                                Container(
-                                  width: 190,
-                                  child:  Text(
-                                    state.movies[index].title??"Name",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.bold,
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 50,
+                                      backgroundImage: NetworkImage(
+                                          '${imageBaseUrl}${state.movies[index].backdropPath}'),
                                     ),
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                 Text(
-                                  state.movies[index].originalLanguage??"",
-                                  style: TextStyle(
-                                      color: Colors.grey,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                 Text(
-                                  state.movies[index].genre,
-                                  style: TextStyle(
-                                      color: Colors.grey,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold),
+                                    const SizedBox(
+                                      width: 20,
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    MovieDetails(
+                                                        id: state
+                                                            .movies[index].id
+                                                            .toString())));
+                                      },
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            width: 190,
+                                            child: Text(
+                                              state.movies[index].title ??
+                                                  "Name",
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 17,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
+                                          Text(
+                                            state.movies[index]
+                                                    .originalLanguage ??
+                                                "",
+                                            style: const TextStyle(
+                                                color: Colors.grey,
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
+                                          Text(
+                                            state.movies[index].genre,
+                                            style: const TextStyle(
+                                                color: Colors.grey,
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    IconButton(
+                                      onPressed: () {
+                                        context
+                                            .read<FavouriteMovieCubit>()
+                                            .deleteFavouriteMovie(state
+                                                .movies[index].id
+                                                .toString());
+                                      },
+                                      icon: const Icon(
+                                        Icons.delete,
+                                        size: 30,
+                                        color: Colors.red,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
-                          ),
-                          IconButton(
-                            onPressed: () {
-                              context.read<FavouriteMovieCubit>().deleteFavouriteMovie( state.movies[index].id.toString());
-                            },
-                            icon: const Icon(
-                              Icons.delete,
-                              size: 30,
-                              color: Colors.red,
-                            ),
-                          ),
-                        ],
+                          );
+                        },
                       ),
-                    ],
-                  ),
-                );
-              },
-            ),
-          );
-        } else if(state is FavouriteMovieInitialState){
-          return Center(
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              child:Lottie.asset('assets/animation/Fv.json')
-              ),
-            );
-        }else{
-          return  Center(
-            child: Padding(
-                padding: const EdgeInsets.all(10),
-                child:Lottie.asset('assets/animation/Fv.json')
-            ),
-          );
-        }
-      },
-    )
-    );
+                    );
+            } else if (state is FavouriteMovieInitialState) {
+              return Center(
+                child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Lottie.asset('assets/animation/Fv.json')),
+              );
+            } else {
+              return Center(
+                child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Lottie.asset('assets/animation/Fv.json')),
+              );
+            }
+          },
+        ));
   }
 
   Widget _buildRowList() {

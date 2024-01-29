@@ -30,9 +30,10 @@ class ThirdTabScreen extends StatelessWidget {
                         delegate: SliverChildBuilderDelegate(
                           childCount: 5,
                           (context, index) => Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 8, horizontal: 10),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 CircleAvatar(
                                   backgroundImage: NetworkImage(
@@ -42,7 +43,7 @@ class ThirdTabScreen extends StatelessWidget {
                                 Text(
                                   state.casts[index].name ?? "Name",
                                   style: AppTextStyle.semiBold(
-                                      fontSize: 15,
+                                      fontSize: 17,
                                       color: AppColors.lightYellow),
                                 ),
                               ],

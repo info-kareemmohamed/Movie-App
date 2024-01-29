@@ -58,6 +58,7 @@ dependencies:
 <<<<<<< Updated upstream
   youtube_player_flutter: ^8.0.0
 =======
+  lottie: ^3.0.0
 
 >>>>>>> Stashed changes
 

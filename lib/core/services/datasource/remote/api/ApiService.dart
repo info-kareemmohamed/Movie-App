@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_project/core/services/datasource/model/MovieCast.dart';
 import 'package:flutter_project/core/services/datasource/remote/api/Constants.dart';
+import '../../../../../features/movie_details/data/models/video_movie.dart';
 import '../../model/MovieDetailsResponse.dart';
 import '../../model/MovieResponse.dart';
 import '../../model/MovieSimilarResponse.dart';
@@ -70,4 +71,17 @@ class ApiService {
       throw Exception('Unable to fetch');
     }
   }
+
+
+Future< MovieDetail> fetchVideoMovie(String url) async {
+
+  Response response = await DioConfig.getDio().get(url);
+
+  if (response.statusCode == 200) {
+    return MovieDetail.fromJson(response.data);
+
+  } else {
+    throw Exception('Unable to fetch');
+  }
+}
 }

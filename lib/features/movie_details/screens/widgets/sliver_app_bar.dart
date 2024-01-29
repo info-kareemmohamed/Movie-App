@@ -5,13 +5,16 @@ import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/movie_details/cubit/movie_details_cubit.dart';
 
-class SliverAppbar extends StatelessWidget {
-  const SliverAppbar({super.key, required this.image, required this.title});
+import '../../../../core/services/datasource/model/MovieDetailsResponse.dart';
+import '../../../favourite/model/movie_favourite.dart';
 
-  final String image;
-  final String title;
+class SliverAppbar extends StatelessWidget {
+  const SliverAppbar({super.key,required this.movie});
+  final Movie movie;
+
   @override
   Widget build(BuildContext context) {
+
     final List<Tab> myTabs = [
       Tab(child: Text('EPISODES', style: AppTextStyle.medium(fontSize: 16))),
       Tab(child: Text('TRAILERS', style: AppTextStyle.medium(fontSize: 16))),
@@ -20,13 +23,14 @@ class SliverAppbar extends StatelessWidget {
     return BlocBuilder<MovieDetailsCubit, MovieDetailsState>(
       builder: (context, state) {
         var cubit = context.read<MovieDetailsCubit>();
+         cubit.ISThere(movie.id.toString());
         return SliverAppBar(
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 30),
               child: IconButton(
                 onPressed: () {
-                  cubit.addFavourite();
+                  cubit.onClick(movie.id.toString(),new MovieFavourite(backdropPath: movie.posterPath, id: movie.id, title: movie.title, originalLanguage: movie.originalLanguage, genres:movie.genres));
                 },
                 icon: cubit.isFavourite
                     ? const Icon(
@@ -68,7 +72,7 @@ class SliverAppbar extends StatelessWidget {
             background: Stack(
               children: [
                 Image.network(
-                  'https://image.tmdb.org/t/p/w500${image}',
+                  'https://image.tmdb.org/t/p/w500${movie.posterPath}',
                   fit: BoxFit.cover,
                   width: double.infinity,
                 ),

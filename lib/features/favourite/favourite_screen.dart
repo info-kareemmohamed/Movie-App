@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/core/services/datasource/remote/apiLinks/AllApi.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../core/utils/app_colors.dart';
 import '../../core/utils/app_text_style.dart';
@@ -105,18 +106,14 @@ class FavouriteScreen extends StatelessWidget {
             ),
           );
         } else {
-          return Center(
+          return
+            Center(
             child: Padding(
               padding: const EdgeInsets.all(10),
-              child: Text(
-                'Sorry Not Found',
-                style: AppTextStyle.semiBold(
-                  color: Colors.red,
-                  fontSize: 25,
-                ),
+              child:Lottie.asset('assets/animation/Fv.json')
               ),
-            ),
-          );
+            );
+
         }
       },
     )

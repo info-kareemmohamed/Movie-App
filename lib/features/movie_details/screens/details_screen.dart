@@ -31,8 +31,7 @@ class MovieDetails extends StatelessWidget {
                     headerSliverBuilder: (context, innerBoxIsScrolled) {
                       return [
                         SliverAppbar(
-                          image: state.movie.posterPath,
-                          title: state.movie.title!,
+                         movie: state.movie,
                         ),
                       ];
                     },

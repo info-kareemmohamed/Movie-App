@@ -25,7 +25,7 @@ class MoreLikeThisMovie extends StatelessWidget {
         create: (context) =>
         SimilarMovieCubit()..getsimilarMovie(getEndPoint2("similar", movieId)),
     child:  BlocBuilder<SimilarMovieCubit, SimilarMovieStates >(
-      builder: (context, state) {
+          builder: (context, state) {
         if (state is SimilarMovieSuccessState) {
           return  Stack(
             children: [

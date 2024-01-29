@@ -21,7 +21,7 @@ class MovieFavouriteAdapter extends TypeAdapter<MovieFavourite> {
       id: fields[1] as int?,
       title: fields[2] as String?,
       originalLanguage: fields[3] as String?,
-      genres: (fields[4] as List?)?.cast<String>(),
+      genres: (fields[4] as List?)?.cast<Genre>(),
     );
   }
 

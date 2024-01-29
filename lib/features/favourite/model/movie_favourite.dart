@@ -1,4 +1,7 @@
+
 import 'package:hive/hive.dart';
+
+import '../../../core/services/datasource/model/MovieDetailsResponse.dart';
 part 'movie_favourite.g.dart'; // Generated file
 
 @HiveType(typeId: 2)
@@ -16,7 +19,7 @@ class MovieFavourite {
    String? originalLanguage;
 
   @HiveField(4)
-   List<String>? genres;
+  List<Genre>? genres;
 
 
   MovieFavourite({
@@ -28,14 +31,15 @@ class MovieFavourite {
 
   });
 
-  MovieFavourite.fromJson(Map<String, dynamic> json)
-      : backdropPath = json['backdrop_path'],
-        id = json['id'],
-        title = json['title'],
-        originalLanguage = json['original_language'],
-        genres = List<String>.from(json['genre_ids'] ?? []);
-
-
+  factory  MovieFavourite.fromJson(Map<String, dynamic> json){
+    return MovieFavourite(
+        backdropPath: json['backdrop_path'],
+        id: json['id'],
+        title: json['title'],
+        originalLanguage: json['original_language'],
+        genres: List<Genre>.from(json['genres'].map((x) => Genre.fromJson(x)))
+    );
+  }
   Map<String, dynamic> toJson() {
     return {
       'backdrop_path': backdropPath,

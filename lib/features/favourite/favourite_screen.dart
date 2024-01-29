@@ -5,6 +5,7 @@ import 'package:lottie/lottie.dart';
 
 import '../../core/utils/app_colors.dart';
 import '../../core/utils/app_text_style.dart';
+import '../movie_details/screens/details_screen.dart';
 import 'cubit/FavouriteMovieCubit.dart';
 import 'cubit/FavouriteMovieState.dart';
 
@@ -50,42 +51,50 @@ class FavouriteScreen extends StatelessWidget {
                           const SizedBox(
                             width: 20,
                           ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: 190,
-                                child:  Text(
-                                  state.movies[index].title??"Name",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.bold,
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => MovieDetails(id: state.movies[index].id.toString())));
+                            } ,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  width: 190,
+                                  child:  Text(
+                                    state.movies[index].title??"Name",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    overflow: TextOverflow.ellipsis,
                                   ),
-                                  overflow: TextOverflow.ellipsis,
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 5,
-                              ),
-                              const Text(
-                                'Comedy',
-                                style: TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              const SizedBox(
-                                height: 5,
-                              ),
-                              const Text(
-                                'Movie',
-                                style: TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ],
+                                const SizedBox(
+                                  height: 5,
+                                ),
+                                 Text(
+                                  state.movies[index].originalLanguage??"",
+                                  style: TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                const SizedBox(
+                                  height: 5,
+                                ),
+                                 Text(
+                                  state.movies[index].genre,
+                                  style: TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
                           ),
                           IconButton(
                             onPressed: () {

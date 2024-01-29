@@ -31,4 +31,6 @@ class FavouriteMovieCubit extends Cubit<FavouriteMovieStates> {
       throw FavouriteMovieErrorState('Failed to fetch movies: $e');
     }
   }
+
+
 }

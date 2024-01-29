@@ -19,7 +19,7 @@ class MovieFavourite {
    String? originalLanguage;
 
   @HiveField(4)
-  List<Genre>? genres;
+  String genre;
 
 
   MovieFavourite({
@@ -27,7 +27,7 @@ class MovieFavourite {
     required this.id,
     required this.title,
     required this.originalLanguage,
-    required this.genres,
+    required this.genre,
 
   });
 
@@ -37,7 +37,7 @@ class MovieFavourite {
         id: json['id'],
         title: json['title'],
         originalLanguage: json['original_language'],
-        genres: List<Genre>.from(json['genres'].map((x) => Genre.fromJson(x)))
+        genre:json['genres'][0]["name"]
     );
   }
   Map<String, dynamic> toJson() {
@@ -46,7 +46,7 @@ class MovieFavourite {
       'id': id,
       'title': title,
       'original_language': originalLanguage,
-      'genre_ids': genres,
+      'genre_ids': genre,
 
     };
   }

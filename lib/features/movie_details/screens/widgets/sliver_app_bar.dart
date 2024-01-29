@@ -6,6 +6,7 @@ import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/movie_details/cubit/movie_details_cubit.dart';
 
 import '../../../../core/services/datasource/model/MovieDetailsResponse.dart';
+import '../../../../core/utils/Constants.dart';
 import '../../../favourite/model/movie_favourite.dart';
 
 class SliverAppbar extends StatelessWidget {
@@ -20,27 +21,48 @@ class SliverAppbar extends StatelessWidget {
       Tab(child: Text('TRAILERS', style: AppTextStyle.medium(fontSize: 16))),
       Tab(child: Text('CASTS', style: AppTextStyle.medium(fontSize: 16))),
     ];
+    bool isFavourite=false;
     return BlocBuilder<MovieDetailsCubit, MovieDetailsState>(
       builder: (context, state) {
-        var cubit = context.read<MovieDetailsCubit>();
-         cubit.ISThere(movie.id.toString());
+        isFavourite=box.get(movie.id.toString())!=null;
+
         return SliverAppBar(
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 30),
-              child: IconButton(
-                onPressed: () {
-                  cubit.onClick(movie.id.toString(),new MovieFavourite(backdropPath: movie.posterPath, id: movie.id, title: movie.title, originalLanguage: movie.originalLanguage, genres:movie.genres));
-                },
-                icon: cubit.isFavourite
-                    ? const Icon(
-                  IconBroken.Heart,
-                  size: 50,
-                  color: Colors.red,
-                )
-                    : const Icon(
-                  IconBroken.Heart,
-                  size: 50,
+
+              child: StatefulBuilder(
+
+                builder:(context, setState) => IconButton(
+                  onPressed: () {
+                    setState((){
+                      isFavourite=box.get(movie.id.toString())!=null;
+
+                      if(!isFavourite) {
+                        box.put(movie.id.toString(), new MovieFavourite(
+                            backdropPath: movie.backdropPath,
+                            id: movie.id,
+                            title: movie.title,
+                            originalLanguage: movie.originalLanguage,
+                            genre:movie.genres[0].name));
+
+                      }else{
+                        box.delete(movie.id.toString());
+                      }
+                      isFavourite=!isFavourite;
+                    });
+
+                     },
+                  icon: isFavourite
+                      ? const Icon(
+                    IconBroken.Heart,
+                    size: 50,
+                    color: Colors.red,
+                  )
+                      : const Icon(
+                    IconBroken.Heart,
+                    size: 50,
+                  ),
                 ),
               ),
             ),

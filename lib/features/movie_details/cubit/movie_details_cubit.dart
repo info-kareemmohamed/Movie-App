@@ -21,11 +21,15 @@ class MovieDetailsCubit extends Cubit<MovieDetailsState> {
   }
 
   void ISThere(String key) {
-    box.get(key)==null ? this.isFavourite = false : this.isFavourite = true;
+    print('${key} gggggggggggggggggggggggggggggggg');
+    print(box.get(key) == null
+        ? this.isFavourite = false
+        : this.isFavourite = true);
   }
 
   void onClick(String key, MovieFavourite movie) {
     isFavourite = !isFavourite;
+    print(this.isFavourite);
     this.isFavourite ? box.put(key, movie) : box.delete(key);
     emit(MovieFavouriteState());
   }

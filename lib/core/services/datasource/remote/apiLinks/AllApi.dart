@@ -13,3 +13,6 @@ String imageBaseUrl='https://image.tmdb.org/t/p/w500';
 String getEndPoint(String endpoint,movieId){
   return'${baseUrl}/${endpoint}/${movieId}?api_key=${apiKey}';
 }
+String getEndPoint2(String endpoint,movieId){
+  return'${baseUrl}/movie/${movieId}/${endpoint}?api_key=${apiKey}';
+}

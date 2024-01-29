@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_project/core/services/datasource/remote/api/Constants.dart';
 import '../../model/MovieDetailsResponse.dart';
 import '../../model/MovieResponse.dart';
+import '../../model/MovieSimilarResponse.dart';
 import 'DioConfig.dart';
 
 
@@ -37,6 +38,21 @@ class ApiService {
       print('${response.data["title"]}  sssssssssssssssss');
       print('ssssssssssssssssssssssssssssssssssssssssssss');
       return Movie.fromJson(response.data);
+    } else {
+      throw Exception('Unable to fetch');
+    }
+  }
+
+  Future<MovieListSimilar> fetchMovieMovieSimilar(String url) async {
+
+    Response response = await DioConfig.getDio().get(url);
+
+
+    if (response.statusCode == 200) {
+      print('aaaaaaaaaaaaaaaaaaaaa');
+      print('${response.data["results"]}  sssssssssssssssss');
+      print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+      return MovieListSimilar.fromJson(response.data);
     } else {
       throw Exception('Unable to fetch');
     }

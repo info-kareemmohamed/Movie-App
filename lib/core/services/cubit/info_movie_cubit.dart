@@ -12,7 +12,7 @@ class InfoMovieCubit extends Cubit<InfoMovieStates> {
     try {
       ApiService.apiService.fetchMovieDetails(Url).then((value) {
         movie = value;
-        print('dddddddddddddddddddddddddddddddddddddddddddddddd${movie}');
+        print('${movie}');
         emit(InfoMovieSuccessState(movie!));
       });
     } catch (e) {

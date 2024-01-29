@@ -27,7 +27,7 @@ class FirstTabScreen extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 10.0),
                         child: Text(
-                          state.movie.title ?? "Not Found",
+                          movieId ?? "Not Found",
                           style: AppTextStyle.black(
                             color: AppColors.primary,
                             fontSize: 25,
@@ -93,7 +93,7 @@ class FirstTabScreen extends StatelessWidget {
                           fontSize: 21.24,
                         ),
                       ),
-                      const MoreLikeThisMovie(),
+                       MoreLikeThisMovie(movieId: this.movieId),
                     ],
                   ),
                 ),

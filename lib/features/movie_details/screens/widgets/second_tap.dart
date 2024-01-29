@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project/core/services/datasource/model/MovieDetailsResponse.dart';
 import 'package:flutter_project/core/utils/app_images.dart';
+import 'package:flutter_project/features/movie_details/screens/widgets/video_player.dart';
 
 class SecondTabScreen extends StatelessWidget {
   SecondTabScreen({Key? key, required this.movie}) : super(key: key);
@@ -11,7 +12,7 @@ class SecondTabScreen extends StatelessWidget {
       slivers: [
         SliverList(
           delegate: SliverChildBuilderDelegate(
-                (context, index) => Container(
+            (context, index) => Container(
               height: 155,
               decoration: BoxDecoration(
                 image: const DecorationImage(
@@ -24,6 +25,7 @@ class SecondTabScreen extends StatelessWidget {
                 vertical: 15,
                 horizontal: 40,
               ),
+              child: VideoApp(urlVideo: 'G82CgMekC5U'),
             ),
             childCount: 10,
           ),

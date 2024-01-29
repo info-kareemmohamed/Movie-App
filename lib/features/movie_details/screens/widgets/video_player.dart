@@ -19,7 +19,7 @@ class _VideoAppState extends State<VideoApp> {
     _controller = YoutubePlayerController(
       initialVideoId: YoutubePlayer.convertUrlToId(widget.urlVideo) ?? '',
       flags: const YoutubePlayerFlags(
-        autoPlay: true,
+        autoPlay: false,
         mute: false,
       ),
     );

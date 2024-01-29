@@ -24,7 +24,7 @@ class SliverAppbarHome extends StatelessWidget {
                 if (state is TopRatedSuccessState) {
                   return CarouselSlider(
                     items: state.movies.map(
-                      (i) {
+                      (results) {
                         return Builder(
                           builder: (BuildContext context) {
                             return GestureDetector(
@@ -33,14 +33,14 @@ class SliverAppbarHome extends StatelessWidget {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => MovieDetails(
-                                              id: 'movieID',
+                                              id: results.id,
                                             )));
                               },
                               child: Container(
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
                                     image: NetworkImage(
-                                        'https://image.tmdb.org/t/p/w500${i.posterPath}'),
+                                        'https://image.tmdb.org/t/p/w500${results.posterPath}'),
                                     fit: BoxFit.fill,
                                   ),
                                 ),

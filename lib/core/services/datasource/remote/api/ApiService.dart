@@ -1,6 +1,7 @@
 
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_project/core/services/datasource/model/MovieCast.dart';
 import 'package:flutter_project/core/services/datasource/remote/api/Constants.dart';
 import '../../model/MovieDetailsResponse.dart';
 import '../../model/MovieResponse.dart';
@@ -53,6 +54,18 @@ class ApiService {
       print('${response.data["results"]}  sssssssssssssssss');
       print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
       return MovieListSimilar.fromJson(response.data);
+    } else {
+      throw Exception('Unable to fetch');
+    }
+  }
+  Future<List<Cast>> fetchCastMovie(String url) async {
+
+    Response response = await DioConfig.getDio().get(url);
+
+    if (response.statusCode == 200) {
+      List<dynamic> data = response.data['cast'];
+      List<Cast> castList = data.map((json) => Cast.fromJson(json)).toList();
+      return castList;
     } else {
       throw Exception('Unable to fetch');
     }

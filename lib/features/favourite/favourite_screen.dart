@@ -146,16 +146,44 @@ class FavouriteScreen extends StatelessWidget {
                       ),
                     );
             } else if (state is FavouriteMovieInitialState) {
-              return Center(
-                child: Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Lottie.asset('assets/animation/Fv.json')),
+              return Scaffold(
+                backgroundColor: AppColors.darkTheme,
+                appBar: AppBar(
+                  backgroundColor: AppColors.darkTheme,
+                  centerTitle: true,
+                  title: Text(
+                    'Favourite',
+                    style: AppTextStyle.extraBold(
+                      color: Colors.white,
+                      fontSize: 18.74,
+                    ),
+                  ),
+                ),
+                body: Center(
+                  child: Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Lottie.asset('assets/animation/Fv.json')),
+                ),
               );
             } else {
-              return Center(
-                child: Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Lottie.asset('assets/animation/Fv.json')),
+              return Scaffold(
+                backgroundColor: AppColors.darkTheme,
+                appBar: AppBar(
+                  backgroundColor: AppColors.darkTheme,
+                  centerTitle: true,
+                  title: Text(
+                    'Favourite',
+                    style: AppTextStyle.extraBold(
+                      color: Colors.white,
+                      fontSize: 18.74,
+                    ),
+                  ),
+                ),
+                body: Center(
+                  child: Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Lottie.asset('assets/animation/Fv.json')),
+                ),
               );
             }
           },

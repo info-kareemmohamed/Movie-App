@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_project/core/services/datasource/remote/apiLinks/AllApi.dart';
 
 import '../../core/utils/app_colors.dart';
 import '../../core/utils/app_text_style.dart';
@@ -16,103 +14,6 @@ class FavouriteScreen extends StatelessWidget {
     return BlocBuilder<FavouriteMovieCubit, FavouriteMovieStates>(
       builder: (context, state) {
         if (state is FavouriteMovieSuccessState) {
-          return Scaffold(
-            backgroundColor: AppColors.darkTheme,
-            body: ListView.builder(
-            itemCount: state.movies.length,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CircleAvatar(
-                          radius: 50,
-                          backgroundImage: NetworkImage(
-                              '${imageBaseUrl}${state.movies[index].backdropPath}'),
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Column(children: [
-                          Text(
-                            state.movies[index].title??"",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                           'Comedy',
-                            style: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 100),
-                            child: Text(
-                              'Movie',
-                              style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ]),
-                        SizedBox(
-                          width: 0,
-                        ),
-                        Column(
-                          children: [
-                            ElevatedButton.icon(
-                              style: ButtonStyle(
-                                  backgroundColor:
-                                  MaterialStateProperty.all<Color>(Colors.white)),
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.play_arrow_outlined,
-                                color: Colors.black,
-                              ),
-                              label: Text(
-                                'Show',
-                                style: TextStyle(color: Colors.black, fontSize: 13),
-                              ),
-                            ),
-                            ElevatedButton.icon(
-                              style: ButtonStyle(
-                                  backgroundColor:
-                                  MaterialStateProperty.all<Color>(Colors.red)),
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.delete,
-                                color: Colors.white,
-                              ),
-                              label: Text(
-                                'Delete',
-                                style: TextStyle(color: Colors.white, fontSize: 13),
-                              ),
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              );
-            },
-          ),
-          );
-        } else {
           return Center(
             child: Padding(
               padding: const EdgeInsets.all(10),
@@ -123,6 +24,91 @@ class FavouriteScreen extends StatelessWidget {
                   fontSize: 25,
                 ),
               ),
+            ),
+          );
+        } else {
+          return Scaffold(
+            backgroundColor: AppColors.darkTheme,
+            appBar: AppBar(
+              backgroundColor: AppColors.darkTheme,
+              centerTitle: true,
+              title: Text(
+                'Favourite',
+                style: AppTextStyle.extraBold(
+                  color: Colors.white,
+                  fontSize: 18.74,
+                ),
+              ),
+            ),
+            body: ListView.builder(
+              itemCount: 5,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const CircleAvatar(
+                            radius: 50,
+                            backgroundImage: NetworkImage(
+                                'https://movies.universalpictures.com/media/06-opp-dm-mobile-banner-1080x745-now-pl-f01-071223-64bab982784c7-1.jpg'),
+                          ),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: 190,
+                                child: const Text(
+                                  "Namefssidgmismdgmdgimdfigmigm",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              const Text(
+                                'Comedy',
+                                style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              const Text(
+                                'Movie',
+                                style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.delete,
+                              size: 30,
+                              color: Colors.red,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                );
+              },
             ),
           );
         }
@@ -141,15 +127,15 @@ class FavouriteScreen extends StatelessWidget {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CircleAvatar(
+                  const CircleAvatar(
                     radius: 50,
                     backgroundImage: NetworkImage(
                         'https://resizing.flixster.com/dV1vfa4w_dB4wzk7A_VzThWUWw8=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzEyZDMyYjZmLThmNzAtNDliNC1hMjFmLTA2ZWY4M2UyMjJhMi5qcGc='),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
-                  Column(children: [
+                  const Column(children: [
                     Text(
                       'oppenheimer',
                       style: TextStyle(
@@ -172,7 +158,7 @@ class FavouriteScreen extends StatelessWidget {
                       height: 5,
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(right: 100),
+                      padding: EdgeInsets.only(right: 100),
                       child: Text(
                         'Movie',
                         style: TextStyle(
@@ -182,7 +168,7 @@ class FavouriteScreen extends StatelessWidget {
                       ),
                     ),
                   ]),
-                  SizedBox(
+                  const SizedBox(
                     width: 0,
                   ),
                   Column(
@@ -192,11 +178,11 @@ class FavouriteScreen extends StatelessWidget {
                             backgroundColor:
                                 MaterialStateProperty.all<Color>(Colors.white)),
                         onPressed: () {},
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.play_arrow_outlined,
                           color: Colors.black,
                         ),
-                        label: Text(
+                        label: const Text(
                           'Show',
                           style: TextStyle(color: Colors.black, fontSize: 13),
                         ),
@@ -206,11 +192,11 @@ class FavouriteScreen extends StatelessWidget {
                             backgroundColor:
                                 MaterialStateProperty.all<Color>(Colors.red)),
                         onPressed: () {},
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.delete,
                           color: Colors.white,
                         ),
-                        label: Text(
+                        label: const Text(
                           'Delete',
                           style: TextStyle(color: Colors.white, fontSize: 13),
                         ),

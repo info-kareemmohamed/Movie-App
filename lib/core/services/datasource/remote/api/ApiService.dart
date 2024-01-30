@@ -22,9 +22,7 @@ class ApiService {
 
 
     if (response.statusCode == 200) {
-      print('ssssssssssssssssssssssssssssssssssssssssssss');
-      print('${response.data["genres"]}  sssssssssssssssss');
-      print('ssssssssssssssssssssssssssssssssssssssssssss');
+
       return MovieResponse.fromJson(response.data);
     } else {
       throw Exception('Unable to fetch');
@@ -36,9 +34,7 @@ class ApiService {
 
 
     if (response.statusCode == 200) {
-      print('ssssssssssssssssssssssssssssssssssssssssssss');
-      print('${response.data["title"]}  sssssssssssssssss');
-      print('ssssssssssssssssssssssssssssssssssssssssssss');
+
       return Movie.fromJson(response.data);
     } else {
       throw Exception('Unable to fetch');
@@ -51,9 +47,7 @@ class ApiService {
 
 
     if (response.statusCode == 200) {
-      print('aaaaaaaaaaaaaaaaaaaaa');
-      print('${response.data["results"]}  sssssssssssssssss');
-      print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+
       return MovieListSimilar.fromJson(response.data);
     } else {
       throw Exception('Unable to fetch');

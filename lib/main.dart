@@ -33,8 +33,6 @@ void main() async {
 
   box = await Hive.openBox<MovieFavourite>('MovieFavourite');
 
-  // box.put("12", new MovieFavourite (title: "sss",backdropPath: "https://movies.universalpictures.com/media/06-opp-dm-mobile-banner-1080x745-now-pl-f01-071223-64bab982784c7-1.jpg",genres: [],originalLanguage: "ss",id: 2));
-
 
   runApp(const MyApp());
 }

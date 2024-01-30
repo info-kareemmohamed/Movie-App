@@ -15,7 +15,7 @@ class FavouriteMovieCubit extends Cubit<FavouriteMovieStates> {
 
   List<MovieFavourite> getFavouriteMovie() {
     try {
-      this.movies = box.values.toList() as List<MovieFavourite>;
+      this.movies =  box.values.toList() as List<MovieFavourite>;
       emit(FavouriteMovieSuccessState(movies));
     } catch (e) {
       throw FavouriteMovieErrorState('Failed to fetch movies: $e');

@@ -11,6 +11,6 @@ class VideoMoviesErrorState extends VideoMoviesStates {
 }
 
 class VideoMoviesSuccessState extends VideoMoviesStates {
-  final MovieDetail movies;
+  final List<MovieDetail> movies;
   VideoMoviesSuccessState(this.movies);
 }

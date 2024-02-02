@@ -28,7 +28,7 @@ class ThirdTabScreen extends StatelessWidget {
                     slivers: [
                       SliverList(
                         delegate: SliverChildBuilderDelegate(
-                          childCount: 5,
+                          childCount: state.casts.length,
                           (context, index) => Padding(
                             padding: const EdgeInsets.symmetric(
                                 vertical: 8, horizontal: 10),

@@ -14,6 +14,6 @@ class SimilarMovieErrorState extends SimilarMovieStates {
 }
 
 class SimilarMovieSuccessState extends SimilarMovieStates {
-  final MovieListSimilar movie;
+  final List<MovieSimilar> movie;
   SimilarMovieSuccessState(this.movie);
 }

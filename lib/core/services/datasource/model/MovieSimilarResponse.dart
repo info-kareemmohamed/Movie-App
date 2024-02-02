@@ -1,43 +1,26 @@
-class MovieListSimilar {
-  int page;
-  List<MovieSimilar> results;
-  int totalPages;
-  int totalResults;
+import 'MovieMain.dart';
 
-  MovieListSimilar({
-    required this.page,
-    required this.results,
-    required this.totalPages,
-    required this.totalResults,
-  });
 
-  factory MovieListSimilar.fromJson(Map<String, dynamic> json) {
-    return MovieListSimilar(
-      page: json['page'],
-          results: List<MovieSimilar>.from(json['results'].map((x) => MovieSimilar.fromJson(x))),
-      totalPages: json['total_pages'],
-      totalResults: json['total_results'],
-    );
-  }
-}
 
-class MovieSimilar {
-  bool adult;
+class MovieSimilar extends MovieMain{
+  bool? adult;
   String? backdropPath;
-  List<int> genreIds;
-  int id;
-  String originalLanguage;
-  String originalTitle;
-  String overview;
-  double popularity;
+  List<int>? genreIds;
+  int? id;
+  String? originalLanguage;
+  String? originalTitle;
+  String? overview;
+  double? popularity;
   String? posterPath;
-  String releaseDate;
-  String title;
-  bool video;
-  double voteAverage;
-  int voteCount;
+  String? releaseDate;
+  String? title;
+  bool? video;
+  double? voteAverage;
+  int? voteCount;
 
-  MovieSimilar({
+  MovieSimilar(){}
+
+  MovieSimilar.setdata({
     required this.adult,
     required this.backdropPath,
     required this.genreIds,
@@ -53,9 +36,9 @@ class MovieSimilar {
     required this.voteAverage,
     required this.voteCount,
   });
-
-  factory MovieSimilar.fromJson(Map<String, dynamic> json) {
-    return MovieSimilar(
+  @override
+   MovieSimilar fromJson(Map<String, dynamic> json) {
+    return MovieSimilar.setdata(
       adult: json['adult'],
       backdropPath: json['backdrop_path'],
       genreIds: List<int>.from(json['genre_ids'].map((x) => x)),

@@ -10,6 +10,6 @@ class TrendingWeekMoviesErrorState extends TrendingWeekMoviesStates {
 }
 
 class TrendingWeekMoviesSuccessState extends TrendingWeekMoviesStates {
-  final List<Results> movies;
+  final List<MovieResponse> movies;
   TrendingWeekMoviesSuccessState(this.movies);
 }

@@ -6,16 +6,21 @@ import 'package:flutter_project/core/services/datasource/remote/api/ApiService.d
 part 'trending_day_movies_state.dart';
 
 class TrendingDayMoviesCubit extends Cubit<TrendingDayMoviesStates> {
-  late List<Results> movies;
+  late List<MovieResponse> movies;
   TrendingDayMoviesCubit() : super(TrendingDayMoviesInitialState()) {
     movies = [];
   }
 
-  Future<List<Results>> getTrendingDayMovies(String endPoint) {
+  Future<List<MovieResponse>> getTrendingDayMovies(String url) {
     try {
-      ApiService.apiService.fetchMovie(endPoint).then((value) {
-        movies = value.results ?? [];
-        emit(TrendingDayMoviesSuccessState(movies));
+      ApiService.apiService.fetchMovie(url).then((value) {
+
+        if (value.containsKey('results')) {
+          movies = List<Map<String, dynamic>>.from(value['results'])
+              .map((json) => MovieResponse().fromJson(json))
+              .toList();
+          emit(TrendingDayMoviesSuccessState(movies));
+        }
       });
     } catch (e) {
       throw TrendingDayMoviesErrorState('Failed to fetch movies: $e');

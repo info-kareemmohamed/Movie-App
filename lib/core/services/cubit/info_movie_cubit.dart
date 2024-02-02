@@ -6,17 +6,18 @@ import 'info_movie_state.dart';
 
 class InfoMovieCubit extends Cubit<InfoMovieStates> {
   Movie? movie;
+
   InfoMovieCubit() : super(InfoMovieInitialState()) {}
 
   Movie? getInfoMovie(String Url) {
     try {
-      ApiService.apiService.fetchMovieDetails(Url).then((value) {
-        movie = value;
-        print('${movie}');
-        emit(InfoMovieSuccessState(movie!));
+      ApiService.apiService.fetchMovie(Url).then((value) {
+
+          movie = Movie().fromJson(value);
+          emit(InfoMovieSuccessState(movie!));
+
       });
     } catch (e) {
-      print(e.toString());
       throw InfoMovieErrorState('Failed to fetch movies: $e');
     }
     return movie;

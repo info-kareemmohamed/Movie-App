@@ -44,7 +44,7 @@ class SliverAppbar extends StatelessWidget {
                             id: movie.id,
                             title: movie.title,
                             originalLanguage: movie.originalLanguage,
-                            genre:movie.genres[0].name));
+                            genre:movie.genres?[0].name??""));
 
                       }else{
                         box.delete(movie.id.toString());

@@ -5,16 +5,21 @@ import '../datasource/model/MovieResponse.dart';
 import '../datasource/remote/api/ApiService.dart';
 
 class TrendingWeekMoviesCubit extends Cubit<TrendingWeekMoviesStates> {
-  late List<Results> movies;
+  late List<MovieResponse> movies;
   TrendingWeekMoviesCubit() : super(TrendingWeekMoviesInitialState()) {
     movies = [];
   }
 
-  Future<List<Results>> getTrendingWeekWeek(String url) {
+  Future<List<MovieResponse>> getTrendingWeekWeek(String url) {
     try {
       ApiService.apiService.fetchMovie(url).then((value) {
-        movies = value.results ?? [];
-        emit(TrendingWeekMoviesSuccessState(movies));
+        if (value.containsKey('results')) {
+          movies = List<Map<String, dynamic>>.from(value['results'])
+              .map((json) => MovieResponse().fromJson(json))
+              .toList();
+          emit(TrendingWeekMoviesSuccessState(movies));
+        }
+
       });
     } catch (e) {
       throw TrendingWeekMoviesErrorState('Failed to fetch movies: $e');

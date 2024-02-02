@@ -7,20 +7,23 @@ import '../datasource/remote/api/ApiService.dart';
 import 'info_movie_state.dart';
 
 class SimilarMovieCubit extends Cubit<SimilarMovieStates> {
-  MovieListSimilar? movie;
+  List<MovieSimilar>? movies;
+
   SimilarMovieCubit() : super(SimilarMovieInitialState()) {}
 
-  MovieListSimilar? getsimilarMovie(String Url) {
+  List<MovieSimilar>? getsimilarMovie(String Url) {
     try {
-      ApiService.apiService.fetchMovieMovieSimilar(Url).then((value) {
-        movie =value;
-        print('${movie} wwwwwwwwwwwwwwwwwwwwaaaaaaaaaaaa');
-        emit(SimilarMovieSuccessState(movie!));
+      ApiService.apiService.fetchMovie(Url).then((value) {
+        if (value.containsKey('results')) {
+          movies = List<Map<String, dynamic>>.from(value['results'])
+              .map((json) => MovieSimilar().fromJson(json))
+              .toList();
+          emit(SimilarMovieSuccessState(movies!));
+        }
       });
     } catch (e) {
-      print(e.toString());
       throw SimilarMovieErrorState('Failed to fetch movies: $e');
     }
-    return this.movie;
+    return this.movies;
   }
 }

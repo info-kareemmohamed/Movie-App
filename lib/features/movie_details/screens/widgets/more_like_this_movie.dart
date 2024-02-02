@@ -37,20 +37,20 @@ class MoreLikeThisMovie extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Column(
                       children: List.generate(
-                            state.movie.results.length-lastShow,
+                            state.movie.length-lastShow,
                             (rowIndex) => Row(
                           children: [
                             GestureDetector(
                               onTap:() => Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => MovieDetails(id:state.movie.results[rowIndex].id))),
+                                      builder: (context) => MovieDetails(id:state.movie[rowIndex].id))),
                               child: Container(
                                 height: 200,
                                 width: 133,
                                 decoration: BoxDecoration(
                                   image:  DecorationImage(
-                                    image: NetworkImage('${imageBaseUrl}${state.movie.results[rowIndex].posterPath}'),
+                                    image: NetworkImage('${imageBaseUrl}${state.movie[rowIndex].posterPath}'),
                                     fit: BoxFit.cover,
                                   ),
                                   borderRadius: BorderRadius.circular(10),
@@ -65,13 +65,13 @@ class MoreLikeThisMovie extends StatelessWidget {
                               onTap: ()=> Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => MovieDetails(id:state.movie.results[rowIndex+lastShow].id))),
+                                      builder: (context) => MovieDetails(id:state.movie[rowIndex+lastShow].id))),
                               child: Container(
                                 height: 200,
                                 width: 133,
                                 decoration: BoxDecoration(
                                   image:  DecorationImage(
-                                    image: NetworkImage('${imageBaseUrl}${state.movie.results[rowIndex+lastShow].posterPath}'),
+                                    image: NetworkImage('${imageBaseUrl}${state.movie[rowIndex+lastShow].posterPath}'),
                                     fit: BoxFit.cover,
                                   ),
                                   borderRadius: BorderRadius.circular(10),

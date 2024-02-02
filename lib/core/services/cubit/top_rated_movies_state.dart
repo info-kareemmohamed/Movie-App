@@ -11,6 +11,6 @@ class TopRatedErrorState extends TopRatedMoviesState {
 }
 
 class TopRatedSuccessState extends TopRatedMoviesState {
-  final List<Results> movies;
+  final List<MovieResponse> movies;
   TopRatedSuccessState(this.movies);
 }

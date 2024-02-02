@@ -11,6 +11,6 @@ class TrendingDayMoviesErrorState extends TrendingDayMoviesStates {
 }
 
 class TrendingDayMoviesSuccessState extends TrendingDayMoviesStates {
-  final List<Results> movies;
+  final List<MovieResponse> movies;
   TrendingDayMoviesSuccessState(this.movies);
 }

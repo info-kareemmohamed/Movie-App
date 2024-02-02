@@ -47,7 +47,7 @@ class FirstTabScreen extends StatelessWidget {
                         height: 55,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          itemCount: movie.genres.length,
+                          itemCount: movie.genres?.length,
                           itemBuilder: (context, index) => Padding(
                             padding: const EdgeInsets.symmetric(
                                 vertical: 10, horizontal: 5),
@@ -63,7 +63,7 @@ class FirstTabScreen extends StatelessWidget {
                               ),
                               child: Center(
                                 child: Text(
-                                  movie.genres[index].name,
+                                  movie.genres?[index].name??"",
                                   textAlign: TextAlign.center,
                                   style: AppTextStyle.medium(
                                     color: AppColors.lightRed,
@@ -91,7 +91,7 @@ class FirstTabScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(5),
                       ),
                       margin: const EdgeInsets.all(25),
-                      child: VideoApp(urlVideo:state.movies.results[0].key),
+                      child: VideoApp(urlVideo:state.movies[0].key??""),
                     ),
                     Text(
                       'More Like This',

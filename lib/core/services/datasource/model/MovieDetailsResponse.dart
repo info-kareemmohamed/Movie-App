@@ -1,31 +1,36 @@
-class Movie {
-  bool adult;
-  String backdropPath;
-  dynamic belongsToCollection;
-  int budget;
-  List<Genre> genres;
-  String homepage;
-  int id;
-  String imdbId;
-  String originalLanguage;
-  String originalTitle;
-  String overview;
-  double popularity;
-  String posterPath;
-  List<dynamic> productionCompanies;
-  List<dynamic> productionCountries;
-  String releaseDate;
-  int revenue;
-  int runtime;
-  List<dynamic> spokenLanguages;
-  String status;
-  String tagline;
-  String? title;
-  bool video;
-  double voteAverage;
-  int voteCount;
+import 'package:flutter_project/core/services/datasource/model/MovieMain.dart';
 
-  Movie({
+class Movie extends MovieMain {
+  bool? adult;
+  String? backdropPath;
+  dynamic? belongsToCollection;
+  int? budget;
+  List<Genre>? genres;
+  String? homepage;
+  int? id;
+  String? imdbId;
+  String? originalLanguage;
+  String? originalTitle;
+  String? overview;
+  double? popularity;
+  String? posterPath;
+  List<dynamic>? productionCompanies;
+  List<dynamic>? productionCountries;
+  String? releaseDate;
+  int? revenue;
+  int? runtime;
+  List<dynamic>? spokenLanguages;
+  String? status;
+  String? tagline;
+  String? title;
+  bool? video;
+  double? voteAverage;
+  int? voteCount;
+
+
+  Movie(){}
+
+  Movie.setdata({
     required this.adult,
     required this.backdropPath,
     required this.belongsToCollection,
@@ -53,13 +58,13 @@ class Movie {
     required this.voteCount,
   });
 
-  factory Movie.fromJson(Map<String, dynamic> json) {
-    return Movie(
+   Movie fromJson(Map<String, dynamic> json) {
+    return Movie.setdata(
       adult: json['adult'],
       backdropPath: json['backdrop_path'],
       belongsToCollection: json['belongs_to_collection'],
       budget: json['budget'],
-      genres: List<Genre>.from(json['genres'].map((x) => Genre.fromJson(x))),
+      genres: List<Genre>.from(json['genres'].map((x) => Genre().fromJson(x))),
       homepage: json['homepage'],
       id: json['id'],
       imdbId: json['imdb_id'],
@@ -84,17 +89,19 @@ class Movie {
   }
 }
 
-class Genre {
-  int id;
-  String name;
+class Genre extends MovieMain {
+  int? id;
+  String? name;
 
-  Genre({
+ Genre(){}
+  Genre.setdata({
     required this.id,
     required this.name,
   });
 
-  factory Genre.fromJson(Map<String, dynamic> json) {
-    return Genre(
+
+  Genre fromJson(Map<String, dynamic> json) {
+    return Genre.setdata(
       id: json['id'],
       name: json['name'],
     );

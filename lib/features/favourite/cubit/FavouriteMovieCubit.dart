@@ -1,10 +1,9 @@
 import 'dart:core';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../core/utils/Constants.dart';
 import '../model/movie_favourite.dart';
 import 'FavouriteMovieState.dart';
+
 
 class FavouriteMovieCubit extends Cubit<FavouriteMovieStates> {
   late List<MovieFavourite> movies;
@@ -15,8 +14,7 @@ class FavouriteMovieCubit extends Cubit<FavouriteMovieStates> {
 
   List<MovieFavourite> getFavouriteMovie() {
     try {
-      this.movies =  box.values.toList() as List<MovieFavourite>;
-      emit(FavouriteMovieSuccessState(movies));
+      getData();
     } catch (e) {
       throw FavouriteMovieErrorState('Failed to fetch movies: $e');
     }
@@ -26,11 +24,27 @@ class FavouriteMovieCubit extends Cubit<FavouriteMovieStates> {
   void deleteFavouriteMovie(String key) {
     try {
       box.delete(key);
-      emit(FavouriteMovieDeleteSuccessState());
+       getData();
     } catch (e) {
       throw FavouriteMovieErrorState('Failed to fetch movies: $e');
     }
   }
+
+
+
+  void getData(){
+    this.movies =  box.values.toList() as List<MovieFavourite>;
+    checkLength();
+  }
+
+  void checkLength(){
+    this.movies.length>0? emit(FavouriteMovieSuccessState(this.movies)):
+    emit(FavouriteMovieEmptyState());
+  }
+
+
+
+
 
 
 }

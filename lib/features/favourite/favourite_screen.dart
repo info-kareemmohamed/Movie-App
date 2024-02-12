@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_project/core/common/app_widget.dart';
 import 'package:flutter_project/core/services/datasource/remote/apiLinks/AllApi.dart';
 import 'package:lottie/lottie.dart';
 
@@ -114,7 +115,7 @@ class FavouriteScreen extends StatelessWidget {
             } else if (state is FavouriteMovieEmptyState) {
               return _buildLottieScreen();
             } else if (state is FavouriteMovieErrorState) {
-              return _buildErrorScreen(state.message ?? "Not Found");
+              return AppWidget.buildErrorScreen(state.message??"Not Found");
             } else {
               return Center(child: CircularProgressIndicator());
             }
@@ -148,21 +149,4 @@ class FavouriteScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildErrorScreen(String title) {
-    return Container(
-      color: AppColors.darkTheme,
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Text(
-            title,
-            style: AppTextStyle.semiBold(
-              color: Colors.red,
-              fontSize: 25,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
 }

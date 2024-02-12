@@ -5,7 +5,7 @@ import 'package:flutter_project/core/services/cubit/trending_week_movie_cubit.da
 import 'package:flutter_project/core/services/cubit/trending_week_movie_state.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/home/common/screen_common_widget.dart';
-import 'package:flutter_project/features/home/screens/widget/movie_card.dart';
+import 'package:flutter_project/features/home/common/movie_card.dart';
 
 class TrendingWeeklyScreen extends StatelessWidget {
   const TrendingWeeklyScreen({Key? key}) : super(key: key);

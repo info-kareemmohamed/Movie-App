@@ -6,7 +6,7 @@ import '../utils/app_text_style.dart';
 
 class AppWidget{
 
-  static Widget buildErrorScreen(String title) {
+  static Widget buildErrorScreen(String title ) {
     return Container(
       color: AppColors.darkTheme,
       child: Center(

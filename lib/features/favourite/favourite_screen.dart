@@ -115,7 +115,7 @@ class FavouriteScreen extends StatelessWidget {
             } else if (state is FavouriteMovieEmptyState) {
               return _buildLottieScreen();
             } else if (state is FavouriteMovieErrorState) {
-              return AppWidget.buildErrorScreen(state.message??"Not Found");
+              return AppWidget.buildErrorScreen(state.message??"Sorry Not Found");
             } else {
               return Center(child: CircularProgressIndicator());
             }

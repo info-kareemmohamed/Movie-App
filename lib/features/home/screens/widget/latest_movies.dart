@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_project/core/common/app_widget.dart';
 import 'package:flutter_project/core/services/cubit/top_rated_movies_cubit.dart';
-import 'package:flutter_project/core/utils/app_text_style.dart';
+import 'package:flutter_project/features/home/common/screen_common_widget.dart';
 import 'package:flutter_project/features/home/screens/widget/movie_card.dart';
 
 class LatestMovies extends StatelessWidget {
@@ -11,40 +12,14 @@ class LatestMovies extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<TopRatedMoviesCubit, TopRatedMoviesState>(
       builder: (context, state) {
-        if (state is TopRatedSuccessState) {
-          return SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 5,
-                vertical: 5,
-              ),
-              child: Row(
-                children: List.generate(
-                    state.movies.length,
-                    (index) => MovieCard(
-                        imageLink: state.movies[index].backdropPath,
-                        title: state.movies[index].title,
-                        movieId: state.movies[index].id.toString(),
-                        releaseDate: state.movies[index].releaseDate)),
-              ),
-            ),
-          );
-        } else if (state is TopRatedInitialState) {
+        if (state is TopRatedInitialState) {
           return const Center(child: CircularProgressIndicator());
+        } else if (state is TopRatedSuccessState) {
+          return ScreenCommonWidget.SingleChildScrollViewMovies(state.movies, 10,20);
+        } else if (state is TopRatedErrorState) {
+          return AppWidget.buildErrorScreen(state.message ?? "Sorry Not Found");
         } else {
-          return Center(
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: Text(
-                'Sorry Not Found',
-                style: AppTextStyle.semiBold(
-                  color: Colors.red,
-                  fontSize: 25,
-                ),
-              ),
-            ),
-          );
+          return const Center(child: CircularProgressIndicator());
         }
       },
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_project/core/common/app_widget.dart';
 import 'package:flutter_project/core/services/cubit/info_movie_cubit.dart';
 import 'package:flutter_project/core/services/cubit/info_movie_state.dart';
 import 'package:flutter_project/core/services/datasource/remote/apiLinks/AllApi.dart';
@@ -17,7 +18,7 @@ class MovieDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-      InfoMovieCubit()..getInfoMovie(getEndPoint("movie", id)),
+          InfoMovieCubit()..getInfoMovie(getEndPoint("movie", id)),
       child: BlocBuilder<InfoMovieCubit, InfoMovieStates>(
         builder: (context, state) {
           if (state is InfoMovieSuccessState) {
@@ -31,7 +32,7 @@ class MovieDetails extends StatelessWidget {
                     headerSliverBuilder: (context, innerBoxIsScrolled) {
                       return [
                         SliverAppbar(
-                         movie: state.movie,
+                          movie: state.movie,
                         ),
                       ];
                     },
@@ -49,8 +50,11 @@ class MovieDetails extends StatelessWidget {
             );
           } else if (state is InfoMovieInitialState) {
             return const Center(child: CircularProgressIndicator());
+          } else if (state is InfoMovieErrorState) {
+            return AppWidget.buildErrorScreen(
+                state.message ?? "Sorry Not Found");
           } else {
-            return const Center(child: Text('Sorry Data Not Found'));
+            return const Center(child: CircularProgressIndicator());
           }
         },
       ),

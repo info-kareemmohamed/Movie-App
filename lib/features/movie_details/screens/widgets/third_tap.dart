@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_project/core/common/app_widget.dart';
 import 'package:flutter_project/core/services/datasource/model/MovieDetailsResponse.dart';
 import 'package:flutter_project/core/services/datasource/remote/apiLinks/AllApi.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
@@ -55,19 +56,11 @@ class ThirdTabScreen extends StatelessWidget {
                   );
                 } else if (state is CastMovieInitialState) {
                   return const Center(child: CircularProgressIndicator());
-                } else {
-                  return Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Text(
-                        'Sorry Not Found',
-                        style: AppTextStyle.semiBold(
-                          color: Colors.red,
-                          fontSize: 25,
-                        ),
-                      ),
-                    ),
-                  );
+                }else if(state is CastMovieErrorState){
+                  return AppWidget.buildErrorScreen(state.message??"Sorry Not Found");
+                }
+                else {
+                  return const Center(child: CircularProgressIndicator());
                 }
               },
             );

@@ -21,7 +21,7 @@ class SelectedValueState extends HomeScreenStates {}
 //   TrendingWeekMoviesSuccessState(this.movies);
 // }
 //
-// class ErrorState extends HomeScreenStates {
-//   final String? message;
-//   ErrorState(this.message);
-// }
+class ErrorState extends HomeScreenStates {
+  final String? message;
+  ErrorState(this.message);
+}

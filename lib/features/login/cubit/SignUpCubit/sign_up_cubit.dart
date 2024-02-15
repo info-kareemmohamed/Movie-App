@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_project/features/app_layout/screens/app_layout_screen.dart';
+import 'package:flutter_project/features/login/screens/pages/profile_picture.dart';
 import 'package:flutter_project/features/login/screens/widget/SnackBar.dart';
 
 part 'sign_up_state.dart';
@@ -70,7 +70,7 @@ class SignUpCubit extends Cubit<SignUpStates> {
         });
         Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => const AppLayoutScreen()),
+            MaterialPageRoute(builder: (context) => const ProfilePicture()),
             (route) => false);
         emit(SignUpSuccessState());
       });

@@ -1,10 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/features/app_layout/screens/app_layout_screen.dart';
+import 'package:flutter_project/features/login/cubit/LoginCubit/LoginStates.dart';
+import 'package:flutter_project/features/login/screens/pages/profile_picture.dart';
 import 'package:flutter_project/features/login/screens/widget/SnackBar.dart';
-
-import 'LoginStates.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginCubit extends Cubit<LoginStates> {
   LoginCubit() : super(InitialLoginState());
@@ -67,5 +69,55 @@ class LoginCubit extends Cubit<LoginStates> {
       }
     }
     emit(LoginErrorState());
+  }
+
+  Future<UserCredential?> signInWithGoogle(
+      {required BuildContext context}) async {
+    emit(LoginLoadingState());
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      if (googleUser == null) {
+        emit(LoginCancelledState());
+
+        return null;
+      }
+
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      final UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+
+      FirebaseFirestore.instance
+          .collection('Users')
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .set({
+        'name': userCredential.user!.displayName,
+        'email': userCredential.user!.email,
+        'UId': FirebaseAuth.instance.currentUser!.uid,
+      }).then((value) {
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => const ProfilePicture()),
+          (route) => false,
+        );
+      });
+
+      emit(LoginSuccessState());
+      return userCredential;
+    } catch (e) {
+      showSnackBar(
+        context,
+        'Failed to sign in with Google Network Error',
+        Colors.red,
+      );
+      print('Failed to sign in with Google: $e');
+      emit(LoginErrorState());
+      rethrow;
+    }
   }
 }

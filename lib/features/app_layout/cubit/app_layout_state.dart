@@ -7,4 +7,8 @@ class InitialAppLayoutState extends AppLayoutStates {}
 
 class ChangeModeState extends AppLayoutStates {}
 
+class AllowNotificationState extends AppLayoutStates {}
+
 class ChangeBottomState extends AppLayoutStates {}
+
+class SelectLanguage extends AppLayoutStates {}

@@ -28,4 +28,9 @@ class AppImages {
   static const String settingsIcon = "$images/settingsIcon.png";
   static const String facebookIcon = "$images/facebook.png";
   static const String googleIcon = "$images/google.png";
+  static const String profileImage1 = "$images/pi_1.png";
+  static const String profileImage2 = "$images/pi_2.png";
+  static const String profileImage3 = "$images/pi_3.png";
+  static const String profileImage4 = "$images/pi_4.png";
+  static const String profileImage5 = "$images/pi_5.png";
 }

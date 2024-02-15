@@ -12,10 +12,16 @@ class AppLayoutCubit extends Cubit<AppLayoutStates> {
   AppLayoutCubit() : super(InitialAppLayoutState());
 
   bool isDark = false;
+  bool isAllow = false;
 
   void changeMode() {
     isDark = !isDark;
     emit(ChangeModeState());
+  }
+
+  void allowNotification() {
+    isAllow = !isAllow;
+    emit(AllowNotificationState());
   }
 
   List<Widget> screens = const [
@@ -46,5 +52,25 @@ class AppLayoutCubit extends Cubit<AppLayoutStates> {
   void changeBottomNavBar(int index) {
     currentIndex = index;
     emit(ChangeBottomState());
+  }
+
+  String selectedValue = "English";
+
+  List<DropdownMenuItem<String>> dropMenuItems = const [
+    DropdownMenuItem(
+      value: 'English',
+      child: Text(
+        'English',
+      ),
+    ),
+    DropdownMenuItem(
+      value: 'Arabic',
+      child: Text('Arabic'),
+    ),
+  ];
+
+  void dropValue(String? value) {
+    selectedValue = value!;
+    emit(SelectLanguage());
   }
 }

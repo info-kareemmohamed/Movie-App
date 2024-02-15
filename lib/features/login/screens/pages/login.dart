@@ -10,6 +10,7 @@ import 'package:flutter_project/features/login/cubit/LoginCubit/LoginCubit.dart'
 import 'package:flutter_project/features/login/cubit/LoginCubit/LoginStates.dart';
 import 'package:flutter_project/features/login/screens/pages/signup.dart';
 import 'package:flutter_project/features/login/screens/widget/main_button.dart';
+import 'package:flutter_project/features/login/screens/widget/social_widget.dart';
 import 'package:flutter_project/features/login/screens/widget/text_field.dart';
 
 class Login extends StatelessWidget {
@@ -119,6 +120,10 @@ class Login extends StatelessWidget {
                           ),
                           const SizedBox(
                             height: 50,
+                          ),
+                          const SocialWidget(),
+                          const SizedBox(
+                            height: 30,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,

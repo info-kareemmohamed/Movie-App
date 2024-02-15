@@ -22,11 +22,10 @@ class AppImages {
   static const String poster13 = "$images/Poster13.png";
   static const String ellipse = "$images/Ellipse.png";
   static const String shadow = "$images/shadow.png";
-  static const String googleIcon = "$icon/facebook.svg";
-  static const String facebookIcon = "$icon/google.svg";
-  static const String twitterIcon = "$icon/twitter.svg";
   static const String poster14 = "$images/Poster14.png";
   static const String shadow2 = "$images/shadow2.png";
   static const String shadowMoreFilms = "$images/shadowMoreFilms.png";
   static const String settingsIcon = "$images/settingsIcon.png";
+  static const String facebookIcon = "$images/facebook.png";
+  static const String googleIcon = "$images/google.png";
 }

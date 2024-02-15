@@ -24,14 +24,20 @@ class SettingsScreen extends StatelessWidget {
           return BlocBuilder<AppLayoutCubit, AppLayoutStates>(
             builder: (context, state) {
               return Scaffold(
-                backgroundColor: AppColors.darkTheme,
+                backgroundColor: context.read<AppLayoutCubit>().isDark
+                    ? AppColors.darkTheme
+                    : AppColors.white,
                 appBar: AppBar(
-                  backgroundColor: AppColors.darkTheme,
+                  backgroundColor: context.read<AppLayoutCubit>().isDark
+                      ? AppColors.darkTheme
+                      : AppColors.white,
                   centerTitle: true,
                   title: Text(
                     'Settings',
                     style: AppTextStyle.extraBold(
-                      color: Colors.white,
+                      color: context.read<AppLayoutCubit>().isDark
+                          ? AppColors.white
+                          : AppColors.darkTheme,
                       fontSize: 18.74,
                     ),
                   ),
@@ -160,8 +166,8 @@ class SettingsScreen extends StatelessWidget {
                               value: context.read<AppLayoutCubit>().isDark,
                             ),
                             FlutterSwitchButton(
-                              type: 'Allow Notification',
-                              options: 'Light & Dark Mode',
+                              type: 'Notification',
+                              options: 'Allow Notification',
                               onToggle: ((value) {
                                 context
                                     .read<AppLayoutCubit>()

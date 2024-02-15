@@ -33,6 +33,7 @@ class FavouriteMovieCubit extends Cubit<FavouriteMovieStates> {
 
 
   void getData(){
+
     this.movies =  box.values.toList() as List<MovieFavourite>;
     checkLength();
   }

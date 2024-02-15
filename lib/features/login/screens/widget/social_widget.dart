@@ -12,7 +12,7 @@ class SocialWidget extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-          //  signInWithFacebook();
+           signInWithFacebook();
           },
           child: Image.asset(
             AppImages.facebookIcon,

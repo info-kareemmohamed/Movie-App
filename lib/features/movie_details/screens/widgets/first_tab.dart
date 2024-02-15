@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/core/common/app_widget.dart';
-import 'package:flutter_project/features/movie_details/model/MovieDetailsResponse.dart';
+import 'package:flutter_project/core/services/datasource/remote/apiLinks/AllApi.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
+import 'package:flutter_project/features/movie_details/cubit/video/video_movie_cubit.dart';
+import 'package:flutter_project/features/movie_details/cubit/video/video_movie_state.dart';
+import 'package:flutter_project/features/movie_details/model/MovieDetailsResponse.dart';
 import 'package:flutter_project/features/movie_details/screens/widgets/more_like_this_movie.dart';
 import 'package:flutter_project/features/movie_details/screens/widgets/video_player.dart';
-
-import '../../cubit/video/video_movie_cubit.dart';
-import '../../cubit/video/video_movie_state.dart';
-import '../../../../core/services/datasource/remote/apiLinks/AllApi.dart';
 
 class FirstTabScreen extends StatelessWidget {
   FirstTabScreen({Key? key, required this.movie}) : super(key: key);
@@ -64,7 +63,7 @@ class FirstTabScreen extends StatelessWidget {
                               ),
                               child: Center(
                                 child: Text(
-                                  movie.genres?[index].name??"",
+                                  movie.genres?[index].name ?? "",
                                   textAlign: TextAlign.center,
                                   style: AppTextStyle.medium(
                                     color: AppColors.lightRed,
@@ -84,16 +83,33 @@ class FirstTabScreen extends StatelessWidget {
                         fontSize: 12,
                       ),
                     ),
-                    Container(
-                      height: 190,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: Colors.indigo,
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      margin: const EdgeInsets.all(25),
-                      child: VideoApp(urlVideo:state.movies[0].key??""),
-                    ),
+                    state.movies.isNotEmpty
+                        ? Container(
+                            height: 190,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: Colors.indigo,
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            margin: const EdgeInsets.all(25),
+                            child: VideoApp(
+                                urlVideo: state.movies[0].key.toString()),
+                          )
+                        : Container(
+                            height: 190,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: AppColors.darkBlue,
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            margin: const EdgeInsets.all(25),
+                            child: Center(
+                                child: Text(
+                              'Sorry Trailer Not Found',
+                              style: AppTextStyle.semiBold(
+                                  color: AppColors.lightYellow),
+                            )),
+                          ),
                     Text(
                       'More Like This',
                       style: AppTextStyle.semiBold(
@@ -101,8 +117,11 @@ class FirstTabScreen extends StatelessWidget {
                         fontSize: 21.24,
                       ),
                     ),
-                    MoreLikeThisMovie(
-                      movieId: movie.id,
+                    SizedBox(
+                      height: 450,
+                      child: MoreLikeThisMovie(
+                        movieId: movie.id,
+                      ),
                     ),
                   ],
                 ),
@@ -111,10 +130,9 @@ class FirstTabScreen extends StatelessWidget {
           );
         } else if (state is VideoMoviesInitialState) {
           return const Center(child: CircularProgressIndicator());
-        }else if(state is VideoMoviesErrorState){
-          return AppWidget.buildErrorScreen(state.message??"Sorry Not Found");
-        }
-        else  {
+        } else if (state is VideoMoviesErrorState) {
+          return AppWidget.buildErrorScreen(state.message ?? "Sorry Not Found");
+        } else {
           return const Center(child: CircularProgressIndicator());
         }
       }),

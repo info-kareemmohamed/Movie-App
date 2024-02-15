@@ -62,3 +62,10 @@ Future<UserCredential> signInWithFacebook() async {
   }
 }
 
+
+
+
+Future<void> forgotPassword(String email) async{
+  await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+}
+

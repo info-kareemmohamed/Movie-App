@@ -1,7 +1,9 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/app/styles/icon_broken.dart';
+import 'package:flutter_project/core/helper/firebase.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_images.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
@@ -80,7 +82,10 @@ class Login extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.only(right: 20.0),
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: () async {
+                       await forgotPassword(userEmailController.text);
+
+                          },
                           child: Text(
                             'Forgot Password?',
                             style: AppTextStyle.regular(

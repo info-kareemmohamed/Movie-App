@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/core/helper/firebase.dart';
 import 'package:flutter_project/core/utils/app_images.dart';
 
 class SocialWidget extends StatelessWidget {
@@ -11,7 +12,7 @@ class SocialWidget extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            print('Facebook');
+          //  signInWithFacebook();
           },
           child: Image.asset(
             AppImages.facebookIcon,
@@ -24,7 +25,7 @@ class SocialWidget extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            print('Google');
+            signInWithGoogle();
           },
           child: Image.asset(
             AppImages.googleIcon,

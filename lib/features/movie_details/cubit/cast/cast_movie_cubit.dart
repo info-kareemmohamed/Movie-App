@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_project/core/services/datasource/model/MovieCast.dart';
+import 'package:flutter_project/features/movie_details/model/MovieCast.dart';
 
-import '../datasource/remote/api/ApiService.dart';
+import '../../../../core/services/datasource/remote/api/ApiService.dart';
 import 'cast_movie_state.dart';
 
 class CastMovieCubit extends Cubit<CastMovieStates> {

@@ -5,7 +5,7 @@ import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/movie_details/cubit/movie_details_cubit.dart';
 
-import '../../../../core/services/datasource/model/MovieDetailsResponse.dart';
+import '../../model/MovieDetailsResponse.dart';
 import '../../../../core/utils/Constants.dart';
 import '../../../favourite/model/movie_favourite.dart';
 

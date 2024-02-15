@@ -1,5 +1,5 @@
 
-import '../../../features/movie_details/data/models/video_movie.dart';
+import '../../model/video_movie.dart';
 
 abstract class VideoMoviesStates {}
 

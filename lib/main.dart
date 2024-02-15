@@ -2,9 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_project/core/services/cubit/top_rated_movies_cubit.dart';
-import 'package:flutter_project/core/services/cubit/trending_day_movies_cubit.dart';
-import 'package:flutter_project/core/services/cubit/trending_week_movie_cubit.dart';
+import 'package:flutter_project/features/home/cubit/topRated/top_rated_movies_cubit.dart';
+import 'package:flutter_project/features/home/cubit/trendingDay/trending_day_movies_cubit.dart';
+import 'package:flutter_project/features/home/cubit/trendingWeek/trending_week_movie_cubit.dart';
 import 'package:flutter_project/core/services/datasource/remote/apiLinks/AllApi.dart';
 import 'package:flutter_project/features/app_layout/cubit/app_layout_cubit.dart';
 import 'package:flutter_project/features/app_layout/screens/app_layout_screen.dart';
@@ -15,7 +15,6 @@ import 'package:flutter_project/features/movie_details/cubit/movie_details_cubit
 import 'package:flutter_project/features/onboarding/cubit/onboarding_cubit.dart';
 import 'package:flutter_project/features/onboarding/screens/widgets/first_onboarding_screen.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-
 import 'core/utils/Constants.dart';
 import 'features/favourite/cubit/FavouriteMovieCubit.dart';
 import 'features/favourite/model/movie_favourite.dart';
@@ -31,7 +30,7 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(MovieFavouriteAdapter());
 
-  box = await Hive.openBox<MovieFavourite>('MovieFavourite');
+  box = await Hive.openBox<MovieFavourite>(FAVOURITE_DATA);
 
 
   runApp(const MyApp());

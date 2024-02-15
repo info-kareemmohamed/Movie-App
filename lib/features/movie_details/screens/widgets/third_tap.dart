@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/core/common/app_widget.dart';
-import 'package:flutter_project/core/services/datasource/model/MovieDetailsResponse.dart';
+import 'package:flutter_project/features/movie_details/model/MovieDetailsResponse.dart';
 import 'package:flutter_project/core/services/datasource/remote/apiLinks/AllApi.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/movie_details/cubit/movie_details_cubit.dart';
 
-import '../../../../core/services/cubit/cast_movie_cubit.dart';
-import '../../../../core/services/cubit/cast_movie_state.dart';
+import '../../cubit/cast/cast_movie_cubit.dart';
+import '../../cubit/cast/cast_movie_state.dart';
 
 class ThirdTabScreen extends StatelessWidget {
   ThirdTabScreen({Key? key, required this.movie}) : super(key: key);

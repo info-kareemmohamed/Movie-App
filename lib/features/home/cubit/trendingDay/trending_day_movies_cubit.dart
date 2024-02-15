@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_project/core/services/datasource/model/MovieResponse.dart';
+import 'package:flutter_project/features/home/model/MovieResponse.dart';
 import 'package:flutter_project/core/services/datasource/remote/api/ApiService.dart';
 
 part 'trending_day_movies_state.dart';

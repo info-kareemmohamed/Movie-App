@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_project/core/services/cubit/top_rated_movies_cubit.dart';
+import 'package:flutter_project/features/home/cubit/topRated/top_rated_movies_cubit.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/home/cubit/home_screen_cubit.dart';

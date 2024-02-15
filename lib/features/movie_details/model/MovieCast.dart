@@ -1,4 +1,4 @@
-import 'MovieMain.dart';
+import '../../../core/services/datasource/model/MovieMain.dart';
 
 class Cast extends MovieMain {
   bool? adult;

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '../../../core/services/datasource/model/MovieResponse.dart';
+import '../model/MovieResponse.dart';
 import 'movie_card.dart';
 
 class ScreenCommonWidget{

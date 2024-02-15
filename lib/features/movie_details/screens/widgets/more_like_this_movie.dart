@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/core/common/app_widget.dart';
-import 'package:flutter_project/core/services/cubit/similar_movie_cubit.dart';
+import 'package:flutter_project/features/movie_details/cubit/similar/similar_movie_cubit.dart';
 import 'package:flutter_project/core/utils/app_images.dart';
 import 'package:flutter_project/features/movie_details/cubit/movie_details_cubit.dart';
 import 'package:flutter_project/features/movie_details/screens/details_screen.dart';
 import 'package:flutter_project/features/movie_details/screens/widgets/show_less_movies.dart';
 import 'package:flutter_project/features/movie_details/screens/widgets/show_more_movies.dart';
 
-import '../../../../core/services/cubit/info_movie_cubit.dart';
-import '../../../../core/services/cubit/info_movie_state.dart';
-import '../../../../core/services/cubit/similar_movie_state.dart';
+import '../../cubit/details/info_movie_cubit.dart';
+import '../../cubit/details/info_movie_state.dart';
+import '../../cubit/similar/similar_movie_state.dart';
 import '../../../../core/services/datasource/remote/apiLinks/AllApi.dart';
 import '../../../../core/utils/app_text_style.dart';
 

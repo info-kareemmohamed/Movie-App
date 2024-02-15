@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_project/core/services/cubit/trending_week_movie_state.dart';
+import 'package:flutter_project/features/home/cubit/trendingWeek/trending_week_movie_state.dart';
 
-import '../datasource/model/MovieResponse.dart';
-import '../datasource/remote/api/ApiService.dart';
+import '../../model/MovieResponse.dart';
+import '../../../../core/services/datasource/remote/api/ApiService.dart';
 
 class TrendingWeekMoviesCubit extends Cubit<TrendingWeekMoviesStates> {
   late List<MovieResponse> movies;

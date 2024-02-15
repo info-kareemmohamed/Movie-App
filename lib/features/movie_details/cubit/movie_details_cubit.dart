@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
-import '../../../core/services/datasource/model/MovieResponse.dart';
+import '../../home/model/MovieResponse.dart';
 import '../../../core/services/datasource/remote/api/ApiService.dart';
 import '../../../core/utils/Constants.dart';
 import '../../favourite/model/movie_favourite.dart';

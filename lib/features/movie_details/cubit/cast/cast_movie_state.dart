@@ -1,5 +1,5 @@
 
-import 'package:flutter_project/core/services/datasource/model/MovieCast.dart';
+import 'package:flutter_project/features/movie_details/model/MovieCast.dart';
 
 abstract class CastMovieStates {}
 

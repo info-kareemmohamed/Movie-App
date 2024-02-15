@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../datasource/model/MovieDetailsResponse.dart';
-import '../datasource/remote/api/ApiService.dart';
+import '../../model/MovieDetailsResponse.dart';
+import '../../../../core/services/datasource/remote/api/ApiService.dart';
 import 'info_movie_state.dart';
 
 class InfoMovieCubit extends Cubit<InfoMovieStates> {

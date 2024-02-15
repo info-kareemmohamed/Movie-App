@@ -1,7 +1,7 @@
 
 import 'package:hive/hive.dart';
 
-import '../../../core/services/datasource/model/MovieDetailsResponse.dart';
+import '../../movie_details/model/MovieDetailsResponse.dart';
 part 'movie_favourite.g.dart'; // Generated file
 
 @HiveType(typeId: 2)

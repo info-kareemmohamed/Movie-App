@@ -1,4 +1,4 @@
-import 'package:flutter_project/core/services/datasource/model/MovieResponse.dart';
+import 'package:flutter_project/features/home/model/MovieResponse.dart';
 
 abstract class TrendingWeekMoviesStates {}
 

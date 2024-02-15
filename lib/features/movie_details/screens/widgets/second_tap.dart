@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/core/common/app_widget.dart';
-import 'package:flutter_project/core/services/datasource/model/MovieDetailsResponse.dart';
+import 'package:flutter_project/features/movie_details/model/MovieDetailsResponse.dart';
 import 'package:flutter_project/core/utils/app_images.dart';
 import 'package:flutter_project/features/movie_details/screens/widgets/video_player.dart';
-import '../../../../core/services/cubit/video_movie_cubit.dart';
-import '../../../../core/services/cubit/video_movie_state.dart';
+import '../../cubit/video/video_movie_cubit.dart';
+import '../../cubit/video/video_movie_state.dart';
 import '../../../../core/services/datasource/remote/apiLinks/AllApi.dart';
 import '../../../../core/utils/app_text_style.dart';
 

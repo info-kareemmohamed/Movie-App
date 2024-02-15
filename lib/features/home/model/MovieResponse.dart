@@ -1,8 +1,5 @@
-import 'package:hive/hive.dart';
 
-import 'MovieMain.dart';
-
-
+import '../../../core/services/datasource/model/MovieMain.dart';
 
 class MovieResponse extends MovieMain {
 

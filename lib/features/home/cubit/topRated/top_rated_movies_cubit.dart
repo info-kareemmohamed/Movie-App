@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_project/core/services/datasource/model/MovieResponse.dart';
+import 'package:flutter_project/features/home/model/MovieResponse.dart';
 import 'package:flutter_project/core/services/datasource/remote/api/ApiService.dart';
 import 'package:meta/meta.dart';
 

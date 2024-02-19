@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_project/core/model/main_user.dart';
 import 'package:flutter_project/features/login/screens/pages/profile_picture.dart';
 import 'package:flutter_project/features/login/screens/widget/SnackBar.dart';
 
@@ -68,6 +69,8 @@ class SignUpCubit extends Cubit<SignUpStates> {
           'password': password,
           'UId': FirebaseAuth.instance.currentUser!.uid,
         });
+
+        UserMain.setDataToInstance(FirebaseAuth.instance.currentUser!.uid, name??"", email, password, "");
         Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(builder: (context) => const ProfilePicture()),

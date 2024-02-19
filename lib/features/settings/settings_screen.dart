@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/app/styles/icon_broken.dart';
+import 'package:flutter_project/core/model/main_user.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/app_layout/cubit/app_layout_cubit.dart';
@@ -15,13 +16,8 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<DocumentSnapshot>(
-        stream: FirebaseFirestore.instance
-            .collection('Users')
-            .doc(FirebaseAuth.instance.currentUser!.uid)
-            .snapshots(),
-        builder: (context, snapshot) {
-          return BlocBuilder<AppLayoutCubit, AppLayoutStates>(
+    return
+           BlocBuilder<AppLayoutCubit, AppLayoutStates>(
             builder: (context, state) {
               return Scaffold(
                 backgroundColor: context.read<AppLayoutCubit>().isDark
@@ -52,13 +48,13 @@ class SettingsScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             ProfilePictureContainer(
-                              color: snapshot.data?['colorBackground'] ??
+                              color:
                                   0xFF1CE783,
-                              top: snapshot.data?['profilePicture'] ==
+                              top: UserMain.instance?.profilePicture ==
                                       'assets/images/pi_4.png'
                                   ? 60
                                   : 40,
-                              image: snapshot.data?['profilePicture'] ??
+                              image:
                                   'assets/images/pi_1.png',
                             ),
                             Column(
@@ -85,7 +81,7 @@ class SettingsScreen extends StatelessWidget {
                                                   .selectedValue ==
                                               'Arabic'
                                           ? "الاسم بالعربي"
-                                          : snapshot.data?['name'] ?? "",
+                                          : UserMain.instance?.name ?? "",
                                       textAlign: TextAlign.center,
                                       style: AppTextStyle.semiBold(
                                         color: AppColors.darkTheme,
@@ -212,6 +208,6 @@ class SettingsScreen extends StatelessWidget {
               );
             },
           );
-        });
+
   }
 }

@@ -13,6 +13,8 @@ class AppLayoutCubit extends Cubit<AppLayoutStates> {
 
   bool isDark = false;
   bool isAllow = false;
+  String selectedValue = "English";
+
 
   void changeMode() {
     isDark = !isDark;
@@ -54,7 +56,6 @@ class AppLayoutCubit extends Cubit<AppLayoutStates> {
     emit(ChangeBottomState());
   }
 
-  String selectedValue = "English";
 
   List<DropdownMenuItem<String>> dropMenuItems = const [
     DropdownMenuItem(

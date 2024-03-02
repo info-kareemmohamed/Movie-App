@@ -3,6 +3,9 @@ import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/movie_details/screens/details_screen.dart';
 
+import '../../../core/helper/navigation.dart';
+import '../../../core/utils/app_routes.dart';
+
 class MovieCard extends StatelessWidget {
   MovieCard({
     super.key,
@@ -21,10 +24,8 @@ class MovieCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => MovieDetails(id:movieId)));
+        NavigationHelper.navigateTo(AppRoute.MOVIE_DETAILS,
+             arguments: movieId);
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -7,6 +7,9 @@ import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/home/cubit/home_screen_cubit.dart';
 import 'package:flutter_project/features/movie_details/screens/details_screen.dart';
 
+import '../../../../core/helper/navigation.dart';
+import '../../../../core/utils/app_routes.dart';
+
 class SliverAppbarHome extends StatelessWidget {
   const SliverAppbarHome({super.key});
 
@@ -29,12 +32,10 @@ class SliverAppbarHome extends StatelessWidget {
                           builder: (BuildContext context) {
                             return GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => MovieDetails(
-                                              id: results.id,
-                                            )));
+                                NavigationHelper.navigateTo(
+                                  AppRoute.MOVIE_DETAILS,
+                                 arguments: results.id
+                                );
                               },
                               child: Container(
                                 decoration: BoxDecoration(

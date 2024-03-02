@@ -15,8 +15,11 @@ import 'package:flutter_project/features/login/screens/widget/main_button.dart';
 import 'package:flutter_project/features/login/screens/widget/social_widget.dart';
 import 'package:flutter_project/features/login/screens/widget/text_field.dart';
 
-class Login extends StatelessWidget {
-  Login({super.key});
+import '../../../../core/helper/navigation.dart';
+import '../../../../core/utils/app_routes.dart';
+
+class LoginScreen extends StatelessWidget {
+  LoginScreen({super.key});
 
   final TextEditingController userEmailController = TextEditingController();
   final TextEditingController userPassController = TextEditingController();
@@ -83,8 +86,7 @@ class Login extends StatelessWidget {
                         padding: const EdgeInsets.only(right: 20.0),
                         child: TextButton(
                           onPressed: () async {
-                       await forgotPassword(userEmailController.text);
-
+                            await forgotPassword(userEmailController.text);
                           },
                           child: Text(
                             'Forgot Password?',
@@ -149,12 +151,8 @@ class Login extends StatelessWidget {
                                   ),
                                 ),
                                 onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (builder) => SignUpPage(),
-                                    ),
-                                  );
+                                  NavigationHelper.navigateToReplacement(
+                                      AppRoute.SIGN_UP);
                                 },
                               ),
                             ],

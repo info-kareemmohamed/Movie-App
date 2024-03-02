@@ -10,8 +10,8 @@ import '../../../../core/utils/space.dart';
 import '../widget/main_button.dart';
 import '../widget/text_field.dart';
 
-class SignUpPage extends StatelessWidget {
-  SignUpPage({Key? key}) : super(key: key);
+class SignUpScreen extends StatelessWidget {
+  SignUpScreen({Key? key}) : super(key: key);
 
   final TextEditingController userNameController = TextEditingController();
   final TextEditingController userEmailController = TextEditingController();

@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/core/common/app_widget.dart';
 import 'package:flutter_project/features/home/cubit/topRated/top_rated_movies_cubit.dart';
 import 'package:flutter_project/features/home/common/screen_common_widget.dart';
-import 'package:flutter_project/features/home/common/movie_card.dart';
 
 class LatestMovies extends StatelessWidget {
   const LatestMovies({super.key});

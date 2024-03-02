@@ -10,15 +10,15 @@ import 'package:flutter_project/features/movie_details/screens/widgets/second_ta
 import 'package:flutter_project/features/movie_details/screens/widgets/sliver_app_bar.dart';
 import 'package:flutter_project/features/movie_details/screens/widgets/third_tap.dart';
 
-class MovieDetails extends StatelessWidget {
-  const MovieDetails({Key? key, required this.id}) : super(key: key);
-  final dynamic id;
+class MovieDetailsScreen extends StatelessWidget {
+   MovieDetailsScreen({Key? key,required this.id}) : super(key: key);
+ dynamic id;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          InfoMovieCubit()..getInfoMovie(getEndPoint("movie", id)),
+          InfoMovieCubit()..getInfoMovie(getEndPoint("movie",id)),
       child: BlocBuilder<InfoMovieCubit, InfoMovieStates>(
         builder: (context, state) {
           if (state is InfoMovieSuccessState) {

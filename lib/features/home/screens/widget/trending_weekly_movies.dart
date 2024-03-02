@@ -3,9 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/core/common/app_widget.dart';
 import 'package:flutter_project/features/home/cubit/trendingWeek/trending_week_movie_cubit.dart';
 import 'package:flutter_project/features/home/cubit/trendingWeek/trending_week_movie_state.dart';
-import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/home/common/screen_common_widget.dart';
-import 'package:flutter_project/features/home/common/movie_card.dart';
 
 class TrendingWeeklyScreen extends StatelessWidget {
   const TrendingWeeklyScreen({Key? key}) : super(key: key);

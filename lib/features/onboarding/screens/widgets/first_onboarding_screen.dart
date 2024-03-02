@@ -5,6 +5,9 @@ import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/login/screens/pages/login.dart';
 import 'package:flutter_project/features/onboarding/screens/onboarding_screen.dart';
 
+import '../../../../core/helper/navigation.dart';
+import '../../../../core/utils/app_routes.dart';
+
 class FirstOnBoardingScreen extends StatelessWidget {
   const FirstOnBoardingScreen({Key? key}) : super(key: key);
 
@@ -138,8 +141,8 @@ class FirstOnBoardingScreen extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Login()));
+              NavigationHelper.navigateToReplacement(
+                  AppRoute.LOGIN);
             },
             child: Text(
               'Login',

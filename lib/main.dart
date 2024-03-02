@@ -16,6 +16,8 @@ import 'package:flutter_project/features/login/cubit/SignUpCubit/sign_up_cubit.d
 import 'package:flutter_project/features/movie_details/cubit/movie_details_cubit.dart';
 import 'package:flutter_project/features/onboarding/cubit/onboarding_cubit.dart';
 import 'package:flutter_project/features/onboarding/screens/widgets/first_onboarding_screen.dart';
+import 'core/helper/navigation.dart';
+import 'core/utils/app_routes.dart';
 import 'features/favourite/cubit/FavouriteMovieCubit.dart';
 
 void main() async {
@@ -53,9 +55,11 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Hulu',
-        home: UserMain.instance != null
-            ? const AppLayoutScreen()
-            : const FirstOnBoardingScreen(),
+        navigatorKey: NavigationHelper.navigatorKey,
+        onGenerateRoute: NavigationHelper.generateRoute,
+        initialRoute: UserMain.instance != null
+            ? AppRoute.APP_LAYOUT
+            : AppRoute.FIRST_ON_BOARDING,
       ),
     );
   }

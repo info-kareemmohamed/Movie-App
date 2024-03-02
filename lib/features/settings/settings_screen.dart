@@ -7,9 +7,11 @@ import 'package:flutter_project/core/model/main_user.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/app_layout/cubit/app_layout_cubit.dart';
-import 'package:flutter_project/features/login/screens/pages/login.dart';
 import 'package:flutter_project/features/login/screens/widget/profile_picture_container.dart';
 import 'package:flutter_project/features/settings/widget/flutter_switch_button.dart';
+
+import '../../core/helper/navigation.dart';
+import '../../core/utils/app_routes.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -177,11 +179,8 @@ class SettingsScreen extends StatelessWidget {
                           onTap: () async {
                             context.read<AppLayoutCubit>().currentIndex = 1;
                             await FirebaseAuth.instance.signOut().then(
-                                (value) => Navigator.pushAndRemoveUntil(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Login()),
-                                    (route) => false));
+                                (value) => NavigationHelper.navigateToReplacement(
+                                    AppRoute.LOGIN));
                           },
                           child: Container(
                             height: 45,

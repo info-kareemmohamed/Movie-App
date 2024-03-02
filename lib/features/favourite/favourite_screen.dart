@@ -4,7 +4,9 @@ import 'package:flutter_project/core/common/app_widget.dart';
 import 'package:flutter_project/core/services/datasource/remote/apiLinks/AllApi.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../core/helper/navigation.dart';
 import '../../core/utils/app_colors.dart';
+import '../../core/utils/app_routes.dart';
 import '../../core/utils/app_text_style.dart';
 import '../movie_details/screens/details_screen.dart';
 import 'cubit/FavouriteMovieCubit.dart';
@@ -45,12 +47,10 @@ class FavouriteScreen extends StatelessWidget {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => MovieDetails(
-                                              id: state.movies[index].id
-                                                  .toString())));
+                                  NavigationHelper.navigateTo(
+                                    AppRoute.MOVIE_DETAILS,
+                                    arguments: state.movies[index].id,
+                                  );
                                 },
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -115,7 +115,8 @@ class FavouriteScreen extends StatelessWidget {
             } else if (state is FavouriteMovieEmptyState) {
               return _buildLottieScreen();
             } else if (state is FavouriteMovieErrorState) {
-              return AppWidget.buildErrorScreen(state.message??"Sorry Not Found");
+              return AppWidget.buildErrorScreen(
+                  state.message ?? "Sorry Not Found");
             } else {
               return Center(child: CircularProgressIndicator());
             }
@@ -148,5 +149,4 @@ class FavouriteScreen extends StatelessWidget {
       ),
     );
   }
-
 }

@@ -15,6 +15,8 @@ class FavouriteMovieSuccessState extends FavouriteMovieStates {
   FavouriteMovieSuccessState(this.movies);
 }
 
+class DeleteFavouriteMovieSuccessState extends FavouriteMovieStates {
+}
 
 
 class FavouriteMovieEmptyState extends FavouriteMovieStates {}

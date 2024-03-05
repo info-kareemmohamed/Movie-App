@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project/features/login/screens/pages/login.dart';
 
 import '../../features/app_layout/screens/app_layout_screen.dart';
-import '../../features/favourite/favourite_screen.dart';
+import '../../features/favourite/view/favourite_screen.dart';
 import '../../features/home/screens/home_screen.dart';
 import '../../features/register/view/register.dart';
 import '../../features/movie_details/screens/details_screen.dart';

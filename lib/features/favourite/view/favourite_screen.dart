@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/core/common/app_widget.dart';
 import 'package:flutter_project/core/services/datasource/remote/apiLinks/AllApi.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:lottie/lottie.dart';
+import 'package:flutter_project/features/favourite/view/app_bar.dart';
+import 'package:flutter_project/features/favourite/view/lottie_screen.dart';
 
-import '../../core/helper/navigation.dart';
-import '../../core/utils/app_colors.dart';
-import '../../core/utils/app_routes.dart';
-import '../../core/utils/app_text_style.dart';
-import '../movie_details/screens/details_screen.dart';
-import 'cubit/FavouriteMovieCubit.dart';
-import 'cubit/FavouriteMovieState.dart';
+import '../../../core/helper/navigation.dart';
+import '../../../core/utils/app_colors.dart';
+import '../../../core/utils/app_routes.dart';
+import '../../../core/utils/app_text_style.dart';
+import '../../movie_details/screens/details_screen.dart';
+import '../cubit/FavouriteMovieCubit.dart';
+import '../cubit/FavouriteMovieState.dart';
+import 'icon_delete.dart';
+import 'movie_image.dart';
 
 class FavouriteScreen extends StatelessWidget {
   const FavouriteScreen({Key? key}) : super(key: key);
@@ -27,24 +29,22 @@ class FavouriteScreen extends StatelessWidget {
             } else if (state is FavouriteMovieSuccessState) {
               return Scaffold(
                 backgroundColor: AppColors.darkTheme,
-                appBar: _buildAppBar(),
+                appBar: const FavouriteAppBar(),
                 body: ListView.builder(
                   itemCount: state.movies.length,
                   itemBuilder: (context, index) {
                     return Padding(
-                      padding: EdgeInsets.all(8.w),
+                      padding: EdgeInsets.all(8),
                       child: Row(
                         children: [
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              CircleAvatar(
-                                radius: 50.w,
-                                backgroundImage: NetworkImage(
-                                    '${imageBaseUrl}${state.movies[index].backdropPath}'),
-                              ),
+                              FavouriteMovieImage(
+                                  backdropPath: state.movies[index].backdropPath
+                                      .toString()),
                               SizedBox(
-                                width: 20.w,
+                                width: 20,
                               ),
                               GestureDetector(
                                 onTap: () {
@@ -57,54 +57,47 @@ class FavouriteScreen extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Container(
-                                      width: 190.w,
+                                      width: 190,
                                       child: Text(
                                         state.movies[index].title ?? "Name",
                                         style: TextStyle(
                                           color: Colors.white,
-                                          fontSize: 17.sp,
+                                          fontSize: 17,
                                           fontWeight: FontWeight.bold,
                                         ),
                                         overflow: TextOverflow.ellipsis,
                                       ),
                                     ),
                                     SizedBox(
-                                      height: 5.h,
+                                      height: 5,
                                     ),
                                     Text(
                                       state.movies[index].originalLanguage ??
                                           "",
                                       style: TextStyle(
                                           color: Colors.grey,
-                                          fontSize: 15.sp,
+                                          fontSize: 15,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     SizedBox(
-                                      height: 5.h,
+                                      height: 5,
                                     ),
                                     Text(
                                       state.movies[index].genre,
                                       style: TextStyle(
                                           color: Colors.grey,
-                                          fontSize: 15.sp,
+                                          fontSize: 15,
                                           fontWeight: FontWeight.bold),
                                     ),
                                   ],
                                 ),
                               ),
-                              IconButton(
-                                onPressed: () {
-                                  context
-                                      .read<FavouriteMovieCubit>()
-                                      .deleteFavouriteMovie(
-                                          state.movies[index].id.toString());
-                                },
-                                icon: Icon(
-                                  Icons.delete,
-                                  size: 30.w,
-                                  color: Colors.red,
-                                ),
-                              ),
+                              FavouriteIconDelete(
+                                onPressed: () => context
+                                    .read<FavouriteMovieCubit>()
+                                    .deleteFavouriteMovie(
+                                        state.movies[index].id.toString()),
+                              )
                             ],
                           ),
                         ],
@@ -114,7 +107,7 @@ class FavouriteScreen extends StatelessWidget {
                 ),
               );
             } else if (state is FavouriteMovieEmptyState) {
-              return _buildLottieScreen();
+              return const FavouriteLottieScreen();
             } else if (state is FavouriteMovieErrorState) {
               return AppWidget.buildErrorScreen(
                   state.message ?? "Sorry Not Found");
@@ -123,31 +116,5 @@ class FavouriteScreen extends StatelessWidget {
             }
           },
         ));
-  }
-
-  AppBar _buildAppBar() {
-    return AppBar(
-      backgroundColor: AppColors.darkTheme,
-      centerTitle: true,
-      title: Text(
-        'Favourite',
-        style: AppTextStyle.extraBold(
-          color: Colors.white,
-          fontSize: 18.74.sp,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildLottieScreen() {
-    return Scaffold(
-      backgroundColor: AppColors.darkTheme,
-      appBar: _buildAppBar(),
-      body: Center(
-        child: Padding(
-            padding: EdgeInsets.all(10.w),
-            child: Lottie.asset('assets/animation/Fv.json')),
-      ),
-    );
   }
 }

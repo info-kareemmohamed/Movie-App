@@ -15,9 +15,10 @@ import 'package:flutter_project/features/onboarding/cubit/onboarding_cubit.dart'
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/helper/navigation.dart';
 import 'core/model/main_user.dart';
+import 'core/utils/Constants.dart';
 import 'core/utils/app_routes.dart';
 import 'features/favourite/cubit/FavouriteMovieCubit.dart';
-import 'features/login/screens/widget/profile_picture_add.dart';
+
 
 void main() async {
   await firebaseInitialization();
@@ -62,8 +63,8 @@ class MyApp extends StatelessWidget {
               navigatorKey: NavigationHelper.navigatorKey,
               onGenerateRoute: NavigationHelper.generateRoute,
               initialRoute: UserMain.instance != null
-                  ? AppRoute.SIGN_UP
-                  : AppRoute.SIGN_UP,
+                  ? AppRoute.FAVOURITE
+                  : AppRoute.FAVOURITE,
 
             ),
           //}),

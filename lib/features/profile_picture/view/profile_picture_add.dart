@@ -8,10 +8,10 @@ import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_images.dart';
 import 'package:flutter_project/core/utils/app_routes.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
-import 'package:flutter_project/features/login/screens/widget/profile_picture_container.dart';
+import 'package:flutter_project/features/profile_picture/view/profile_picture_container.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../../../core/model/main_user.dart';
+import '../../../core/model/main_user.dart';
 
 class ProfilePictureAdd extends StatelessWidget {
   const ProfilePictureAdd({super.key});

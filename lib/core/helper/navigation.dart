@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/features/login/screens/pages/login.dart';
+import 'package:flutter_project/features/login/view/login.dart';
+import 'package:flutter_project/features/profile_picture/view/profile_picture.dart';
 
 import '../../features/app_layout/screens/app_layout_screen.dart';
 import '../../features/favourite/view/favourite_screen.dart';
@@ -46,6 +47,8 @@ class NavigationHelper {
         return MaterialPageRoute(builder: (_) => const SettingsScreen());
       case AppRoute.SIGN_UP:
         return MaterialPageRoute(builder: (_) => RegisterScreen());
+      case AppRoute.PROFILEPICTURE:
+        return MaterialPageRoute(builder: (_) => const ProfilePicture());
       case AppRoute.LOGIN:
         return MaterialPageRoute(builder: (_) => LoginScreen());
       case AppRoute.APP_LAYOUT:

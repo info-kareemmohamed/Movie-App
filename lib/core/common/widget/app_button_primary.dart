@@ -1,14 +1,16 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
-import '../../../core/utils/app_colors.dart';
-import '../../login/screens/widget/main_button.dart';
+import '../../utils/app_colors.dart';
+import 'main_button.dart';
 
-class ButtonCreateAccount extends StatelessWidget {
-  ButtonCreateAccount(
+class AppButtonPrimary extends StatelessWidget {
+  AppButtonPrimary(
       {super.key,
       required this.condition,
-      required this.onTap});
+      required this.onTap,
+      required this.text});
 
+  final String text;
   bool condition;
   final VoidCallback onTap;
 
@@ -18,7 +20,7 @@ class ButtonCreateAccount extends StatelessWidget {
       condition: condition,
       builder: (context) => Mainbutton(
         onTap: onTap,
-        text: 'Create Account',
+        text: text,
         txtColor: AppColors.darkTheme,
         btnColor: AppColors.primary,
       ),

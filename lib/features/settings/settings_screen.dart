@@ -7,7 +7,7 @@ import 'package:flutter_project/core/model/main_user.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/app_layout/cubit/app_layout_cubit.dart';
-import 'package:flutter_project/features/login/screens/widget/profile_picture_container.dart';
+import 'package:flutter_project/features/profile_picture/view/profile_picture_container.dart';
 import 'package:flutter_project/features/settings/widget/flutter_switch_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

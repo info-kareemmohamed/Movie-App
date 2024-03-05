@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project/core/helper/navigation.dart';
 import 'package:flutter_project/core/helper/validation.dart';
 import 'package:flutter_project/core/utils/app_routes.dart';
-import 'package:flutter_project/features/login/screens/widget/SnackBar.dart';
+import 'package:flutter_project/core/common/widget/SnackBar.dart';
 import 'package:flutter_project/features/register/repository/register_repo.dart';
 
 part 'register_state.dart';
@@ -39,7 +39,7 @@ class RegisterCubit extends Cubit<RegisterStates> {
         }
         emit(RegisterErrorState(code));
       } else {
-        NavigationHelper.navigateToReplacement(AppRoute.APP_LAYOUT);
+        NavigationHelper.navigateToReplacement(AppRoute.PROFILEPICTURE);
         emit(RegisterSuccessState());
       }
     } catch (e) {

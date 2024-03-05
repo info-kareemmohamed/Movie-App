@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import '../../../core/helper/firebase.dart';
 import '../../../core/model/main_user.dart';
 
 abstract class RegisterRepo {
@@ -13,16 +14,7 @@ abstract class RegisterRepo {
         password: password!,
       )
           .then((value) {
-        FirebaseFirestore.instance
-            .collection('Users')
-            .doc(FirebaseAuth.instance.currentUser!.uid)
-            .set({
-          'name': name,
-          'email': email,
-          'password': password,
-          'UId': FirebaseAuth.instance.currentUser!.uid,
-        });
-
+        FirebaseHelper.setUserInFirestore(name, email);
         UserMain.setDataToInstance(
             FirebaseAuth.instance.currentUser!.uid, name, email, password, "");
       });

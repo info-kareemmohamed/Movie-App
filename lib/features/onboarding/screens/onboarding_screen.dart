@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
-import 'package:flutter_project/features/login/screens/pages/login.dart';
+import 'package:flutter_project/features/login/view/login.dart';
 import 'package:flutter_project/features/onboarding/cubit/onboarding_cubit.dart';
 import 'package:flutter_project/features/onboarding/screens/widgets/fourth_onboarding_screen.dart.dart';
 import 'package:flutter_project/features/onboarding/screens/widgets/second_onboarding_screen.dart.dart';

@@ -1,12 +1,11 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_project/features/app_layout/screens/app_layout_screen.dart';
+import 'package:flutter_project/core/helper/navigation.dart';
+import 'package:flutter_project/core/utils/app_routes.dart';
 import 'package:flutter_project/features/login/cubit/LoginStates.dart';
-import 'package:flutter_project/features/login/screens/pages/profile_picture.dart';
-import 'package:flutter_project/features/login/screens/widget/SnackBar.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+import 'package:flutter_project/features/login/repository/login.dart';
+import 'package:flutter_project/core/common/widget/SnackBar.dart';
+import '../../../core/helper/validation.dart';
 
 class LoginCubit extends Cubit<LoginStates> {
   LoginCubit() : super(InitialLoginState());
@@ -18,106 +17,77 @@ class LoginCubit extends Cubit<LoginStates> {
     emit(ChangeVisibilityState());
   }
 
-  bool isGmailEmail(String em) {
-    String gmailRegExp = r"^[a-zA-Z0-9_.+-]+@gmail\.com$";
-    RegExp regExp = RegExp(gmailRegExp);
-    return regExp.hasMatch(em);
-  }
-
-  bool isValidEmail(String em) {
-    String generalEmailRegExp =
-        r"(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'"
-        r'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-'
-        r'\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*'
-        r'[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4]'
-        r'[0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9]'
-        r'[0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\'
-        r'x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])';
-    RegExp generalRegExp = RegExp(generalEmailRegExp);
-    return generalRegExp.hasMatch(em);
-  }
-
-  Future<void> login({String? email, String? password, context}) async {
+  Future<void> login({String? email, String? password}) async {
     emit(LoginLoadingState());
     try {
-      await FirebaseAuth.instance
-          .signInWithEmailAndPassword(
-        email: email!,
-        password: password!,
-      )
-          .then((value) {
-        Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (context) => const AppLayoutScreen()),
-            (route) => false);
+      String code = await LoginRepo.login(email, password);
+
+      if (code != '') {
+        codeMessageError(code);
+        emit(LoginErrorState());
+      } else {
+        NavigationHelper.navigateToReplacement(AppRoute.APP_LAYOUT);
         emit(LoginSuccessState());
-      });
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'invalid-credential') {
-        showSnackBar(
-          context,
-          'No user found or Wrong Password . Please check your Email and Password.',
-          Colors.red,
-        );
-      } else if (e.code == 'too-many-requests') {
-        showSnackBar(
-          context,
-          '''Many failed login attempts 
-          Please Closing App and Try Again''',
-          Colors.red,
-        );
       }
+    } catch (e) {
+      print(e);
     }
-    emit(LoginErrorState());
   }
 
-  Future<UserCredential?> signInWithGoogle(
-      {required BuildContext context}) async {
+  void codeMessageError(String code) {
+    if (code == 'invalid-credential') {
+      showSnackBar(
+        NavigationHelper.navigatorKey.currentContext!,
+        'No user found or Wrong Password . Please check your Email and Password.',
+        Colors.red,
+      );
+    } else if (code == 'too-many-requests') {
+      showSnackBar(
+        NavigationHelper.navigatorKey.currentContext!,
+        '''Many failed login attempts 
+          Please Closing App and Try Again''',
+        Colors.red,
+      );
+    }
+  }
+
+  void signInWithGoogle() async {
     emit(LoginLoadingState());
     try {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-      if (googleUser == null) {
+      String code = await LoginRepo.loginWithGoogle();
+
+      if (code == 'null') {
         emit(LoginCancelledState());
-
         return null;
+      } else if (code == '') {
+        NavigationHelper.navigateToReplacement(AppRoute.PROFILEPICTURE);
+        emit(LoginSuccessState());
       }
-
-      final GoogleSignInAuthentication googleAuth =
-          await googleUser.authentication;
-      final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth.accessToken,
-        idToken: googleAuth.idToken,
-      );
-
-      final UserCredential userCredential =
-          await FirebaseAuth.instance.signInWithCredential(credential);
-
-      FirebaseFirestore.instance
-          .collection('Users')
-          .doc(FirebaseAuth.instance.currentUser!.uid)
-          .set({
-        'name': userCredential.user!.displayName,
-        'email': userCredential.user!.email,
-        'UId': FirebaseAuth.instance.currentUser!.uid,
-      }).then((value) {
-        Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => const ProfilePicture()),
-          (route) => false,
-        );
-      });
-
-      emit(LoginSuccessState());
-      return userCredential;
     } catch (e) {
       showSnackBar(
-        context,
+        NavigationHelper.navigatorKey.currentContext!,
         'Failed to sign in with Google Network Error',
         Colors.red,
       );
       print('Failed to sign in with Google: $e');
       emit(LoginErrorState());
-      rethrow;
     }
+  }
+
+  void setDataToLogin(bool validate, String email, String password) {
+    if (visibility) {
+      login(
+        email: email,
+        password: password,
+      );
+    }
+  }
+
+  String? validateMessageEmail(String? email) {
+    return Validation.validateEmail(email);
+  }
+
+  String? validateMessagePasswoed(String? password) {
+    return Validation.validatePassword(password);
   }
 }

@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/app/styles/icon_broken.dart';
+import 'package:flutter_project/core/common/widget/app_button_primary.dart';
 import 'package:flutter_project/core/helper/firebase.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_images.dart';
@@ -10,14 +11,10 @@ import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/core/utils/space.dart';
 import 'package:flutter_project/features/login/cubit/LoginCubit.dart';
 import 'package:flutter_project/features/login/cubit/LoginStates.dart';
-import 'package:flutter_project/features/register/view/register.dart';
-import 'package:flutter_project/features/login/screens/widget/main_button.dart';
-import 'package:flutter_project/features/login/screens/widget/social_widget.dart';
-import 'package:flutter_project/features/login/screens/widget/text_field.dart';
-
-import '../../../../core/helper/navigation.dart';
-import '../../../../core/utils/app_routes.dart';
-import '../widget/custom_text_filed.dart';
+import 'package:flutter_project/features/login/view/social_widget.dart';
+import '../../../core/helper/navigation.dart';
+import '../../../core/utils/app_routes.dart';
+import '../../../core/common/widget/custom_text_filed.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -30,7 +27,6 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var cubit = context.read<LoginCubit>();
     return BlocBuilder<LoginCubit, LoginStates>(
-
       builder: (context, state) {
         return Form(
           key: fromKey,
@@ -39,7 +35,6 @@ class LoginScreen extends StatelessWidget {
             body: Padding(
               padding: const EdgeInsets.only(top: 50.0),
               child: SingleChildScrollView(
-
                 child: Column(
                   children: [
                     const SpaceVH(height: 50.0),
@@ -54,17 +49,7 @@ class LoginScreen extends StatelessWidget {
                       keyBordType: TextInputType.emailAddress,
                       icon: IconBroken.Profile,
                       hintTxt: 'Email',
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          return '       Please Enter Email Address';
-                        }
-                        if (!cubit.isValidEmail(value)) {
-                          return '       Please Enter a Valid Email Address';
-                        }
-                        if (!cubit.isGmailEmail(value)) {
-                          return '       Please Enter a Valid Gmail Address';
-                        }
-                      }, isObs:false, visible: () {  },
+                      validator: (value) => cubit.validateMessageEmail(value),
                     ),
                     const SizedBox(height: 10),
                     CustomTextFiled(
@@ -77,11 +62,8 @@ class LoginScreen extends StatelessWidget {
                         cubit.changePasswordVisibility();
                       },
                       hintTxt: 'Password',
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          return '       Please Enter Password';
-                        }
-                      },
+                      validator: (value) =>
+                          cubit.validateMessagePasswoed(value),
                     ),
                     Align(
                       alignment: Alignment.centerRight,
@@ -89,7 +71,8 @@ class LoginScreen extends StatelessWidget {
                         padding: const EdgeInsets.only(right: 20.0),
                         child: TextButton(
                           onPressed: () async {
-                            await forgotPassword(userEmailController.text);
+                            await FirebaseHelper.forgotPassword(
+                                userEmailController.text);
                           },
                           child: Text(
                             'Forgot Password?',
@@ -106,28 +89,13 @@ class LoginScreen extends StatelessWidget {
                       alignment: Alignment.bottomCenter,
                       child: Column(
                         children: [
-                          ConditionalBuilder(
-                            condition: state is! LoginLoadingState,
-                            builder: (context) => Mainbutton(
-                              onTap: () {
-                                if (fromKey.currentState!.validate()) {
-                                  context.read<LoginCubit>().login(
-                                        email: userEmailController.text,
-                                        password: userPassController.text,
-                                        context: context,
-                                      );
-                                }
-                              },
-                              text: 'Sign in',
-                              txtColor: AppColors.darkTheme,
-                              btnColor: AppColors.primary,
-                            ),
-                            fallback: (context) => const Center(
-                              child: CircularProgressIndicator(
-                                color: AppColors.primary,
-                              ),
-                            ),
-                          ),
+                          AppButtonPrimary(
+                              condition: state is! LoginLoadingState,
+                              onTap: () => cubit.setDataToLogin(
+                                  fromKey.currentState!.validate(),
+                                  userEmailController.text,
+                                  userPassController.text),
+                              text: 'Sign in'),
                           const SizedBox(
                             height: 50,
                           ),

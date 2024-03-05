@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_images.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
-import 'package:flutter_project/features/login/screens/widget/profile_picture_add.dart';
+import 'package:flutter_project/features/profile_picture/view/profile_picture_add.dart';
 
 class ProfilePicture extends StatelessWidget {
   const ProfilePicture({super.key});

@@ -7,4 +7,5 @@ class AppRoute {
   static const String SETTINGS = "SETTINGS";
   static const String APP_LAYOUT = "APP_LAYOUT";
   static const String FIRST_ON_BOARDING = "FIRST_ON_BOARDING";
+  static const String PROFILEPICTURE = 'PROFILEPICTURE';
 }

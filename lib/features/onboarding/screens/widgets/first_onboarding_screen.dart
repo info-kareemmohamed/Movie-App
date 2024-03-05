@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_images.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
-import 'package:flutter_project/features/login/screens/pages/login.dart';
+import 'package:flutter_project/features/login/view/login.dart';
 import 'package:flutter_project/features/onboarding/screens/onboarding_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

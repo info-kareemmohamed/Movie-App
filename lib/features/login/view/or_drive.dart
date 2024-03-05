@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 
-import '../../../../core/utils/app_colors.dart';
+import '../../../core/utils/app_colors.dart';
 
 class OrDivider extends StatelessWidget {
   const OrDivider({Key? key}) : super(key: key);

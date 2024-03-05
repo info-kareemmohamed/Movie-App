@@ -16,7 +16,7 @@ class SocialWidget extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    signInWithFacebook();
+                    FirebaseHelper.signInWithFacebook();
                   },
                   child: Image.asset(
                     AppImages.facebookIcon,
@@ -31,7 +31,7 @@ class SocialWidget extends StatelessWidget {
                   onTap: () {
                     context
                         .read<LoginCubit>()
-                        .signInWithGoogle(context: context);
+                        .signInWithGoogle();
                   },
                   child: Image.asset(
                     AppImages.googleIcon,

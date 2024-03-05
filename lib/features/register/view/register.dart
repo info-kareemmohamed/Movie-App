@@ -8,9 +8,9 @@ import 'package:flutter_project/features/register/view/top_text.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/space.dart';
-import '../../login/screens/widget/custom_text_filed.dart';
+import '../../../core/common/widget/custom_text_filed.dart';
 
-import 'button_create_account.dart';
+import '../../../core/common/widget/app_button_primary.dart';
 
 class RegisterScreen extends StatelessWidget {
   RegisterScreen({Key? key}) : super(key: key);
@@ -81,8 +81,9 @@ class RegisterScreen extends StatelessWidget {
                     ),
 
                     const SpaceVH(height: 25.0),
-                    ButtonCreateAccount(
+                    AppButtonPrimary(
                       condition: state is! RegisterLoadingState,
+                      text: 'Create Account',
                       onTap: () => cubit.setDataToSignUp(
                           formKey.currentState!.validate(),
                           userNameController.text,

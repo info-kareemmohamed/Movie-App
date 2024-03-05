@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/features/home/cubit/trendingDay/trending_day_movies_cubit.dart';
 import 'package:flutter_project/features/home/common/screen_common_widget.dart';
-import '../../../../core/common/app_widget.dart';
+import '../../../../core/common/widget/app_widget.dart';
 
 class TrendingDailyScreen extends StatelessWidget {
   const TrendingDailyScreen({Key? key}) : super(key: key);

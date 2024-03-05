@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_project/core/common/app_widget.dart';
+import 'package:flutter_project/core/common/widget/app_widget.dart';
 import 'package:flutter_project/core/services/datasource/remote/apiLinks/AllApi.dart';
 import 'package:flutter_project/features/favourite/view/app_bar.dart';
 import 'package:flutter_project/features/favourite/view/lottie_screen.dart';

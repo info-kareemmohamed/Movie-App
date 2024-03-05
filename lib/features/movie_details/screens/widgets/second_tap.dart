@@ -4,6 +4,7 @@ import 'package:flutter_project/core/common/app_widget.dart';
 import 'package:flutter_project/features/movie_details/model/MovieDetailsResponse.dart';
 import 'package:flutter_project/core/utils/app_images.dart';
 import 'package:flutter_project/features/movie_details/screens/widgets/video_player.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../cubit/video/video_movie_cubit.dart';
 import '../../cubit/video/video_movie_state.dart';
 import '../../../../core/services/datasource/remote/apiLinks/AllApi.dart';
@@ -26,17 +27,17 @@ class SecondTabScreen extends StatelessWidget {
               SliverList(
                 delegate: SliverChildBuilderDelegate(
                   (context, index) => Container(
-                    height: 155,
+                    height: 155.h,
                     decoration: BoxDecoration(
                       image: const DecorationImage(
                         image: AssetImage(AppImages.poster),
                         fit: BoxFit.cover,
                       ),
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(10.w),
                     ),
-                    margin: const EdgeInsets.symmetric(
-                      vertical: 15,
-                      horizontal: 40,
+                    margin:  EdgeInsets.symmetric(
+                      vertical: 15.h,
+                      horizontal: 40.w,
                     ),
                     child: VideoApp(urlVideo: state.movies[index].key??""),
                   ),

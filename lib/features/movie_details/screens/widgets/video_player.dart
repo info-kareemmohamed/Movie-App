@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class VideoApp extends StatefulWidget {
@@ -33,7 +34,7 @@ class _VideoAppState extends State<VideoApp> {
           controller: _controller,
           showVideoProgressIndicator: false,
           progressIndicatorColor: Colors.blueAccent,
-          width: 600,
+          width: 600.w,
           onReady: () => debugPrint("Ready"),
         ),
       ),

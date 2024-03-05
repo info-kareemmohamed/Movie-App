@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../model/MovieResponse.dart';
 import 'movie_card.dart';
@@ -26,8 +27,8 @@ class ScreenCommonWidget{
         scrollDirection: Axis.horizontal,
         child: Padding(
           padding:  EdgeInsets.symmetric(
-            horizontal:h,
-            vertical: v,
+            horizontal:h.w,
+            vertical: v.h,
           ),
           child:ScreenCommonWidget.listMovies(movies),
         ),

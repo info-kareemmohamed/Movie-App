@@ -4,6 +4,7 @@ import 'package:flutter_project/app/styles/icon_broken.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/movie_details/cubit/movie_details_cubit.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/Constants.dart';
 import '../../../favourite/model/movie_favourite.dart';
@@ -11,14 +12,15 @@ import '../../model/MovieDetailsResponse.dart';
 
 class SliverAppbar extends StatelessWidget {
   const SliverAppbar({super.key, required this.movie});
+
   final Movie movie;
 
   @override
   Widget build(BuildContext context) {
     final List<Tab> myTabs = [
-      Tab(child: Text('EPISODES', style: AppTextStyle.medium(fontSize: 16))),
-      Tab(child: Text('TRAILERS', style: AppTextStyle.medium(fontSize: 16))),
-      Tab(child: Text('CASTS', style: AppTextStyle.medium(fontSize: 16))),
+      Tab(child: Text('EPISODES', style: AppTextStyle.medium(fontSize: 16.sp))),
+      Tab(child: Text('TRAILERS', style: AppTextStyle.medium(fontSize: 16.sp))),
+      Tab(child: Text('CASTS', style: AppTextStyle.medium(fontSize: 16.sp))),
     ];
     bool isFavourite = false;
     return BlocBuilder<MovieDetailsCubit, MovieDetailsState>(
@@ -28,7 +30,7 @@ class SliverAppbar extends StatelessWidget {
         return SliverAppBar(
           actions: [
             Padding(
-              padding: const EdgeInsets.only(right: 30),
+              padding: EdgeInsets.only(right: 30.w),
               child: StatefulBuilder(
                 builder: (context, setState) => IconButton(
                   onPressed: () {
@@ -51,32 +53,32 @@ class SliverAppbar extends StatelessWidget {
                     });
                   },
                   icon: isFavourite
-                      ? const Icon(
+                      ? Icon(
                           IconBroken.Heart,
-                          size: 50,
+                          size: 50.w,
                           color: Colors.red,
                         )
-                      : const Icon(
+                      : Icon(
                           IconBroken.Heart,
-                          size: 50,
+                          size: 50.w,
                         ),
                 ),
               ),
             ),
           ],
-          leadingWidth: 88,
+          leadingWidth: 88.w,
           leading: Padding(
-            padding: const EdgeInsets.only(left: 35, top: 5, bottom: 3.5),
+            padding: EdgeInsets.only(left: 35.w, top: 5.h, bottom: 3.5.h),
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.transparent.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(10.w),
               ),
               child: IconButton(
                 icon: Icon(
                   Icons.arrow_back_ios_rounded,
                   color: AppColors.primary.withOpacity(0.8),
-                  size: 20,
+                  size: 20.w,
                 ),
                 onPressed: () {
                   Navigator.pop(context);
@@ -85,7 +87,7 @@ class SliverAppbar extends StatelessWidget {
             ),
           ),
           backgroundColor: AppColors.darkTheme,
-          collapsedHeight: 450,
+          collapsedHeight: 450.h,
           flexibleSpace: FlexibleSpaceBar(
             collapseMode: CollapseMode.pin,
             background: Stack(

@@ -6,7 +6,7 @@ Widget customTextField({
   required String hintTxt,
   required IconData icon,
   required TextEditingController controller,
-  bool isObs = false,
+  bool isObs = true,
   TextInputType? keyBordType,
   required validator,
   Function()? visible,
@@ -14,6 +14,7 @@ Widget customTextField({
   return Padding(
     padding: const EdgeInsets.all(15.0),
     child: TextFormField(
+
       controller: controller,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       textAlignVertical: TextAlignVertical.center,

@@ -5,6 +5,7 @@ import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/features/favourite/favourite_screen.dart';
 import 'package:flutter_project/features/home/screens/home_screen.dart';
 import 'package:flutter_project/features/settings/settings_screen.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 part 'app_layout_state.dart';
 
@@ -32,20 +33,20 @@ class AppLayoutCubit extends Cubit<AppLayoutStates> {
     SettingsScreen(),
   ];
 
-  List<Widget> items = const [
+  List<Widget> items =  [
     Icon(
       IconBroken.Heart,
-      size: 30,
+      size: 30.w,
       color: AppColors.primary,
     ),
     Icon(
       IconBroken.Home,
-      size: 30,
+      size: 30.w,
       color: AppColors.primary,
     ),
     Icon(
       IconBroken.Setting,
-      size: 30,
+      size: 30.w,
       color: AppColors.primary,
     ),
   ];

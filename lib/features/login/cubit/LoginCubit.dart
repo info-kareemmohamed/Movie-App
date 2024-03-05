@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/features/app_layout/screens/app_layout_screen.dart';
-import 'package:flutter_project/features/login/cubit/LoginCubit/LoginStates.dart';
+import 'package:flutter_project/features/login/cubit/LoginStates.dart';
 import 'package:flutter_project/features/login/screens/pages/profile_picture.dart';
 import 'package:flutter_project/features/login/screens/widget/SnackBar.dart';
 import 'package:google_sign_in/google_sign_in.dart';

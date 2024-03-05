@@ -6,6 +6,7 @@ import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/home/cubit/home_screen_cubit.dart';
 import 'package:flutter_project/features/movie_details/screens/details_screen.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/helper/navigation.dart';
 import '../../../../core/utils/app_routes.dart';
@@ -20,7 +21,7 @@ class SliverAppbarHome extends StatelessWidget {
       builder: (context, state) {
         return SliverAppBar(
           backgroundColor: AppColors.darkTheme,
-          collapsedHeight: 500,
+          collapsedHeight: 500.h,
           flexibleSpace: FlexibleSpaceBar(
             background: BlocBuilder<TopRatedMoviesCubit, TopRatedMoviesState>(
               builder: (context, state) {
@@ -33,9 +34,8 @@ class SliverAppbarHome extends StatelessWidget {
                             return GestureDetector(
                               onTap: () {
                                 NavigationHelper.navigateTo(
-                                  AppRoute.MOVIE_DETAILS,
-                                 arguments: results.id
-                                );
+                                    AppRoute.MOVIE_DETAILS,
+                                    arguments: results.id);
                               },
                               child: Container(
                                 decoration: BoxDecoration(
@@ -54,7 +54,7 @@ class SliverAppbarHome extends StatelessWidget {
                     options: CarouselOptions(
                       viewportFraction: 1,
                       autoPlay: true,
-                      height: 600,
+                      height: 600.h,
                     ),
                   );
                 } else if (state is TopRatedInitialState) {
@@ -62,12 +62,12 @@ class SliverAppbarHome extends StatelessWidget {
                 } else {
                   return Center(
                     child: Padding(
-                      padding: const EdgeInsets.all(10),
+                      padding: EdgeInsets.all(10.w),
                       child: Text(
                         'Sorry Not Found',
                         style: AppTextStyle.semiBold(
                           color: Colors.red,
-                          fontSize: 25,
+                          fontSize: 25.sp,
                         ),
                       ),
                     ),
@@ -81,34 +81,34 @@ class SliverAppbarHome extends StatelessWidget {
             backgroundColor: Colors.transparent,
             elevation: 0,
             title: Padding(
-              padding: const EdgeInsets.only(left: 5),
+              padding: EdgeInsets.only(left: 5.w),
               child: SizedBox(
-                width: 250,
+                width: 250.w,
                 child: Container(
-                  padding: const EdgeInsets.only(left: 15),
+                  padding: EdgeInsets.only(left: 15.w),
                   decoration: BoxDecoration(
                       color: Colors.black.withOpacity(0.8),
-                      borderRadius: BorderRadius.circular(15)),
+                      borderRadius: BorderRadius.circular(15.w)),
                   child: DropdownButton(
                     items: cubit.dropMenuItems,
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.keyboard_arrow_down_rounded,
-                      size: 40,
+                      size: 40.w,
                       color: AppColors.lightYellow,
                     ),
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: BorderRadius.circular(15.w),
                     dropdownColor: AppColors.darkTheme.withOpacity(0.7),
                     underline: const SizedBox(),
                     hint: Text(
                       cubit.selectedValue,
                       style: AppTextStyle.black(
                         color: AppColors.lightYellow,
-                        fontSize: 18,
+                        fontSize: 18.sp,
                       ),
                     ),
                     value: cubit.selectedValue,
                     style: AppTextStyle.black(
-                      fontSize: 18,
+                      fontSize: 18.sp,
                       color: AppColors.lightYellow,
                     ),
                     isExpanded: true,

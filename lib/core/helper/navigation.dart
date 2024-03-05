@@ -4,7 +4,7 @@ import 'package:flutter_project/features/login/screens/pages/login.dart';
 import '../../features/app_layout/screens/app_layout_screen.dart';
 import '../../features/favourite/favourite_screen.dart';
 import '../../features/home/screens/home_screen.dart';
-import '../../features/login/screens/pages/signup.dart';
+import '../../features/register/view/register.dart';
 import '../../features/movie_details/screens/details_screen.dart';
 import '../../features/onboarding/screens/widgets/first_onboarding_screen.dart';
 import '../../features/settings/settings_screen.dart';
@@ -35,15 +35,17 @@ class NavigationHelper {
       case AppRoute.HOME:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case AppRoute.MOVIE_DETAILS:
-        return MaterialPageRoute(builder: (_){
-          return MovieDetailsScreen(id: settings.arguments ,);
+        return MaterialPageRoute(builder: (_) {
+          return MovieDetailsScreen(
+            id: settings.arguments,
+          );
         });
       case AppRoute.FAVOURITE:
         return MaterialPageRoute(builder: (_) => const FavouriteScreen());
       case AppRoute.SETTINGS:
         return MaterialPageRoute(builder: (_) => const SettingsScreen());
       case AppRoute.SIGN_UP:
-        return MaterialPageRoute(builder: (_) => SignUpScreen());
+        return MaterialPageRoute(builder: (_) => RegisterScreen());
       case AppRoute.LOGIN:
         return MaterialPageRoute(builder: (_) => LoginScreen());
       case AppRoute.APP_LAYOUT:

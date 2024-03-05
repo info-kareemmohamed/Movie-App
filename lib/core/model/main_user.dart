@@ -28,8 +28,6 @@ class UserMain {
     return instance;
   }
 
-
-
   static UserMain? setDataToInstance(String id, String name, String email,
       String password, String profilePicture) {
     if (instance == null) {

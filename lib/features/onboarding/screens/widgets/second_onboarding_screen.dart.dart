@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_images.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SecondOnBoardingScreen extends StatelessWidget {
   const SecondOnBoardingScreen({Key? key});
@@ -10,36 +11,36 @@ class SecondOnBoardingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.only(top: 90.0),
+        padding:  EdgeInsets.only(top: 90.0.h),
         child: Column(
           children: [
             Image.asset(AppImages.huluLogo),
-            const SizedBox(
-              height: 35,
+            SizedBox(
+              height: 35.h,
             ),
             Stack(
               alignment: Alignment.center,
               children: [
                 Positioned(
-                  left: -30,
+                  left: -30.w,
                   child: Image.asset(
                     AppImages.poster4,
                   ),
                 ),
                 Positioned(
-                  left: 35.0,
+                  left: 35.0.w,
                   child: Image.asset(
                     AppImages.poster5,
                   ),
                 ),
                 Positioned(
-                  right: -35,
+                  right: -35.w,
                   child: Image.asset(
                     AppImages.poster3,
                   ),
                 ),
                 Positioned(
-                  right: 45.0,
+                  right: 45.0.w,
                   child: Image.asset(
                     AppImages.poster2,
                   ),
@@ -51,8 +52,8 @@ class SecondOnBoardingScreen extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(
-              height: 62,
+            SizedBox(
+              height: 62.h,
             ),
             RichText(
               textAlign: TextAlign.center,
@@ -61,26 +62,26 @@ class SecondOnBoardingScreen extends StatelessWidget {
                   TextSpan(
                     text: 'Unlimited\n',
                     style: AppTextStyle.black(
-                      fontSize: 33.01,
+                      fontSize: 33.01.sp,
                       color: AppColors.primary,
                     ),
                   ),
-                  const WidgetSpan(
-                    child: SizedBox(height: 30),
+                  WidgetSpan(
+                    child: SizedBox(height: 30.h),
                   ),
                   TextSpan(
                     text: 'movies, TV shows & More... \n',
                     style: AppTextStyle.black(
-                      fontSize: 18.29,
+                      fontSize: 18.29.sp,
                     ),
                   ),
-                  const WidgetSpan(
-                    child: SizedBox(height: 35),
+                  WidgetSpan(
+                    child: SizedBox(height: 35.w),
                   ),
                   TextSpan(
                     text: 'Watch anywhere, cancel\nanytime.',
                     style: AppTextStyle.medium(
-                      fontSize: 13.3,
+                      fontSize: 13.3.sp,
                       color: AppColors.lightYellow,
                     ),
                   ),

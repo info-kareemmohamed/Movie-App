@@ -8,15 +8,16 @@ import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_images.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/core/utils/space.dart';
-import 'package:flutter_project/features/login/cubit/LoginCubit/LoginCubit.dart';
-import 'package:flutter_project/features/login/cubit/LoginCubit/LoginStates.dart';
-import 'package:flutter_project/features/login/screens/pages/signup.dart';
+import 'package:flutter_project/features/login/cubit/LoginCubit.dart';
+import 'package:flutter_project/features/login/cubit/LoginStates.dart';
+import 'package:flutter_project/features/register/view/register.dart';
 import 'package:flutter_project/features/login/screens/widget/main_button.dart';
 import 'package:flutter_project/features/login/screens/widget/social_widget.dart';
 import 'package:flutter_project/features/login/screens/widget/text_field.dart';
 
 import '../../../../core/helper/navigation.dart';
 import '../../../../core/utils/app_routes.dart';
+import '../widget/custom_text_filed.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -29,6 +30,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var cubit = context.read<LoginCubit>();
     return BlocBuilder<LoginCubit, LoginStates>(
+
       builder: (context, state) {
         return Form(
           key: fromKey,
@@ -37,6 +39,7 @@ class LoginScreen extends StatelessWidget {
             body: Padding(
               padding: const EdgeInsets.only(top: 50.0),
               child: SingleChildScrollView(
+
                 child: Column(
                   children: [
                     const SpaceVH(height: 50.0),
@@ -46,7 +49,7 @@ class LoginScreen extends StatelessWidget {
                       fit: BoxFit.fill,
                     ),
                     const SpaceVH(height: 50),
-                    customTextField(
+                    CustomTextFiled(
                       controller: userEmailController,
                       keyBordType: TextInputType.emailAddress,
                       icon: IconBroken.Profile,
@@ -61,10 +64,10 @@ class LoginScreen extends StatelessWidget {
                         if (!cubit.isGmailEmail(value)) {
                           return '       Please Enter a Valid Gmail Address';
                         }
-                      },
+                      }, isObs:false, visible: () {  },
                     ),
                     const SizedBox(height: 10),
-                    customTextField(
+                    CustomTextFiled(
                       controller: userPassController,
                       keyBordType: TextInputType.text,
                       icon:

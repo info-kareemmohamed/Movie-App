@@ -1,8 +1,17 @@
+import 'dart:io';
+
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_project/core/helper/navigation.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_images.dart';
+import 'package:flutter_project/core/utils/app_routes.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/login/screens/widget/profile_picture_container.dart';
+import 'package:image_picker/image_picker.dart';
+
+import '../../../../core/model/main_user.dart';
 
 class ProfilePictureAdd extends StatelessWidget {
   const ProfilePictureAdd({super.key});
@@ -35,6 +44,8 @@ class ProfilePictureAdd extends StatelessWidget {
                           size: 25,
                         ),
                         onPressed: () {
+                          uploadImage();
+                          NavigationHelper.navigateToReplacement(AppRoute.APP_LAYOUT);
                           print('add');
                         },
                       ),
@@ -88,5 +99,31 @@ new profile''',
         ),
       ],
     );
+  }
+
+  Future<void> uploadImage() async {
+    File? file = await _pickImage();
+    if (file != null) {
+      UploadTask task = FirebaseStorage.instance
+          .ref()
+          .child('${UserMain.instance!.id}.png')
+          .putFile(file!);
+      UserMain.instance!.profilePicture =
+          await task.snapshot.ref.getDownloadURL();
+    } else {
+      print('no');
+    }
+  }
+
+  Future<File?> _pickImage() async {
+    ImagePicker picker = ImagePicker();
+    XFile? xfile = await picker.pickImage(source: ImageSource.gallery);
+    if (xfile != null) {
+      File file = File(xfile.path);
+      print("YES");
+      return file;
+    }
+    print("NO");
+    return null;
   }
 }

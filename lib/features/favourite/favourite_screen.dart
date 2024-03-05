@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/core/common/app_widget.dart';
 import 'package:flutter_project/core/services/datasource/remote/apiLinks/AllApi.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../core/helper/navigation.dart';
@@ -31,19 +32,19 @@ class FavouriteScreen extends StatelessWidget {
                   itemCount: state.movies.length,
                   itemBuilder: (context, index) {
                     return Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(8.w),
                       child: Row(
                         children: [
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               CircleAvatar(
-                                radius: 50,
+                                radius: 50.w,
                                 backgroundImage: NetworkImage(
                                     '${imageBaseUrl}${state.movies[index].backdropPath}'),
                               ),
-                              const SizedBox(
-                                width: 20,
+                              SizedBox(
+                                width: 20.w,
                               ),
                               GestureDetector(
                                 onTap: () {
@@ -56,36 +57,36 @@ class FavouriteScreen extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Container(
-                                      width: 190,
+                                      width: 190.w,
                                       child: Text(
                                         state.movies[index].title ?? "Name",
-                                        style: const TextStyle(
+                                        style: TextStyle(
                                           color: Colors.white,
-                                          fontSize: 17,
+                                          fontSize: 17.sp,
                                           fontWeight: FontWeight.bold,
                                         ),
                                         overflow: TextOverflow.ellipsis,
                                       ),
                                     ),
-                                    const SizedBox(
-                                      height: 5,
+                                    SizedBox(
+                                      height: 5.h,
                                     ),
                                     Text(
                                       state.movies[index].originalLanguage ??
                                           "",
-                                      style: const TextStyle(
+                                      style: TextStyle(
                                           color: Colors.grey,
-                                          fontSize: 15,
+                                          fontSize: 15.sp,
                                           fontWeight: FontWeight.bold),
                                     ),
-                                    const SizedBox(
-                                      height: 5,
+                                    SizedBox(
+                                      height: 5.h,
                                     ),
                                     Text(
                                       state.movies[index].genre,
-                                      style: const TextStyle(
+                                      style: TextStyle(
                                           color: Colors.grey,
-                                          fontSize: 15,
+                                          fontSize: 15.sp,
                                           fontWeight: FontWeight.bold),
                                     ),
                                   ],
@@ -98,9 +99,9 @@ class FavouriteScreen extends StatelessWidget {
                                       .deleteFavouriteMovie(
                                           state.movies[index].id.toString());
                                 },
-                                icon: const Icon(
+                                icon: Icon(
                                   Icons.delete,
-                                  size: 30,
+                                  size: 30.w,
                                   color: Colors.red,
                                 ),
                               ),
@@ -132,7 +133,7 @@ class FavouriteScreen extends StatelessWidget {
         'Favourite',
         style: AppTextStyle.extraBold(
           color: Colors.white,
-          fontSize: 18.74,
+          fontSize: 18.74.sp,
         ),
       ),
     );
@@ -144,7 +145,7 @@ class FavouriteScreen extends StatelessWidget {
       appBar: _buildAppBar(),
       body: Center(
         child: Padding(
-            padding: const EdgeInsets.all(10),
+            padding: EdgeInsets.all(10.w),
             child: Lottie.asset('assets/animation/Fv.json')),
       ),
     );

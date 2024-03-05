@@ -4,6 +4,7 @@ import 'package:flutter_project/core/utils/app_images.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/login/screens/pages/login.dart';
 import 'package:flutter_project/features/onboarding/screens/onboarding_screen.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/helper/navigation.dart';
 import '../../../../core/utils/app_routes.dart';
@@ -21,49 +22,49 @@ class FirstOnBoardingScreen extends StatelessWidget {
             child: Stack(
               children: [
                 Positioned(
-                  top: 60,
+                  top: 60.h,
                   child: Image.asset(AppImages.poster11), //11
                 ),
                 Positioned(
-                  top: 10,
-                  left: 12,
+                  top: 10.h,
+                  left: 12.w,
                   child: Image.asset(AppImages.poster8), //8
                 ),
                 Positioned(
-                  left: 185,
+                  left: 185.w,
                   child: Image.asset(AppImages.poster10), //10
                 ),
                 Positioned(
-                  left: 230,
-                  top: 30,
+                  left: 230.w,
+                  top: 30.h,
                   child: Image.asset(AppImages.poster9), //9
                 ),
                 Positioned(
-                  left: 270,
-                  top: 160,
+                  left: 270.h,
+                  top: 160.w,
                   child: Image.asset(AppImages.poster12), //12
                 ),
                 Positioned(
-                  left: 100,
-                  top: 260,
+                  left: 100.h,
+                  top: 260.w,
                   child: Image.asset(AppImages.poster13), //13
                 ),
                 Positioned(
-                  left: 5,
-                  top: 350,
+                  left: 5.w,
+                  top: 350.h,
                   child: Image.asset(AppImages.poster6), //6
                 ),
                 Positioned(
-                  left: 140,
-                  top: 390,
+                  left: 140.w,
+                  top: 390.h,
                   child: Image.asset(AppImages.poster7), //7
                 ),
                 Positioned(
-                  top: 240,
+                  top: 240.h,
                   child: Image.asset(AppImages.ellipse), //E
                 ),
                 Positioned(
-                  top: 320,
+                  top: 320.h,
                   child: Image.asset(AppImages.shadow), //s
                 ),
               ],
@@ -71,7 +72,7 @@ class FirstOnBoardingScreen extends StatelessWidget {
           ),
           Image.asset(
             AppImages.huluLogo,
-            width: 120,
+            width: 120.w,
             fit: BoxFit.fill,
           ),
           Center(
@@ -79,13 +80,13 @@ class FirstOnBoardingScreen extends StatelessWidget {
               text: TextSpan(
                 text: 'Enjoy The ',
                 style: AppTextStyle.semiBold(
-                  fontSize: 14.4,
+                  fontSize: 14.4.sp,
                 ),
                 children: [
                   TextSpan(
                     text: 'Best',
                     style: AppTextStyle.semiBold(
-                      fontSize: 14.4,
+                      fontSize: 14.4.sp,
                       color: AppColors.primary,
                     ),
                   ),
@@ -93,26 +94,26 @@ class FirstOnBoardingScreen extends StatelessWidget {
                     text:
                         ''' Movies and TV shows\n                            Out there.''',
                     style: AppTextStyle.semiBold(
-                      fontSize: 14.4,
+                      fontSize: 14.4.sp,
                     ),
                   ),
                 ],
               ),
             ),
           ),
-          const SizedBox(
-            height: 15,
+          SizedBox(
+            height: 15.h,
           ),
           Text(
             '''Watch full seasons of exclusive streaming series,episodes, 
             hitmovies, Hulu Originals, kids shows, and more...''',
             style: AppTextStyle.regular(
-              fontSize: 9.68,
+              fontSize: 9.68.sp,
               color: AppColors.lightYellow,
             ),
           ),
-          const SizedBox(
-            height: 65,
+           SizedBox(
+            height: 65.h,
           ),
           GestureDetector(
             onTap: () {
@@ -122,17 +123,17 @@ class FirstOnBoardingScreen extends StatelessWidget {
                       builder: (context) => const OnBoardingScreen()));
             },
             child: Container(
-              height: 44,
-              width: 305,
+              height: 44.h,
+              width: 305.w,
               decoration: BoxDecoration(
                 color: AppColors.primary,
-                borderRadius: BorderRadius.circular(5.84),
+                borderRadius: BorderRadius.circular(5.84.w),
               ),
               child: Center(
                 child: Text(
                   'Get Started',
                   style: AppTextStyle.regular(
-                    fontSize: 11.94,
+                    fontSize: 11.94.sp,
                     color: Colors.white,
                   ),
                 ),
@@ -148,7 +149,7 @@ class FirstOnBoardingScreen extends StatelessWidget {
               'Login',
               style: AppTextStyle.regular(
                 color: Colors.white,
-                fontSize: 14.17,
+                fontSize: 14.17.sp,
               ),
             ),
           ),

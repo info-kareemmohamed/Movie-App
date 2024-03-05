@@ -23,7 +23,8 @@ Future<void> setUserMain() async {
     DocumentSnapshot userSnapshot = await userRef.get();
 
     if (userSnapshot.exists) {
-      Map<String, dynamic>? userData = userSnapshot.data() as Map<String, dynamic>;
+      Map<String, dynamic>? userData =
+          userSnapshot.data() as Map<String, dynamic>;
 
       if (userData != null) {
         // Pass the userData to setInfoToInstance method
@@ -36,9 +37,6 @@ Future<void> setUserMain() async {
     }
   }
 }
-
-
-
 
 Future<UserCredential> signInWithFacebook() async {
   try {

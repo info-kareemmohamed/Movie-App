@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 
 class FlutterSwitchButton extends StatelessWidget {
@@ -24,7 +23,7 @@ class FlutterSwitchButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 12.h),
+      padding: EdgeInsets.symmetric(vertical: 12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -32,17 +31,17 @@ class FlutterSwitchButton extends StatelessWidget {
             type,
             style: AppTextStyle.medium(
               color: AppColors.white,
-              fontSize: 16.19.sp,
+              fontSize: 16.19,
             ),
           ),
-          SizedBox(height: 12.h),
+          SizedBox(height: 12),
           Container(
-            height: 56.h,
-            width: 334.w,
-            padding: EdgeInsets.symmetric(horizontal: 15.w),
+            height: 56,
+            width: 334,
+            padding: EdgeInsets.symmetric(horizontal: 15),
             decoration: BoxDecoration(
               color: AppColors.darkGray,
-              borderRadius: BorderRadius.circular(5.51.w),
+              borderRadius: BorderRadius.circular(5.51),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -51,7 +50,7 @@ class FlutterSwitchButton extends StatelessWidget {
                   options,
                   style: AppTextStyle.regular(
                     color: AppColors.lightYellow,
-                    fontSize: 13.4.sp,
+                    fontSize: 13.4,
                   ),
                 ),
                 FlutterSwitch(
@@ -68,8 +67,8 @@ class FlutterSwitchButton extends StatelessWidget {
                     inActiveIcon,
                     color: AppColors.lightRed,
                   ),
-                  width: 50.w,
-                  height: 30.h,
+                  width: 50,
+                  height: 30,
                   value: value,
                   onToggle: onToggle,
                 ),

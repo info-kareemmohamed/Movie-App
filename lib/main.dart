@@ -12,8 +12,9 @@ import 'core/utils/app_routes.dart';
 
 void main() async {
   await FirebaseHelper.firebaseInitialization();
-  await hiveFavouriteInatailzetion();
+  await HiveHelper.hiveInatailzetion();
   await FirebaseHelper.setUserMain();
+
   runApp(const MyApp());
 }
 
@@ -40,8 +41,8 @@ class MyApp extends StatelessWidget {
               navigatorKey: NavigationHelper.navigatorKey,
               onGenerateRoute: NavigationHelper.generateRoute,
               initialRoute: UserMain.instance != null
-                  ? AppRoute.LOGIN
-                  : AppRoute.LOGIN,
+                  ? AppRoute.SETTINGS
+                  : AppRoute.SETTINGS,
 
             ),
           //}),

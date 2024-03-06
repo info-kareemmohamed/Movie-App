@@ -8,7 +8,7 @@ import '../../features/home/screens/home_screen.dart';
 import '../../features/register/view/register.dart';
 import '../../features/movie_details/screens/details_screen.dart';
 import '../../features/onboarding/screens/widgets/first_onboarding_screen.dart';
-import '../../features/settings/settings_screen.dart';
+import '../../features/settings/view/settings_screen.dart';
 import '../../main.dart';
 import '../utils/app_routes.dart';
 

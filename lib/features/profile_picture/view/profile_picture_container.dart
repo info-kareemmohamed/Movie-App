@@ -16,16 +16,16 @@ class ProfilePictureContainer extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
         onTap: () {
-          FirebaseFirestore.instance
-              .collection('Users')
-              .doc(FirebaseAuth.instance.currentUser!.uid)
-              .update({'profilePicture': image, 'colorBackground': color}).then(
-            (value) => Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(builder: (context) => const AppLayoutScreen()),
-              (route) => false,
-            ),
-          );
+          // FirebaseFirestore.instance
+          //     .collection('Users')
+          //     .doc(FirebaseAuth.instance.currentUser!.uid)
+          //     .update({'profilePicture': image, 'colorBackground': color}).then(
+          //   (value) => Navigator.pushAndRemoveUntil(
+          //     context,
+          //     MaterialPageRoute(builder: (context) => const AppLayoutScreen()),
+          //     (route) => false,
+          //   ),
+          // );
         },
         child: Stack(
           children: [

@@ -1,5 +1,6 @@
 import 'dart:core';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_project/core/helper/hive.dart';
 import '../../../core/utils/Constants.dart';
 import '../model/movie_favourite.dart';
 import 'FavouriteMovieState.dart';
@@ -22,7 +23,7 @@ class FavouriteMovieCubit extends Cubit<FavouriteMovieStates> {
 
   void deleteFavouriteMovie(String key) {
     try {
-      box.delete(key);
+      HiveHelper.FavouriteBox.delete(key);
       getData();
       emit(DeleteFavouriteMovieSuccessState());
     } catch (e) {
@@ -31,7 +32,7 @@ class FavouriteMovieCubit extends Cubit<FavouriteMovieStates> {
   }
 
   void getData() {
-    this.movies = box.values.toList() as List<MovieFavourite>;
+    this.movies = HiveHelper.FavouriteBox.values.toList() as List<MovieFavourite>;
     checkLength();
   }
 

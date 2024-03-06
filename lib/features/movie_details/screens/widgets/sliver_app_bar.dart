@@ -6,6 +6,7 @@ import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/movie_details/cubit/movie_details_cubit.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/helper/hive.dart';
 import '../../../../core/utils/Constants.dart';
 import '../../../favourite/model/movie_favourite.dart';
 import '../../model/MovieDetailsResponse.dart';
@@ -25,7 +26,7 @@ class SliverAppbar extends StatelessWidget {
     bool isFavourite = false;
     return BlocBuilder<MovieDetailsCubit, MovieDetailsState>(
       builder: (context, state) {
-        isFavourite = box.get(movie.id.toString()) != null;
+        isFavourite = HiveHelper.FavouriteBox.get(movie.id.toString()) != null;
 
         return SliverAppBar(
           actions: [
@@ -35,10 +36,10 @@ class SliverAppbar extends StatelessWidget {
                 builder: (context, setState) => IconButton(
                   onPressed: () {
                     setState(() {
-                      isFavourite = box.get(movie.id.toString()) != null;
+                      isFavourite = HiveHelper.FavouriteBox.get(movie.id.toString()) != null;
 
                       if (!isFavourite) {
-                        box.put(
+                        HiveHelper.FavouriteBox.put(
                             movie.id.toString(),
                             MovieFavourite(
                                 backdropPath: movie.backdropPath,
@@ -47,7 +48,7 @@ class SliverAppbar extends StatelessWidget {
                                 originalLanguage: movie.originalLanguage,
                                 genre: movie.genres?[0].name ?? ""));
                       } else {
-                        box.delete(movie.id.toString());
+                        HiveHelper.FavouriteBox.delete(movie.id.toString());
                       }
                       isFavourite = !isFavourite;
                     });

@@ -379,6 +379,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Show More`
+  String get details_show_more {
+    return Intl.message(
+      'Show More',
+      name: 'details_show_more',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `More Like This`
+  String get details_more_like_this {
+    return Intl.message(
+      'More Like This',
+      name: 'details_more_like_this',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `EPISODES`
+  String get details_EPISODES {
+    return Intl.message(
+      'EPISODES',
+      name: 'details_EPISODES',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `TRAILERS`
+  String get details_TRAILERS {
+    return Intl.message(
+      'TRAILERS',
+      name: 'details_TRAILERS',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CASTS`
+  String get details_CASTS {
+    return Intl.message(
+      'CASTS',
+      name: 'details_CASTS',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

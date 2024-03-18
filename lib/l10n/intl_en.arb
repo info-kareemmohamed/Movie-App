@@ -31,8 +31,12 @@
      "register_toptext_create_account":"Create Account",
      "register_toptext":"Register now and start exploring all that our app has to offer. We’re excited to welcome you to our community!",
      "home_latest_movies":"Latest Movies",
-     "home_watch_it":"Watch it"
-
+     "home_watch_it":"Watch it",
+     "details_show_more":"Show More",
+     "details_more_like_this":"More Like This",
+     "details_EPISODES":"EPISODES",
+     "details_TRAILERS":"TRAILERS",
+     "details_CASTS":"CASTS"
 
 
 

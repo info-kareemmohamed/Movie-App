@@ -3,7 +3,6 @@ import 'package:flutter_project/core/services/datasource/remote/apiLinks/AllApi.
 import 'package:flutter_project/core/utils/app_routes.dart';
 import 'package:flutter_project/features/movie_details/model/MovieSimilarResponse.dart';
 import 'package:flutter_project/features/movie_details/screens/details_screen.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/helper/navigation.dart';
 
@@ -15,19 +14,19 @@ class ShowLessMovies extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 10.h),
+      padding: EdgeInsets.only(top: 10),
       child: GridView.count(
         crossAxisCount: 2,
         children: List.generate(
           4,
           (index) {
             return Padding(
-              padding: EdgeInsets.only(bottom: 10.h),
+              padding: EdgeInsets.only(bottom: 10),
               child: GestureDetector(
                 onTap: () => NavigationHelper.navigateTo(AppRoute.MOVIE_DETAILS,
                     arguments: movieSimilar[index].id),
                 child: Container(
-                  margin: EdgeInsets.symmetric(horizontal: 28.w),
+                  margin: EdgeInsets.symmetric(horizontal: 28),
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: NetworkImage(
@@ -35,7 +34,7 @@ class ShowLessMovies extends StatelessWidget {
                       ),
                       fit: BoxFit.fill,
                     ),
-                    borderRadius: BorderRadius.circular(10.w),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                 ),
               ),

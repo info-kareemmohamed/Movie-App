@@ -6,8 +6,6 @@ import 'package:flutter_project/core/services/datasource/remote/apiLinks/AllApi.
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/movie_details/cubit/movie_details_cubit.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../cubit/cast/cast_movie_cubit.dart';
 import '../../cubit/cast/cast_movie_state.dart';
 
@@ -33,19 +31,19 @@ class ThirdTabScreen extends StatelessWidget {
                           childCount: state.casts.length,
                           (context, index) => Padding(
                             padding:  EdgeInsets.symmetric(
-                                vertical: 8.h, horizontal: 10.w),
+                                vertical: 8, horizontal: 10),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 CircleAvatar(
                                   backgroundImage: NetworkImage(
                                       '${imageBaseUrl}${state.casts[index].profilePath}'),
-                                  radius: 60.w,
+                                  radius: 60,
                                 ),
                                 Text(
                                   state.casts[index].name ?? "Name",
                                   style: AppTextStyle.semiBold(
-                                      fontSize: 17.sp,
+                                      fontSize: 17,
                                       color: AppColors.lightYellow),
                                 ),
                               ],

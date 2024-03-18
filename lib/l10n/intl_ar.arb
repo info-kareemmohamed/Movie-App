@@ -31,7 +31,14 @@
 "register_toptext_create_account": "إنشاء حساب",
 "register_toptext": "سجل الآن وابدأ في استكشاف كل ما يقدمه تطبيقنا. نحن متحمسون لترحيبك في مجتمعنا!",
 "home_latest_movies": "أحدث الأفلام",
-"home_watch_it": "شاهدها"
+"home_watch_it": "شاهدها",
+"details_show_more": "عرض المزيد",
+"details_more_like_this": "المزيد مثل هذا",
+"details_EPISODES": "الحلقات",
+"details_TRAILERS": "الإعلانات",
+"details_CASTS": "الأدوار"
+
+
 
 
 

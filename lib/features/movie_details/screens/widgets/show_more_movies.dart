@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project/core/services/datasource/remote/apiLinks/AllApi.dart';
 import 'package:flutter_project/features/movie_details/model/MovieSimilarResponse.dart';
-import 'package:flutter_project/features/movie_details/screens/details_screen.dart';
-
 import '../../../../core/helper/navigation.dart';
 import '../../../../core/utils/app_routes.dart';
 
@@ -23,11 +21,10 @@ class ShowMoreFilms extends StatelessWidget {
             return Padding(
               padding: EdgeInsets.only(bottom: 10),
               child: GestureDetector(
-                onTap: () => NavigationHelper.navigateTo(
-                    AppRoute.MOVIE_DETAILS,
+                onTap: () => NavigationHelper.navigateTo(AppRoute.MOVIE_DETAILS,
                     arguments: movieSimilar[index].id),
                 child: Container(
-                  margin:  EdgeInsets.symmetric(horizontal: 28),
+                  margin: EdgeInsets.symmetric(horizontal: 28),
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: NetworkImage(

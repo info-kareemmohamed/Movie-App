@@ -4,9 +4,7 @@ import 'package:flutter_project/app/styles/icon_broken.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/movie_details/cubit/movie_details_cubit.dart';
-
 import '../../../../core/helper/hive.dart';
-import '../../../../core/utils/Constants.dart';
 import '../../../../generated/l10n.dart';
 import '../../../favourite/model/movie_favourite.dart';
 import '../../model/MovieDetailsResponse.dart';

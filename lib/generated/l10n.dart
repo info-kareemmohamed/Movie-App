@@ -359,6 +359,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Latest Movies`
+  String get home_latest_movies {
+    return Intl.message(
+      'Latest Movies',
+      name: 'home_latest_movies',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Watch it`
+  String get home_watch_it {
+    return Intl.message(
+      'Watch it',
+      name: 'home_watch_it',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

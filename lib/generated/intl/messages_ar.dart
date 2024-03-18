@@ -25,6 +25,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "app_sorry_not_found":
             MessageLookupByLibrary.simpleMessage("لم يتم العثور على بيانات"),
         "favourite_favourite": MessageLookupByLibrary.simpleMessage("مفضل"),
+        "home_latest_movies":
+            MessageLookupByLibrary.simpleMessage("أحدث الأفلام"),
+        "home_watch_it": MessageLookupByLibrary.simpleMessage("شاهدها"),
         "login_button_signin":
             MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "login_dont_have_account":

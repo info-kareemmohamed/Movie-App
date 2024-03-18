@@ -26,6 +26,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sorry Not Found"),
         "favourite_favourite":
             MessageLookupByLibrary.simpleMessage("Favourite"),
+        "home_latest_movies":
+            MessageLookupByLibrary.simpleMessage("Latest Movies"),
+        "home_watch_it": MessageLookupByLibrary.simpleMessage("Watch it"),
         "login_button_signin": MessageLookupByLibrary.simpleMessage("Sign in"),
         "login_dont_have_account":
             MessageLookupByLibrary.simpleMessage("Don\'t have account?"),

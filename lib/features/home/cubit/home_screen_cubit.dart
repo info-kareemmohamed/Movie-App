@@ -2,6 +2,10 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_project/features/home/model/MovieResponse.dart';
 import 'package:flutter_project/core/services/datasource/remote/api/ApiService.dart';
+
+import '../../../core/model/app_data.dart';
+import '../../../core/utils/Constants.dart';
+
 part 'home_screen_state.dart';
 
 class HomeScreenCubit extends Cubit<HomeScreenStates> {
@@ -9,14 +13,18 @@ class HomeScreenCubit extends Cubit<HomeScreenStates> {
   late List<MovieResponse> movies;
   String selectedValue = "Daily";
 
-  List<DropdownMenuItem<String>> dropMenuItems = const [
+  List<DropdownMenuItem<String>> dropMenuItems = [
     DropdownMenuItem(
       value: 'Daily',
-      child: Text('Trending Daily'),
+      child: Text(AppData.instance.Language == ENGLISH
+          ? 'Trending Daily'
+          : "الاتجاه اليومي"),
     ),
     DropdownMenuItem(
       value: 'Weekly',
-      child: Text('Trending Weekly'),
+      child: Text(AppData.instance.Language == ENGLISH
+          ? 'Trending Weekly'
+          : "الاتجاه الأسبوعي"),
     ),
   ];
 
@@ -24,5 +32,4 @@ class HomeScreenCubit extends Cubit<HomeScreenStates> {
     selectedValue = value!;
     emit(SelectedValueState());
   }
-
 }

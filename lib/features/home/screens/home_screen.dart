@@ -9,6 +9,8 @@ import 'package:flutter_project/features/home/screens/widget/trending_daily_movi
 import 'package:flutter_project/features/home/screens/widget/trending_weekly_movies.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../generated/l10n.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -37,20 +39,20 @@ class HomeScreen extends StatelessWidget {
                               ? const TrendingDailyScreen()
                               : const TrendingWeeklyScreen(),
                            SizedBox(
-                            height: 15.h,
+                            height: 15,
                           ),
                           Padding(
-                            padding:  EdgeInsets.only(left: 20.w),
+                            padding:  EdgeInsets.only(left: 20),
                             child: Text(
-                              'Latest Movies',
+                              S.of(context).home_latest_movies,
                               style: AppTextStyle.semiBold(
                                 color: AppColors.lightYellow,
-                                fontSize: 25.sp,
+                                fontSize: 25,
                               ),
                             ),
                           ),
                            SizedBox(
-                            height: 15.h,
+                            height: 15,
                           ),
                           const LatestMovies(),
                         ],

@@ -29,7 +29,11 @@
      "register_and":"and ",
      "register_privacy_policy":"Privacy Policy",
      "register_toptext_create_account":"Create Account",
-     "register_toptext":"Register now and start exploring all that our app has to offer. We’re excited to welcome you to our community!"
+     "register_toptext":"Register now and start exploring all that our app has to offer. We’re excited to welcome you to our community!",
+     "home_latest_movies":"Latest Movies",
+     "home_watch_it":"Watch it"
+
+
 
 
 

@@ -10,7 +10,13 @@
          "settings_logout":"تسجيل خروج",
          "settings_light_dark":"وضع الضوء والظلام",
          "favourite_favourite":"مفضل",
-         "App_sorry_not_found":"لم يتم العثور على بيانات"
+         "app_sorry_not_found":"لم يتم العثور على بيانات",
+         "login_hinttxt_email": "البريد الإلكتروني",
+         "login_hinttxt_password": "كلمة المرور",
+         "login_hinttxt_forgot_password": "هل نسيت كلمة المرور؟",
+         "login_button_signin": "تسجيل الدخول",
+         "login_dont_have_account": "ليس لديك حساب؟",
+         "login_register": "تسجيل"
 
 
 

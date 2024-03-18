@@ -15,6 +15,7 @@ import 'package:flutter_project/features/login/view/social_widget.dart';
 import '../../../core/helper/navigation.dart';
 import '../../../core/utils/app_routes.dart';
 import '../../../core/common/widget/custom_text_filed.dart';
+import '../../../generated/l10n.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -48,7 +49,7 @@ class LoginScreen extends StatelessWidget {
                       controller: userEmailController,
                       keyBordType: TextInputType.emailAddress,
                       icon: IconBroken.Profile,
-                      hintTxt: 'Email',
+                      hintTxt: S.of(context).login_hinttxt_email,
                       validator: (value) => cubit.validateMessageEmail(value),
                     ),
                     const SizedBox(height: 10),
@@ -61,7 +62,7 @@ class LoginScreen extends StatelessWidget {
                       visible: () {
                         cubit.changePasswordVisibility();
                       },
-                      hintTxt: 'Password',
+                      hintTxt: S.of(context).login_hinttxt_password,
                       validator: (value) =>
                           cubit.validateMessagePasswoed(value),
                     ),
@@ -75,7 +76,7 @@ class LoginScreen extends StatelessWidget {
                                 userEmailController.text);
                           },
                           child: Text(
-                            'Forgot Password?',
+                            S.of(context).login_hinttxt_forgot_password,
                             style: AppTextStyle.regular(
                               color: AppColors.lightRed,
                               fontSize: 12.9,
@@ -95,7 +96,7 @@ class LoginScreen extends StatelessWidget {
                                   fromKey.currentState!.validate(),
                                   userEmailController.text,
                                   userPassController.text),
-                              text: 'Sign in'),
+                              text: S.of(context).login_button_signin),
                           const SizedBox(
                             height: 50,
                           ),
@@ -107,7 +108,7 @@ class LoginScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                'Don\'t have account?',
+                                S.of(context).login_dont_have_account,
                                 style: AppTextStyle.regular(
                                   fontSize: 14.12,
                                   color: AppColors.lightRed,
@@ -115,7 +116,7 @@ class LoginScreen extends StatelessWidget {
                               ),
                               TextButton(
                                 child: Text(
-                                  'Register',
+                                  S.of(context).login_register,
                                   style: AppTextStyle.regular(
                                     fontSize: 14.12,
                                     color: AppColors.primary,

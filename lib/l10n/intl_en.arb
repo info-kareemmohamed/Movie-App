@@ -10,6 +10,13 @@
      "settings_logout":"Logout",
      "settings_light_dark":"Light & Dark Mode",
      "favourite_favourite":"Favourite",
-     "App_sorry_not_found":"Sorry Not Found"
+     "login_hinttxt_email":"Email",
+     "login_hinttxt_password":"Password",
+     "login_hinttxt_forgot_password":"Forgot Password?",
+     "login_button_signin":"Sign in",
+     "login_dont_have_account":"Don't have account?",
+     "login_register":"Register",
+     "app_sorry_not_found":"Sorry Not Found"
+
 
 }

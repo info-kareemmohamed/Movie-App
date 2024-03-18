@@ -160,11 +160,71 @@ class S {
     );
   }
 
+  /// `Email`
+  String get login_hinttxt_email {
+    return Intl.message(
+      'Email',
+      name: 'login_hinttxt_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get login_hinttxt_password {
+    return Intl.message(
+      'Password',
+      name: 'login_hinttxt_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forgot Password?`
+  String get login_hinttxt_forgot_password {
+    return Intl.message(
+      'Forgot Password?',
+      name: 'login_hinttxt_forgot_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign in`
+  String get login_button_signin {
+    return Intl.message(
+      'Sign in',
+      name: 'login_button_signin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don't have account?`
+  String get login_dont_have_account {
+    return Intl.message(
+      'Don\'t have account?',
+      name: 'login_dont_have_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Register`
+  String get login_register {
+    return Intl.message(
+      'Register',
+      name: 'login_register',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Sorry Not Found`
-  String get App_sorry_not_found {
+  String get app_sorry_not_found {
     return Intl.message(
       'Sorry Not Found',
-      name: 'App_sorry_not_found',
+      name: 'app_sorry_not_found',
       desc: '',
       args: [],
     );

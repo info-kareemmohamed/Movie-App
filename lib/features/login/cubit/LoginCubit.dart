@@ -6,11 +6,14 @@ import 'package:flutter_project/features/login/cubit/LoginStates.dart';
 import 'package:flutter_project/features/login/repository/login.dart';
 import 'package:flutter_project/core/common/widget/SnackBar.dart';
 import '../../../core/helper/validation.dart';
+import '../../../core/model/app_data.dart';
+import '../../../core/utils/Constants.dart';
 
 class LoginCubit extends Cubit<LoginStates> {
   LoginCubit() : super(InitialLoginState());
 
-  bool visibility = true;
+  bool visibility = true,_languageEn= AppData.instance.Language==ENGLISH;
+
 
   void changePasswordVisibility() {
     visibility = !visibility;
@@ -38,14 +41,16 @@ class LoginCubit extends Cubit<LoginStates> {
     if (code == 'invalid-credential') {
       showSnackBar(
         NavigationHelper.navigatorKey.currentContext!,
-        'No user found or Wrong Password . Please check your Email and Password.',
+       _languageEn? 'No user found or Wrong Password . Please check your Email and Password.':
+       "لم يتم العثور على مستخدم أو كلمة مرور خاطئة. يرجى التحقق من البريد الإلكتروني وكلمة المرور الخاصة بك.",
         Colors.red,
       );
     } else if (code == 'too-many-requests') {
       showSnackBar(
         NavigationHelper.navigatorKey.currentContext!,
-        '''Many failed login attempts 
-          Please Closing App and Try Again''',
+       _languageEn? '''Many failed login attempts 
+          Please Closing App and Try Again''':
+        "لعديد من محاولات تسجيل الدخول الفاشلة يرجى إغلاق التطبيق والمحاولة مرة أخرى",
         Colors.red,
       );
     }
@@ -66,7 +71,7 @@ class LoginCubit extends Cubit<LoginStates> {
     } catch (e) {
       showSnackBar(
         NavigationHelper.navigatorKey.currentContext!,
-        'Failed to sign in with Google Network Error',
+        _languageEn?'Failed to sign in with Google Network Error':"فشل تسجيل الدخول بسبب خطأ في شبكة Google",
         Colors.red,
       );
       print('Failed to sign in with Google: $e');

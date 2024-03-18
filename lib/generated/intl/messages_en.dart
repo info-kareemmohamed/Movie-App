@@ -22,10 +22,19 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "App_sorry_not_found":
+        "app_sorry_not_found":
             MessageLookupByLibrary.simpleMessage("Sorry Not Found"),
         "favourite_favourite":
             MessageLookupByLibrary.simpleMessage("Favourite"),
+        "login_button_signin": MessageLookupByLibrary.simpleMessage("Sign in"),
+        "login_dont_have_account":
+            MessageLookupByLibrary.simpleMessage("Don\'t have account?"),
+        "login_hinttxt_email": MessageLookupByLibrary.simpleMessage("Email"),
+        "login_hinttxt_forgot_password":
+            MessageLookupByLibrary.simpleMessage("Forgot Password?"),
+        "login_hinttxt_password":
+            MessageLookupByLibrary.simpleMessage("Password"),
+        "login_register": MessageLookupByLibrary.simpleMessage("Register"),
         "settings_allow_notification":
             MessageLookupByLibrary.simpleMessage("Allow Notification"),
         "settings_ar": MessageLookupByLibrary.simpleMessage("Arabic"),

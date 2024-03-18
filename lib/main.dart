@@ -65,7 +65,7 @@ class _MyAppState extends State<MyApp> {
         navigatorKey: NavigationHelper.navigatorKey,
         onGenerateRoute: NavigationHelper.generateRoute,
         initialRoute:
-            UserMain.instance != null ? AppRoute.FAVOURITE : AppRoute.FAVOURITE,
+            UserMain.instance != null ? AppRoute.LOGIN : AppRoute.LOGIN,
       ),
       //}),
     );

@@ -229,6 +229,136 @@ class S {
       args: [],
     );
   }
+
+  /// `User Name`
+  String get register_hinttxt_user_name {
+    return Intl.message(
+      'User Name',
+      name: 'register_hinttxt_user_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email Address`
+  String get register_hinttxt_email_address {
+    return Intl.message(
+      'Email Address',
+      name: 'register_hinttxt_email_address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get register_hinttxt_password {
+    return Intl.message(
+      'Password',
+      name: 'register_hinttxt_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm Password`
+  String get register_hinttxt_confirm_password {
+    return Intl.message(
+      'Confirm Password',
+      name: 'register_hinttxt_confirm_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Account`
+  String get register_txt_create_account {
+    return Intl.message(
+      'Create Account',
+      name: 'register_txt_create_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Already have an account? `
+  String get register_already_have_account {
+    return Intl.message(
+      'Already have an account? ',
+      name: 'register_already_have_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign in`
+  String get register_signin {
+    return Intl.message(
+      'Sign in',
+      name: 'register_signin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `By logging.you agree to our`
+  String get register_by_logging_you_agree_to_our {
+    return Intl.message(
+      'By logging.you agree to our',
+      name: 'register_by_logging_you_agree_to_our',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Terms & Conditions`
+  String get register_terms_conditions {
+    return Intl.message(
+      'Terms & Conditions',
+      name: 'register_terms_conditions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `and `
+  String get register_and {
+    return Intl.message(
+      'and ',
+      name: 'register_and',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Privacy Policy`
+  String get register_privacy_policy {
+    return Intl.message(
+      'Privacy Policy',
+      name: 'register_privacy_policy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Account`
+  String get register_toptext_create_account {
+    return Intl.message(
+      'Create Account',
+      name: 'register_toptext_create_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Register now and start exploring all that our app has to offer. We’re excited to welcome you to our community!`
+  String get register_toptext {
+    return Intl.message(
+      'Register now and start exploring all that our app has to offer. We’re excited to welcome you to our community!',
+      name: 'register_toptext',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -16,7 +16,22 @@
          "login_hinttxt_forgot_password": "هل نسيت كلمة المرور؟",
          "login_button_signin": "تسجيل الدخول",
          "login_dont_have_account": "ليس لديك حساب؟",
-         "login_register": "تسجيل"
+         "login_register": "تسجيل",
+         "register_hinttxt_user_name": "اسم المستخدم",
+"register_hinttxt_email_address": "عنوان البريد الإلكتروني",
+"register_hinttxt_password": "كلمة المرور",
+"register_hinttxt_confirm_password": "تأكيد كلمة المرور",
+"register_txt_create_account": "إنشاء الحساب",
+"register_already_have_account": "هل لديك حساب بالفعل؟",
+"register_signin": "تسجيل الدخول",
+"register_by_logging_you_agree_to_our": " من خلال تسجيل الدخول، توافق على",
+"register_terms_conditions": " الشروط و الأحكام",
+"register_and": " و ",
+"register_privacy_policy": "سياسة الخصوصية",
+"register_toptext_create_account": "إنشاء حساب",
+"register_toptext": "سجل الآن وابدأ في استكشاف كل ما يقدمه تطبيقنا. نحن متحمسون لترحيبك في مجتمعنا!"
+
+         
 
 
 

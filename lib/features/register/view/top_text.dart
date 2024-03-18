@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_text_style.dart';
 import '../../../core/utils/space.dart';
+import '../../../generated/l10n.dart';
 
 class TopText extends StatelessWidget {
   const TopText({super.key});
@@ -13,7 +14,7 @@ class TopText extends StatelessWidget {
       children: [
         SpaceVH(height: 15),
         Text(
-          'Create Account',
+         S.of(context).register_toptext_create_account,
           style: AppTextStyle.semiBold(
             fontSize: 33.05,
             color: AppColors.primary,
@@ -22,7 +23,7 @@ class TopText extends StatelessWidget {
         Padding(
           padding: EdgeInsets.all(8.0),
           child: Text(
-            'Register now and start exploring all that our app has to offer. We’re excited to welcome you to our community!',
+            S.of(context).register_toptext,
             textAlign: TextAlign.center,
             style: AppTextStyle.regular(
               color: AppColors.lightRed,

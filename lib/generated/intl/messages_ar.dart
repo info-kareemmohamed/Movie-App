@@ -36,6 +36,31 @@ class MessageLookup extends MessageLookupByLibrary {
         "login_hinttxt_password":
             MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "login_register": MessageLookupByLibrary.simpleMessage("تسجيل"),
+        "register_already_have_account":
+            MessageLookupByLibrary.simpleMessage("هل لديك حساب بالفعل؟"),
+        "register_and": MessageLookupByLibrary.simpleMessage(" و "),
+        "register_by_logging_you_agree_to_our":
+            MessageLookupByLibrary.simpleMessage(
+                " من خلال تسجيل الدخول، توافق على"),
+        "register_hinttxt_confirm_password":
+            MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
+        "register_hinttxt_email_address":
+            MessageLookupByLibrary.simpleMessage("عنوان البريد الإلكتروني"),
+        "register_hinttxt_password":
+            MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+        "register_hinttxt_user_name":
+            MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
+        "register_privacy_policy":
+            MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
+        "register_signin": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+        "register_terms_conditions":
+            MessageLookupByLibrary.simpleMessage(" الشروط و الأحكام"),
+        "register_toptext": MessageLookupByLibrary.simpleMessage(
+            "سجل الآن وابدأ في استكشاف كل ما يقدمه تطبيقنا. نحن متحمسون لترحيبك في مجتمعنا!"),
+        "register_toptext_create_account":
+            MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
+        "register_txt_create_account":
+            MessageLookupByLibrary.simpleMessage("إنشاء الحساب"),
         "settings_allow_notification":
             MessageLookupByLibrary.simpleMessage("السماح بالإخطار"),
         "settings_ar": MessageLookupByLibrary.simpleMessage("عربي"),

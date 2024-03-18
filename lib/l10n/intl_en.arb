@@ -16,7 +16,22 @@
      "login_button_signin":"Sign in",
      "login_dont_have_account":"Don't have account?",
      "login_register":"Register",
-     "app_sorry_not_found":"Sorry Not Found"
+     "app_sorry_not_found":"Sorry Not Found",
+     "register_hinttxt_user_name":"User Name",
+     "register_hinttxt_email_address":"Email Address",
+     "register_hinttxt_password":"Password",
+     "register_hinttxt_confirm_password":"Confirm Password",
+     "register_txt_create_account":"Create Account",
+     "register_already_have_account":"Already have an account? ",
+     "register_signin":"Sign in",
+     "register_by_logging_you_agree_to_our":"By logging.you agree to our",
+     "register_terms_conditions":"Terms & Conditions",
+     "register_and":"and ",
+     "register_privacy_policy":"Privacy Policy",
+     "register_toptext_create_account":"Create Account",
+     "register_toptext":"Register now and start exploring all that our app has to offer. We’re excited to welcome you to our community!"
+
+
 
 
 }

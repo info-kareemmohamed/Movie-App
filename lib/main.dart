@@ -32,7 +32,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Locale? _locale=Locale(AppData.instance.Language);
+  Locale? _locale = Locale(AppData.instance.Language);
 
   setLocale(Locale locale) {
     setState(() {
@@ -65,7 +65,7 @@ class _MyAppState extends State<MyApp> {
         navigatorKey: NavigationHelper.navigatorKey,
         onGenerateRoute: NavigationHelper.generateRoute,
         initialRoute:
-            UserMain.instance != null ? AppRoute.LOGIN : AppRoute.LOGIN,
+            UserMain.instance != null ? AppRoute.SIGN_UP : AppRoute.SIGN_UP,
       ),
       //}),
     );

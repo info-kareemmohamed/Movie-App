@@ -6,12 +6,15 @@ import 'package:flutter_project/core/utils/app_routes.dart';
 import 'package:flutter_project/core/common/widget/SnackBar.dart';
 import 'package:flutter_project/features/register/repository/register_repo.dart';
 
+import '../../../core/model/app_data.dart';
+import '../../../core/utils/Constants.dart';
+
 part 'register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterStates> {
   RegisterCubit() : super(InitialSignUpState());
 
-  bool visibility = true;
+  bool visibility = true, _languageEn = AppData.instance.Language == ENGLISH;
 
   void changePasswordVisibility() {
     visibility = !visibility;
@@ -33,7 +36,9 @@ class RegisterCubit extends Cubit<RegisterStates> {
         if (code == 'email-already-in-use') {
           showSnackBar(
             NavigationHelper.navigatorKey.currentContext!,
-            'The Account already exists for that Email',
+            _languageEn
+                ? 'The Account already exists for that Email'
+                : "الحساب موجود بالفعل لهذا البريد الإلكتروني",
             Colors.red,
           );
         }

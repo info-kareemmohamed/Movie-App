@@ -11,6 +11,7 @@ import '../../../core/utils/space.dart';
 import '../../../core/common/widget/custom_text_filed.dart';
 
 import '../../../core/common/widget/app_button_primary.dart';
+import '../../../generated/l10n.dart';
 
 class RegisterScreen extends StatelessWidget {
   RegisterScreen({Key? key}) : super(key: key);
@@ -41,14 +42,14 @@ class RegisterScreen extends StatelessWidget {
                       controller: userNameController,
                       icon: IconBroken.Profile,
                       keyBordType: TextInputType.text,
-                      hintTxt: 'User Name',
+                      hintTxt: S.of(context).register_hinttxt_user_name,
                       validator: (value) => cubit.validateMessageName(value),
                     ),
                     CustomTextFiled(
                       controller: userEmailController,
                       keyBordType: TextInputType.emailAddress,
                       icon: IconBroken.Message,
-                      hintTxt: 'Email Address',
+                      hintTxt: S.of(context).register_hinttxt_email_address,
                       validator: (value) => cubit.validateMessageEmail(value),
                     ),
                     CustomTextFiled(
@@ -60,7 +61,7 @@ class RegisterScreen extends StatelessWidget {
                       visible: () {
                         cubit.changePasswordVisibility();
                       },
-                      hintTxt: 'Password',
+                      hintTxt: S.of(context).register_hinttxt_password,
                       validator: (value) =>
                           cubit.validateMessagePasswoed(value),
                     ),
@@ -74,7 +75,7 @@ class RegisterScreen extends StatelessWidget {
                       visible: () {
                         cubit.changePasswordVisibilityConfirmPass();
                       },
-                      hintTxt: 'Confirm Password',
+                      hintTxt:S.of(context).register_hinttxt_confirm_password,
                       validator: (value) =>
                           cubit.validateMessagePasswoedConfirm(
                               value, userPassController.text),
@@ -83,7 +84,7 @@ class RegisterScreen extends StatelessWidget {
                     const SpaceVH(height: 25.0),
                     AppButtonPrimary(
                       condition: state is! RegisterLoadingState,
-                      text: 'Create Account',
+                      text: S.of(context).register_txt_create_account,
                       onTap: () => cubit.setDataToSignUp(
                           formKey.currentState!.validate(),
                           userNameController.text,

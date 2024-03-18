@@ -35,6 +35,30 @@ class MessageLookup extends MessageLookupByLibrary {
         "login_hinttxt_password":
             MessageLookupByLibrary.simpleMessage("Password"),
         "login_register": MessageLookupByLibrary.simpleMessage("Register"),
+        "register_already_have_account":
+            MessageLookupByLibrary.simpleMessage("Already have an account? "),
+        "register_and": MessageLookupByLibrary.simpleMessage("and "),
+        "register_by_logging_you_agree_to_our":
+            MessageLookupByLibrary.simpleMessage("By logging.you agree to our"),
+        "register_hinttxt_confirm_password":
+            MessageLookupByLibrary.simpleMessage("Confirm Password"),
+        "register_hinttxt_email_address":
+            MessageLookupByLibrary.simpleMessage("Email Address"),
+        "register_hinttxt_password":
+            MessageLookupByLibrary.simpleMessage("Password"),
+        "register_hinttxt_user_name":
+            MessageLookupByLibrary.simpleMessage("User Name"),
+        "register_privacy_policy":
+            MessageLookupByLibrary.simpleMessage("Privacy Policy"),
+        "register_signin": MessageLookupByLibrary.simpleMessage("Sign in"),
+        "register_terms_conditions":
+            MessageLookupByLibrary.simpleMessage("Terms & Conditions"),
+        "register_toptext": MessageLookupByLibrary.simpleMessage(
+            "Register now and start exploring all that our app has to offer. We’re excited to welcome you to our community!"),
+        "register_toptext_create_account":
+            MessageLookupByLibrary.simpleMessage("Create Account"),
+        "register_txt_create_account":
+            MessageLookupByLibrary.simpleMessage("Create Account"),
         "settings_allow_notification":
             MessageLookupByLibrary.simpleMessage("Allow Notification"),
         "settings_ar": MessageLookupByLibrary.simpleMessage("Arabic"),

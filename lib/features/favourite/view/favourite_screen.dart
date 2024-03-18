@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/core/common/widget/app_widget.dart';
-import 'package:flutter_project/core/services/datasource/remote/apiLinks/AllApi.dart';
 import 'package:flutter_project/features/favourite/view/app_bar.dart';
 import 'package:flutter_project/features/favourite/view/lottie_screen.dart';
-
 import '../../../core/helper/navigation.dart';
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_routes.dart';
-import '../../../core/utils/app_text_style.dart';
-import '../../movie_details/screens/details_screen.dart';
+import '../../../generated/l10n.dart';
 import '../cubit/FavouriteMovieCubit.dart';
 import '../cubit/FavouriteMovieState.dart';
 import 'icon_delete.dart';
@@ -110,7 +107,7 @@ class FavouriteScreen extends StatelessWidget {
               return const FavouriteLottieScreen();
             } else if (state is FavouriteMovieErrorState) {
               return AppWidget.buildErrorScreen(
-                  state.message ?? "Sorry Not Found");
+                  state.message ?? S.of(context).App_sorry_not_found);
             } else {
               return Center(child: CircularProgressIndicator());
             }

@@ -149,6 +149,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Favourite`
+  String get favourite_favourite {
+    return Intl.message(
+      'Favourite',
+      name: 'favourite_favourite',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sorry Not Found`
+  String get App_sorry_not_found {
+    return Intl.message(
+      'Sorry Not Found',
+      name: 'App_sorry_not_found',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

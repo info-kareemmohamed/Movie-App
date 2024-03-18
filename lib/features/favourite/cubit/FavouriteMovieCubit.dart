@@ -1,7 +1,6 @@
 import 'dart:core';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/core/helper/hive.dart';
-import '../../../core/utils/Constants.dart';
 import '../model/movie_favourite.dart';
 import 'FavouriteMovieState.dart';
 

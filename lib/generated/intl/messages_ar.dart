@@ -22,6 +22,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "App_sorry_not_found":
+            MessageLookupByLibrary.simpleMessage("لم يتم العثور على بيانات"),
+        "favourite_favourite": MessageLookupByLibrary.simpleMessage("مفضل"),
         "settings_allow_notification":
             MessageLookupByLibrary.simpleMessage("السماح بالإخطار"),
         "settings_ar": MessageLookupByLibrary.simpleMessage("عربي"),

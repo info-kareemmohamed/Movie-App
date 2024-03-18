@@ -8,8 +8,10 @@
          "settings_notification":"إشعار",
          "settings_allow_notification":"السماح بالإخطار",
          "settings_logout":"تسجيل خروج",
-         "settings_light_dark":"وضع الضوء والظلام"
-         
+         "settings_light_dark":"وضع الضوء والظلام",
+         "favourite_favourite":"مفضل",
+         "App_sorry_not_found":"لم يتم العثور على بيانات"
+
 
 
 }

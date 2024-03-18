@@ -3,13 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/core/helper/firebase.dart';
 import 'package:flutter_project/core/helper/hive.dart';
 import 'package:flutter_project/core/helper/provider.dart';
+import 'package:flutter_project/core/model/app_data.dart';
 import 'package:flutter_project/generated/l10n.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'core/helper/navigation.dart';
-import 'core/model/app_data.dart';
 import 'core/model/main_user.dart';
-import 'core/utils/Constants.dart';
 import 'core/utils/app_routes.dart';
 
 void main() async {
@@ -33,7 +32,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Locale? _locale;
+  Locale? _locale=Locale(AppData.instance.Language);
 
   setLocale(Locale locale) {
     setState(() {
@@ -66,7 +65,7 @@ class _MyAppState extends State<MyApp> {
         navigatorKey: NavigationHelper.navigatorKey,
         onGenerateRoute: NavigationHelper.generateRoute,
         initialRoute:
-            UserMain.instance != null ? AppRoute.SETTINGS : AppRoute.SETTINGS,
+            UserMain.instance != null ? AppRoute.FAVOURITE : AppRoute.FAVOURITE,
       ),
       //}),
     );

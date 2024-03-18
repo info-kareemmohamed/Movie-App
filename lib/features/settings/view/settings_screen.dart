@@ -1,15 +1,17 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/app/styles/icon_broken.dart';
+import 'package:flutter_project/core/model/app_data.dart';
 import 'package:flutter_project/core/model/main_user.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/app_layout/cubit/app_layout_cubit.dart';
 import 'package:flutter_project/features/profile_picture/view/profile_picture_container.dart';
+import 'package:flutter_project/features/settings/cubit/settings_cubit.dart';
+import 'package:flutter_project/features/settings/cubit/settings_states.dart';
 import 'package:flutter_project/features/settings/view/flutter_switch_button.dart';
-
+import 'package:flutter_project/generated/l10n.dart';
 import '../../../core/helper/navigation.dart';
 import '../../../core/utils/app_routes.dart';
 
@@ -18,23 +20,17 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AppLayoutCubit, AppLayoutStates>(
+    return BlocBuilder<SettingsCubit, SettingsStates>(
       builder: (context, state) {
         return Scaffold(
-          backgroundColor: context.read<AppLayoutCubit>().isDark
-              ? AppColors.darkTheme
-              : AppColors.white,
+          backgroundColor: AppData.instance.Theme,
           appBar: AppBar(
-            backgroundColor: context.read<AppLayoutCubit>().isDark
-                ? AppColors.darkTheme
-                : AppColors.white,
+            backgroundColor: AppData.instance.Theme,
             centerTitle: true,
             title: Text(
-              'Settings',
+              S.of(context).settings_settings,
               style: AppTextStyle.extraBold(
-                color: context.read<AppLayoutCubit>().isDark
-                    ? AppColors.white
-                    : AppColors.darkTheme,
+                color: AppData.textColor(),
                 fontSize: 18.74,
               ),
             ),
@@ -50,20 +46,17 @@ class SettingsScreen extends StatelessWidget {
                     children: [
                       ProfilePictureContainer(
                         color: 0xFF1CE783,
-                        top: UserMain.instance?.profilePicture ==
-                                'assets/images/pi_4.png'
-                            ? 60
-                            : 40,
-                        image:""
+                        top: 50,
+                        image: '',
                         //UserMain.instance!.profilePicture??"",
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Profile',
+                            S.of(context).settings_profile,
                             style: AppTextStyle.medium(
-                              color: AppColors.white,
+                              color: AppData.textColor(),
                               fontSize: 20,
                             ),
                           ),
@@ -72,14 +65,11 @@ class SettingsScreen extends StatelessWidget {
                             height: 35,
                             width: 180,
                             decoration: BoxDecoration(
-                                color: AppColors.white,
+                                color: AppData.textColor(),
                                 borderRadius: BorderRadius.circular(25)),
                             child: Center(
                               child: Text(
-                                context.read<AppLayoutCubit>().selectedValue ==
-                                        'Arabic'
-                                    ? "الاسم بالعربي"
-                                    : UserMain.instance?.name ?? "",
+                                UserMain.instance?.name ?? "kareem",
                                 textAlign: TextAlign.center,
                                 style: AppTextStyle.semiBold(
                                   color: AppColors.darkTheme,
@@ -90,9 +80,9 @@ class SettingsScreen extends StatelessWidget {
                           ),
                           SizedBox(height: 25),
                           Text(
-                            'App Language',
+                            S.of(context).settings_language,
                             style: AppTextStyle.medium(
-                              color: AppColors.white,
+                              color: AppData.textColor(),
                               fontSize: 20,
                             ),
                           ),
@@ -103,36 +93,39 @@ class SettingsScreen extends StatelessWidget {
                             padding: EdgeInsets.symmetric(horizontal: 7),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(4),
-                              color: AppColors.lightRed,
+                              color:
+                                  AppData.instance.Theme == AppColors.darkTheme
+                                      ? AppColors.darkGray
+                                      : AppColors.lightYellow,
                             ),
                             child: DropdownButton(
                               items:
-                                  context.read<AppLayoutCubit>().dropMenuItems,
+                                  context.read<SettingsCubit>().dropMenuItems,
                               icon: Icon(
                                 IconBroken.Arrow___Right_2,
                                 size: 20,
-                                color: AppColors.white,
+                                color: AppData.textColor(),
                               ),
                               borderRadius: BorderRadius.circular(15),
                               dropdownColor:
                                   AppColors.darkTheme.withOpacity(0.8),
                               underline: const SizedBox(),
                               hint: Text(
-                                context.read<AppLayoutCubit>().selectedValue,
+                                context.read<SettingsCubit>().selectedValue,
                                 style: AppTextStyle.regular(
-                                  color: AppColors.white,
+                                  color: AppData.textColor(),
                                   fontSize: 11,
                                 ),
                               ),
                               value:
-                                  context.read<AppLayoutCubit>().selectedValue,
+                                  context.read<SettingsCubit>().selectedValue,
                               style: AppTextStyle.regular(
                                 fontSize: 11,
-                                color: AppColors.white,
+                                color: AppData.textColor(),
                               ),
                               isExpanded: true,
                               onChanged: (String? value) {
-                                context.read<AppLayoutCubit>().dropValue(value);
+                                context.read<SettingsCubit>().dropValue(value);
                               },
                             ),
                           ),
@@ -143,22 +136,22 @@ class SettingsScreen extends StatelessWidget {
                   Column(
                     children: [
                       FlutterSwitchButton(
-                        type: 'Mode',
-                        options: 'Light & Dark Mode',
+                        type: S.of(context).settings_mode,
+                        options: S.of(context).settings_light_dark,
                         activeIcon: Icons.dark_mode_sharp,
                         inActiveIcon: Icons.sunny,
                         onToggle: ((value) {
-                          context.read<AppLayoutCubit>().changeMode();
+                          context.read<SettingsCubit>().changeMode();
                         }),
-                        value: context.read<AppLayoutCubit>().isDark,
+                        value: context.read<SettingsCubit>().isDark,
                       ),
                       FlutterSwitchButton(
-                        type: 'Notification',
-                        options: 'Allow Notification',
+                        type: S.of(context).settings_notification,
+                        options: S.of(context).settings_allow_notification,
                         onToggle: ((value) {
-                          context.read<AppLayoutCubit>().allowNotification();
+                          context.read<SettingsCubit>().allowNotification();
                         }),
-                        value: context.read<AppLayoutCubit>().isAllow,
+                        value: context.read<SettingsCubit>().isAllow,
                       ),
                     ],
                   ),
@@ -178,7 +171,7 @@ class SettingsScreen extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          'Logout',
+                          S.of(context).settings_logout,
                           style: AppTextStyle.semiBold(
                             color: AppColors.darkTheme,
                             fontSize: 17,

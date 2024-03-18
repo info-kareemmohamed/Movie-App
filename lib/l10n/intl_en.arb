@@ -1,0 +1,13 @@
+{
+    "settings_language":"App Language",
+    "settings_ar":"Arabic",
+    "settings_en":"English",
+    "settings_settings":"Settings",
+    "settings_profile":"Profile",
+    "settings_mode":"Mode",
+     "settings_notification":"Notification",
+     "settings_allow_notification":"Allow Notification",
+     "settings_logout":"Logout",
+     "settings_light_dark":"Light & Dark Mode"
+
+}

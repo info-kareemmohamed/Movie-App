@@ -30,11 +30,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-
+  flutter_localizations:
+    sdk: flutter
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-
   cupertino_icons: ^1.0.2
   flutter_screenutil: ^5.9.0
   smooth_page_indicator: ^1.1.0
@@ -49,28 +48,26 @@ dependencies:
   firebase_storage: ^11.6.0
   flutter_svg: ^0.22.0
   flutter_facebook_auth: '^3.5.0'
-  intl: ^0.17.0
+  intl: any
   animations: ^2.0.1
-  dio:
+  dio: null
   readmore: ^2.2.0
   curved_navigation_bar: ^1.0.3
   flutter_switch: ^0.3.2
-  hive:
-  hive_flutter:
+  hive: null
+  hive_flutter: null
   carousel_slider: ^4.2.1
   conditional_builder_null_safety: ^0.0.6
   youtube_player_flutter: ^8.0.0
   lottie: ^3.0.0
   image_picker: ^1.0.7
 
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
   email_validator: ^2.1.17
-  hive_generator:
-  build_runner:
-
+  hive_generator: null
+  build_runner: null
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -81,7 +78,6 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
 # The following section is specific to Flutter packages.
 flutter:
 
@@ -96,15 +92,11 @@ flutter:
     - assets/animation/
     - assets/icon/
 
-
   #   - images/a_dot_ham.jpeg
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
-
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
-
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
@@ -121,7 +113,6 @@ flutter:
     - family: IconBroken
       fonts:
         - asset: assets/icon/icons.ttf
-
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
@@ -132,3 +123,5 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_intl:
+  enabled: true

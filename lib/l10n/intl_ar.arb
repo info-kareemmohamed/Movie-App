@@ -1,0 +1,15 @@
+{
+        "settings_language":"لغه",
+         "settings_settings":"اعدادات",
+         "settings_ar":"عربي",
+         "settings_en":"إنجليزي",
+         "settings_profile":"الملف الشخصي",
+         "settings_mode":"وضع",
+         "settings_notification":"إشعار",
+         "settings_allow_notification":"السماح بالإخطار",
+         "settings_logout":"تسجيل خروج",
+         "settings_light_dark":"وضع الضوء والظلام"
+         
+
+
+}

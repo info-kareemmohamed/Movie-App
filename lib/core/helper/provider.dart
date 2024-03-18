@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/features/app_layout/cubit/app_layout_cubit.dart';
+import 'package:flutter_project/features/settings/cubit/settings_cubit.dart';
 
 import '../../features/favourite/cubit/FavouriteMovieCubit.dart';
 import '../../features/home/cubit/home_screen_cubit.dart';
@@ -20,6 +21,7 @@ abstract class AppProviders {
     BlocProvider(create: (context) => LoginCubit()),
     BlocProvider(create: (context) => RegisterCubit()),
     BlocProvider(create: (context) => AppLayoutCubit()),
+    BlocProvider(create: (context) => SettingsCubit()),
     BlocProvider(
         create: (context) =>
             TrendingDayMoviesCubit()..getTrendingDayMovies(trendingDayUrl)),

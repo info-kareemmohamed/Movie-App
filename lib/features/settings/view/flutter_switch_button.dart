@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/core/model/app_data.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+
 
 class FlutterSwitchButton extends StatelessWidget {
   FlutterSwitchButton(
@@ -30,7 +32,7 @@ class FlutterSwitchButton extends StatelessWidget {
           Text(
             type,
             style: AppTextStyle.medium(
-              color: AppColors.white,
+              color: AppData.textColor(),
               fontSize: 16.19,
             ),
           ),
@@ -40,7 +42,7 @@ class FlutterSwitchButton extends StatelessWidget {
             width: 334,
             padding: EdgeInsets.symmetric(horizontal: 15),
             decoration: BoxDecoration(
-              color: AppColors.darkGray,
+              color: AppData.instance.Theme==AppColors.darkTheme? AppColors.darkGray:AppColors.lightYellow,
               borderRadius: BorderRadius.circular(5.51),
             ),
             child: Row(
@@ -49,7 +51,7 @@ class FlutterSwitchButton extends StatelessWidget {
                 Text(
                   options,
                   style: AppTextStyle.regular(
-                    color: AppColors.lightYellow,
+                    color:AppData.textColor(),
                     fontSize: 13.4,
                   ),
                 ),

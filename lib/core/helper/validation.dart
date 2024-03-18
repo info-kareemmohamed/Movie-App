@@ -36,7 +36,7 @@ abstract class Validation {
     return null;
   }
 
-  static bool isNamevalid(String em) {
+  static bool isNameValid(String em) {
     String p = r"^\s*([A-Za-z]{1,}([\.,] |[-']| ))+[A-Za-z]+\.?\s*$";
     RegExp regExp = RegExp(p);
     return !regExp.hasMatch(em);
@@ -46,7 +46,7 @@ abstract class Validation {
     if (name!.isEmpty) {
       return '       Please Enter Your Name';
     }
-    if (isNamevalid(name)) {
+    if (isNameValid(name)) {
       return '       Please Enter Valid Name\n       example example';
     }
     return null;

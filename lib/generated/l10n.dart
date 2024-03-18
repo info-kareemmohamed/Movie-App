@@ -429,6 +429,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Who is \n Watching ?`
+  String get profile_toptext {
+    return Intl.message(
+      'Who is \n Watching ?',
+      name: 'profile_toptext',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add a new \n profile picture`
+  String get profile_addprofile {
+    return Intl.message(
+      'Add a new \n profile picture',
+      name: 'profile_addprofile',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -12,6 +12,7 @@ import 'package:flutter_project/features/profile_picture/view/profile_picture_co
 import 'package:image_picker/image_picker.dart';
 
 import '../../../core/model/main_user.dart';
+import '../../../generated/l10n.dart';
 
 class ProfilePictureAdd extends StatelessWidget {
   const ProfilePictureAdd({super.key});
@@ -52,8 +53,7 @@ class ProfilePictureAdd extends StatelessWidget {
                     ),
                     const SizedBox(height: 20),
                     Text(
-                      '''Add a 
-new profile''',
+                    S.of(context).profile_addprofile,
                       textAlign: TextAlign.center,
                       style: AppTextStyle.medium(
                         color: AppColors.lightYellow,

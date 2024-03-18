@@ -44,6 +44,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "login_hinttxt_password":
             MessageLookupByLibrary.simpleMessage("Password"),
         "login_register": MessageLookupByLibrary.simpleMessage("Register"),
+        "profile_addprofile": MessageLookupByLibrary.simpleMessage(
+            "Add a new \n profile picture"),
+        "profile_toptext":
+            MessageLookupByLibrary.simpleMessage("Who is \n Watching ?"),
         "register_already_have_account":
             MessageLookupByLibrary.simpleMessage("Already have an account? "),
         "register_and": MessageLookupByLibrary.simpleMessage("and "),

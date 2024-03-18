@@ -45,6 +45,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "login_hinttxt_password":
             MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "login_register": MessageLookupByLibrary.simpleMessage("تسجيل"),
+        "profile_addprofile":
+            MessageLookupByLibrary.simpleMessage("إضافة صورة ملف شخصي جديدة"),
+        "profile_toptext": MessageLookupByLibrary.simpleMessage("من يشاهد؟"),
         "register_already_have_account":
             MessageLookupByLibrary.simpleMessage("هل لديك حساب بالفعل؟"),
         "register_and": MessageLookupByLibrary.simpleMessage(" و "),

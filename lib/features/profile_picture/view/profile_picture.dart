@@ -4,6 +4,8 @@ import 'package:flutter_project/core/utils/app_images.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/profile_picture/view/profile_picture_add.dart';
 
+import '../../../generated/l10n.dart';
+
 class ProfilePicture extends StatelessWidget {
   const ProfilePicture({super.key});
 
@@ -23,8 +25,7 @@ class ProfilePicture extends StatelessWidget {
                 width: 93,
               )),
               Text(
-                '''Who is 
-Watching ? ''',
+               S.of(context).profile_toptext,
                 textAlign: TextAlign.center,
                 style: AppTextStyle.semiBold(
                   color: AppColors.lightYellow,

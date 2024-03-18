@@ -15,7 +15,7 @@ class ThirdOnBoardingScreen extends StatelessWidget {
           child: Stack(
             children: [
               Padding(
-                  padding: EdgeInsets.only(top: 96.h, left: 35.w),
+                  padding: EdgeInsets.only(top: 96, left: 35),
                   child: RichText(
                     textAlign: TextAlign.center,
                     text: TextSpan(
@@ -23,39 +23,39 @@ class ThirdOnBoardingScreen extends StatelessWidget {
                         TextSpan(
                           text: 'DOWNLOAD\n',
                           style: AppTextStyle.black(
-                            fontSize: 49.56.sp,
+                            fontSize: 49.56,
                             color: AppColors.primary,
                           ),
                         ),
                         TextSpan(
                           text: 'SHOWS\n',
                           style: AppTextStyle.black(
-                            fontSize: 49.56.sp,
+                            fontSize: 49.56,
                           ),
                         ),
                         TextSpan(
                           text: '& MOVIES',
                           style: AppTextStyle.black(
-                            fontSize: 49.56.sp,
+                            fontSize: 49.56,
                           ),
                         ),
                       ],
                     ),
                   )),
               Padding(
-                padding: EdgeInsets.only(top: 255.h),
+                padding: EdgeInsets.only(top: 255),
                 child: Center(child: Image.asset(AppImages.iphoneImage)),
               ),
             ],
           ),
         ),
         SizedBox(
-          height: 20.h,
+          height: 20,
         ),
         Text('''Always have something
          to watch offline ''',
             style: AppTextStyle.medium(
-              fontSize: 11.44.sp,
+              fontSize: 11.44,
               color: AppColors.lightYellow,
             )),
       ],

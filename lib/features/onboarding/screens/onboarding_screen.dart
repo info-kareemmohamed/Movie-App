@@ -6,7 +6,6 @@ import 'package:flutter_project/features/onboarding/cubit/onboarding_cubit.dart'
 import 'package:flutter_project/features/onboarding/screens/widgets/fourth_onboarding_screen.dart.dart';
 import 'package:flutter_project/features/onboarding/screens/widgets/second_onboarding_screen.dart.dart';
 import 'package:flutter_project/features/onboarding/screens/widgets/third_onboarding_screen.dart.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../core/helper/navigation.dart';
@@ -48,9 +47,9 @@ class OnBoardingScreen extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.only(
-                  bottom: 10.h,
-                  left: 25.w,
-                  right: 25.w,
+                  bottom: 10,
+                  left: 25,
+                  right: 25,
                 ),
                 child: Row(
                   children: [
@@ -59,9 +58,9 @@ class OnBoardingScreen extends StatelessWidget {
                       count: screens.length,
                       effect: ExpandingDotsEffect(
                         dotColor: Colors.grey,
-                        dotHeight: 5.h,
-                        dotWidth: 5.w,
-                        expansionFactor: 4.5.w,
+                        dotHeight: 5,
+                        dotWidth: 5,
+                        expansionFactor: 4.5,
                         spacing: 4,
                         activeDotColor: Colors.white,
                       ),
@@ -76,11 +75,11 @@ class OnBoardingScreen extends StatelessWidget {
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50.w),
+                          borderRadius: BorderRadius.circular(50),
                           color: AppColors.primary,
                         ),
-                        height: 65.h,
-                        width: 65.w,
+                        height: 65,
+                        width: 65,
                         child: const Icon(
                           Icons.arrow_forward_sharp,
                           color: Colors.white,

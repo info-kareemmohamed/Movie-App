@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
@@ -36,11 +37,13 @@ class MovieCard extends StatelessWidget {
             decoration: BoxDecoration(
               image: DecorationImage(
                 image:
-                    NetworkImage('https://image.tmdb.org/t/p/w500${imageLink}'),
+                CachedNetworkImageProvider('https://image.tmdb.org/t/p/w500${imageLink}'),
                 fit: BoxFit.cover, // Adjust the fit as per your requirement
               ),
               borderRadius: BorderRadius.circular(10),
             ),
+
+
             margin: EdgeInsets.symmetric(
               horizontal: 20.0,
               vertical: 15,

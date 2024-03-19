@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/app/styles/icon_broken.dart';
@@ -99,10 +100,12 @@ class SliverAppbar extends StatelessWidget {
             collapseMode: CollapseMode.pin,
             background: Stack(
               children: [
-                Image.network(
-                  movie.posterPath != null
+                CachedNetworkImage(
+                  imageUrl: movie.posterPath != null
                       ? 'https://image.tmdb.org/t/p/w500${movie.posterPath}'
                       : 'https://media.istockphoto.com/id/1055079680/vector/black-linear-photo-camera-like-no-image-available.jpg?s=612x612&w=0&k=20&c=P1DebpeMIAtXj_ZbVsKVvg-duuL0v9DlrOZUvPG6UJk=',
+                  placeholder: (context, url) => CircularProgressIndicator(), // Placeholder widget while loading
+                  errorWidget: (context, url, error) => Icon(Icons.error), // Widget to display if image fails to load
                   width: double.infinity,
                 ),
               ],

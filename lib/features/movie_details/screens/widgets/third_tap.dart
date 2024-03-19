@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/core/common/widget/app_widget.dart';
@@ -30,14 +31,15 @@ class ThirdTabScreen extends StatelessWidget {
                         delegate: SliverChildBuilderDelegate(
                           childCount: state.casts.length,
                           (context, index) => Padding(
-                            padding:  EdgeInsets.symmetric(
+                            padding: EdgeInsets.symmetric(
                                 vertical: 8, horizontal: 10),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 CircleAvatar(
-                                  backgroundImage: NetworkImage(
-                                      '${imageBaseUrl}${state.casts[index].profilePath}'),
+                                  backgroundImage: CachedNetworkImageProvider(
+                                    '$imageBaseUrl${state.casts[index].profilePath}',
+                                  ),
                                   radius: 60,
                                 ),
                                 Text(
@@ -55,10 +57,10 @@ class ThirdTabScreen extends StatelessWidget {
                   );
                 } else if (state is CastMovieInitialState) {
                   return const Center(child: CircularProgressIndicator());
-                }else if(state is CastMovieErrorState){
-                  return AppWidget.buildErrorScreen(state.message??"Sorry Not Found");
-                }
-                else {
+                } else if (state is CastMovieErrorState) {
+                  return AppWidget.buildErrorScreen(
+                      state.message ?? "Sorry Not Found");
+                } else {
                   return const Center(child: CircularProgressIndicator());
                 }
               },

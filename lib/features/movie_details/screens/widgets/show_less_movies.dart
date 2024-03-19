@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_project/core/services/datasource/remote/apiLinks/AllApi.dart';
 import 'package:flutter_project/core/utils/app_routes.dart';
@@ -29,7 +30,7 @@ class ShowLessMovies extends StatelessWidget {
                   margin: EdgeInsets.symmetric(horizontal: 28),
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: NetworkImage(
+                      image: CachedNetworkImageProvider(
                         '$imageBaseUrl${movieSimilar[index].posterPath}',
                       ),
                       fit: BoxFit.fill,

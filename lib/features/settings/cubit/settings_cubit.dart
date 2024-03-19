@@ -29,20 +29,23 @@ class SettingsCubit extends Cubit<SettingsStates> {
     emit(AllowNotificationState());
   }
 
-  List<DropdownMenuItem<String>> dropMenuItems = [
-    DropdownMenuItem(
-      value: 'English',
-      child: Text(
-        AppData.instance.Language == ARABIC ? "إنجليزي" : "English",
+  List<DropdownMenuItem<String>> dropDownMenu(String arabic, String english) {
+    List<DropdownMenuItem<String>> dropMenuItems = [
+      DropdownMenuItem(
+        value: 'English',
+        child: Text(
+          english,
+        ),
       ),
-    ),
-    DropdownMenuItem(
-      value: 'Arabic',
-      child: Text(
-        AppData.instance.Language == ARABIC ? "عربي" : "Arabic",
+      DropdownMenuItem(
+        value: 'Arabic',
+        child: Text(
+          arabic,
+        ),
       ),
-    ),
-  ];
+    ];
+    return dropMenuItems;
+  }
 
   void dropValue(String? value) {
     selectedValue = value!;

@@ -1,7 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_project/features/app_layout/screens/app_layout_screen.dart';
 
 class ProfilePictureContainer extends StatelessWidget {
   ProfilePictureContainer(
@@ -27,21 +24,17 @@ class ProfilePictureContainer extends StatelessWidget {
           //   ),
           // );
         },
-        child: Stack(
-          children: [
-            Container(
-              height: 200,
-              width: 130,
-              decoration: BoxDecoration(
-                color: Color(color),
-                borderRadius: BorderRadius.circular(7.15),
-              ),
+        child: Container(
+          height: 200,
+          width: 130,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(image),
             ),
-            Positioned(
-              top: top,
-              child: Image.asset(image),
-            ),
-          ],
+            // image: DecorationImage(
+            //   image: CachedNetworkImageProvider(image),
+            // ),
+          ),
         ),
       ),
     );

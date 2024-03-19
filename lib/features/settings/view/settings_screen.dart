@@ -12,6 +12,7 @@ import 'package:flutter_project/features/settings/cubit/settings_cubit.dart';
 import 'package:flutter_project/features/settings/cubit/settings_states.dart';
 import 'package:flutter_project/features/settings/view/flutter_switch_button.dart';
 import 'package:flutter_project/generated/l10n.dart';
+
 import '../../../core/helper/navigation.dart';
 import '../../../core/utils/app_routes.dart';
 
@@ -36,7 +37,7 @@ class SettingsScreen extends StatelessWidget {
             ),
           ),
           body: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -47,7 +48,7 @@ class SettingsScreen extends StatelessWidget {
                       ProfilePictureContainer(
                         color: 0xFF1CE783,
                         top: 50,
-                        image: '',
+                        image: 'assets/images/Poster.png',
                         //UserMain.instance!.profilePicture??"",
                       ),
                       Column(
@@ -60,7 +61,7 @@ class SettingsScreen extends StatelessWidget {
                               fontSize: 20,
                             ),
                           ),
-                          SizedBox(height: 15),
+                          const SizedBox(height: 15),
                           Container(
                             height: 35,
                             width: 180,
@@ -78,7 +79,7 @@ class SettingsScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(height: 25),
+                          const SizedBox(height: 25),
                           Text(
                             S.of(context).settings_language,
                             style: AppTextStyle.medium(
@@ -86,11 +87,11 @@ class SettingsScreen extends StatelessWidget {
                               fontSize: 20,
                             ),
                           ),
-                          SizedBox(height: 20),
+                          const SizedBox(height: 20),
                           Container(
                             height: 40,
                             width: 190,
-                            padding: EdgeInsets.symmetric(horizontal: 7),
+                            padding: const EdgeInsets.symmetric(horizontal: 7),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(4),
                               color:
@@ -99,8 +100,9 @@ class SettingsScreen extends StatelessWidget {
                                       : AppColors.lightYellow,
                             ),
                             child: DropdownButton(
-                              items:
-                                  context.read<SettingsCubit>().dropMenuItems,
+                              items: context.read<SettingsCubit>().dropDownMenu(
+                                  S.of(context).settings_ar,
+                                  S.of(context).settings_en),
                               icon: Icon(
                                 IconBroken.Arrow___Right_2,
                                 size: 20,

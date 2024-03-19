@@ -2,11 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_project/features/home/cubit/topRated/top_rated_movies_cubit.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/home/cubit/home_screen_cubit.dart';
-import 'package:flutter_project/features/movie_details/screens/details_screen.dart';
+import 'package:flutter_project/features/home/cubit/topRated/top_rated_movies_cubit.dart';
+import 'package:flutter_project/generated/l10n.dart';
 
 import '../../../../core/helper/navigation.dart';
 import '../../../../core/utils/app_routes.dart';
@@ -40,7 +40,7 @@ class SliverAppbarHome extends StatelessWidget {
                               child: Container(
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
-                                    image:CachedNetworkImageProvider(
+                                    image: CachedNetworkImageProvider(
                                         'https://image.tmdb.org/t/p/w500${results.posterPath}'),
                                     fit: BoxFit.fill,
                                   ),
@@ -62,7 +62,7 @@ class SliverAppbarHome extends StatelessWidget {
                 } else {
                   return Center(
                     child: Padding(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       child: Text(
                         'Sorry Not Found',
                         style: AppTextStyle.semiBold(
@@ -81,17 +81,18 @@ class SliverAppbarHome extends StatelessWidget {
             backgroundColor: Colors.transparent,
             elevation: 0,
             title: Padding(
-              padding: EdgeInsets.only(left: 5),
+              padding: const EdgeInsets.only(left: 5),
               child: SizedBox(
                 width: 250,
                 child: Container(
-                  padding: EdgeInsets.only(left: 15),
+                  padding: const EdgeInsets.only(left: 15),
                   decoration: BoxDecoration(
                       color: Colors.black.withOpacity(0.8),
                       borderRadius: BorderRadius.circular(15)),
                   child: DropdownButton(
-                    items: cubit.dropMenuItems,
-                    icon: Icon(
+                    items: cubit.dropDownMenu(S.of(context).details_CASTS,
+                        S.of(context).details_CASTS),
+                    icon: const Icon(
                       Icons.keyboard_arrow_down_rounded,
                       size: 40,
                       color: AppColors.lightYellow,

@@ -7,6 +7,8 @@ class HomeScreenInitialState extends HomeScreenStates {}
 
 class SelectedValueState extends HomeScreenStates {}
 
+class LanguageUpdateState extends HomeScreenStates {}
+
 // class TopRatedSuccessState extends HomeScreenStates  {
 //   final List<MovieResponse> movies;
 //   TopRatedSuccessState(this.movies);

@@ -17,23 +17,28 @@ class UserMain {
 
   static UserMain? setInfoToInstance(Map<String, dynamic> json) {
     instance ??= UserMain._(
-        id: json['UId'] as String ?? '',
-        name: json['name'] as String ?? '',
-        email: json['email'] as String ?? '',
-        password: json['password'] as String ?? '',
-        profilePicture: json['profilePicture'] as String ?? '',
-      );
+      // id: json['UId'] as String ?? '',
+      // name: json['name'] as String ?? '',
+      // email: json['email'] as String ?? '',
+      // password: json['password'] as String ?? '',
+      // profilePicture: json['profilePicture'] as String ?? '',
+      id: 'dddd',
+      name: 'ddddd',
+      email: 'dddd',
+      password: 'ddddd',
+      profilePicture: 'ddddd',
+    );
     return instance;
   }
 
   static UserMain? setDataToInstance(String id, String name, String email,
       String password, String profilePicture) {
     instance ??= UserMain._(
-          id: id,
-          name: name,
-          email: email,
-          password: password,
-          profilePicture: profilePicture);
+        id: id,
+        name: name,
+        email: email,
+        password: password,
+        profilePicture: profilePicture);
     return instance;
   }
 

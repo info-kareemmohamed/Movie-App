@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_images.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
-import 'package:flutter_project/features/login/view/login.dart';
 import 'package:flutter_project/features/onboarding/screens/onboarding_screen.dart';
 
 import '../../../../core/helper/navigation.dart';
@@ -17,62 +16,16 @@ class FirstOnBoardingScreen extends StatelessWidget {
       backgroundColor: AppColors.darkTheme,
       body: Column(
         children: [
-          Expanded(
-            child: Stack(
-              children: [
-                Positioned(
-                  top: 60,
-                  child: Image.asset(AppImages.poster11), //11
-                ),
-                Positioned(
-                  top: 10,
-                  left: 12,
-                  child: Image.asset(AppImages.poster8), //8
-                ),
-                Positioned(
-                  left: 185,
-                  child: Image.asset(AppImages.poster10), //10
-                ),
-                Positioned(
-                  left: 230,
-                  top: 30,
-                  child: Image.asset(AppImages.poster9), //9
-                ),
-                Positioned(
-                  left: 270,
-                  top: 160,
-                  child: Image.asset(AppImages.poster12), //12
-                ),
-                Positioned(
-                  left: 100,
-                  top: 260,
-                  child: Image.asset(AppImages.poster13), //13
-                ),
-                Positioned(
-                  left: 5,
-                  top: 350,
-                  child: Image.asset(AppImages.poster6), //6
-                ),
-                Positioned(
-                  left: 140,
-                  top: 390,
-                  child: Image.asset(AppImages.poster7), //7
-                ),
-                Positioned(
-                  top: 240,
-                  child: Image.asset(AppImages.ellipse), //E
-                ),
-                Positioned(
-                  top: 320,
-                  child: Image.asset(AppImages.shadow), //s
-                ),
-              ],
-            ),
+          Image.asset(
+            'assets/images/onBoarding.png',
+            width: double.infinity,
+            height: MediaQuery.of(context).size.height * 0.6,
+            fit: BoxFit.fill,
           ),
           Image.asset(
             AppImages.huluLogo,
             width: 120,
-            fit: BoxFit.fill,
+            fit: BoxFit.cover,
           ),
           Center(
             child: RichText(
@@ -100,7 +53,7 @@ class FirstOnBoardingScreen extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Text(
@@ -111,7 +64,7 @@ class FirstOnBoardingScreen extends StatelessWidget {
               color: AppColors.lightYellow,
             ),
           ),
-           SizedBox(
+          const SizedBox(
             height: 65,
           ),
           GestureDetector(
@@ -141,8 +94,7 @@ class FirstOnBoardingScreen extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {
-              NavigationHelper.navigateToReplacement(
-                  AppRoute.LOGIN);
+              NavigationHelper.navigateToReplacement(AppRoute.LOGIN);
             },
             child: Text(
               'Login',

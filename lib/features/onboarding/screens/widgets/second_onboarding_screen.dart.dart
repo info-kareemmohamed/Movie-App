@@ -10,11 +10,11 @@ class SecondOnBoardingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding:  EdgeInsets.only(top: 90.0),
+        padding: const EdgeInsets.only(top: 90.0),
         child: Column(
           children: [
             Image.asset(AppImages.huluLogo),
-            SizedBox(
+            const SizedBox(
               height: 35,
             ),
             Stack(
@@ -51,7 +51,7 @@ class SecondOnBoardingScreen extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 62,
             ),
             RichText(
@@ -65,7 +65,7 @@ class SecondOnBoardingScreen extends StatelessWidget {
                       color: AppColors.primary,
                     ),
                   ),
-                  WidgetSpan(
+                  const WidgetSpan(
                     child: SizedBox(height: 30),
                   ),
                   TextSpan(
@@ -74,7 +74,7 @@ class SecondOnBoardingScreen extends StatelessWidget {
                       fontSize: 18.29,
                     ),
                   ),
-                  WidgetSpan(
+                  const WidgetSpan(
                     child: SizedBox(height: 35),
                   ),
                   TextSpan(

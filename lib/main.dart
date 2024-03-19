@@ -64,8 +64,9 @@ class _MyAppState extends State<MyApp> {
         title: 'Hulu',
         navigatorKey: NavigationHelper.navigatorKey,
         onGenerateRoute: NavigationHelper.generateRoute,
-        initialRoute:
-            UserMain.instance != null ? AppRoute.APP_LAYOUT : AppRoute.LOGIN,
+        initialRoute: UserMain.instance != null
+            ? AppRoute.FIRST_ON_BOARDING
+            : AppRoute.FIRST_ON_BOARDING,
       ),
       //}),
     );

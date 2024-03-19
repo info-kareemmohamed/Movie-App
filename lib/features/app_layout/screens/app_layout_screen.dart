@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/features/app_layout/cubit/app_layout_cubit.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppLayoutScreen extends StatelessWidget {
   const AppLayoutScreen({super.key});
@@ -19,7 +18,7 @@ class AppLayoutScreen extends StatelessWidget {
           return Scaffold(
             bottomNavigationBar: CurvedNavigationBar(
               animationCurve: Curves.easeInOutCubicEmphasized,
-              height: 53.h,
+              height: 53,
               index: cubit.currentIndex,
               color: AppColors.darkTheme,
               backgroundColor: AppColors.primary,

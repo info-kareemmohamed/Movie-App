@@ -46,6 +46,11 @@ dependencies:
   firebase_auth: ^4.16.0
   google_sign_in: ^6.2.1
   firebase_storage: ^11.6.0
+
+  dio_http_cache: ^0.3.0
+  sqflite: ^2.0.0
+  path_provider: any
+
   flutter_svg: ^0.22.0
   flutter_facebook_auth: '^3.5.0'
   intl: any

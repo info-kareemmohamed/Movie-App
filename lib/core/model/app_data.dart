@@ -33,4 +33,10 @@ class AppData {
         ? AppColors.white
         : AppColors.darkTheme;
   }
+
+  static Color textColorName() {
+    return instance.Theme == AppColors.darkTheme
+        ? AppColors.white
+        : AppColors.darkTheme;
+  }
 }

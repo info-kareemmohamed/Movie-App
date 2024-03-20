@@ -66,14 +66,13 @@ class SettingsScreen extends StatelessWidget {
                             height: 35,
                             width: 180,
                             decoration: BoxDecoration(
-                                color: AppData.textColor(),
                                 borderRadius: BorderRadius.circular(25)),
                             child: Center(
                               child: Text(
                                 UserMain.instance?.name ?? "kareem",
                                 textAlign: TextAlign.center,
                                 style: AppTextStyle.semiBold(
-                                  color: AppColors.darkTheme,
+                                  color: AppData.textColorName(),
                                   fontSize: 13,
                                 ),
                               ),

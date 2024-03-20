@@ -7,7 +7,6 @@ import 'package:flutter_project/features/home/screens/widget/latest_movies.dart'
 import 'package:flutter_project/features/home/screens/widget/sliver_app_bar_home.dart';
 import 'package:flutter_project/features/home/screens/widget/trending_daily_movies.dart';
 import 'package:flutter_project/features/home/screens/widget/trending_weekly_movies.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../generated/l10n.dart';
 
@@ -38,11 +37,11 @@ class HomeScreen extends StatelessWidget {
                           cubit.selectedValue == 'Daily'
                               ? const TrendingDailyScreen()
                               : const TrendingWeeklyScreen(),
-                           SizedBox(
+                          const SizedBox(
                             height: 15,
                           ),
                           Padding(
-                            padding:  EdgeInsets.only(left: 20),
+                            padding: const EdgeInsets.only(left: 20),
                             child: Text(
                               S.of(context).home_latest_movies,
                               style: AppTextStyle.semiBold(
@@ -51,7 +50,7 @@ class HomeScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                           SizedBox(
+                          const SizedBox(
                             height: 15,
                           ),
                           const LatestMovies(),

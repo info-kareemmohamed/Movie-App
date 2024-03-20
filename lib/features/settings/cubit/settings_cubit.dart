@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/core/helper/hive.dart';
 import 'package:flutter_project/core/helper/navigation.dart';
 import 'package:flutter_project/core/model/app_data.dart';
+import 'package:flutter_project/core/services/datasource/remote/api/DioConfig.dart';
 import 'package:flutter_project/core/utils/Constants.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/features/settings/cubit/settings_states.dart';
@@ -47,7 +48,8 @@ class SettingsCubit extends Cubit<SettingsStates> {
     return dropMenuItems;
   }
 
-  void dropValue(String? value) {
+  void dropValue(String? value) async {
+    await DioConfig.dioManager.deleteByPrimaryKeyAndSubKey('page=1');
     selectedValue = value!;
     print(value);
     AppData.instance.Language = value == 'English' ? ENGLISH : ARABIC;

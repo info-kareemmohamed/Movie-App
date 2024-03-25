@@ -17,6 +17,8 @@
          "login_button_signin": "تسجيل الدخول",
          "login_dont_have_account": "ليس لديك حساب؟",
          "login_register": "تسجيل",
+         "home_daily": "المتداول يومياً",
+         "home_weekly": "المتداول أسبوعياً",
          "register_hinttxt_user_name": "اسم المستخدم",
 "register_hinttxt_email_address": "عنوان البريد الإلكتروني",
 "register_hinttxt_password": "كلمة المرور",

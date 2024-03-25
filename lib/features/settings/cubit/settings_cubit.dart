@@ -49,7 +49,6 @@ class SettingsCubit extends Cubit<SettingsStates> {
   }
 
   void dropValue(String? value) async {
-    await DioConfig.dioManager.deleteByPrimaryKeyAndSubKey('page=1');
     selectedValue = value!;
     print(value);
     AppData.instance.Language = value == 'English' ? ENGLISH : ARABIC;

@@ -31,9 +31,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("المزيد مثل هذا"),
         "details_show_more": MessageLookupByLibrary.simpleMessage("عرض المزيد"),
         "favourite_favourite": MessageLookupByLibrary.simpleMessage("مفضل"),
+        "home_daily": MessageLookupByLibrary.simpleMessage("المتداول يومياً"),
         "home_latest_movies":
             MessageLookupByLibrary.simpleMessage("أحدث الأفلام"),
         "home_watch_it": MessageLookupByLibrary.simpleMessage("شاهدها"),
+        "home_weekly":
+            MessageLookupByLibrary.simpleMessage("المتداول أسبوعياً"),
         "login_button_signin":
             MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "login_dont_have_account":

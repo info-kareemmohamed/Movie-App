@@ -6,7 +6,6 @@ import 'package:flutter_project/core/helper/hive.dart';
 import 'package:flutter_project/core/helper/provider.dart';
 import 'package:flutter_project/core/model/app_data.dart';
 import 'package:flutter_project/generated/l10n.dart';
-
 import 'core/helper/navigation.dart';
 import 'core/model/main_user.dart';
 import 'core/utils/app_routes.dart';
@@ -15,6 +14,7 @@ void main() async {
   await FirebaseHelper.firebaseInitialization();
   await HiveHelper.hiveInatailzetion();
   await FirebaseHelper.setUserMain();
+  await FirebaseHelper.Notifications();
 
   runApp(const MyApp());
 }
@@ -64,9 +64,8 @@ class _MyAppState extends State<MyApp> {
         title: 'Hulu',
         navigatorKey: NavigationHelper.navigatorKey,
         onGenerateRoute: NavigationHelper.generateRoute,
-        initialRoute: UserMain.instance != null
-            ? AppRoute.APP_LAYOUT
-            : AppRoute.FIRST_ON_BOARDING,
+        initialRoute:
+            UserMain.instance != null ? AppRoute.APP_LAYOUT : AppRoute.LOGIN,
       ),
       //}),
     );

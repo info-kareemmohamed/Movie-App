@@ -1,10 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_project/core/model/main_user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import '../../firebase_options.dart';
+import '../utils/app_routes.dart';
+import 'navigation.dart';
 
 abstract class FirebaseHelper {
   static Future<void> firebaseInitialization() async {
@@ -17,26 +21,30 @@ abstract class FirebaseHelper {
   static Future<void> setUserMain() async {
     if (FirebaseAuth.instance.currentUser != null) {
       String uid = FirebaseAuth.instance.currentUser!.uid;
-
-      DocumentReference userRef =
-          FirebaseFirestore.instance.collection('Users').doc(uid);
-
-      DocumentSnapshot userSnapshot = await userRef.get();
-
-      if (userSnapshot.exists) {
-        Map<String, dynamic>? userData =
-            userSnapshot.data() as Map<String, dynamic>;
-
-        if (userData != null) {
-          // Pass the userData to setInfoToInstance method
-          UserMain.setInfoToInstance(userData);
-        } else {
-          print('User data is null');
-        }
-      } else {
-        print('User document does not exist in Firestore');
-      }
+      UserMain.setInfoToInstance((await getUserFromFirestore(uid))!);
+    } else {
+      print('User document does not exist in Firestore');
     }
+  }
+
+  static Future<void> signOut() async {
+    await FirebaseAuth.instance.signOut().then((_) {
+      UserMain.instance = null;
+      NavigationHelper.navigateToReplacement(AppRoute.LOGIN);
+    });
+  }
+
+  static Future<Map<String, dynamic>?> getUserFromFirestore(String id) async {
+    Map<String, dynamic>? userData;
+    DocumentSnapshot userSnapshot =
+        await FirebaseFirestore.instance.collection('Users').doc(id).get();
+
+    if (userSnapshot.exists) {
+      userData = userSnapshot.data() as Map<String, dynamic>;
+    } else {
+      throw Exception('User document does not exist in Firestore');
+    }
+    return userData;
   }
 
   static Future<String?> setUserInFirestore(String name, String email) async {
@@ -80,7 +88,49 @@ abstract class FirebaseHelper {
     }
   }
 
+  static Future<UserCredential?> signInWithGoogle() async {
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+    if (googleUser == null) {
+      throw Exception('Error in googleUser');
+    }
+
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser!.authentication;
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+
+    final UserCredential userCredential =
+        await FirebaseAuth.instance.signInWithCredential(credential);
+    return userCredential;
+  }
+
   static Future<void> forgotPassword(String email) async {
     await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+  }
+
+  static Future<bool> userExistsInFirestore(String userId) async {
+    try {
+      final DocumentSnapshot documentSnapshot = await FirebaseFirestore.instance
+          .collection('Users')
+          .doc(userId)
+          .get();
+      return documentSnapshot.exists;
+    } catch (e) {
+      print(e);
+      return false;
+    }
+  }
+
+  static Future<void> _handleBackgroundMessage(
+      RemoteMessage remoteMessage) async {
+    print('Title:  ${remoteMessage.notification?.title}');
+  }
+
+  static Future<void> Notifications() async {
+    FirebaseMessaging.instance.requestPermission();
+    print('${await FirebaseMessaging.instance.getToken()} wwwwwwwww');
+    FirebaseMessaging.onBackgroundMessage(_handleBackgroundMessage);
   }
 }

@@ -90,8 +90,8 @@ class SliverAppbarHome extends StatelessWidget {
                       color: Colors.black.withOpacity(0.8),
                       borderRadius: BorderRadius.circular(15)),
                   child: DropdownButton(
-                    items: cubit.dropDownMenu(S.of(context).details_CASTS,
-                        S.of(context).details_CASTS),
+                    items: cubit.dropDownMenu(S.of(context).home_daily,
+                        S.of(context).home_weekly),
                     icon: const Icon(
                       Icons.keyboard_arrow_down_rounded,
                       size: 40,

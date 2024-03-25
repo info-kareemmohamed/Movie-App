@@ -1,5 +1,6 @@
 import 'dart:io';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -10,9 +11,9 @@ import 'package:flutter_project/core/utils/app_routes.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/profile_picture/view/profile_picture_container.dart';
 import 'package:image_picker/image_picker.dart';
-
 import '../../../core/model/main_user.dart';
 import '../../../generated/l10n.dart';
+
 
 class ProfilePictureAdd extends StatelessWidget {
   const ProfilePictureAdd({super.key});
@@ -46,14 +47,14 @@ class ProfilePictureAdd extends StatelessWidget {
                         ),
                         onPressed: () {
                           uploadImage();
-                          NavigationHelper.navigateToReplacement(AppRoute.APP_LAYOUT);
+                           NavigationHelper.navigateToReplacement(AppRoute.APP_LAYOUT);
                           print('add');
                         },
                       ),
                     ),
                     const SizedBox(height: 20),
                     Text(
-                    S.of(context).profile_addprofile,
+                      S.of(context).profile_addprofile,
                       textAlign: TextAlign.center,
                       style: AppTextStyle.medium(
                         color: AppColors.lightYellow,
@@ -106,10 +107,18 @@ class ProfilePictureAdd extends StatelessWidget {
     if (file != null) {
       UploadTask task = FirebaseStorage.instance
           .ref()
-          .child('${UserMain.instance!.id}.png')
+          .child('${"UserMain.instance!.id"}.png')
           .putFile(file!);
-      UserMain.instance!.profilePicture =
-          await task.snapshot.ref.getDownloadURL();
+      TaskSnapshot snapshot = await task;
+
+      UserMain.instance!.profilePicture = await snapshot.ref.getDownloadURL();
+
+      print(
+          ' ${UserMain.instance!.profilePicture}         ddddddddddddddddddddd');
+      await FirebaseFirestore.instance
+          .collection('Users')
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .update({'profilePicture': UserMain.instance!.profilePicture});
     } else {
       print('no');
     }

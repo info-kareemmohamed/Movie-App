@@ -1,16 +1,38 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_project/core/helper/firebase.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import '../../../core/model/main_user.dart';
 
 abstract class LoginRepo {
   static Future<String> login(String? email, String? password) async {
     String code = '';
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+      final userCredential =
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email!,
         password: password!,
       );
+      UserMain.setInfoToInstance((await FirebaseHelper.getUserFromFirestore(
+          userCredential.user!.uid))!);
+    } on FirebaseAuthException catch (e) {
+      return code = e.code;
+    }
+    return code;
+  }
+
+  static Future<String> loginWithGoogle() async {
+    String code = '';
+    try {
+      final UserCredential userCredential =
+          (await FirebaseHelper.signInWithGoogle())!;
+
+      if (!await FirebaseHelper.userExistsInFirestore(
+          userCredential.user!.uid)) {
+        await _userNotExistsInFirestore(userCredential);
+      } else {
+        code = 'there';
+        UserMain.setInfoToInstance((await FirebaseHelper.getUserFromFirestore(
+            userCredential.user!.uid))!);
+      }
     } on FirebaseAuthException catch (e) {
       return code = e.code;
     }
@@ -18,39 +40,18 @@ abstract class LoginRepo {
     return code;
   }
 
-  static Future<String> loginWithGoogle() async {
-    String code = '';
-    try {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-      if (googleUser == null) {
-        return code = 'null';
-      }
+  static Future<void> _userNotExistsInFirestore(
+      UserCredential userCredential) async {
+    await FirebaseHelper.setUserInFirestore(
+            userCredential.user!.displayName ?? '',
+            userCredential.user!.email ?? '') ??
+        '';
 
-      final GoogleSignInAuthentication googleAuth =
-          await googleUser!.authentication;
-      final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth.accessToken,
-        idToken: googleAuth.idToken,
-      );
-
-      final UserCredential userCredential =
-          await FirebaseAuth.instance.signInWithCredential(credential);
-
-      code = await FirebaseHelper.setUserInFirestore(
-              userCredential.user!.displayName ?? '',
-              userCredential.user!.email ?? '') ??
-          '';
-      if (code == '')
-        UserMain.setDataToInstance(
-            FirebaseAuth.instance.currentUser!.uid,
-            userCredential.user!.displayName ?? "",
-            userCredential.user!.email ?? '',
-            '',
-            "");
-    } on FirebaseAuthException catch (e) {
-      return code = e.code;
-    }
-
-    return code;
+    UserMain.setDataToInstance(
+        FirebaseAuth.instance.currentUser!.uid,
+        userCredential.user!.displayName ?? "",
+        userCredential.user!.email ?? '',
+        '',
+        "");
   }
 }

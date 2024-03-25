@@ -1,20 +1,18 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/app/styles/icon_broken.dart';
+import 'package:flutter_project/core/helper/firebase.dart';
 import 'package:flutter_project/core/model/app_data.dart';
 import 'package:flutter_project/core/model/main_user.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/app_layout/cubit/app_layout_cubit.dart';
-import 'package:flutter_project/features/profile_picture/view/profile_picture_container.dart';
 import 'package:flutter_project/features/settings/cubit/settings_cubit.dart';
 import 'package:flutter_project/features/settings/cubit/settings_states.dart';
 import 'package:flutter_project/features/settings/view/flutter_switch_button.dart';
 import 'package:flutter_project/generated/l10n.dart';
 
-import '../../../core/helper/navigation.dart';
-import '../../../core/utils/app_routes.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -45,11 +43,15 @@ class SettingsScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      ProfilePictureContainer(
-                        color: 0xFF1CE783,
-                        top: 50,
-                        image: 'assets/images/Poster.png',
-                        //UserMain.instance!.profilePicture??"",
+                      Container(
+                        height: 200,
+                        width: 130,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: CachedNetworkImageProvider(
+                                UserMain.instance!.profilePicture ?? ""),
+                          ),
+                        ),
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,7 +71,7 @@ class SettingsScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(25)),
                             child: Center(
                               child: Text(
-                                UserMain.instance?.name ?? "kareem",
+                                UserMain.instance?.name ?? "",
                                 textAlign: TextAlign.center,
                                 style: AppTextStyle.semiBold(
                                   color: AppData.textColorName(),
@@ -159,9 +161,7 @@ class SettingsScreen extends StatelessWidget {
                   GestureDetector(
                     onTap: () async {
                       context.read<AppLayoutCubit>().currentIndex = 1;
-                      await FirebaseAuth.instance.signOut().then((value) =>
-                          NavigationHelper.navigateToReplacement(
-                              AppRoute.LOGIN));
+                      await FirebaseHelper.signOut();
                     },
                     child: Container(
                       height: 45,

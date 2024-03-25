@@ -380,6 +380,26 @@ class S {
     );
   }
 
+  /// `Trending Daily`
+  String get home_daily {
+    return Intl.message(
+      'Trending Daily',
+      name: 'home_daily',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Trending Weekly`
+  String get home_weekly {
+    return Intl.message(
+      'Trending Weekly',
+      name: 'home_weekly',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Show More`
   String get details_show_more {
     return Intl.message(

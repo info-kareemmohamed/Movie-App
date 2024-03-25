@@ -32,9 +32,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "details_show_more": MessageLookupByLibrary.simpleMessage("Show More"),
         "favourite_favourite":
             MessageLookupByLibrary.simpleMessage("Favourite"),
+        "home_daily": MessageLookupByLibrary.simpleMessage("Trending Daily"),
         "home_latest_movies":
             MessageLookupByLibrary.simpleMessage("Latest Movies"),
         "home_watch_it": MessageLookupByLibrary.simpleMessage("Watch it"),
+        "home_weekly": MessageLookupByLibrary.simpleMessage("Trending Weekly"),
         "login_button_signin": MessageLookupByLibrary.simpleMessage("Sign in"),
         "login_dont_have_account":
             MessageLookupByLibrary.simpleMessage("Don\'t have account?"),

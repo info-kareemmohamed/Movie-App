@@ -12,8 +12,7 @@ import '../../../core/utils/Constants.dart';
 class LoginCubit extends Cubit<LoginStates> {
   LoginCubit() : super(InitialLoginState());
 
-  bool visibility = true,_languageEn= AppData.instance.Language==ENGLISH;
-
+  bool visibility = true, _languageEn = AppData.instance.Language == ENGLISH;
 
   void changePasswordVisibility() {
     visibility = !visibility;
@@ -41,16 +40,18 @@ class LoginCubit extends Cubit<LoginStates> {
     if (code == 'invalid-credential') {
       showSnackBar(
         NavigationHelper.navigatorKey.currentContext!,
-       _languageEn? 'No user found or Wrong Password . Please check your Email and Password.':
-       "لم يتم العثور على مستخدم أو كلمة مرور خاطئة. يرجى التحقق من البريد الإلكتروني وكلمة المرور الخاصة بك.",
+        _languageEn
+            ? 'No user found or Wrong Password . Please check your Email and Password.'
+            : "لم يتم العثور على مستخدم أو كلمة مرور خاطئة. يرجى التحقق من البريد الإلكتروني وكلمة المرور الخاصة بك.",
         Colors.red,
       );
     } else if (code == 'too-many-requests') {
       showSnackBar(
         NavigationHelper.navigatorKey.currentContext!,
-       _languageEn? '''Many failed login attempts 
-          Please Closing App and Try Again''':
-        "لعديد من محاولات تسجيل الدخول الفاشلة يرجى إغلاق التطبيق والمحاولة مرة أخرى",
+        _languageEn
+            ? '''Many failed login attempts 
+          Please Closing App and Try Again'''
+            : "لعديد من محاولات تسجيل الدخول الفاشلة يرجى إغلاق التطبيق والمحاولة مرة أخرى",
         Colors.red,
       );
     }
@@ -66,12 +67,16 @@ class LoginCubit extends Cubit<LoginStates> {
         return null;
       } else if (code == '') {
         NavigationHelper.navigateToReplacement(AppRoute.PROFILEPICTURE);
-        emit(LoginSuccessState());
+      } else if (code == 'there') {
+        NavigationHelper.navigateToReplacement(AppRoute.APP_LAYOUT);
       }
+      emit(LoginSuccessState());
     } catch (e) {
       showSnackBar(
         NavigationHelper.navigatorKey.currentContext!,
-        _languageEn?'Failed to sign in with Google Network Error':"فشل تسجيل الدخول بسبب خطأ في شبكة Google",
+        _languageEn
+            ? 'Failed to sign in with Google Network Error'
+            : "فشل تسجيل الدخول بسبب خطأ في شبكة Google",
         Colors.red,
       );
       print('Failed to sign in with Google: $e');
@@ -80,7 +85,7 @@ class LoginCubit extends Cubit<LoginStates> {
   }
 
   void setDataToLogin(bool validate, String email, String password) {
-    if (visibility) {
+    if (validate) {
       login(
         email: email,
         password: password,

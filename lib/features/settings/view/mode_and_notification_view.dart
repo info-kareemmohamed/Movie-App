@@ -1,5 +1,6 @@
 // import 'package:flutter/material.dart';
 //
+// import '../../app_layout/cubit/app_layout_cubit.dart';
 // import 'flutter_switch_button.dart';
 //
 // class ModeAndNotificationView extends StatelessWidget {

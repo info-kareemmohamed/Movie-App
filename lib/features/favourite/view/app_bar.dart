@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_text_style.dart';
 import '../../../generated/l10n.dart';
@@ -8,7 +9,7 @@ class FavouriteAppBar extends StatelessWidget implements PreferredSizeWidget {
   const FavouriteAppBar({super.key});
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class FavouriteAppBar extends StatelessWidget implements PreferredSizeWidget {
         S.of(context).favourite_favourite,
         style: AppTextStyle.extraBold(
           color: Colors.white,
-          fontSize: 18.74,
+          fontSize: 18.74.sp,
         ),
       ),
     );

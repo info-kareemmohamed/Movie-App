@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project/features/login/view/login.dart';
 import 'package:flutter_project/features/profile_picture/view/profile_picture.dart';
+import 'package:flutter_project/features/splash_screen/splash_screen.dart';
 
 import '../../features/app_layout/screens/app_layout_screen.dart';
 import '../../features/favourite/view/favourite_screen.dart';
 import '../../features/home/screens/home_screen.dart';
-import '../../features/register/view/register.dart';
 import '../../features/movie_details/screens/details_screen.dart';
 import '../../features/onboarding/screens/widgets/first_onboarding_screen.dart';
+import '../../features/register/view/register.dart';
 import '../../features/settings/view/settings_screen.dart';
 import '../../main.dart';
 import '../utils/app_routes.dart';
@@ -55,6 +56,8 @@ class NavigationHelper {
         return MaterialPageRoute(builder: (_) => const AppLayoutScreen());
       case AppRoute.FIRST_ON_BOARDING:
         return MaterialPageRoute(builder: (_) => const FirstOnBoardingScreen());
+      case AppRoute.SPLASH:
+        return MaterialPageRoute(builder: (_) => const SplashScreen());
       default:
         return MaterialPageRoute(builder: (_) => const MyApp());
     }

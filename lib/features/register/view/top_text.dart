@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_text_style.dart';
@@ -12,26 +13,26 @@ class TopText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SpaceVH(height: 15),
+        SpaceVH(height: 15.h),
         Text(
-         S.of(context).register_toptext_create_account,
+          S.of(context).register_toptext_create_account,
           style: AppTextStyle.semiBold(
-            fontSize: 33.05,
+            fontSize: 33.05.sp,
             color: AppColors.primary,
           ),
         ),
         Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
           child: Text(
             S.of(context).register_toptext,
             textAlign: TextAlign.center,
             style: AppTextStyle.regular(
               color: AppColors.lightRed,
-              fontSize: 12.13,
+              fontSize: 12.13.sp,
             ),
           ),
         ),
-        SpaceVH(height: 20.0),
+        SpaceVH(height: 20.h),
       ],
     );
   }

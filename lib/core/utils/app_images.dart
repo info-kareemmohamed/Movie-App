@@ -2,6 +2,7 @@ abstract class AppImages {
   static const String images = "assets/images";
   static const String icon = "assets/icon";
   static const String FavouriteLottie = "assets/animation/Fv.json";
+  static const String splashLottie = "assets/animation/splash.json";
 
   static const String avatar = "$images/Avatar.png";
   static const String avatar2 = "$images/Avatar1.png";

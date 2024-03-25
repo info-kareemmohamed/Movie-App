@@ -12,7 +12,7 @@ import 'package:flutter_project/features/settings/cubit/settings_cubit.dart';
 import 'package:flutter_project/features/settings/cubit/settings_states.dart';
 import 'package:flutter_project/features/settings/view/flutter_switch_button.dart';
 import 'package:flutter_project/generated/l10n.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -30,12 +30,12 @@ class SettingsScreen extends StatelessWidget {
               S.of(context).settings_settings,
               style: AppTextStyle.extraBold(
                 color: AppData.textColor(),
-                fontSize: 18.74,
+                fontSize: 18.74.sp,
               ),
             ),
           ),
           body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
+            padding: EdgeInsets.symmetric(horizontal: 15.w),
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -44,8 +44,8 @@ class SettingsScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        height: 200,
-                        width: 130,
+                        height: 200.h,
+                        width: 130.w,
                         decoration: BoxDecoration(
                           image: DecorationImage(
                             image: CachedNetworkImageProvider(
@@ -60,41 +60,41 @@ class SettingsScreen extends StatelessWidget {
                             S.of(context).settings_profile,
                             style: AppTextStyle.medium(
                               color: AppData.textColor(),
-                              fontSize: 20,
+                              fontSize: 20.sp,
                             ),
                           ),
-                          const SizedBox(height: 15),
+                          SizedBox(height: 15.h),
                           Container(
-                            height: 35,
-                            width: 180,
+                            height: 35.h,
+                            width: 180.w,
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25)),
+                                borderRadius: BorderRadius.circular(25.r)),
                             child: Center(
                               child: Text(
                                 UserMain.instance?.name ?? "",
                                 textAlign: TextAlign.center,
                                 style: AppTextStyle.semiBold(
                                   color: AppData.textColorName(),
-                                  fontSize: 13,
+                                  fontSize: 13.sp,
                                 ),
                               ),
                             ),
                           ),
-                          const SizedBox(height: 25),
+                          SizedBox(height: 25.h),
                           Text(
                             S.of(context).settings_language,
                             style: AppTextStyle.medium(
                               color: AppData.textColor(),
-                              fontSize: 20,
+                              fontSize: 20.sp,
                             ),
                           ),
-                          const SizedBox(height: 20),
+                          SizedBox(height: 20.h),
                           Container(
-                            height: 40,
-                            width: 190,
-                            padding: const EdgeInsets.symmetric(horizontal: 7),
+                            height: 40.h,
+                            width: 190.w,
+                            padding: EdgeInsets.symmetric(horizontal: 7.w),
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(4),
+                              borderRadius: BorderRadius.circular(4.r),
                               color:
                                   AppData.instance.Theme == AppColors.darkTheme
                                       ? AppColors.darkGray
@@ -106,10 +106,10 @@ class SettingsScreen extends StatelessWidget {
                                   S.of(context).settings_en),
                               icon: Icon(
                                 IconBroken.Arrow___Right_2,
-                                size: 20,
+                                size: 20.sp,
                                 color: AppData.textColor(),
                               ),
-                              borderRadius: BorderRadius.circular(15),
+                              borderRadius: BorderRadius.circular(15.r),
                               dropdownColor:
                                   AppColors.darkTheme.withOpacity(0.8),
                               underline: const SizedBox(),
@@ -117,13 +117,13 @@ class SettingsScreen extends StatelessWidget {
                                 context.read<SettingsCubit>().selectedValue,
                                 style: AppTextStyle.regular(
                                   color: AppData.textColor(),
-                                  fontSize: 11,
+                                  fontSize: 11.sp,
                                 ),
                               ),
                               value:
                                   context.read<SettingsCubit>().selectedValue,
                               style: AppTextStyle.regular(
-                                fontSize: 11,
+                                fontSize: 11.sp,
                                 color: AppData.textColor(),
                               ),
                               isExpanded: true,
@@ -164,18 +164,18 @@ class SettingsScreen extends StatelessWidget {
                       await FirebaseHelper.signOut();
                     },
                     child: Container(
-                      height: 45,
-                      width: 200,
+                      height: 45.h,
+                      width: 200.w,
                       decoration: BoxDecoration(
                         color: AppColors.green,
-                        borderRadius: BorderRadius.circular(34),
+                        borderRadius: BorderRadius.circular(34.r),
                       ),
                       child: Center(
                         child: Text(
                           S.of(context).settings_logout,
                           style: AppTextStyle.semiBold(
                             color: AppColors.darkTheme,
-                            fontSize: 17,
+                            fontSize: 17.sp,
                           ),
                         ),
                       ),

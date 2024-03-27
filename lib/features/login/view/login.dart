@@ -1,5 +1,3 @@
-import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/app/styles/icon_broken.dart';
@@ -12,9 +10,11 @@ import 'package:flutter_project/core/utils/space.dart';
 import 'package:flutter_project/features/login/cubit/LoginCubit.dart';
 import 'package:flutter_project/features/login/cubit/LoginStates.dart';
 import 'package:flutter_project/features/login/view/social_widget.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../core/common/widget/custom_text_filed.dart';
 import '../../../core/helper/navigation.dart';
 import '../../../core/utils/app_routes.dart';
-import '../../../core/common/widget/custom_text_filed.dart';
 import '../../../generated/l10n.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -34,25 +34,17 @@ class LoginScreen extends StatelessWidget {
           child: Scaffold(
             backgroundColor: AppColors.darkTheme,
             body: Padding(
-              padding: const EdgeInsets.only(top: 50.0),
+              padding: EdgeInsets.only(top: 50.h),
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-<<<<<<< Updated upstream
-                    const SpaceVH(height: 50.0),
-=======
                     SpaceVH(height: 20.h),
->>>>>>> Stashed changes
                     Image.asset(
                       AppImages.huluLogo,
-                      width: 170,
+                      width: 170.w,
                       fit: BoxFit.fill,
                     ),
-<<<<<<< Updated upstream
-                    const SpaceVH(height: 50),
-=======
                     SpaceVH(height: 30.h),
->>>>>>> Stashed changes
                     CustomTextFiled(
                       controller: userEmailController,
                       keyBordType: TextInputType.emailAddress,
@@ -60,7 +52,7 @@ class LoginScreen extends StatelessWidget {
                       hintTxt: S.of(context).login_hinttxt_email,
                       validator: (value) => cubit.validateMessageEmail(value),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 10.h),
                     CustomTextFiled(
                       controller: userPassController,
                       keyBordType: TextInputType.text,
@@ -77,7 +69,7 @@ class LoginScreen extends StatelessWidget {
                     Align(
                       alignment: Alignment.centerRight,
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 20.0),
+                        padding: EdgeInsets.only(right: 20.w),
                         child: TextButton(
                           onPressed: () async {
                             await FirebaseHelper.forgotPassword(
@@ -87,17 +79,13 @@ class LoginScreen extends StatelessWidget {
                             S.of(context).login_hinttxt_forgot_password,
                             style: AppTextStyle.regular(
                               color: AppColors.lightRed,
-                              fontSize: 12.9,
+                              fontSize: 12.9.sp,
                             ),
                           ),
                         ),
                       ),
                     ),
-<<<<<<< Updated upstream
-                    const SpaceVH(height: 20.0),
-=======
                     SpaceVH(height: 15.h),
->>>>>>> Stashed changes
                     Align(
                       alignment: Alignment.bottomCenter,
                       child: Column(
@@ -109,21 +97,12 @@ class LoginScreen extends StatelessWidget {
                                   userEmailController.text,
                                   userPassController.text),
                               text: S.of(context).login_button_signin),
-<<<<<<< Updated upstream
                           const SizedBox(
                             height: 50,
                           ),
                           const SocialWidget(),
-                          const SizedBox(
-                            height: 30,
-=======
                           SizedBox(
                             height: 30.h,
-                          ),
-                          const SocialWidget(),
-                          SizedBox(
-                            height: 20.h,
->>>>>>> Stashed changes
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -131,7 +110,7 @@ class LoginScreen extends StatelessWidget {
                               Text(
                                 S.of(context).login_dont_have_account,
                                 style: AppTextStyle.regular(
-                                  fontSize: 14.12,
+                                  fontSize: 14.12.sp,
                                   color: AppColors.lightRed,
                                 ),
                               ),
@@ -139,19 +118,14 @@ class LoginScreen extends StatelessWidget {
                                 child: Text(
                                   S.of(context).login_register,
                                   style: AppTextStyle.regular(
-                                    fontSize: 14.12,
+                                    fontSize: 14.12.sp,
                                     color: AppColors.primary,
                                   ),
                                 ),
                                 onPressed: () {
-<<<<<<< Updated upstream
-                                  NavigationHelper.navigateToReplacement(
-                                      AppRoute.SIGN_UP);
-=======
                                   NavigationHelper.navigateTo(
                                     AppRoute.SIGN_UP,
                                   );
->>>>>>> Stashed changes
                                 },
                               ),
                             ],

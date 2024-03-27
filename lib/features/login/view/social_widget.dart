@@ -4,6 +4,7 @@ import 'package:flutter_project/core/helper/firebase.dart';
 import 'package:flutter_project/core/utils/app_images.dart';
 import 'package:flutter_project/features/login/cubit/LoginCubit.dart';
 import 'package:flutter_project/features/login/cubit/LoginStates.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SocialWidget extends StatelessWidget {
   const SocialWidget({super.key});
@@ -20,30 +21,20 @@ class SocialWidget extends StatelessWidget {
                   },
                   child: Image.asset(
                     AppImages.facebookIcon,
-<<<<<<< Updated upstream
-                    height: 65,
-=======
                     height: 50.h,
->>>>>>> Stashed changes
                     fit: BoxFit.fill,
                   ),
                 ),
-                const SizedBox(
-                  width: 35,
+                SizedBox(
+                  width: 35.w,
                 ),
                 GestureDetector(
                   onTap: () {
-                    context
-                        .read<LoginCubit>()
-                        .signInWithGoogle();
+                    context.read<LoginCubit>().signInWithGoogle();
                   },
                   child: Image.asset(
                     AppImages.googleIcon,
-<<<<<<< Updated upstream
-                    height: 65,
-=======
                     height: 50.h,
->>>>>>> Stashed changes
                     fit: BoxFit.fill,
                   ),
                 ),

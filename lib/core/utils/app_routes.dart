@@ -1,4 +1,5 @@
 class AppRoute {
+  static const String SPLASH = "SPLASH";
   static const String LOGIN = "LOGIN";
   static const String SIGN_UP = "SIGN_UP";
   static const String HOME = "HOME";

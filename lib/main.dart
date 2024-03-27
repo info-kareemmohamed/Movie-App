@@ -3,15 +3,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_project/core/helper/firebase.dart';
 import 'package:flutter_project/core/helper/hive.dart';
+import 'package:flutter_project/core/helper/navigation.dart';
 import 'package:flutter_project/core/helper/provider.dart';
 import 'package:flutter_project/core/model/app_data.dart';
+import 'package:flutter_project/core/utils/app_routes.dart';
 import 'package:flutter_project/generated/l10n.dart';
-import 'core/helper/navigation.dart';
-import 'core/model/main_user.dart';
-import 'core/utils/app_routes.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
   await FirebaseHelper.firebaseInitialization();
+  await ScreenUtil.ensureScreenSize();
   await HiveHelper.hiveInatailzetion();
   await FirebaseHelper.setUserMain();
   await FirebaseHelper.Notifications();
@@ -44,17 +45,16 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [...AppProviders.providers],
-<<<<<<< Updated upstream
-
       child:
           // ScreenUtilInit(
-          //     designSize: const Size(375, 812),
-          //     minTextAdapt: true,
-          //     splitScreenMode: true,
-          //     builder: (_, child) {
+          //   designSize: const Size(360, 690),
+          //   minTextAdapt: true,
+          //   splitScreenMode: true,
+          //   ensureScreenSize: true,
+          //   builder: (_, child) {
           MaterialApp(
         locale: _locale,
-        localizationsDelegates: [
+        localizationsDelegates: const [
           S.delegate,
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
@@ -62,37 +62,13 @@ class _MyAppState extends State<MyApp> {
         ],
         supportedLocales: S.delegate.supportedLocales,
         debugShowCheckedModeBanner: false,
-        title: 'Hulu',
+        title: 'HULU',
         navigatorKey: NavigationHelper.navigatorKey,
         onGenerateRoute: NavigationHelper.generateRoute,
-        initialRoute:
-            UserMain.instance != null ? AppRoute.APP_LAYOUT : AppRoute.LOGIN,
-=======
-      child: ScreenUtilInit(
-        designSize: const Size(360, 690),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        ensureScreenSize: true,
-        builder: (_, child) {
-          return MaterialApp(
-            locale: _locale,
-            localizationsDelegates: const [
-              S.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: S.delegate.supportedLocales,
-            debugShowCheckedModeBanner: false,
-            title: 'HULU',
-            navigatorKey: NavigationHelper.navigatorKey,
-            onGenerateRoute: NavigationHelper.generateRoute,
-            initialRoute: AppRoute.SPLASH,
-          );
-        },
->>>>>>> Stashed changes
+        initialRoute: AppRoute.SPLASH,
       ),
-      //}),
+      // },
+      // ),
     );
   }
 }

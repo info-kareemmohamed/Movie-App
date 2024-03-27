@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FavouriteIconDelete extends StatelessWidget {
   FavouriteIconDelete({super.key, required this.onPressed});
@@ -11,7 +12,7 @@ class FavouriteIconDelete extends StatelessWidget {
       onPressed: onPressed,
       icon: Icon(
         Icons.delete,
-        size: 30,
+        size: 30.sp,
         color: Colors.red,
       ),
     );

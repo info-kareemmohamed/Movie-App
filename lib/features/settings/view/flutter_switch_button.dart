@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project/core/model/app_data.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_switch/flutter_switch.dart';
-
 
 class FlutterSwitchButton extends StatelessWidget {
   FlutterSwitchButton(
@@ -25,7 +25,7 @@ class FlutterSwitchButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 12),
+      padding: EdgeInsets.symmetric(vertical: 12.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -33,17 +33,19 @@ class FlutterSwitchButton extends StatelessWidget {
             type,
             style: AppTextStyle.medium(
               color: AppData.textColor(),
-              fontSize: 16.19,
+              fontSize: 16.19.sp,
             ),
           ),
-          SizedBox(height: 12),
+          SizedBox(height: 12.h),
           Container(
-            height: 56,
-            width: 334,
-            padding: EdgeInsets.symmetric(horizontal: 15),
+            height: 56.h,
+            width: 334.w,
+            padding: EdgeInsets.symmetric(horizontal: 15.w),
             decoration: BoxDecoration(
-              color: AppData.instance.Theme==AppColors.darkTheme? AppColors.darkGray:AppColors.lightYellow,
-              borderRadius: BorderRadius.circular(5.51),
+              color: AppData.instance.Theme == AppColors.darkTheme
+                  ? AppColors.darkGray
+                  : AppColors.lightYellow,
+              borderRadius: BorderRadius.circular(5.51.r),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -51,8 +53,8 @@ class FlutterSwitchButton extends StatelessWidget {
                 Text(
                   options,
                   style: AppTextStyle.regular(
-                    color:AppData.textColor(),
-                    fontSize: 13.4,
+                    color: AppData.textColor(),
+                    fontSize: 13.4.sp,
                   ),
                 ),
                 FlutterSwitch(
@@ -69,8 +71,8 @@ class FlutterSwitchButton extends StatelessWidget {
                     inActiveIcon,
                     color: AppColors.lightRed,
                   ),
-                  width: 50,
-                  height: 30,
+                  width: 50.w,
+                  height: 30.h,
                   value: value,
                   onToggle: onToggle,
                 ),

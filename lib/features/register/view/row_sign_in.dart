@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-<<<<<<< Updated upstream
-=======
 import 'package:flutter_project/core/helper/navigation.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
->>>>>>> Stashed changes
 
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_text_style.dart';
@@ -20,7 +17,7 @@ class RowSignIn extends StatelessWidget {
         Text(
           S.of(context).register_already_have_account,
           style: AppTextStyle.regular(
-            fontSize: 14.12,
+            fontSize: 14.12.sp,
             color: AppColors.lightRed,
           ),
         ),
@@ -28,7 +25,7 @@ class RowSignIn extends StatelessWidget {
           child: Text(
             S.of(context).register_signin,
             style: AppTextStyle.regular(
-              fontSize: 14.12,
+              fontSize: 14.12.sp,
               color: AppColors.primary,
             ),
           ),

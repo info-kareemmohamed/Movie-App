@@ -34,7 +34,7 @@ class _VideoAppState extends State<VideoApp> {
           controller: _controller,
           showVideoProgressIndicator: false,
           progressIndicatorColor: Colors.blueAccent,
-          width: 600,
+          width: 600.w,
           onReady: () => debugPrint("Ready"),
         ),
       ),

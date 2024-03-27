@@ -6,11 +6,11 @@ import 'package:flutter_project/features/register/view/row_sign_in.dart';
 import 'package:flutter_project/features/register/view/row_text.dart';
 import 'package:flutter_project/features/register/view/top_text.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../core/utils/app_colors.dart';
-import '../../../core/utils/space.dart';
-import '../../../core/common/widget/custom_text_filed.dart';
 
 import '../../../core/common/widget/app_button_primary.dart';
+import '../../../core/common/widget/custom_text_filed.dart';
+import '../../../core/utils/app_colors.dart';
+import '../../../core/utils/space.dart';
 import '../../../generated/l10n.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -33,7 +33,7 @@ class RegisterScreen extends StatelessWidget {
           child: Scaffold(
             backgroundColor: AppColors.darkTheme,
             body: Padding(
-              padding: EdgeInsets.only(top: 50),
+              padding: EdgeInsets.only(top: 50.h),
               child: SingleChildScrollView(
                 child: Column(
                   children: [
@@ -75,13 +75,12 @@ class RegisterScreen extends StatelessWidget {
                       visible: () {
                         cubit.changePasswordVisibilityConfirmPass();
                       },
-                      hintTxt:S.of(context).register_hinttxt_confirm_password,
+                      hintTxt: S.of(context).register_hinttxt_confirm_password,
                       validator: (value) =>
                           cubit.validateMessagePasswoedConfirm(
                               value, userPassController.text),
                     ),
-
-                    const SpaceVH(height: 25.0),
+                    SpaceVH(height: 25.h),
                     AppButtonPrimary(
                       condition: state is! RegisterLoadingState,
                       text: S.of(context).register_txt_create_account,
@@ -91,9 +90,7 @@ class RegisterScreen extends StatelessWidget {
                           userEmailController.text,
                           userPassController.text),
                     ),
-
                     const RowText(),
-                    // const SpaceVH(height: 10.0),
                     const RowSignIn(),
                   ],
                 ),

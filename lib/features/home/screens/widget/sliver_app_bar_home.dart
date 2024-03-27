@@ -7,6 +7,7 @@ import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/home/cubit/home_screen_cubit.dart';
 import 'package:flutter_project/features/home/cubit/topRated/top_rated_movies_cubit.dart';
 import 'package:flutter_project/generated/l10n.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/helper/navigation.dart';
 import '../../../../core/utils/app_routes.dart';
@@ -21,7 +22,7 @@ class SliverAppbarHome extends StatelessWidget {
       builder: (context, state) {
         return SliverAppBar(
           backgroundColor: AppColors.darkTheme,
-          collapsedHeight: 500,
+          collapsedHeight: 500.h,
           flexibleSpace: FlexibleSpaceBar(
             background: BlocBuilder<TopRatedMoviesCubit, TopRatedMoviesState>(
               builder: (context, state) {
@@ -54,7 +55,7 @@ class SliverAppbarHome extends StatelessWidget {
                     options: CarouselOptions(
                       viewportFraction: 1,
                       autoPlay: true,
-                      height: 600,
+                      height: 600.h,
                     ),
                   );
                 } else if (state is TopRatedInitialState) {
@@ -67,7 +68,7 @@ class SliverAppbarHome extends StatelessWidget {
                         'Sorry Not Found',
                         style: AppTextStyle.semiBold(
                           color: Colors.red,
-                          fontSize: 25,
+                          fontSize: 25.sp,
                         ),
                       ),
                     ),
@@ -81,35 +82,36 @@ class SliverAppbarHome extends StatelessWidget {
             backgroundColor: Colors.transparent,
             elevation: 0,
             title: Padding(
-              padding: const EdgeInsets.only(left: 5),
+              padding: EdgeInsets.only(left: 5.w),
               child: SizedBox(
                 width: 250,
                 child: Container(
-                  padding: const EdgeInsets.only(left: 15),
+                  padding: EdgeInsets.only(left: 15.w),
                   decoration: BoxDecoration(
-                      color: Colors.black.withOpacity(0.8),
-                      borderRadius: BorderRadius.circular(15)),
+                    color: Colors.black.withOpacity(0.8),
+                    borderRadius: BorderRadius.circular(15.r),
+                  ),
                   child: DropdownButton(
-                    items: cubit.dropDownMenu(S.of(context).home_daily,
-                        S.of(context).home_weekly),
-                    icon: const Icon(
+                    items: cubit.dropDownMenu(
+                        S.of(context).home_daily, S.of(context).home_weekly),
+                    icon: Icon(
                       Icons.keyboard_arrow_down_rounded,
-                      size: 40,
+                      size: 40.sp,
                       color: AppColors.lightYellow,
                     ),
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: BorderRadius.circular(15.r),
                     dropdownColor: AppColors.darkTheme.withOpacity(0.7),
                     underline: const SizedBox(),
                     hint: Text(
                       cubit.selectedValue,
                       style: AppTextStyle.black(
                         color: AppColors.lightYellow,
-                        fontSize: 18,
+                        fontSize: 18.sp,
                       ),
                     ),
                     value: cubit.selectedValue,
                     style: AppTextStyle.black(
-                      fontSize: 18,
+                      fontSize: 18.sp,
                       color: AppColors.lightYellow,
                     ),
                     isExpanded: true,

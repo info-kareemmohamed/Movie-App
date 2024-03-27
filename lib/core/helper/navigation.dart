@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project/features/login/view/login.dart';
+import 'package:flutter_project/features/onboarding/screens/onboarding_screen.dart';
+import 'package:flutter_project/features/onboarding/screens/widgets/fourth_onboarding_screen.dart.dart';
+import 'package:flutter_project/features/onboarding/screens/widgets/second_onboarding_screen.dart.dart';
+import 'package:flutter_project/features/onboarding/screens/widgets/third_onboarding_screen.dart.dart';
 import 'package:flutter_project/features/profile_picture/view/profile_picture.dart';
 
 import '../../features/app_layout/screens/app_layout_screen.dart';
@@ -55,6 +59,21 @@ class NavigationHelper {
         return MaterialPageRoute(builder: (_) => const AppLayoutScreen());
       case AppRoute.FIRST_ON_BOARDING:
         return MaterialPageRoute(builder: (_) => const FirstOnBoardingScreen());
+<<<<<<< Updated upstream
+=======
+      case AppRoute.SECOND_ON_BOARDING:
+        return MaterialPageRoute(
+            builder: (_) => const SecondOnBoardingScreen());
+      case AppRoute.THIRD_ON_BOARDING:
+        return MaterialPageRoute(builder: (_) => const ThirdOnBoardingScreen());
+      case AppRoute.FOURTH_ON_BOARDING:
+        return MaterialPageRoute(
+            builder: (_) => const FourthOnBoardingScreen());
+      case AppRoute.ON_BOARDING:
+        return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
+      case AppRoute.SPLASH:
+        return MaterialPageRoute(builder: (_) => const SplashScreen());
+>>>>>>> Stashed changes
       default:
         return MaterialPageRoute(builder: (_) => const MyApp());
     }

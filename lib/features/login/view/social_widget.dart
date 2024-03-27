@@ -20,7 +20,11 @@ class SocialWidget extends StatelessWidget {
                   },
                   child: Image.asset(
                     AppImages.facebookIcon,
+<<<<<<< Updated upstream
                     height: 65,
+=======
+                    height: 50.h,
+>>>>>>> Stashed changes
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -35,7 +39,11 @@ class SocialWidget extends StatelessWidget {
                   },
                   child: Image.asset(
                     AppImages.googleIcon,
+<<<<<<< Updated upstream
                     height: 65,
+=======
+                    height: 50.h,
+>>>>>>> Stashed changes
                     fit: BoxFit.fill,
                   ),
                 ),

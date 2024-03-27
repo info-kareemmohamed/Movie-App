@@ -7,5 +7,9 @@ class AppRoute {
   static const String SETTINGS = "SETTINGS";
   static const String APP_LAYOUT = "APP_LAYOUT";
   static const String FIRST_ON_BOARDING = "FIRST_ON_BOARDING";
+  static const String SECOND_ON_BOARDING = "SECOND_ON_BOARDING";
+  static const String THIRD_ON_BOARDING = "THIRD_ON_BOARDING";
+  static const String FOURTH_ON_BOARDING = "FOURTH_ON_BOARDING";
+  static const String ON_BOARDING = "ON_BOARDING";
   static const String PROFILEPICTURE = 'PROFILEPICTURE';
 }

@@ -38,13 +38,21 @@ class LoginScreen extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
+<<<<<<< Updated upstream
                     const SpaceVH(height: 50.0),
+=======
+                    SpaceVH(height: 20.h),
+>>>>>>> Stashed changes
                     Image.asset(
                       AppImages.huluLogo,
                       width: 170,
                       fit: BoxFit.fill,
                     ),
+<<<<<<< Updated upstream
                     const SpaceVH(height: 50),
+=======
+                    SpaceVH(height: 30.h),
+>>>>>>> Stashed changes
                     CustomTextFiled(
                       controller: userEmailController,
                       keyBordType: TextInputType.emailAddress,
@@ -85,7 +93,11 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                     ),
+<<<<<<< Updated upstream
                     const SpaceVH(height: 20.0),
+=======
+                    SpaceVH(height: 15.h),
+>>>>>>> Stashed changes
                     Align(
                       alignment: Alignment.bottomCenter,
                       child: Column(
@@ -97,12 +109,21 @@ class LoginScreen extends StatelessWidget {
                                   userEmailController.text,
                                   userPassController.text),
                               text: S.of(context).login_button_signin),
+<<<<<<< Updated upstream
                           const SizedBox(
                             height: 50,
                           ),
                           const SocialWidget(),
                           const SizedBox(
                             height: 30,
+=======
+                          SizedBox(
+                            height: 30.h,
+                          ),
+                          const SocialWidget(),
+                          SizedBox(
+                            height: 20.h,
+>>>>>>> Stashed changes
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -123,8 +144,14 @@ class LoginScreen extends StatelessWidget {
                                   ),
                                 ),
                                 onPressed: () {
+<<<<<<< Updated upstream
                                   NavigationHelper.navigateToReplacement(
                                       AppRoute.SIGN_UP);
+=======
+                                  NavigationHelper.navigateTo(
+                                    AppRoute.SIGN_UP,
+                                  );
+>>>>>>> Stashed changes
                                 },
                               ),
                             ],

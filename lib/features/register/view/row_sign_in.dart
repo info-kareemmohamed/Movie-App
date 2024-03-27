@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+<<<<<<< Updated upstream
+=======
+import 'package:flutter_project/core/helper/navigation.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+>>>>>>> Stashed changes
 
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_text_style.dart';
@@ -28,7 +33,7 @@ class RowSignIn extends StatelessWidget {
             ),
           ),
           onPressed: () {
-            Navigator.pop(context);
+            NavigationHelper.goBack();
           },
         ),
       ],

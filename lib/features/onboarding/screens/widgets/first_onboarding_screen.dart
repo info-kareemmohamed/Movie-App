@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_images.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
-import 'package:flutter_project/features/onboarding/screens/onboarding_screen.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/helper/navigation.dart';
 import '../../../../core/utils/app_routes.dart';
@@ -24,7 +24,7 @@ class FirstOnBoardingScreen extends StatelessWidget {
           ),
           Image.asset(
             AppImages.huluLogo,
-            width: 120,
+            width: 120.w,
             fit: BoxFit.cover,
           ),
           Center(
@@ -32,13 +32,13 @@ class FirstOnBoardingScreen extends StatelessWidget {
               text: TextSpan(
                 text: 'Enjoy The ',
                 style: AppTextStyle.semiBold(
-                  fontSize: 14.4,
+                  fontSize: 14.4.sp,
                 ),
                 children: [
                   TextSpan(
                     text: 'Best',
                     style: AppTextStyle.semiBold(
-                      fontSize: 14.4,
+                      fontSize: 14.4.sp,
                       color: AppColors.primary,
                     ),
                   ),
@@ -46,37 +46,34 @@ class FirstOnBoardingScreen extends StatelessWidget {
                     text:
                         ''' Movies and TV shows\n                            Out there.''',
                     style: AppTextStyle.semiBold(
-                      fontSize: 14.4,
+                      fontSize: 14.4.sp,
                     ),
                   ),
                 ],
               ),
             ),
           ),
-          const SizedBox(
-            height: 15,
+          SizedBox(
+            height: 15.h,
           ),
           Text(
             '''Watch full seasons of exclusive streaming series,episodes, 
             hitmovies, Hulu Originals, kids shows, and more...''',
             style: AppTextStyle.regular(
-              fontSize: 9.68,
+              fontSize: 9.68.sp,
               color: AppColors.lightYellow,
             ),
           ),
-          const SizedBox(
-            height: 65,
+          SizedBox(
+            height: 40.h,
           ),
           GestureDetector(
             onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const OnBoardingScreen()));
+              NavigationHelper.navigateToReplacement(AppRoute.ON_BOARDING);
             },
             child: Container(
-              height: 44,
-              width: 305,
+              height: 44.h,
+              width: 305.w,
               decoration: BoxDecoration(
                 color: AppColors.primary,
                 borderRadius: BorderRadius.circular(5.84),

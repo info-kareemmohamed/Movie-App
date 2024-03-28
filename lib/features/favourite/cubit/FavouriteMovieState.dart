@@ -2,8 +2,7 @@ import '../model/movie_favourite.dart';
 
 abstract class FavouriteMovieStates {}
 
-class FavouriteMovieInitialState extends FavouriteMovieStates{}
-
+class FavouriteMovieInitialState extends FavouriteMovieStates {}
 
 class FavouriteMovieErrorState extends FavouriteMovieStates {
   final String? message;
@@ -16,10 +15,8 @@ class FavouriteMovieSuccessState extends FavouriteMovieStates {
 }
 
 class DeleteFavouriteMovieSuccessState extends FavouriteMovieStates {
+  final List<MovieFavourite> movies;
+  DeleteFavouriteMovieSuccessState(this.movies);
 }
 
-
 class FavouriteMovieEmptyState extends FavouriteMovieStates {}
-
-
-

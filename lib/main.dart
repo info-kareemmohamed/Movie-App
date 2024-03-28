@@ -45,14 +45,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [...AppProviders.providers],
-      child:
-          // ScreenUtilInit(
-          //   designSize: const Size(360, 690),
-          //   minTextAdapt: true,
-          //   splitScreenMode: true,
-          //   ensureScreenSize: true,
-          //   builder: (_, child) {
-          MaterialApp(
+      child: MaterialApp(
         locale: _locale,
         localizationsDelegates: const [
           S.delegate,
@@ -67,7 +60,28 @@ class _MyAppState extends State<MyApp> {
         onGenerateRoute: NavigationHelper.generateRoute,
         initialRoute: AppRoute.SPLASH,
       ),
-      // },
+      // ScreenUtilInit(
+      //   designSize: const Size(360, 690),
+      //   minTextAdapt: true,
+      //   splitScreenMode: true,
+      //   ensureScreenSize: true,
+      //   builder: (_, child) {
+      //     return MaterialApp(
+      //       locale: _locale,
+      //       localizationsDelegates: const [
+      //         S.delegate,
+      //         GlobalMaterialLocalizations.delegate,
+      //         GlobalWidgetsLocalizations.delegate,
+      //         GlobalCupertinoLocalizations.delegate,
+      //       ],
+      //       supportedLocales: S.delegate.supportedLocales,
+      //       debugShowCheckedModeBanner: false,
+      //       title: 'HULU',
+      //       navigatorKey: NavigationHelper.navigatorKey,
+      //       onGenerateRoute: NavigationHelper.generateRoute,
+      //       initialRoute: AppRoute.SPLASH,
+      //     );
+      //   },
       // ),
     );
   }

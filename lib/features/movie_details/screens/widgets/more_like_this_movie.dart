@@ -34,7 +34,9 @@ class MoreLikeThisMovie extends StatelessWidget {
               children: [
                 Visibility(
                   visible: !context.watch<MovieDetailsCubit>().allMovies,
-                  child: ShowLessMovies(movieSimilar: state.movie),
+                  child: state.movie.isNotEmpty
+                      ? ShowLessMovies(movieSimilar: state.movie)
+                      : const SizedBox.shrink(),
                 ),
                 Positioned(
                   top: 25.h,

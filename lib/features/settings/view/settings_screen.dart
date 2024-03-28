@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/app/styles/icon_broken.dart';
 import 'package:flutter_project/core/helper/firebase.dart';
+import 'package:flutter_project/core/helper/navigation.dart';
 import 'package:flutter_project/core/model/app_data.dart';
 import 'package:flutter_project/core/model/main_user.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
+import 'package:flutter_project/core/utils/app_images.dart';
+import 'package:flutter_project/core/utils/app_routes.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
 import 'package:flutter_project/features/app_layout/cubit/app_layout_cubit.dart';
 import 'package:flutter_project/features/settings/cubit/settings_cubit.dart';
@@ -43,15 +46,27 @@ class SettingsScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(
-                        height: 200.h,
-                        width: 130.w,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: CachedNetworkImageProvider(
-                                UserMain.instance!.profilePicture ?? ""),
+                      Stack(
+                        children: [
+                          Container(
+                            height: 200.h,
+                            width: 130.w,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: getImageProfilePicture(),
+                              ),
+                            ),
                           ),
-                        ),
+                          IconButton(
+                            onPressed: () {
+                              NavigationHelper.navigateTo(
+                                  AppRoute.PROFILEPICTURE);
+                            },
+                            icon: const Icon(
+                              IconBroken.Edit_Square,
+                            ),
+                          ),
+                        ],
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -188,5 +203,14 @@ class SettingsScreen extends StatelessWidget {
         );
       },
     );
+  }
+
+  ImageProvider<Object> getImageProfilePicture() {
+    String? image = UserMain.instance!.profilePicture;
+    return image == null || image.isEmpty
+        ? const AssetImage(AppImages.profileImage1)
+        : image.contains('assets')
+            ? AssetImage(image)
+            : CachedNetworkImageProvider(image) as ImageProvider<Object>;
   }
 }

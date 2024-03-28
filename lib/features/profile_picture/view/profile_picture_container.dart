@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_project/core/model/main_user.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/helper/navigation.dart';
@@ -19,6 +20,7 @@ class ProfilePictureContainer extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 8.w),
       child: GestureDetector(
         onTap: () {
+          UserMain.instance!.profilePicture = image;
           FirebaseFirestore.instance
               .collection('Users')
               .doc(FirebaseAuth.instance.currentUser!.uid)

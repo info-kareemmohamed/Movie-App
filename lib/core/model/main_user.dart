@@ -2,7 +2,7 @@ class UserMain {
   String id = "";
   String name = "";
   String email = "";
-  String profilePicture = "";
+  String? profilePicture;
 
   static UserMain? instance;
 

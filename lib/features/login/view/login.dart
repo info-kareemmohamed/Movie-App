@@ -10,7 +10,6 @@ import 'package:flutter_project/core/utils/space.dart';
 import 'package:flutter_project/features/login/cubit/LoginCubit.dart';
 import 'package:flutter_project/features/login/cubit/LoginStates.dart';
 import 'package:flutter_project/features/login/view/social_widget.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/common/widget/custom_text_filed.dart';
 import '../../../core/helper/navigation.dart';
@@ -34,17 +33,17 @@ class LoginScreen extends StatelessWidget {
           child: Scaffold(
             backgroundColor: AppColors.darkTheme,
             body: Padding(
-              padding: EdgeInsets.only(top: 50.h),
+              padding: EdgeInsets.only(top: 50),
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    SpaceVH(height: 20.h),
+                    SpaceVH(height: 20),
                     Image.asset(
                       AppImages.huluLogo,
-                      width: 170.w,
+                      width: 170,
                       fit: BoxFit.fill,
                     ),
-                    SpaceVH(height: 30.h),
+                    SpaceVH(height: 30),
                     CustomTextFiled(
                       controller: userEmailController,
                       keyBordType: TextInputType.emailAddress,
@@ -52,7 +51,7 @@ class LoginScreen extends StatelessWidget {
                       hintTxt: S.of(context).login_hinttxt_email,
                       validator: (value) => cubit.validateMessageEmail(value),
                     ),
-                    SizedBox(height: 10.h),
+                    SizedBox(height: 10),
                     CustomTextFiled(
                       controller: userPassController,
                       keyBordType: TextInputType.text,
@@ -64,28 +63,27 @@ class LoginScreen extends StatelessWidget {
                       },
                       hintTxt: S.of(context).login_hinttxt_password,
                       validator: (value) =>
-                          cubit.validateMessagePasswoed(value),
+                          cubit.validateMessagePassword(value),
                     ),
                     Align(
                       alignment: Alignment.centerRight,
                       child: Padding(
-                        padding: EdgeInsets.only(right: 20.w),
+                        padding: EdgeInsets.only(right: 20),
                         child: TextButton(
-                          onPressed: () async {
-                            await FirebaseHelper.forgotPassword(
-                                userEmailController.text);
+                          onPressed: () {
+                            cubit.forgotPassword(userEmailController.text);
                           },
                           child: Text(
                             S.of(context).login_hinttxt_forgot_password,
                             style: AppTextStyle.regular(
                               color: AppColors.lightRed,
-                              fontSize: 12.9.sp,
+                              fontSize: 12.9,
                             ),
                           ),
                         ),
                       ),
                     ),
-                    SpaceVH(height: 15.h),
+                    SpaceVH(height: 15),
                     Align(
                       alignment: Alignment.bottomCenter,
                       child: Column(
@@ -102,7 +100,7 @@ class LoginScreen extends StatelessWidget {
                           ),
                           const SocialWidget(),
                           SizedBox(
-                            height: 30.h,
+                            height: 30,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -110,7 +108,7 @@ class LoginScreen extends StatelessWidget {
                               Text(
                                 S.of(context).login_dont_have_account,
                                 style: AppTextStyle.regular(
-                                  fontSize: 14.12.sp,
+                                  fontSize: 14.12,
                                   color: AppColors.lightRed,
                                 ),
                               ),
@@ -118,7 +116,7 @@ class LoginScreen extends StatelessWidget {
                                 child: Text(
                                   S.of(context).login_register,
                                   style: AppTextStyle.regular(
-                                    fontSize: 14.12.sp,
+                                    fontSize: 14.12,
                                     color: AppColors.primary,
                                   ),
                                 ),

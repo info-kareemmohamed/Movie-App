@@ -106,8 +106,18 @@ abstract class FirebaseHelper {
     return userCredential;
   }
 
-  static Future<void> forgotPassword(String email) async {
-    await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+  static Future<int> forgotPassword(String email) async {
+    try {
+      if (await userExistsInFirestoreByEmail(email)) {
+        await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+        return 1;
+      } else {
+        return 0;
+      }
+    } catch (e) {
+      print('${e} ggggggggggggggggggggggggggggggggggggggg');
+      return 2;
+    }
   }
 
   static Future<bool> userExistsInFirestore(String userId) async {
@@ -123,14 +133,27 @@ abstract class FirebaseHelper {
     }
   }
 
+  static Future<bool> userExistsInFirestoreByEmail(String userEmail) async {
+    try {
+      final QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('Users')
+          .where('email', isEqualTo: userEmail)
+          .get();
+      return querySnapshot.docs.isNotEmpty;
+    } catch (e) {
+      print(e);
+      return false;
+    }
+  }
+
   static Future<void> _handleBackgroundMessage(
       RemoteMessage remoteMessage) async {
     print('Title:  ${remoteMessage.notification?.title}');
   }
 
   static Future<void> Notifications() async {
-    FirebaseMessaging.instance.requestPermission();
-    print('${await FirebaseMessaging.instance.getToken()} wwwwwwwww');
+    await FirebaseMessaging.instance.requestPermission();
+    //  print('${await FirebaseMessaging.instance.getToken()} wwwwwwwww');
     FirebaseMessaging.onBackgroundMessage(_handleBackgroundMessage);
   }
 }

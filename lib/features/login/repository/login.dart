@@ -40,6 +40,11 @@ abstract class LoginRepo {
     return code;
   }
 
+  static Future<int> forgotPassword(String email) async {
+    if (email.isNotEmpty) return await FirebaseHelper.forgotPassword(email);
+    return 3;
+  }
+
   static Future<void> _userNotExistsInFirestore(
       UserCredential userCredential) async {
     await FirebaseHelper.setUserInFirestore(

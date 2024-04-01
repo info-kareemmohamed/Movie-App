@@ -25,9 +25,7 @@ class SettingsScreen extends StatelessWidget {
     return BlocBuilder<SettingsCubit, SettingsStates>(
       builder: (context, state) {
         return Scaffold(
-          backgroundColor: AppData.instance.Theme,
           appBar: AppBar(
-            backgroundColor: AppData.instance.Theme,
             centerTitle: true,
             title: Text(
               S.of(context).settings_settings,

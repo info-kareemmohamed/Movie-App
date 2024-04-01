@@ -21,7 +21,6 @@ class SliverAppbarHome extends StatelessWidget {
     return BlocBuilder<HomeScreenCubit, HomeScreenStates>(
       builder: (context, state) {
         return SliverAppBar(
-          backgroundColor: AppColors.darkTheme,
           collapsedHeight: 500.h,
           flexibleSpace: FlexibleSpaceBar(
             background: BlocBuilder<TopRatedMoviesCubit, TopRatedMoviesState>(

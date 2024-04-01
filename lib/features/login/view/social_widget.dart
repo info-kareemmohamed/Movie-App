@@ -4,7 +4,6 @@ import 'package:flutter_project/core/helper/firebase.dart';
 import 'package:flutter_project/core/utils/app_images.dart';
 import 'package:flutter_project/features/login/cubit/LoginCubit.dart';
 import 'package:flutter_project/features/login/cubit/LoginStates.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SocialWidget extends StatelessWidget {
   const SocialWidget({super.key});
@@ -21,12 +20,12 @@ class SocialWidget extends StatelessWidget {
                   },
                   child: Image.asset(
                     AppImages.facebookIcon,
-                    height: 50.h,
+                    height: 50,
                     fit: BoxFit.fill,
                   ),
                 ),
                 SizedBox(
-                  width: 35.w,
+                  width: 35,
                 ),
                 GestureDetector(
                   onTap: () {
@@ -34,7 +33,7 @@ class SocialWidget extends StatelessWidget {
                   },
                   child: Image.asset(
                     AppImages.googleIcon,
-                    height: 50.h,
+                    height: 50,
                     fit: BoxFit.fill,
                   ),
                 ),

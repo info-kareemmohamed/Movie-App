@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/app_text_style.dart';
@@ -28,7 +27,7 @@ class CustomTextFiled extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 15.h),
+      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
       child: TextFormField(
         controller: controller,
         autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -43,15 +42,15 @@ class CustomTextFiled extends StatelessWidget {
                 OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
             enabledBorder: OutlineInputBorder(
               borderSide: const BorderSide(color: AppColors.darkTheme),
-              borderRadius: BorderRadius.circular(20.0.r),
+              borderRadius: BorderRadius.circular(20.0),
             ),
             hintStyle: AppTextStyle.regular(
-              fontSize: 14.sp,
+              fontSize: 14,
               color: AppColors.lightRed,
             ),
             focusedBorder: OutlineInputBorder(
               borderSide: const BorderSide(color: AppColors.darkTheme),
-              borderRadius: BorderRadius.circular(20.0.r),
+              borderRadius: BorderRadius.circular(20.0),
             ),
             hintText: hintTxt,
             suffixIcon: IconButton(
@@ -62,7 +61,7 @@ class CustomTextFiled extends StatelessWidget {
               onPressed: visible,
             )),
         style: AppTextStyle.regular(
-          fontSize: 12.9.sp,
+          fontSize: 12.9,
           color: AppColors.lightYellow,
         ),
       ),

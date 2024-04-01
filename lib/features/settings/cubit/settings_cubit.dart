@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_project/app/theme/theme.dart';
 import 'package:flutter_project/core/helper/hive.dart';
 import 'package:flutter_project/core/helper/navigation.dart';
 import 'package:flutter_project/core/model/app_data.dart';
@@ -19,6 +20,8 @@ class SettingsCubit extends Cubit<SettingsStates> {
   void changeMode() {
     isDark = !isDark;
     AppData.instance.Theme = isDark ? AppColors.darkTheme : AppColors.white;
+    MyApp.setMode(
+        NavigationHelper.navigatorKey.currentContext!, AppTheme.setTheme());
     HiveHelper.AppBox.put(HiveHelper.AppKey, AppData.instance);
     emit(ChangeModeState());
   }

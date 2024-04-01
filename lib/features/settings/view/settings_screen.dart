@@ -30,7 +30,7 @@ class SettingsScreen extends StatelessWidget {
             title: Text(
               S.of(context).settings_settings,
               style: AppTextStyle.extraBold(
-                color: AppData.textColor(),
+                color: AppData.textColorNameToBase(),
                 fontSize: 18.74.sp,
               ),
             ),
@@ -72,7 +72,7 @@ class SettingsScreen extends StatelessWidget {
                           Text(
                             S.of(context).settings_profile,
                             style: AppTextStyle.medium(
-                              color: AppData.textColor(),
+                              color: AppData.textColorNameToBase(),
                               fontSize: 20.sp,
                             ),
                           ),
@@ -87,7 +87,7 @@ class SettingsScreen extends StatelessWidget {
                                 UserMain.instance?.name ?? "",
                                 textAlign: TextAlign.center,
                                 style: AppTextStyle.semiBold(
-                                  color: AppData.textColorName(),
+                                  color: AppData.textColorNameToBase(),
                                   fontSize: 13.sp,
                                 ),
                               ),
@@ -97,7 +97,7 @@ class SettingsScreen extends StatelessWidget {
                           Text(
                             S.of(context).settings_language,
                             style: AppTextStyle.medium(
-                              color: AppData.textColor(),
+
                               fontSize: 20.sp,
                             ),
                           ),
@@ -120,16 +120,16 @@ class SettingsScreen extends StatelessWidget {
                               icon: Icon(
                                 IconBroken.Arrow___Right_2,
                                 size: 20.sp,
-                                color: AppData.textColor(),
+                                color: AppData.textColorNameToBase(),
                               ),
                               borderRadius: BorderRadius.circular(15.r),
                               dropdownColor:
-                                  AppColors.darkTheme.withOpacity(0.8),
+                                  AppData.instance.Theme.withOpacity(0.8),
                               underline: const SizedBox(),
                               hint: Text(
                                 context.read<SettingsCubit>().selectedValue,
                                 style: AppTextStyle.regular(
-                                  color: AppData.textColor(),
+                                  color: AppData.textColorNameToBase(),
                                   fontSize: 11.sp,
                                 ),
                               ),
@@ -137,7 +137,7 @@ class SettingsScreen extends StatelessWidget {
                                   context.read<SettingsCubit>().selectedValue,
                               style: AppTextStyle.regular(
                                 fontSize: 11.sp,
-                                color: AppData.textColor(),
+                                color: AppData.textColorNameToBase(),
                               ),
                               isExpanded: true,
                               onChanged: (String? value) {

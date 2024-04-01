@@ -10,6 +10,8 @@ import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/features/settings/cubit/settings_states.dart';
 import 'package:flutter_project/main.dart';
 
+import '../../app_layout/screens/app_layout_screen.dart';
+
 class SettingsCubit extends Cubit<SettingsStates> {
   SettingsCubit() : super(InitialSettingsState());
 
@@ -20,6 +22,8 @@ class SettingsCubit extends Cubit<SettingsStates> {
   void changeMode() {
     isDark = !isDark;
     AppData.instance.Theme = isDark ? AppColors.darkTheme : AppColors.white;
+    AppLayoutScreen.setTheme(NavigationHelper.navigatorKey.currentContext!,AppData.instance.Theme);
+
     MyApp.setMode(
         NavigationHelper.navigatorKey.currentContext!, AppTheme.setTheme());
     HiveHelper.AppBox.put(HiveHelper.AppKey, AppData.instance);

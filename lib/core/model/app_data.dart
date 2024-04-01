@@ -28,13 +28,13 @@ class AppData {
     this.Notification = false,
   });
 
-  static Color textColor() {
+  static Color textColorNameToPrimary() {
     return instance.Theme == AppColors.darkTheme
-        ? AppColors.white
+        ? AppColors.lightYellow
         : AppColors.darkTheme;
   }
 
-  static Color textColorName() {
+  static Color textColorNameToBase() {
     return instance.Theme == AppColors.darkTheme
         ? AppColors.white
         : AppColors.darkTheme;

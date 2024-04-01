@@ -127,9 +127,10 @@ class SliverAppbar extends StatelessWidget {
           ),
           bottom: TabBar(
             indicatorColor: AppColors.green,
+            unselectedLabelColor: AppColors.white,
             dividerColor: AppColors.darkTheme,
             indicatorSize: TabBarIndicatorSize.label,
-            labelColor: AppColors.lightYellow,
+            labelColor: AppColors.primary,
             tabs: myTabs,
           ),
         );

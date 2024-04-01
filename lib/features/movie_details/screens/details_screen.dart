@@ -25,7 +25,6 @@ class MovieDetailsScreen extends StatelessWidget {
             return DefaultTabController(
               length: 3,
               child: Scaffold(
-                backgroundColor: AppColors.darkTheme,
                 body: DefaultTabController(
                   length: 3,
                   child: NestedScrollView(

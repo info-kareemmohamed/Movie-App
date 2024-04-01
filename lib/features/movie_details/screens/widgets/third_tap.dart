@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/core/common/widget/app_widget.dart';
+import 'package:flutter_project/core/model/app_data.dart';
 import 'package:flutter_project/core/services/datasource/remote/apiLinks/AllApi.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
@@ -50,7 +51,6 @@ class ThirdTabScreen extends StatelessWidget {
                                   state.casts[index].name ?? "Name",
                                   style: AppTextStyle.semiBold(
                                     fontSize: 17.sp,
-                                    color: AppColors.lightYellow,
                                   ),
                                 ),
                               ],

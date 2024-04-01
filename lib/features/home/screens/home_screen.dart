@@ -45,7 +45,6 @@ class HomeScreen extends StatelessWidget {
                             child: Text(
                               S.of(context).home_latest_movies,
                               style: AppTextStyle.semiBold(
-                                color: AppColors.lightYellow,
                                 fontSize: 25.sp,
                               ),
                             ),

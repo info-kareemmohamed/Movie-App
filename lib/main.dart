@@ -50,6 +50,7 @@ class _MyAppState extends State<MyApp> {
   }
   setMode(ThemeData mode) {
     setState(() {
+      print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
       _notifier=ValueNotifier(mode);
     });
   }

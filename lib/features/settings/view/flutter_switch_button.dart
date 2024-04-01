@@ -32,7 +32,7 @@ class FlutterSwitchButton extends StatelessWidget {
           Text(
             type,
             style: AppTextStyle.medium(
-              color: AppData.textColor(),
+              color: AppData.textColorNameToBase(),
               fontSize: 16.19.sp,
             ),
           ),
@@ -53,7 +53,7 @@ class FlutterSwitchButton extends StatelessWidget {
                 Text(
                   options,
                   style: AppTextStyle.regular(
-                    color: AppData.textColor(),
+                    color: AppData.textColorNameToBase(),
                     fontSize: 13.4.sp,
                   ),
                 ),

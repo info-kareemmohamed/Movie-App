@@ -10,6 +10,7 @@ import 'package:flutter_project/generated/l10n.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/helper/navigation.dart';
+import '../../../../core/model/app_data.dart';
 import '../../../../core/utils/app_routes.dart';
 
 class SliverAppbarHome extends StatelessWidget {
@@ -96,22 +97,19 @@ class SliverAppbarHome extends StatelessWidget {
                     icon: Icon(
                       Icons.keyboard_arrow_down_rounded,
                       size: 40.sp,
-                      color: AppColors.lightYellow,
                     ),
                     borderRadius: BorderRadius.circular(15.r),
-                    dropdownColor: AppColors.darkTheme.withOpacity(0.7),
+                    dropdownColor: AppData.instance.Theme.withOpacity(0.7),
                     underline: const SizedBox(),
                     hint: Text(
                       cubit.selectedValue,
                       style: AppTextStyle.black(
-                        color: AppColors.lightYellow,
                         fontSize: 18.sp,
                       ),
                     ),
                     value: cubit.selectedValue,
                     style: AppTextStyle.black(
                       fontSize: 18.sp,
-                      color: AppColors.lightYellow,
                     ),
                     isExpanded: true,
                     onChanged: (String? value) {

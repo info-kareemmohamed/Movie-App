@@ -6,7 +6,6 @@ import 'package:flutter_project/features/register/view/row_sign_in.dart';
 import 'package:flutter_project/features/register/view/row_text.dart';
 import 'package:flutter_project/features/register/view/top_text.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../core/common/widget/app_button_primary.dart';
 import '../../../core/common/widget/custom_text_filed.dart';
 import '../../../core/utils/app_colors.dart';

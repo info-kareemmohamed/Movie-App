@@ -7,7 +7,6 @@ import 'package:flutter_project/features/home/screens/widget/sliver_app_bar_home
 import 'package:flutter_project/features/home/screens/widget/trending_daily_movies.dart';
 import 'package:flutter_project/features/home/screens/widget/trending_weekly_movies.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../generated/l10n.dart';
 
 class HomeScreen extends StatelessWidget {

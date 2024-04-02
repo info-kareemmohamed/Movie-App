@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/core/services/datasource/remote/apiLinks/AllApi.dart';
 import 'package:flutter_project/features/home/common/screen_common_widget.dart';
 import 'package:flutter_project/features/home/cubit/trendingDay/trending_day_movies_cubit.dart';
-
 import '../../../../core/common/widget/app_widget.dart';
 
 class TrendingDailyScreen extends StatelessWidget {

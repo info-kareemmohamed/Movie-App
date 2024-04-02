@@ -1,7 +1,6 @@
 
 import 'package:flutter_project/features/movie_details/model/MovieDetailsResponse.dart';
 
-import '../../../home/model/MovieResponse.dart';
 
 abstract class InfoMovieStates {}
 

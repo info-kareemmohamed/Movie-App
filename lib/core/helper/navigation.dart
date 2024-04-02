@@ -6,7 +6,6 @@ import 'package:flutter_project/features/onboarding/screens/widgets/second_onboa
 import 'package:flutter_project/features/onboarding/screens/widgets/third_onboarding_screen.dart.dart';
 import 'package:flutter_project/features/profile_picture/view/profile_picture.dart';
 import 'package:flutter_project/features/splash_screen/splash_screen.dart';
-
 import '../../features/app_layout/screens/app_layout_screen.dart';
 import '../../features/favourite/view/favourite_screen.dart';
 import '../../features/home/screens/home_screen.dart';

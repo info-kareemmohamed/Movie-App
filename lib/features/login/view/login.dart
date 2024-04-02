@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/app/styles/icon_broken.dart';
 import 'package:flutter_project/core/common/widget/app_button_primary.dart';
-import 'package:flutter_project/core/helper/firebase.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_images.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
@@ -10,7 +9,6 @@ import 'package:flutter_project/core/utils/space.dart';
 import 'package:flutter_project/features/login/cubit/LoginCubit.dart';
 import 'package:flutter_project/features/login/cubit/LoginStates.dart';
 import 'package:flutter_project/features/login/view/social_widget.dart';
-
 import '../../../core/common/widget/custom_text_filed.dart';
 import '../../../core/helper/navigation.dart';
 import '../../../core/utils/app_routes.dart';

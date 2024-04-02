@@ -116,7 +116,7 @@ class ProfilePictureAdd extends StatelessWidget {
       UserMain.instance!.profilePicture = await snapshot.ref.getDownloadURL();
 
       print(
-          ' ${UserMain.instance!.profilePicture}         ddddddddddddddddddddd');
+          ' ${UserMain.instance!.profilePicture} ');
       await FirebaseFirestore.instance
           .collection('Users')
           .doc(FirebaseAuth.instance.currentUser!.uid)

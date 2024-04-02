@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/core/utils/app_text_style.dart';
-import 'package:flutter_project/features/movie_details/screens/details_screen.dart';
 
 import '../../../core/helper/navigation.dart';
 import '../../../core/utils/app_routes.dart';

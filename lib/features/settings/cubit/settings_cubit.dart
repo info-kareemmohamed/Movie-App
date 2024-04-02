@@ -1,4 +1,3 @@
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/app/theme/theme.dart';
@@ -11,7 +10,6 @@ import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/features/settings/cubit/settings_states.dart';
 import 'package:provider/provider.dart';
 
-import '../../app_layout/screens/app_layout_screen.dart';
 
 class SettingsCubit extends Cubit<SettingsStates> {
   SettingsCubit() : super(InitialSettingsState());

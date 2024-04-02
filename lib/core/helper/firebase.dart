@@ -115,7 +115,7 @@ abstract class FirebaseHelper {
         return 0;
       }
     } catch (e) {
-      print('${e} ggggggggggggggggggggggggggggggggggggggg');
+      print('${e} ');
       return 2;
     }
   }
@@ -154,7 +154,7 @@ abstract class FirebaseHelper {
   static Future<void> Notifications() async {
     await FirebaseMessaging.instance.requestPermission();
 
-    //  print('${await FirebaseMessaging.instance.getToken()} wwwwwwwww');
+    //  print('${await FirebaseMessaging.instance.getToken()}');
     FirebaseMessaging.onBackgroundMessage(_handleBackgroundMessage);
   }
 }

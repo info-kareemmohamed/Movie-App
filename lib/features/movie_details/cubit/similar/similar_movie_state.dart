@@ -1,7 +1,7 @@
 
 import 'package:flutter_project/features/movie_details/model/MovieDetailsResponse.dart';
 
-import '../../../home/model/MovieResponse.dart';
+
 import '../../model/MovieSimilarResponse.dart';
 
 abstract class SimilarMovieStates{}

@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/features/movie_details/cubit/similar/similar_movie_state.dart';
-
 import '../../../../core/services/datasource/remote/api/ApiService.dart';
 import '../../model/MovieSimilarResponse.dart';
 

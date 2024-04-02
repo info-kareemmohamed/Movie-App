@@ -7,7 +7,6 @@ import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/features/favourite/view/app_bar.dart';
 import 'package:flutter_project/features/favourite/view/lottie_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../core/utils/app_routes.dart';
 import '../../../generated/l10n.dart';
 import '../cubit/FavouriteMovieCubit.dart';

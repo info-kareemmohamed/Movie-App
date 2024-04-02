@@ -1,11 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
-
 import '../../../core/helper/hive.dart';
-import '../../home/model/MovieResponse.dart';
-import '../../../core/services/datasource/remote/api/ApiService.dart';
-import '../../../core/utils/Constants.dart';
 import '../../favourite/model/movie_favourite.dart';
 
 part 'movie_details_state.dart';
@@ -22,7 +18,7 @@ class MovieDetailsCubit extends Cubit<MovieDetailsState> {
   }
 
   void ISThere(String key) {
-    print('${key} gggggggggggggggggggggggggggggggg');
+    print('${key} ');
     print(HiveHelper.FavouriteBox.get(key) == null
         ? this.isFavourite = false
         : this.isFavourite = true);

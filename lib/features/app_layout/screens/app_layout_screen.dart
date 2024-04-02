@@ -5,12 +5,17 @@ import 'package:flutter_project/core/model/app_data.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/features/app_layout/cubit/app_layout_cubit.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+
+import '../../../app/theme/theme.dart';
 
 class AppLayoutScreen extends StatelessWidget {
   const AppLayoutScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final appTheme =
+    Provider.of<AppTheme>(context);
     return BlocProvider(
       create: (context) => AppLayoutCubit(),
       child: BlocBuilder<AppLayoutCubit, AppLayoutStates>(
@@ -21,7 +26,7 @@ class AppLayoutScreen extends StatelessWidget {
               animationCurve: Curves.easeInOutCubicEmphasized,
               height: 53.h,
               index: cubit.currentIndex,
-              color: AppData.instance.Theme,
+              color: appTheme.color,
               backgroundColor: AppColors.primary,
               onTap: (int index) {
                 cubit.changeBottomNavBar(index);

@@ -4,12 +4,10 @@ import 'package:flutter_project/app/theme/theme.dart';
 import 'package:flutter_project/core/helper/hive.dart';
 import 'package:flutter_project/core/helper/navigation.dart';
 import 'package:flutter_project/core/model/app_data.dart';
-import 'package:flutter_project/core/services/datasource/remote/api/DioConfig.dart';
 import 'package:flutter_project/core/utils/Constants.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
-import 'package:flutter_project/features/home/screens/home_screen.dart';
 import 'package:flutter_project/features/settings/cubit/settings_states.dart';
-import 'package:flutter_project/main.dart';
+import 'package:provider/provider.dart';
 
 import '../../app_layout/screens/app_layout_screen.dart';
 
@@ -18,14 +16,15 @@ class SettingsCubit extends Cubit<SettingsStates> {
 
   bool isDark = AppData.instance.Theme == AppColors.darkTheme;
   bool isAllow = AppData.instance.Notification;
-  String selectedValue = "English";
+  String selectedValue =
+      AppData.instance.Language == ENGLISH ? 'English' : 'Arabic';
+  final appTheme =
+      Provider.of<AppTheme>(NavigationHelper.navigatorKey.currentContext!);
 
   void changeMode() {
     isDark = !isDark;
     AppData.instance.Theme = isDark ? AppColors.darkTheme : AppColors.white;
-
-    MyApp.setMode(
-        NavigationHelper.navigatorKey.currentContext!, AppTheme.setTheme());
+    appTheme.changeTheme(isDark);
     HiveHelper.AppBox.put(HiveHelper.AppKey, AppData.instance);
     emit(ChangeModeState());
   }
@@ -59,8 +58,7 @@ class SettingsCubit extends Cubit<SettingsStates> {
     selectedValue = value!;
     print(value);
     AppData.instance.Language = value == 'English' ? ENGLISH : ARABIC;
-    MyApp.setLocale(NavigationHelper.navigatorKey.currentContext!,
-        Locale(AppData.instance.Language));
+    appTheme.changeLanguage(AppData.instance.Language);
     HiveHelper.AppBox.put(HiveHelper.AppKey, AppData.instance);
     emit(ChangeLanguage());
   }

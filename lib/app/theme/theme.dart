@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project/core/model/app_data.dart';
-import 'package:flutter_project/core/model/main_user.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 
 class AppTheme extends ChangeNotifier {
@@ -19,11 +18,25 @@ class AppTheme extends ChangeNotifier {
         : darkMode;
   }
 
-  ThemeData themeData = darkMode;
-  Color color = AppColors.darkTheme;
+  Locale? locale = Locale(AppData.instance.Language);
 
-  changeTheme(ThemeData themeData) {
-    this.themeData = themeData;
+  ThemeData themeData =
+      AppData.instance.Theme == AppColors.darkTheme ? darkMode : lightMode;
+  Color color = AppData.instance.Theme;
+
+  changeTheme(bool isDark) {
+    if (isDark) {
+      themeData = darkMode;
+      color = AppColors.darkTheme;
+    } else {
+      themeData = lightMode;
+      color = AppColors.white;
+    }
+    notifyListeners();
+  }
+
+  changeLanguage(String language) {
+    this.locale = Locale(language);
     notifyListeners();
   }
 

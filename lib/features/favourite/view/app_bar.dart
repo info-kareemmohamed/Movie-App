@@ -14,12 +14,10 @@ class FavouriteAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: AppColors.darkTheme,
       centerTitle: true,
       title: Text(
         S.of(context).favourite_favourite,
         style: AppTextStyle.extraBold(
-          color: Colors.white,
           fontSize: 18.74.sp,
         ),
       ),

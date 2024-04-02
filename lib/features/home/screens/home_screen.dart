@@ -16,53 +16,56 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var cubit = context.read<HomeScreenCubit>();
-    return BlocBuilder<HomeScreenCubit, HomeScreenStates>(
-      builder: (context, state) {
-        return DefaultTabController(
-          length: 3,
-          child: Scaffold(
-            body: DefaultTabController(
-              length: 3,
-              child: NestedScrollView(
-                headerSliverBuilder: (context, innerBoxIsScrolled) {
-                  return [const SliverAppbarHome()];
-                },
-                body: CustomScrollView(
-                  slivers: [
-                    SliverToBoxAdapter(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          cubit.selectedValue == 'Daily'
-                              ? const TrendingDailyScreen()
-                              : const TrendingWeeklyScreen(),
-                          SizedBox(
-                            height: 15.h,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 20.w),
-                            child: Text(
-                              S.of(context).home_latest_movies,
-                              style: AppTextStyle.semiBold(
-                                fontSize: 25.sp,
+    return
+      BlocProvider(
+      create: (context) =>HomeScreenCubit(),
+      child: BlocBuilder<HomeScreenCubit, HomeScreenStates>(
+        builder: (context, state) {
+          return DefaultTabController(
+            length: 3,
+            child: Scaffold(
+              body: DefaultTabController(
+                length: 3,
+                child: NestedScrollView(
+                  headerSliverBuilder: (context, innerBoxIsScrolled) {
+                    return [const SliverAppbarHome()];
+                  },
+                  body: CustomScrollView(
+                    slivers: [
+                      SliverToBoxAdapter(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            context.read<HomeScreenCubit>().selectedValue == 'Daily'
+                                ? const TrendingDailyScreen()
+                                : const TrendingWeeklyScreen(),
+                            SizedBox(
+                              height: 15.h,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(left: 20.w),
+                              child: Text(
+                                S.of(context).home_latest_movies,
+                                style: AppTextStyle.semiBold(
+                                  fontSize: 25.sp,
+                                ),
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            height: 15.sp,
-                          ),
-                          const LatestMovies(),
-                        ],
+                            SizedBox(
+                              height: 15.sp,
+                            ),
+                            const LatestMovies(),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

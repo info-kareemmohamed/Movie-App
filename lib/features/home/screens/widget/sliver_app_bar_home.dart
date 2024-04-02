@@ -11,6 +11,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/helper/navigation.dart';
 import '../../../../core/model/app_data.dart';
+import '../../../../core/services/datasource/remote/apiLinks/AllApi.dart';
 import '../../../../core/utils/app_routes.dart';
 
 class SliverAppbarHome extends StatelessWidget {
@@ -24,57 +25,61 @@ class SliverAppbarHome extends StatelessWidget {
         return SliverAppBar(
           collapsedHeight: 500.h,
           flexibleSpace: FlexibleSpaceBar(
-            background: BlocBuilder<TopRatedMoviesCubit, TopRatedMoviesState>(
-              builder: (context, state) {
-                if (state is TopRatedSuccessState) {
-                  return CarouselSlider(
-                    items: state.movies.map(
-                      (results) {
-                        return Builder(
-                          builder: (BuildContext context) {
-                            return GestureDetector(
-                              onTap: () {
-                                NavigationHelper.navigateTo(
-                                    AppRoute.MOVIE_DETAILS,
-                                    arguments: results.id);
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image: CachedNetworkImageProvider(
-                                        'https://image.tmdb.org/t/p/w500${results.posterPath}'),
-                                    fit: BoxFit.fill,
+            background: BlocProvider(
+              create: (context) =>
+                  TopRatedMoviesCubit()..getTopRatedMovies(topRatedMovieUrl),
+              child: BlocBuilder<TopRatedMoviesCubit, TopRatedMoviesState>(
+                builder: (context, state) {
+                  if (state is TopRatedSuccessState) {
+                    return CarouselSlider(
+                      items: state.movies.map(
+                        (results) {
+                          return Builder(
+                            builder: (BuildContext context) {
+                              return GestureDetector(
+                                onTap: () {
+                                  NavigationHelper.navigateTo(
+                                      AppRoute.MOVIE_DETAILS,
+                                      arguments: results.id);
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      image: CachedNetworkImageProvider(
+                                          'https://image.tmdb.org/t/p/w500${results.posterPath}'),
+                                      fit: BoxFit.fill,
+                                    ),
                                   ),
                                 ),
-                              ),
-                            );
-                          },
-                        );
-                      },
-                    ).toList(),
-                    options: CarouselOptions(
-                      viewportFraction: 1,
-                      autoPlay: true,
-                      height: 600.h,
-                    ),
-                  );
-                } else if (state is TopRatedInitialState) {
-                  return const SizedBox();
-                } else {
-                  return Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Text(
-                        'Sorry Not Found',
-                        style: AppTextStyle.semiBold(
-                          color: Colors.red,
-                          fontSize: 25.sp,
+                              );
+                            },
+                          );
+                        },
+                      ).toList(),
+                      options: CarouselOptions(
+                        viewportFraction: 1,
+                        autoPlay: true,
+                        height: 600.h,
+                      ),
+                    );
+                  } else if (state is TopRatedInitialState) {
+                    return const SizedBox();
+                  } else {
+                    return Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Text(
+                          'Sorry Not Found',
+                          style: AppTextStyle.semiBold(
+                            color: Colors.red,
+                            fontSize: 25.sp,
+                          ),
                         ),
                       ),
-                    ),
-                  );
-                }
-              },
+                    );
+                  }
+                },
+              ),
             ),
           ),
           bottom: AppBar(

@@ -7,6 +7,7 @@ import 'package:flutter_project/core/model/app_data.dart';
 import 'package:flutter_project/core/services/datasource/remote/api/DioConfig.dart';
 import 'package:flutter_project/core/utils/Constants.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
+import 'package:flutter_project/features/home/screens/home_screen.dart';
 import 'package:flutter_project/features/settings/cubit/settings_states.dart';
 import 'package:flutter_project/main.dart';
 
@@ -22,7 +23,6 @@ class SettingsCubit extends Cubit<SettingsStates> {
   void changeMode() {
     isDark = !isDark;
     AppData.instance.Theme = isDark ? AppColors.darkTheme : AppColors.white;
-    AppLayoutScreen.setTheme(NavigationHelper.navigatorKey.currentContext!,AppData.instance.Theme);
 
     MyApp.setMode(
         NavigationHelper.navigatorKey.currentContext!, AppTheme.setTheme());

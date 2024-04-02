@@ -6,29 +6,8 @@ import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/features/app_layout/cubit/app_layout_cubit.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class AppLayoutScreen extends StatefulWidget {
+class AppLayoutScreen extends StatelessWidget {
   const AppLayoutScreen({super.key});
-
-  @override
-  State<AppLayoutScreen> createState() => _AppLayoutScreenState();
-
-  static void setTheme(BuildContext context, Color color) {
-    _AppLayoutScreenState? state =
-    context.findAncestorStateOfType<_AppLayoutScreenState>();
-    state?.setTheme(color);
-  }
-}
-
-class _AppLayoutScreenState extends State<AppLayoutScreen> {
-  Color _color = AppData.instance.Theme;
-
-  setTheme(Color color) {
-    print(color);
-    setState(() {
-      print('aaaawwwwwwwwwwwwwaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
-      _color = color;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +21,7 @@ class _AppLayoutScreenState extends State<AppLayoutScreen> {
               animationCurve: Curves.easeInOutCubicEmphasized,
               height: 53.h,
               index: cubit.currentIndex,
-              color: _color,
+              color: AppData.instance.Theme,
               backgroundColor: AppColors.primary,
               onTap: (int index) {
                 cubit.changeBottomNavBar(index);

@@ -12,7 +12,6 @@ class FavouriteLottieScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.darkTheme,
       appBar: const FavouriteAppBar(),
       body: Center(
         child: Padding(

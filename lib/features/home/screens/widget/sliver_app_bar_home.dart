@@ -27,7 +27,7 @@ class SliverAppbarHome extends StatelessWidget {
           flexibleSpace: FlexibleSpaceBar(
             background: BlocProvider(
               create: (context) =>
-                  TopRatedMoviesCubit()..getTopRatedMovies(topRatedMovieUrl),
+                  TopRatedMoviesCubit()..getTopRatedMovies(ApiUrl.instance.topRatedMovieUrl),
               child: BlocBuilder<TopRatedMoviesCubit, TopRatedMoviesState>(
                 builder: (context, state) {
                   if (state is TopRatedSuccessState) {

@@ -12,7 +12,7 @@ class FavouriteMovieImage extends StatelessWidget {
     return CircleAvatar(
       radius: 50.r,
       backgroundImage: CachedNetworkImageProvider(
-        '$imageBaseUrl$backdropPath',
+        '${ApiUrl.instance.imageBaseUrl}$backdropPath',
       ),
     );
   }

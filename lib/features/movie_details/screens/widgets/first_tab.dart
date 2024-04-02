@@ -21,7 +21,7 @@ class FirstTabScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => VideoMovieCubit()
-        ..getvideoMovie(getEndPoint2("videos", movie.id.toString())),
+        ..getvideoMovie(ApiUrl.instance.getEndPoint2("videos", movie.id.toString())),
       child: BlocBuilder<VideoMovieCubit, VideoMoviesStates>(
           builder: (context, state) {
         if (state is VideoMoviesSuccessState) {

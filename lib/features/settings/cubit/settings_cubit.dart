@@ -5,6 +5,7 @@ import 'package:flutter_project/app/theme/theme.dart';
 import 'package:flutter_project/core/helper/hive.dart';
 import 'package:flutter_project/core/helper/navigation.dart';
 import 'package:flutter_project/core/model/app_data.dart';
+import 'package:flutter_project/core/services/datasource/remote/apiLinks/AllApi.dart';
 import 'package:flutter_project/core/utils/Constants.dart';
 import 'package:flutter_project/core/utils/app_colors.dart';
 import 'package:flutter_project/features/settings/cubit/settings_states.dart';
@@ -61,7 +62,7 @@ class SettingsCubit extends Cubit<SettingsStates> {
   void dropValue(String? value) async {
     selectedValue = value!;
     print(value);
-    AppData.instance.Language = value == 'English' ? ENGLISH : ARABIC;
+    ApiUrl.instance.language=AppData.instance.Language = value == 'English' ? ENGLISH : ARABIC;
     appTheme.changeLanguage(AppData.instance.Language);
     HiveHelper.AppBox.put(HiveHelper.AppKey, AppData.instance);
     emit(ChangeLanguage());

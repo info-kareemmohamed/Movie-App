@@ -33,7 +33,7 @@ class ShowMoreFilms extends StatelessWidget {
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: CachedNetworkImageProvider(
-                        '$imageBaseUrl${movieSimilar[index].posterPath}',
+                        '${ApiUrl.instance.imageBaseUrl}${movieSimilar[index].posterPath}',
                       ),
                       fit: BoxFit.fill,
                     ),

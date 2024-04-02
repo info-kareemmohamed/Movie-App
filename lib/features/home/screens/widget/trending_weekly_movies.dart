@@ -13,7 +13,7 @@ class TrendingWeeklyScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          TrendingWeekMoviesCubit()..getTrendingWeekWeek(trendingWeekUrl),
+          TrendingWeekMoviesCubit()..getTrendingWeekWeek(ApiUrl.instance.trendingWeekUrl),
       child: BlocBuilder<TrendingWeekMoviesCubit, TrendingWeekMoviesStates>(
         builder: (context, state) {
           if (state is TrendingWeekMoviesSuccessState) {

@@ -10,9 +10,10 @@ class LatestMovies extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return BlocProvider(
       create: (context) =>
-          TopRatedMoviesCubit()..getTopRatedMovies(topRatedMovieUrl),
+          TopRatedMoviesCubit()..getTopRatedMovies(ApiUrl.instance.topRatedMovieUrl),
       child: BlocBuilder<TopRatedMoviesCubit, TopRatedMoviesState>(
         builder: (context, state) {
           if (state is TopRatedInitialState) {

@@ -22,7 +22,7 @@ class ThirdTabScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
         create: (context) =>
-            CastMovieCubit()..getCastMovie(getEndPoint2("credits", movie.id)),
+            CastMovieCubit()..getCastMovie(ApiUrl.instance.getEndPoint2("credits", movie.id)),
         child: BlocBuilder<MovieDetailsCubit, MovieDetailsState>(
           builder: (context, state) {
             return BlocBuilder<CastMovieCubit, CastMovieStates>(
@@ -43,7 +43,7 @@ class ThirdTabScreen extends StatelessWidget {
                               children: [
                                 CircleAvatar(
                                   backgroundImage: CachedNetworkImageProvider(
-                                    '$imageBaseUrl${state.casts[index].profilePath}',
+                                    '${ApiUrl.instance.imageBaseUrl}${state.casts[index].profilePath}',
                                   ),
                                   radius: 60.r,
                                 ),

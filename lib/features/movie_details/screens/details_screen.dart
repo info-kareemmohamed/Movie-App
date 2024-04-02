@@ -18,7 +18,7 @@ class MovieDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          InfoMovieCubit()..getInfoMovie(getEndPoint("movie",id)),
+          InfoMovieCubit()..getInfoMovie(ApiUrl.instance.getEndPoint("movie",id)),
       child: BlocBuilder<InfoMovieCubit, InfoMovieStates>(
         builder: (context, state) {
           if (state is InfoMovieSuccessState) {

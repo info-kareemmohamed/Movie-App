@@ -24,7 +24,7 @@ class MoreLikeThisMovie extends StatelessWidget {
         ),
         BlocProvider<SimilarMovieCubit>(
           create: (context) => SimilarMovieCubit()
-            ..getSimilarMovie(getEndPoint2("similar", movieId)),
+            ..getSimilarMovie(ApiUrl.instance.getEndPoint2("similar", movieId)),
         ),
       ],
       child: BlocBuilder<SimilarMovieCubit, SimilarMovieStates>(

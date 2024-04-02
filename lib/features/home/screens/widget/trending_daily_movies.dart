@@ -13,7 +13,7 @@ class TrendingDailyScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          TrendingDayMoviesCubit()..getTrendingDayMovies(trendingDayUrl),
+          TrendingDayMoviesCubit()..getTrendingDayMovies(ApiUrl.instance.trendingDayUrl),
       child: BlocBuilder<TrendingDayMoviesCubit, TrendingDayMoviesStates>(
         builder: (context, state) {
           if (state is TrendingDayMoviesSuccessState) {

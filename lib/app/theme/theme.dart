@@ -4,9 +4,15 @@ import 'package:flutter_project/core/utils/app_colors.dart';
 
 class AppTheme extends ChangeNotifier {
   static ThemeData lightMode = ThemeData(
+      textTheme: TextTheme(
+        bodyLarge: TextStyle(color: Colors.black),
+      ),
           brightness: Brightness.light,
           colorScheme: const ColorScheme.light(background: AppColors.white)),
       darkMode = ThemeData(
+          textTheme: TextTheme(
+            bodyLarge: TextStyle(color: AppColors.lightYellow),
+          ),
           brightness: Brightness.dark,
           colorScheme: const ColorScheme.dark(background: AppColors.darkTheme));
 

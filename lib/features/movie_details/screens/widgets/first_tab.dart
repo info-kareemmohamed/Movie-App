@@ -73,7 +73,7 @@ class FirstTabScreen extends StatelessWidget {
                                   movie.genres?[index].name ?? "",
                                   textAlign: TextAlign.center,
                                   style: AppTextStyle.medium(
-                                    color: AppColors.lightRed,
+
                                   ),
                                 ),
                               ),
@@ -86,7 +86,6 @@ class FirstTabScreen extends StatelessWidget {
                       movie.overview ?? 'Not Found',
                       textAlign: TextAlign.center,
                       style: AppTextStyle.regular(
-                        color: AppColors.lightYellow,
                         fontSize: 12.sp,
                       ),
                     ),

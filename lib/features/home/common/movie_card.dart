@@ -58,14 +58,12 @@ class MovieCard extends StatelessWidget {
                       ? '${title!.substring(0, 20)} ...'
                       : title ?? "Not Found",
                   style: AppTextStyle.light(
-                    color: AppColors.lightYellow,
                     fontSize: 10,
                   ),
                 ),
                 Text(
                   releaseDate ?? "Not Found",
                   style: AppTextStyle.light(
-                    color: AppColors.lightRed,
                     fontSize: 10,
                   ),
                 ),

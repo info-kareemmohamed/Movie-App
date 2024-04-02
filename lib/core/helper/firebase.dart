@@ -153,6 +153,7 @@ abstract class FirebaseHelper {
 
   static Future<void> Notifications() async {
     await FirebaseMessaging.instance.requestPermission();
+
     //  print('${await FirebaseMessaging.instance.getToken()} wwwwwwwww');
     FirebaseMessaging.onBackgroundMessage(_handleBackgroundMessage);
   }

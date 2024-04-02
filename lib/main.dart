@@ -48,7 +48,6 @@ class MyApp extends StatelessWidget {
 
     return MultiBlocProvider(
       providers: [...AppProviders.providers],
-      // assuming AppProviders.providers is your list of bloc providers
       child: ScreenUtilInit(
         designSize: const Size(360, 690),
         minTextAdapt: true,
@@ -56,13 +55,11 @@ class MyApp extends StatelessWidget {
         ensureScreenSize: true,
         builder: (_, child) {
           return ChangeNotifierProvider(
-            create: (context) => AppTheme(), // Create an instance of AppTheme
+            create: (context) => AppTheme(),
             child: Consumer<AppTheme>(
               builder: (_, appTheme, __) {
                 return MaterialApp(
-                  // Set theme using the appTheme instance
                   theme: appTheme.themeData,
-                  // Other MaterialApp properties
                   locale: appTheme.locale,
                   localizationsDelegates: const [
                     S.delegate,

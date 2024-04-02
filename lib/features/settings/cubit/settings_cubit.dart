@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project/app/theme/theme.dart';
@@ -35,6 +36,9 @@ class SettingsCubit extends Cubit<SettingsStates> {
     HiveHelper.AppBox.put(HiveHelper.AppKey, AppData.instance);
     emit(AllowNotificationState());
   }
+
+
+
 
   List<DropdownMenuItem<String>> dropDownMenu(String arabic, String english) {
     List<DropdownMenuItem<String>> dropMenuItems = [

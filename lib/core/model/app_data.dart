@@ -25,7 +25,7 @@ class AppData {
   AppData._internal({
     this.Language = ENGLISH,
     this.Theme = AppColors.darkTheme,
-    this.Notification = false,
+    this.Notification = true,
   });
 
   static Color textColorNameToPrimary() {

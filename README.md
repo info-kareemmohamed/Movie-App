@@ -1,4 +1,4 @@
-##Key functionalities:
+## Key functionalities:
 
 📱Easy Registration and Login:
 The "Hulu" app facilitates easy account creation and login. Users can sign up directly within the app or use their Facebook or Google accounts. A password recovery feature is also available for forgotten passwords. Additionally, users can personalize their accounts by adding or editing their profile picture, choosing from either the app or device gallery.

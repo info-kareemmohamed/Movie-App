@@ -69,3 +69,13 @@ We used the following:
 
 ✅figma 
 
+
+
+
+
+
+
+
+
+https://github.com/info-kareemmohamed/Movie-App/assets/133100486/c44ca7ac-889a-448d-9641-d857bcfe8fba
+

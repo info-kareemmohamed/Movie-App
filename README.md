@@ -1,16 +1,71 @@
-# flutter_project
+##Key functionalities:
 
-A new Flutter project.
+📱Easy Registration and Login:
+The "Hulu" app facilitates easy account creation and login. Users can sign up directly within the app or use their Facebook or Google accounts. A password recovery feature is also available for forgotten passwords. Additionally, users can personalize their accounts by adding or editing their profile picture, choosing from either the app or device gallery.
 
-## Getting Started
+🏠 Home Screen:
+Users can explore popular and trending movies of the day or week.
 
-This project is a starting point for a Flutter application.
+🎬 Movie Information:
+Detailed information about movies is provided, including trailers and cast details.
 
-A few resources to get you started if this is your first Flutter project:
+📺 Watch Related Videos:
+Users can watch videos related to selected movies.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+✨ Cast Information:
+Detailed information about the cast of each movie is available.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+🍿 Similar Movies:
+Suggestions for movies similar to the selected one are provided.
+
+💥Favorites:
+The "Hulu" app includes a favorites screen where users can mark and remove favorite movies for easy access and customization.
+
+👨Profile Picture Management:
+Users can add or update their profile pictures from within the app or their device gallery.
+
+📲 Settings:
+Access to app settings is provided.
+
+🔔 Notifications:
+Users receive notifications for updates or new content.
+
+🌐 Data Caching:
+App performance is improved through data caching.
+
+🌓 Light/Dark Mode:
+Support for both light and dark modes enhances user experience.
+
+🌍Localization:
+The app is available in Arabic and English to cater to a global audience.
+
+We used the following:
+
+✅ Firebase (Firestore , Authentication , Messaging , Storage)
+
+✅Screen UtilInit
+
+✅ Hive
+
+✅Dio
+
+✅ Dio http cache
+
+✅Cached network image
+
+✅ Cubit
+
+✅ Provider
+
+✅Localizations
+
+✅Lottie
+
+✅Animations
+
+✅Curved navigation
+
+✅Bottom navigation
+
+✅figma 
+
